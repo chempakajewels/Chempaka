@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Chempaka - Club Membership</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&amp;family=Noto+Sans:wght@300;400;500;600&amp;family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap"
+    rel="stylesheet" />
+  <!-- Supabase CDN Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container": "#eeeeee",
+            "on-primary-fixed-variant": "#5c412f",
+            "inverse-surface": "#2f3131",
+            "on-tertiary": "#ffffff",
+            "primary": "#A48E7E",
+            "surface-container-highest": "#e2e2e2",
+            "on-secondary": "#ffffff",
+            "on-error-container": "#93000a",
+            "tertiary-container": "#786f65",
+            "primary-fixed": "#ffdcc7",
+            "on-tertiary-fixed": "#201b14",
+            "error": "#ba1a1a",
+            "tertiary": "#5f574e",
+            "on-background": "#1a1c1c",
+            "on-secondary-container": "#775e4a",
+            "surface-dim": "#dadada",
+            "primary-container": "#a48e7e",
+            "on-surface-variant": "#4f453e",
+            "surface": "#f9f9f9",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-container": "#fff4ef",
+            "tertiary-fixed-dim": "#d0c5b9",
+            "on-secondary-fixed": "#291808",
+            "on-primary": "#ffffff",
+            "inverse-primary": "#e6bfa7",
+            "surface-bright": "#f9f9f9",
+            "on-tertiary-fixed-variant": "#4d463d",
+            "on-error": "#ffffff",
+            "secondary-fixed": "#fedcc3",
+            "outline": "#81746d",
+            "on-surface": "#1a1c1c",
+            "secondary-container": "#fbd9c0",
+            "error-container": "#ffdad6",
+            "surface-tint": "#765845",
+            "background": "#f9f9f9",
+            "primary-fixed-dim": "#e6bfa7",
+            "secondary-fixed-dim": "#e1c0a8",
+            "on-tertiary-container": "#fff4ea",
+            "on-secondary-fixed-variant": "#594230",
+            "outline-variant": "#d3c3bb",
+            "surface-container-low": "#f3f3f4",
+            "tertiary-fixed": "#ece1d5",
+            "secondary": "#2B3E56",
+            "inverse-on-surface": "#f0f1f1",
+            "surface-variant": "#e2e2e2",
+            "on-primary-fixed": "#2b1608",
+            "surface-container-high": "#e8e8e8"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-desktop": "64px",
+            "section-gap": "120px",
+            "container-max": "1280px",
+            "gutter": "24px",
+            "unit": "8px",
+            "margin-mobile": "20px"
+          },
+          "fontFamily": {
+            "serif": ["Playfair Display", "serif"],
+            "sans": ["Inter", "sans-serif"],
+            "headline-lg": ["Playfair Display"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "label-md": ["Inter"],
+            "display-lg-mobile": ["Playfair Display"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "display-lg": ["Playfair Display"],
+            "headline-md": ["Playfair Display"]
+          },
+          "fontSize": {
+            "headline-lg": ["40px", { "lineHeight": "48px", "fontWeight": "400" }],
+            "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "500" }],
+            "display-lg-mobile": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* ========================================
+           CHEMPAKA HEADER — LINEAR-STYLE GLASS
+           Default: transparent frosted glass over hero
+           Scrolled: pure white, collapsed, minimal
+           ======================================== */
+
+    header {
+      background-color: transparent;
+      border-bottom: none;
+      transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        backdrop-filter 0.4s ease,
+        color 0.3s ease;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 70%, transparent 100%);
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+
+    .logo-text,
+    .scrolled-logo-text,
+    header .material-symbols-outlined {
+      transition: color 0.3s ease;
+    }
+
+    @media (hover: hover) {
+      header:hover {
+        background-color: rgba(255,255,255,0.98) !important;
+        backdrop-filter: blur(24px) !important;
+        -webkit-backdrop-filter: blur(24px) !important;
+        color: #000000 !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+        box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+      }
+
+      header:hover::before {
+        opacity: 0 !important;
+      }
+
+      header:hover .logo-text,
+      header:hover .scrolled-logo-text,
+      header:hover .nav-link,
+      header:hover .material-symbols-outlined,
+      header:hover .utility-link {
+        color: #000000 !important;
+      }
+
+      header:hover #utility-bar {
+        border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+      }
+    }
+
+    header.scrolled {
+      background-color: rgba(255,255,255,0.97) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+      color: #000000 !important;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
+      box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+    }
+
+    header.scrolled #utility-bar,
+    header.scrolled #promo-banner,
+    header.scrolled #logo-row {
+      height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      opacity: 0;
+      overflow: hidden;
+      margin-bottom: 0;
+      border-bottom-width: 0;
+    }
+
+    header.scrolled #scrolled-logo {
+      opacity: 1;
+      width: auto;
+      max-width: 200px;
+    }
+
+    header.scrolled #navbar-container {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    header.scrolled .inline-nav-divider,
+    header.scrolled .inline-nav-icons {
+      display: none !important;
+    }
+
+    header.scrolled .scrolled-nav-icons {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+
+    .nav-link {
+      position: relative;
+      font-family: 'Noto Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 14px !important;
+      letter-spacing: 0.05em !important;
+      font-weight: 400 !important;
+      padding-bottom: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 1px;
+      bottom: -2px;
+      left: 0;
+      background-color: currentColor;
+      transform-origin: center center;
+      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      transform: scaleX(1);
+    }
+
+    .utility-link {
+      font-family: 'Noto Sans', 'Inter', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      font-weight: 400;
+      text-decoration: none;
+      transition: color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .utility-link:hover {
+      opacity: 0.7;
+    }
+
+    /* ========================================
+           OBSIDIAN METALLIC LUXURY DESIGN SYSTEM
+           Canvas: #050505 Pitch Black
+           Accent: #C5A059 / #D4AF37 Brushed Gold
+           ======================================== */
+    .bg-obsidian-page {
+      background-color: #050505;
+    }
+
+    .text-gold-gradient {
+      background: linear-gradient(135deg, #FFF0C2 0%, #D4AF37 50%, #A47E24 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .bg-gold-metallic {
+      background: linear-gradient(135deg, #E5C158 0%, #C5A059 50%, #9E7B3B 100%);
+    }
+
+    .bg-gold-metallic:hover {
+      background: linear-gradient(135deg, #F3D068 0%, #D4AF37 50%, #B08B46 100%);
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+    }
+
+    .border-gold-glow {
+      border-color: rgba(197, 160, 89, 0.25);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .border-gold-glow:hover {
+      border-color: rgba(212, 175, 55, 0.6);
+      box-shadow: 0 0 30px rgba(197, 160, 89, 0.12);
+    }
+
+    /* 3D Photorealistic Obsidian & Brushed Gold Digital Member Pass */
+    .obsidian-gold-card {
+      position: relative;
+      background: linear-gradient(135deg, #181612 0%, #070707 35%, #15130f 70%, #050505 100%);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      border-right-color: rgba(212, 175, 55, 0.25);
+      border-bottom-color: rgba(212, 175, 55, 0.2);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 
+                  inset 0 1px 1px rgba(255, 240, 194, 0.35),
+                  0 0 30px rgba(197, 160, 89, 0.12);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.12s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 1.586;
+    }
+
+    .obsidian-gold-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(212, 175, 55, 0.18) 0%,
+        rgba(255, 255, 255, 0) 45%,
+        rgba(212, 175, 55, 0.08) 100%
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Dynamic Glare Lens */
+    .card-glare {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at var(--glare-x, 50%) var(--glare-y, 50%),
+        rgba(255, 235, 170, 0.32) 0%,
+        rgba(255, 255, 255, 0) 65%
+      );
+      mix-blend-mode: color-dodge;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 2;
+    }
+
+    .obsidian-gold-card:hover .card-glare {
+      opacity: 1;
+    }
+
+    /* Micro Metallic Shimmer Animation */
+    .shimmer-line {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 240, 194, 0.12) 50%,
+        transparent 100%
+      );
+      transform: skewX(-25deg);
+      animation: metallicShimmer 6s infinite ease-in-out;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    @keyframes metallicShimmer {
+      0% { left: -100%; }
+      30% { left: 200%; }
+      100% { left: 200%; }
+    }
+  </style>
+  </style>
+</head>
+
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden">
+  <!-- TopNavBar -->
+  <header id="main-header"
+    class="fixed top-0 w-full z-50 transition-all duration-500 bg-transparent text-white border-b border-transparent">
+    <!-- Top Promotion Banner -->
+    <div id="promo-banner"
+      class="bg-black text-white text-[11px] font-medium tracking-[0.15em] py-2.5 px-4 md:px-6 flex justify-between items-center z-50 transition-all duration-300">
+      <div class="flex-1 text-center select-none whitespace-normal break-words leading-relaxed">
+        Join the Chempaka Club today for exclusive in-store privileges | <a href="boutiques.html"
+          class="underline underline-offset-2 hover:opacity-80 transition-opacity whitespace-nowrap">Visit Our Shah Alam Boutique</a>
+      </div>
+      <button onclick="dismissPromo()"
+        class="text-white hover:opacity-70 transition-opacity bg-transparent border-none cursor-pointer p-0 ml-4"
+        aria-label="Close promotional banner">
+        <span class="material-symbols-outlined text-[16px] leading-none"
+          style="font-variation-settings: 'wght' 300;">close</span>
+      </button>
+    </div>
+
+    <!-- Utility Bar -->
+    <div id="utility-bar"
+      class="hidden lg:grid grid-cols-3 items-center py-1.5 px-12 transition-all duration-300 overflow-hidden border-b border-white/10 transition-colors duration-300">
+      <div class="flex justify-start items-center">
+        <a href="boutiques.html" class="utility-link text-white transition-colors duration-300 flex items-center gap-1.5 hover:opacity-75">
+          <span class="material-symbols-outlined text-[18px]"
+            style="font-variation-settings: 'wght' 300;">location_on</span>
+          Shah Alam Flagship
+        </a>
+      </div>
+      <div class="utility-link text-neutral-500 select-none text-center text-xs">
+        Chempaka Gold Exchange &amp; Valuation Available at Shah Alam Boutique
+      </div>
+      <div class="flex justify-end items-center gap-6">
+        <a href="membership.html" class="utility-link text-white transition-colors duration-300 flex items-center gap-1.5 hover:opacity-75">
+          <span class="material-symbols-outlined text-[18px]"
+            style="font-variation-settings: 'wght' 300;">person_outline</span>
+          Login
+        </a>
+        <a href="boutiques.html#appointment-booking"
+          class="utility-link text-white transition-colors duration-300 flex items-center gap-1.5 hover:opacity-75">
+          <span class="material-symbols-outlined text-[18px]"
+            style="font-variation-settings: 'wght' 300;">calendar_month</span>
+          Book Appointment
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Navigation Container -->
+    <div id="navbar-container" class="relative transition-all duration-500 py-2 px-5 md:px-6 lg:px-12">
+      <div id="nav-desktop-layout" class="hidden md:flex flex-col transition-all duration-500">
+        <!-- Row 1: Centered Logo Wordmark -->
+        <div id="logo-row" class="flex justify-center pt-2 pb-2 transition-all duration-500">
+          <a href="index.html"
+            class="font-serif tracking-[0.02em] text-[28px] md:text-[36px] lg:text-[44px] leading-none uppercase font-normal logo-text text-white transition-colors duration-300"
+            style="font-family: 'Cinzel', serif; letter-spacing: 0.02em;">CHEMPAKA</a>
+        </div>
+
+        <!-- Row 2: Navigation + Icons -->
+        <div id="links-row" class="grid grid-cols-12 items-center w-full transition-all duration-500">
+          <!-- Left: Scrolled Logo -->
+          <div class="col-span-3 lg:col-span-2 flex justify-start items-center">
+            <div id="scrolled-logo" class="opacity-0 w-0 overflow-hidden transition-all duration-500 shrink-0">
+              <a href="index.html"
+                class="font-serif tracking-[0.02em] text-[18px] uppercase font-normal text-white transition-colors duration-300 scrolled-logo-text whitespace-nowrap"
+                style="font-family: 'Cinzel', serif; letter-spacing: 0.02em;">CHEMPAKA</a>
+            </div>
+          </div>
+
+          <!-- Center: Navigation Links -->
+          <div class="col-span-6 lg:col-span-8 flex justify-center">
+            <nav class="flex items-center gap-4 lg:gap-8 xl:gap-12 transition-all duration-300"
+              aria-label="Main navigation">
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="index.html#sale">Sale</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="showcase.html">Showcase</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="about.html">Journal</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80 font-bold active" href="membership.html">Membership</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="boutiques.html">Boutique</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="boutiques.html#appointment-booking">Appointment</a>
+
+              <span
+                class="inline-nav-divider w-[1px] h-4 bg-neutral-200 select-none pointer-events-none transition-all duration-300"></span>
+
+              <div class="inline-nav-icons flex items-center gap-1 transition-all duration-300">
+                <button onclick="toggleSearch(true)"
+                  class="header-icon hover:opacity-65 transition-opacity bg-transparent border-none text-white transition-colors duration-300 p-0 cursor-pointer flex items-center justify-center"
+                  aria-label="Search">
+                  <span class="material-symbols-outlined text-[22px]"
+                    style="font-variation-settings: 'wght' 300;">search</span>
+                </button>
+                <a href="membership.html"
+                  class="header-icon hover:opacity-65 transition-opacity flex items-center justify-center text-white transition-colors duration-300"
+                  aria-label="Wishlist">
+                  <span class="material-symbols-outlined text-[22px]"
+                    style="font-variation-settings: 'wght' 300;">favorite_border</span>
+                </a>
+              </div>
+            </nav>
+          </div>
+
+          <!-- Right: Action Icons (scrolled only) -->
+          <div class="col-span-3 lg:col-span-2 flex justify-end items-center">
+            <div
+              class="scrolled-nav-icons opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-1">
+              <button onclick="toggleSearch(true)"
+                class="header-icon hover:opacity-65 transition-opacity bg-transparent border-none text-white transition-colors duration-300 p-0 cursor-pointer flex items-center justify-center"
+                aria-label="Search">
+                <span class="material-symbols-outlined text-[22px]"
+                  style="font-variation-settings: 'wght' 300;">search</span>
+              </button>
+              <a href="membership.html"
+                class="header-icon hover:opacity-65 transition-opacity flex items-center justify-center text-white transition-colors duration-300"
+                aria-label="Wishlist">
+                <span class="material-symbols-outlined text-[22px]"
+                  style="font-variation-settings: 'wght' 300;">favorite_border</span>
+              </a>
+              <a href="membership.html"
+                class="header-icon hover:opacity-65 transition-opacity flex items-center justify-center text-white transition-colors duration-300"
+                aria-label="Account">
+                <span class="material-symbols-outlined text-[22px]"
+                  style="font-variation-settings: 'wght' 300;">person_outline</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Layout -->
+      <div id="nav-mobile-layout" class="flex md:hidden justify-between items-center w-full">
+        <button onclick="toggleMobileDrawer(true)"
+          class="focus:outline-none bg-transparent border-none text-white transition-colors duration-300 p-0 cursor-pointer" aria-label="Open menu">
+          <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'wght' 300;">menu</span>
+        </button>
+        <a href="index.html" class="font-serif tracking-[0.02em] text-[20px] uppercase font-normal logo-text text-white transition-colors duration-300"
+          style="font-family: 'Cinzel', serif; letter-spacing: 0.02em;">CHEMPAKA</a>
+        <div class="flex items-center gap-1">
+          <button onclick="toggleSearch(true)"
+            class="bg-transparent border-none text-white transition-colors duration-300 p-0 cursor-pointer flex items-center justify-center w-10 h-10"
+            aria-label="Search">
+            <span class="material-symbols-outlined text-[22px]"
+              style="font-variation-settings: 'wght' 300;">search</span>
+          </button>
+          <a href="membership.html" class="flex items-center justify-center w-10 h-10 text-inherit"
+            aria-label="Account">
+            <span class="material-symbols-outlined text-[22px]"
+              style="font-variation-settings: 'wght' 300;">person_outline</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-drawer"
+    class="fixed inset-y-0 left-0 w-80 bg-white text-black z-[100] transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl flex flex-col">
+    <div class="p-6 flex justify-between items-center border-b border-neutral-200">
+      <span class="font-serif tracking-[0.02em] text-lg uppercase font-normal"
+        style="font-family: 'Cinzel', serif; letter-spacing: 0.02em;">CHEMPAKA</span>
+      <button onclick="toggleMobileDrawer(false)"
+        class="focus:outline-none bg-transparent border-none text-black p-0 cursor-pointer">
+        <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'wght' 300;">close</span>
+      </button>
+    </div>
+    <div class="flex-1 overflow-y-auto p-6 space-y-0">
+      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
+        href="index.html#sale" onclick="toggleMobileDrawer(false)">Sale</a>
+      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
+        href="showcase.html" onclick="toggleMobileDrawer(false)">Showcase</a>
+      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
+        href="about.html" onclick="toggleMobileDrawer(false)">Journal</a>
+      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
+        href="membership.html" onclick="toggleMobileDrawer(false)">Membership</a>
+      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
+        href="boutiques.html" onclick="toggleMobileDrawer(false)">Boutiques</a>
+      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
+        href="boutiques.html#appointment-booking" onclick="toggleMobileDrawer(false)">Appointment</a>
+    </div>
+    <div class="p-6 border-t border-neutral-200 bg-neutral-100/50 space-y-4">
+      <a href="boutiques.html"
+        class="flex items-center gap-2.5 py-1 text-[11px] font-medium tracking-[0.15em] text-neutral-600 hover:text-black transition-colors"
+        onclick="toggleMobileDrawer(false)">
+        <span class="material-symbols-outlined text-[16px]"
+          style="font-variation-settings: 'wght' 300;">location_on</span> Stores
+      </a>
+      <a href="membership.html"
+        class="flex items-center gap-2.5 py-1 text-[11px] font-medium tracking-[0.15em] text-neutral-600 hover:text-black transition-colors"
+        onclick="toggleMobileDrawer(false)">
+        <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'wght' 300;">person</span>
+        Chempaka Club / Join
+      </a>
+    </div>
+  </div>
+
+  <div id="drawer-backdrop" class="fixed inset-0 bg-black/40 hidden z-[90]" onclick="toggleMobileDrawer(false)"></div>
+
+  <!-- Search Overlay -->
+  <div id="search-overlay"
+    class="fixed inset-0 bg-white z-50 hidden flex flex-col p-6 md:p-10 transition-opacity duration-300">
+    <div class="max-w-container-max mx-auto w-full flex justify-between items-center mb-12">
+      <span class="font-serif tracking-widest text-lg uppercase" style="font-family: 'Cinzel', serif;">CHEMPAKA</span>
+      <button onclick="toggleSearch(false)" class="bg-transparent border-none text-black p-0 cursor-pointer">
+        <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'wght' 300;">close</span>
+      </button>
+    </div>
+    <div class="max-w-3xl mx-auto w-full flex-1 flex flex-col justify-center">
+      <h2 class="font-serif text-3xl md:text-5xl text-black font-normal text-center mb-8">What are you looking for?</h2>
+      <div class="relative w-full border-b-2 border-black py-2 mb-4">
+        <input type="text" placeholder="Search collection, products..."
+          class="w-full bg-transparent text-xl md:text-2xl border-none outline-none focus:ring-0 p-0 text-black placeholder-neutral-300 font-sans" />
+        <span class="material-symbols-outlined absolute right-0 top-3 text-2xl text-neutral-400">search</span>
+      </div>
+      <p class="text-xs font-sans text-neutral-400 text-center tracking-wider">Press Enter to Search</p>
+    </div>
+  </div>
+
+  <main class="bg-[#050505] text-white">
+    <!-- Obsidian Metallic Hero Section -->
+    <section class="relative bg-[#050505] text-white min-h-[92dvh] grid grid-cols-1 md:grid-cols-2 overflow-hidden">
+      <!-- Background metallic glow circles -->
+      <div class="absolute inset-0 pointer-events-none z-0">
+        <div class="absolute -top-[10%] -left-[10%] w-[500px] h-[500px] rounded-full bg-[#C5A059] opacity-10 blur-[140px]"></div>
+        <div class="absolute top-[40%] right-[0%] w-[600px] h-[600px] rounded-full bg-[#D4AF37] opacity-5 blur-[160px]"></div>
+      </div>
+
+      <!-- Left: Editorial Typography -->
+      <div class="w-full flex flex-col justify-center px-6 md:px-16 py-28 md:py-0 relative z-10">
+        <div class="max-w-xl space-y-8">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/5 border border-[#C5A059]/30 text-[#D4AF37]">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse"></span>
+            <span class="font-mono text-[10px] uppercase tracking-[0.25em] font-semibold">Chempaka Club</span>
+          </div>
+
+          <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-normal leading-[1.02] tracking-tight text-white" style="font-family: 'Playfair Display', serif;">
+            The Inner <br /><span class="text-gold-gradient italic font-normal">Circle</span>
+          </h1>
+
+          <p class="font-sans text-white/70 text-base md:text-lg leading-relaxed font-light max-w-md">
+            Welcome to a curated realm of Malaysian gold craftsmanship, private boutique lounges, and bespoke privilege.
+          </p>
+
+          <div class="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <a href="#club-registration" class="inline-flex items-center justify-center gap-3 bg-gold-metallic text-black px-8 py-4 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-lg shadow-lg">
+              <span>Apply for Pass</span>
+              <span class="material-symbols-outlined text-[16px]">arrow_downward</span>
+            </a>
+            <a href="#club-benefits" class="inline-flex items-center justify-center gap-3 border border-white/20 hover:border-[#C5A059] text-white hover:text-[#D4AF37] px-8 py-4 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-lg bg-white/5">
+              <span>Explore Privileges</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right: High-Fashion Jewelry Crafts Imagery -->
+      <div class="w-full min-h-[50vh] md:min-h-[92dvh] h-full relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-transparent z-10 pointer-events-none hidden md:block"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent z-10 pointer-events-none md:hidden"></div>
+        <img src="assets/images/hero_model_jewelry.jpg" alt="Chempaka High Jewelry Membership" class="absolute inset-0 w-full h-full object-cover object-center" />
+      </div>
+    </section>
+
+    <!-- Obsidian Privileges Bento Section -->
+    <section id="club-benefits" class="w-full bg-[#080808] py-24 lg:py-36 px-6 md:px-16 border-t border-white/10 relative scroll-mt-20">
+      <div class="max-w-container-max mx-auto space-y-20">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/10 pb-10">
+          <div class="max-w-2xl space-y-3">
+            <span class="font-mono text-xs text-[#C5A059] uppercase tracking-[0.2em]">01 — Exclusive Privileges</span>
+            <h2 class="font-serif text-4xl md:text-6xl font-normal text-white leading-tight" style="font-family: 'Playfair Display', serif;">
+              Curated Privileges
+            </h2>
+          </div>
+          <p class="font-sans text-white/60 text-sm md:text-base font-light max-w-md leading-relaxed">
+            Every registered member steps into a lifetime of bespoke services, instant welcome upgrades, and private boutique consultations.
+          </p>
+        </div>
+        
+        <!-- High-Contrast Obsidian Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Bento 1: Featured Welcome Reward (Spans 2 Cols) -->
+          <div class="md:col-span-2 relative min-h-[380px] md:min-h-[420px] rounded-2xl overflow-hidden border border-[#C5A059]/30 group hover:border-[#D4AF37] transition-all duration-500">
+            <img src="assets/images/hero_necklace.jpg" alt="Welcome Voucher Reward" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent"></div>
+            <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
+              <div class="w-12 h-12 rounded-xl bg-[#D4AF37]/20 border border-[#D4AF37]/40 text-[#D4AF37] flex items-center justify-center mb-6 backdrop-blur-md">
+                <span class="material-symbols-outlined text-[24px]">stars</span>
+              </div>
+              <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-[#C5A059] mb-1">Instant Activation</span>
+              <h3 class="font-serif text-3xl md:text-4xl font-normal text-white mb-3" style="font-family: 'Playfair Display', serif;">10% Welcome Reward</h3>
+              <p class="font-sans text-white/70 text-sm md:text-base font-light max-w-lg leading-relaxed">
+                Receive an instant voucher upon registration, redeemable toward your next fine gold or handcrafted jewelry piece at any Chempaka boutique.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Bento 2: VIP Lounge Access -->
+          <div class="md:col-span-1 bg-[#101010] rounded-2xl p-8 md:p-10 border border-white/10 hover:border-[#C5A059]/50 flex flex-col justify-between group transition-all duration-500 min-h-[350px]">
+            <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-[#D4AF37] flex items-center justify-center transition-colors group-hover:bg-[#D4AF37] group-hover:text-black">
+              <span class="material-symbols-outlined text-[24px]">local_cafe</span>
+            </div>
+            <div class="space-y-3">
+              <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-white/40">Private Access</span>
+              <h3 class="font-serif text-2xl font-normal text-white" style="font-family: 'Playfair Display', serif;">VIP Showroom Lounge</h3>
+              <p class="font-sans text-white/60 text-sm font-light leading-relaxed">
+                Priority reservations for our private boutique lounges with complimentary artisan refreshments and dedicated concierge attention.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Bento 3: Birthday Celebration -->
+          <div class="md:col-span-1 bg-[#101010] rounded-2xl p-8 md:p-10 border border-white/10 hover:border-[#C5A059]/50 flex flex-col justify-between group transition-all duration-500 min-h-[320px]">
+            <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-[#D4AF37] flex items-center justify-center transition-colors group-hover:bg-[#D4AF37] group-hover:text-black">
+              <span class="material-symbols-outlined text-[24px]">cake</span>
+            </div>
+            <div class="space-y-3">
+              <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-white/40">Anniversary Gift</span>
+              <h3 class="font-serif text-2xl font-normal text-white" style="font-family: 'Playfair Display', serif;">Birthday Privileges</h3>
+              <p class="font-sans text-white/60 text-sm font-light leading-relaxed">
+                Celebrate your birth month with private styling consultations and an exclusive birthday voucher from seasonal collections.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Bento 4: Lifetime Ultrasonic Care -->
+          <div class="md:col-span-1 bg-[#101010] rounded-2xl p-8 md:p-10 border border-white/10 hover:border-[#C5A059]/50 flex flex-col justify-between group transition-all duration-500 min-h-[320px]">
+            <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-[#D4AF37] flex items-center justify-center transition-colors group-hover:bg-[#D4AF37] group-hover:text-black">
+              <span class="material-symbols-outlined text-[24px]">cleaning_services</span>
+            </div>
+            <div class="space-y-3">
+              <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-white/40">Complimentary Maintenance</span>
+              <h3 class="font-serif text-2xl font-normal text-white" style="font-family: 'Playfair Display', serif;">Lifetime Gold Care</h3>
+              <p class="font-sans text-white/60 text-sm font-light leading-relaxed">
+                Bring your Chempaka gold pieces back anytime for complimentary ultrasonic deep cleaning and expert prong inspection.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Bento 5: Gold Valuation -->
+          <div class="md:col-span-1 bg-[#101010] rounded-2xl p-8 md:p-10 border border-white/10 hover:border-[#C5A059]/50 flex flex-col justify-between group transition-all duration-500 min-h-[320px]">
+            <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-[#D4AF37] flex items-center justify-center transition-colors group-hover:bg-[#D4AF37] group-hover:text-black">
+              <span class="material-symbols-outlined text-[24px]">balance</span>
+            </div>
+            <div class="space-y-3">
+              <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-white/40">Valuation & Exchange</span>
+              <h3 class="font-serif text-2xl font-normal text-white" style="font-family: 'Playfair Display', serif;">Priority Trade-In</h3>
+              <p class="font-sans text-white/60 text-sm font-light leading-relaxed">
+                Access real-time gold market valuation. Members receive guaranteed preferential exchange rates on all gold trade-ins.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Bento 6: Bespoke Sizing (Full Width Banner) -->
+          <div class="md:col-span-2 lg:col-span-3 bg-gradient-to-r from-[#14120e] via-[#0b0a08] to-[#14120e] rounded-2xl p-8 md:p-12 border border-[#C5A059]/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            <div class="flex-1 max-w-2xl space-y-4">
+              <div class="inline-flex items-center gap-2 text-[#D4AF37]">
+                <span class="material-symbols-outlined text-[24px]">design_services</span>
+                <span class="font-mono text-[11px] uppercase tracking-[0.2em]">Artisan Consultation</span>
+              </div>
+              <h3 class="font-serif text-3xl font-normal text-white" style="font-family: 'Playfair Display', serif;">Bespoke Sizing & Custom Atelier</h3>
+              <p class="font-sans text-white/70 text-sm md:text-base font-light leading-relaxed">
+                Enjoy priority scheduling and direct design assistance for custom engagement mountings, ring sizing, and heirloom re-design with master artisans.
+              </p>
+            </div>
+            <div class="shrink-0">
+              <a href="boutiques.html#appointment-booking" class="inline-flex items-center gap-3 bg-gold-metallic text-black px-8 py-4 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-lg shadow-lg">
+                <span>Book Atelier Session</span>
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration & Interactive 3D Card Portal Section -->
+    <section id="club-registration" class="w-full bg-[#050505] py-24 lg:py-36 px-6 md:px-16 border-t border-white/10 relative scroll-mt-20 overflow-hidden">
+      <!-- Background ambient glow -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-[20%] left-[10%] w-[450px] h-[450px] rounded-full bg-[#C5A059] opacity-10 blur-[150px]"></div>
+        <div class="absolute bottom-[20%] right-[10%] w-[550px] h-[550px] rounded-full bg-[#D4AF37] opacity-5 blur-[180px]"></div>
+      </div>
+
+      <div class="max-w-container-max mx-auto relative z-10 space-y-16">
+        
+        <!-- Workspace Header & Tab Selector -->
+        <div class="text-center max-w-2xl mx-auto space-y-6">
+          <span class="font-mono text-xs text-[#C5A059] uppercase tracking-[0.25em]">02 — Membership Portal</span>
+          <h2 class="font-serif text-4xl md:text-6xl font-normal text-white" style="font-family: 'Playfair Display', serif;">
+            Digital Pass Portal
+          </h2>
+          
+          <!-- Dual-Tab Navigation -->
+          <div class="inline-flex p-1.5 rounded-xl bg-white/5 border border-white/10">
+            <button id="btn-register-tab" onclick="switchFormTab('register')" class="px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-widest bg-[#C5A059] text-black shadow-lg transition-all duration-300">
+              Apply For Membership
+            </button>
+            <button id="btn-login-tab" onclick="switchFormTab('login')" class="px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-widest text-white/60 hover:text-white transition-all duration-300">
+              Access Member Pass
+            </button>
+          </div>
+        </div>
+
+        <div id="registration-workspace" class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          <!-- Left Column: Form & Access Workspaces -->
+          <div class="lg:col-span-7 space-y-8">
+            
+            <!-- 1. Application Form Container -->
+            <div id="registration-form-container" class="bg-[#0C0C0C] border border-white/10 rounded-2xl p-8 md:p-12 shadow-2xl transition-all duration-500">
+              <div class="space-y-3 mb-10 border-b border-white/10 pb-6">
+                <span class="text-[10px] font-mono tracking-[0.2em] uppercase text-[#C5A059]">Chempaka Club Registration</span>
+                <h3 class="font-serif text-3xl text-white font-normal">Personal Information</h3>
+                <p class="font-sans text-white/60 text-xs font-light leading-relaxed">
+                  Complete your credentials below. As you type your name, watch your signature digital pass update in real-time.
+                </p>
+              </div>
+              
+              <form id="membership-form" onsubmit="submitMembershipForm(event)" class="space-y-6">
+                <!-- Full Name (Synchronized Live with Member Card) -->
+                <div class="space-y-2">
+                  <label for="member-name" class="block text-xs font-mono uppercase tracking-widest text-[#C5A059]">
+                    Full Name (As per NRIC)
+                  </label>
+                  <input type="text" id="member-name" required placeholder="e.g. NURUL AIN BINTI AHMAD"
+                    oninput="syncCardName(this.value)"
+                    class="w-full bg-white/5 border border-white/15 focus:border-[#D4AF37] focus:outline-none py-3.5 px-4 text-sm text-white placeholder-white/20 transition-all duration-300 rounded-lg focus:ring-1 focus:ring-[#D4AF37]" />
+                  <p id="error-name" class="text-rose-400 text-[10px] uppercase font-bold tracking-widest mt-1 hidden">
+                    Please enter your full name (minimum 2 characters)
+                  </p>
+                </div>
+
+                <!-- IC Number -->
+                <div class="space-y-2">
+                  <label for="member-ic" class="block text-xs font-mono uppercase tracking-widest text-white/70">
+                    Malaysian IC Number
+                  </label>
+                  <input type="text" id="member-ic" required placeholder="YYMMDD-XX-XXXX"
+                    class="w-full bg-white/5 border border-white/15 focus:border-[#D4AF37] focus:outline-none py-3.5 px-4 text-sm text-white placeholder-white/20 transition-all duration-300 rounded-lg focus:ring-1 focus:ring-[#D4AF37]" />
+                  <p id="error-ic" class="text-rose-400 text-[10px] uppercase font-bold tracking-widest mt-1 hidden">
+                    Please enter a valid 12-digit Malaysian IC number
+                  </p>
+                </div>
+
+                <!-- Phone -->
+                <div class="space-y-2">
+                  <label for="member-phone" class="block text-xs font-mono uppercase tracking-widest text-white/70">
+                    Mobile Phone Number
+                  </label>
+                  <input type="tel" id="member-phone" required placeholder="+60123456789" value="+60"
+                    class="w-full bg-white/5 border border-white/15 focus:border-[#D4AF37] focus:outline-none py-3.5 px-4 text-sm text-white placeholder-white/20 transition-all duration-300 rounded-lg focus:ring-1 focus:ring-[#D4AF37]" />
+                  <p id="error-phone" class="text-rose-400 text-[10px] uppercase font-bold tracking-widest mt-1 hidden">
+                    Please enter a valid mobile number with country code
+                  </p>
+                </div>
+
+                <!-- Email -->
+                <div class="space-y-2">
+                  <label for="member-email" class="block text-xs font-mono uppercase tracking-widest text-white/70">
+                    Email Address
+                  </label>
+                  <input type="email" id="member-email" required placeholder="name@domain.com"
+                    class="w-full bg-white/5 border border-white/15 focus:border-[#D4AF37] focus:outline-none py-3.5 px-4 text-sm text-white placeholder-white/20 transition-all duration-300 rounded-lg focus:ring-1 focus:ring-[#D4AF37]" />
+                  <p id="error-email" class="text-rose-400 text-[10px] uppercase font-bold tracking-widest mt-1 hidden">
+                    Please enter a valid email address
+                  </p>
+                </div>
+
+                <!-- Consent checkbox -->
+                <div class="flex items-start gap-3 pt-2">
+                  <input type="checkbox" id="consent-check" required class="mt-1 accent-[#C5A059] border-white/20 bg-white/5 rounded cursor-pointer w-4 h-4" />
+                  <label for="consent-check" class="text-[11px] text-white/70 leading-normal cursor-pointer select-none">
+                    I agree to the membership terms of Chempaka Trading Sdn Bhd, and consent to receive digital boutique offers and private viewing invites.
+                  </label>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-6">
+                  <button type="submit"
+                    class="w-full bg-gold-metallic text-black py-4 px-8 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-lg shadow-xl flex items-center justify-center gap-3 group">
+                    <span>Submit Application</span>
+                    <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- 2. Member Pass Login Form Container -->
+            <div id="login-form-container" class="hidden bg-[#0C0C0C] border border-white/10 rounded-2xl p-8 md:p-12 shadow-2xl transition-all duration-500">
+              <div class="space-y-3 mb-10 border-b border-white/10 pb-6">
+                <span class="text-[10px] font-mono tracking-[0.2em] uppercase text-[#C5A059]">Authenticated Pass Verification</span>
+                <h3 class="font-serif text-3xl text-white font-normal">Retrieve Digital Pass</h3>
+                <p class="font-sans text-white/60 text-xs font-light leading-relaxed">
+                  Enter your registered Phone Number and IC Number below to load and unlock your active digital member pass.
+                </p>
+              </div>
+              
+              <form id="member-login-form" onsubmit="submitMemberLogin(event)" class="space-y-6">
+                <!-- Phone -->
+                <div class="space-y-2">
+                  <label for="login-phone" class="block text-xs font-mono uppercase tracking-widest text-[#C5A059]">
+                    Registered Phone Number
+                  </label>
+                  <input type="tel" id="login-phone" required placeholder="+60123456789" value="+60"
+                    class="w-full bg-white/5 border border-white/15 focus:border-[#D4AF37] focus:outline-none py-3.5 px-4 text-sm text-white placeholder-white/20 transition-all duration-300 rounded-lg focus:ring-1 focus:ring-[#D4AF37]" />
+                  <p id="error-login-phone" class="text-rose-400 text-[10px] uppercase font-bold tracking-widest mt-1 hidden">
+                    Please enter your registered phone number
+                  </p>
+                </div>
+
+                <!-- IC Number -->
+                <div class="space-y-2">
+                  <label for="login-ic" class="block text-xs font-mono uppercase tracking-widest text-white/70">
+                    Registered IC Number
+                  </label>
+                  <input type="text" id="login-ic" required placeholder="YYMMDD-XX-XXXX"
+                    class="w-full bg-white/5 border border-white/15 focus:border-[#D4AF37] focus:outline-none py-3.5 px-4 text-sm text-white placeholder-white/20 transition-all duration-300 rounded-lg focus:ring-1 focus:ring-[#D4AF37]" />
+                  <p id="error-login-ic" class="text-rose-400 text-[10px] uppercase font-bold tracking-widest mt-1 hidden">
+                    Please enter your 12-digit IC number
+                  </p>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-6">
+                  <button type="submit"
+                    class="w-full bg-gold-metallic text-black py-4 px-8 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-lg shadow-xl flex items-center justify-center gap-3 group">
+                    <span>Unlock Digital Pass</span>
+                    <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">lock_open</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+            
+            <!-- 3. Success / Unlocked Container -->
+            <div id="registration-success-container" class="hidden bg-[#0C0C0C] border border-[#C5A059]/40 rounded-2xl p-8 md:p-12 shadow-2xl text-center space-y-6 transition-all duration-500">
+              <div class="w-16 h-16 bg-[#C5A059]/20 text-[#D4AF37] border border-[#D4AF37]/30 flex items-center justify-center rounded-full mx-auto animate-pulse">
+                <span class="material-symbols-outlined text-3xl">verified</span>
+              </div>
+              <h3 class="font-serif text-3xl text-white font-normal" style="font-family: 'Playfair Display', serif;">Member Pass Unlocked</h3>
+              <p class="font-sans text-white/80 text-sm max-w-md mx-auto leading-relaxed font-light">
+                Your signature Chempaka digital pass is active! Show your card at any boutique to enjoy your instant 10% welcome voucher and VIP lounge privileges.
+              </p>
+              
+              <div class="pt-6 flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="downloadDigitalCard()"
+                  class="bg-gold-metallic text-black px-6 py-3.5 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-lg flex items-center justify-center gap-2 shadow-lg">
+                  <span class="material-symbols-outlined text-sm">download</span>
+                  <span>Save Digital Pass</span>
+                </button>
+                <button onclick="resetMembershipForm()"
+                  class="border border-white/20 hover:border-[#C5A059] text-white hover:text-[#D4AF37] bg-white/5 px-6 py-3.5 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-lg">
+                  Register Another Member
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Right Column: Interactive 3D Photorealistic Obsidian & Gold Member Card -->
+          <div class="lg:col-span-5 flex flex-col items-center justify-center space-y-6">
+            <span class="font-mono text-[10px] font-semibold tracking-[0.25em] uppercase text-[#C5A059] select-none">
+              Interactive 3D Digital Pass
+            </span>
+            
+            <!-- 3D Obsidian Member Card Wrapper -->
+            <div class="w-full flex justify-center py-4 px-2">
+              <div id="live-member-card" class="obsidian-gold-card flex flex-col justify-between p-7 select-none relative">
+                
+                <!-- Metallic Shimmer Light Beam -->
+                <div class="shimmer-line"></div>
+
+                <!-- Glare overlay element -->
+                <div class="card-glare"></div>
+                
+                <!-- Lock Overlay -->
+                <div id="card-lock-overlay" class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/65 backdrop-blur-[3px] transition-opacity duration-500 rounded-[20px]">
+                  <div class="w-12 h-12 rounded-full bg-[#C5A059]/20 border border-[#D4AF37]/40 text-[#D4AF37] flex items-center justify-center mb-4">
+                    <span class="material-symbols-outlined text-2xl">lock</span>
+                  </div>
+                  <span class="text-white text-xs uppercase tracking-[0.2em] font-bold text-center px-6 leading-relaxed">
+                    Chempaka Club<br><span class="text-[#C5A059] font-light">Apply or Login to Unlock Pass</span>
+                  </span>
+                </div>
+
+                <!-- Content Wrapper -->
+                <div id="card-content-wrapper" class="flex flex-col justify-between h-full blur-[6px] opacity-60 pointer-events-none transition-all duration-500 relative z-10">
+                  
+                  <!-- Card Header: Brand & Emblem -->
+                  <div class="flex justify-between items-start z-10 relative">
+                    <div>
+                      <span class="font-serif text-lg tracking-[0.15em] text-white" style="font-family: 'Cinzel', serif;">CHEMPAKA</span>
+                      <span class="block text-[8px] text-[#C5A059] font-mono tracking-widest uppercase mt-0.5 font-semibold">Gold Exchange & Concierge</span>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-[#C5A059]/15 border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37]">
+                      <span class="material-symbols-outlined text-lg">workspace_premium</span>
+                    </div>
+                  </div>
+                  
+                  <!-- Smart Metallic Chip & Contactless Emblem -->
+                  <div class="flex items-center gap-4 z-10 relative">
+                    <div class="w-11 h-8 rounded-md bg-gradient-to-br from-[#F3E5AB] via-[#C5A059] to-[#8A6A56] border border-amber-200/40 shadow-inner flex flex-col justify-between p-1.5">
+                      <div class="w-full h-[1px] bg-black/30"></div>
+                      <div class="w-3/4 h-[1px] bg-black/30"></div>
+                      <div class="w-full h-[1px] bg-black/30"></div>
+                    </div>
+                    <div class="h-6 w-[1px] bg-white/15"></div>
+                    <span class="material-symbols-outlined text-[#C5A059] text-sm opacity-80">contactless</span>
+                  </div>
+                  
+                  <!-- Card Footer Details -->
+                  <div class="space-y-4 z-10 relative">
+                    <div>
+                      <span class="block text-[7.5px] text-white/50 uppercase tracking-widest font-mono">Member ID</span>
+                      <span id="card-member-id" class="font-mono text-sm tracking-[0.2em] text-[#D4AF37] font-bold">CC-88470</span>
+                    </div>
+                    <div class="flex justify-between items-end">
+                      <div class="max-w-[70%] overflow-hidden">
+                        <span class="block text-[7.5px] text-white/50 uppercase tracking-widest font-mono">Cardholder</span>
+                        <span id="card-member-name" class="font-sans text-xs text-white uppercase tracking-widest font-bold truncate block">YOUR NAME</span>
+                      </div>
+                      <div class="text-right">
+                        <span class="block text-[7.5px] text-white/50 uppercase tracking-widest font-mono">Member Since</span>
+                        <span id="card-member-since" class="font-mono text-xs text-white/90 tracking-widest">08/2026</span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-2 text-[11px] text-white/50 font-mono tracking-wide">
+              <span class="material-symbols-outlined text-sm text-[#C5A059]">touch_app</span>
+              <span>Move cursor to tilt and reflect metallic gold shimmer</span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white py-16 lg:py-24 px-margin-mobile md:px-margin-desktop border-t border-[#222222]">
+    <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-10">
+      <div class="md:col-span-4 space-y-4">
+        <h4 class="font-sans text-[11px] font-bold uppercase tracking-widest text-[#cccccc]">Join the Chempaka Club</h4>
+        <p class="font-sans text-xs text-[#888888] leading-relaxed font-light">
+          Subscribe to receive updates on boutique events, exclusive collections, and priority booking options.
+        </p>
+        <div class="pt-2">
+          <a href="membership.html"
+            class="inline-flex items-center gap-1.5 bg-[#222222] text-white hover:bg-white hover:text-black py-3 px-6 text-xs font-bold uppercase tracking-widest transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150">
+            <span>Register Now</span>
+            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="md:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8">
+        <div class="space-y-4">
+          <h4 class="font-sans text-[11px] font-bold uppercase tracking-widest text-[#cccccc]">Our Brand</h4>
+          <ul class="space-y-2 text-xs text-[#888888] font-light">
+            <li><a href="about.html#heritage" class="hover:text-white transition-colors duration-200 block py-0.5">Masters of Gold</a></li>
+            <li><a href="about.html#heritage" class="hover:text-white transition-colors duration-200 block py-0.5">Heritage Story</a></li>
+            <li><a href="about.html#heritage" class="hover:text-white transition-colors duration-200 block py-0.5">Sustainability</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-4">
+          <h4 class="font-sans text-[11px] font-bold uppercase tracking-widest text-[#cccccc]">Valuations</h4>
+          <ul class="space-y-2 text-xs text-[#888888] font-light">
+            <li><a href="index.html#our-services" class="hover:text-white transition-colors duration-200 block py-0.5">Gold Exchange</a></li>
+            <li><a href="index.html#our-services" class="hover:text-white transition-colors duration-200 block py-0.5">Bespoke Design</a></li>
+            <li><a href="index.html#our-services" class="hover:text-white transition-colors duration-200 block py-0.5">Private Lounge</a></li>
+          </ul>
+        </div>
+
+        <div class="col-span-2 sm:col-span-1 space-y-4">
+          <h4 class="font-sans text-[11px] font-bold uppercase tracking-widest text-[#cccccc]">Boutiques</h4>
+          <ul class="space-y-2 text-xs text-[#888888] font-light">
+            <li><a href="boutiques.html#store-locator" class="hover:text-white transition-colors duration-200 block py-0.5">Boutique Finder</a></li>
+            <li><a href="boutiques.html#appointment-booking" class="hover:text-white transition-colors duration-200 block py-0.5">Private Viewing</a></li>
+            <li><a href="boutiques.html#appointment-booking" class="hover:text-white transition-colors duration-200 block py-0.5">Contact Styling</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="max-w-container-max mx-auto border-t border-[#222222] my-10"></div>
+
+    <div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="space-y-2 text-center md:text-left">
+        <div class="flex items-center justify-center md:justify-start gap-1.5 text-xs text-[#888888]">
+          <span class="material-symbols-outlined text-[16px] text-white">globe</span>
+          <span class="select-none">English</span>
+        </div>
+        <div class="mt-1 text-[10px] leading-relaxed max-w-sm md:max-w-md text-[#666666]">
+          &copy; 2026 Chempaka Trading Sdn Bhd. All rights reserved. CHEMPAKA and the Chempaka logo are
+          trademarks of Chempaka Trading Sdn Bhd.
+        </div>
+      </div>
+
+      <div class="order-first md:order-none shrink-0 md:justify-self-center text-center">
+        <span class="font-serif text-3xl font-normal tracking-[0.02em] text-white uppercase select-none"
+          style="font-family: 'Cinzel', serif; letter-spacing: 0.02em;">CHEMPAKA</span>
+      </div>
+
+      <!-- Social Icons -->
+      <div class="flex space-x-4 shrink-0 md:justify-self-end">
+        <a href="#"
+          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
+          aria-label="Facebook">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path
+              d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+          </svg>
+        </a>
+        <a href="#"
+          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
+          aria-label="Pinterest">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path
+              d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.162 0 7.396 2.967 7.396 6.93 0 4.135-2.607 7.462-6.227 7.462-1.216 0-2.359-.631-2.75-1.378l-.749 2.853c-.27 1.03-1 2.317-1.492 3.116 1.124.347 2.317.535 3.551.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z" />
+          </svg>
+        </a>
+        <a href="#"
+          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
+          aria-label="Instagram">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 0.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg>
+        </a>
+        <a href="#"
+          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
+          aria-label="Youtube">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path
+              d="M23.498 6.163c-.272-1.026-1.08-1.834-2.106-2.108C19.52 3.545 12 3.545 12 3.545s-7.52 0-9.392.51c-1.026.274-1.834 1.082-2.108 2.108C0 8.037 0 12 0 12s0 3.963.5 5.837c.274 1.026 1.082 1.834 2.108 2.108 1.872.51 9.392.51 9.392.51s7.52 0 9.392-.51c1.026-.274 1.834-1.082 2.108-2.108.5-1.874.5-5.837.5-5.837s0-3.963-.5-5.837zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z" />
+          </svg>
+        </a>
+        <a href="#"
+          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
+          aria-label="Tiktok">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path
+              d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.74-3.99-1.72-.08.65-.06 1.32-.06 1.98 0 2.01-.38 4.03-1.48 5.69-1.37 2.07-3.79 3.38-6.29 3.39-2.19.01-4.41-.84-5.83-2.53-1.63-1.93-2.21-4.7-1.43-7.14C4.16 7.4 6.3 5.48 8.89 5.09c.83-.12 1.68-.07 2.51-.08.01 1.43-.01 2.87-.01 4.3-.64-.09-1.3-.02-1.92.17-1.12.35-2.07 1.25-2.39 2.37-.46 1.57.17 3.42 1.54 4.25.92.56 2.04.66 3.06.33 1.09-.36 1.97-1.28 2.29-2.37.11-.38.16-.78.16-1.18V.02z" />
+          </svg>
+        </a>
+        <a href="#"
+          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
+          aria-label="X">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header scrolled logic
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('main-header');
+      if (window.scrollY > 40) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Dismiss promo
+    function dismissPromo() {
+      const banner = document.getElementById('promo-banner');
+      if (banner) banner.style.display = 'none';
+    }
+
+    // Toggle Search
+    function toggleSearch(open) {
+      const overlay = document.getElementById('search-overlay');
+      if (overlay) {
+        if (open) {
+          overlay.classList.remove('hidden');
+          overlay.querySelector('input').focus();
+        } else {
+          overlay.classList.add('hidden');
+        }
+      }
+    }
+
+    // Toggle Mobile Drawer
+    function toggleMobileDrawer(open) {
+      const drawer = document.getElementById('mobile-drawer');
+      const backdrop = document.getElementById('drawer-backdrop');
+      if (drawer && backdrop) {
+        if (open) {
+          drawer.classList.remove('-translate-x-full');
+          backdrop.classList.remove('hidden');
+          document.body.classList.add('overflow-hidden');
+        } else {
+          drawer.classList.add('-translate-x-full');
+          backdrop.classList.add('hidden');
+          document.body.classList.remove('overflow-hidden');
+        }
+      }
+    }
+
+    // --- Initialize Membership Card ---
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Set current month/year
+      const now = new Date();
+      const mm = String(now.getMonth() + 1).padStart(2, '0');
+      const yyyy = now.getFullYear();
+      const memberSinceStr = `${mm}/${yyyy}`;
+      
+      const cardSinceEl = document.getElementById('card-member-since');
+      if (cardSinceEl) cardSinceEl.innerText = memberSinceStr;
+      
+      // 2. Set randomized Member ID initially
+      const initialId = 'CC-' + Math.floor(10000 + Math.random() * 90000);
+      const cardIdEl = document.getElementById('card-member-id');
+      if (cardIdEl) cardIdEl.innerText = initialId;
+    });
+
+    // --- Helper for Card Locked State ---
+    function setCardLockedState(isLocked) {
+      const lockOverlay = document.getElementById('card-lock-overlay');
+      const contentWrapper = document.getElementById('card-content-wrapper');
+      
+      if (lockOverlay && contentWrapper) {
+        if (isLocked) {
+          lockOverlay.classList.remove('opacity-0', 'pointer-events-none');
+          contentWrapper.classList.add('blur-[6px]', 'opacity-60', 'pointer-events-none');
+        } else {
+          lockOverlay.classList.add('opacity-0', 'pointer-events-none');
+          contentWrapper.classList.remove('blur-[6px]', 'opacity-60', 'pointer-events-none');
+        }
+      }
+    }
+
+    // --- Frosted Glass Card Interactive Tilt & Glare Effect ---
+    const card = document.getElementById('live-member-card');
+    if (card) {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const xPercent = (x / rect.width) * 100;
+        const yPercent = (y / rect.height) * 100;
+        
+        const tiltX = ((y / rect.height) - 0.5) * -15;
+        const tiltY = ((x / rect.width) - 0.5) * 15;
+        
+        card.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.03)`;
+        card.style.setProperty('--glare-x', `${xPercent}%`);
+        card.style.setProperty('--glare-y', `${yPercent}%`);
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+        card.style.setProperty('--glare-x', '50%');
+        card.style.setProperty('--glare-y', '50%');
+      });
+    }
+
+    // --- Live Form Inputs Syncing & Real-Time Formatting ---
+    const nameEl = document.getElementById('member-name');
+    const icEl = document.getElementById('member-ic');
+    const phoneEl = document.getElementById('member-phone');
+    const emailEl = document.getElementById('member-email');
+
+    const errName = document.getElementById('error-name');
+    const errIc = document.getElementById('error-ic');
+    const errPhone = document.getElementById('error-phone');
+    const errEmail = document.getElementById('error-email');
+
+    // 1. Sync Name
+    nameEl.addEventListener('input', (e) => {
+      const val = e.target.value.trim();
+      const cardNameEl = document.getElementById('card-member-name');
+      if (cardNameEl) {
+        cardNameEl.innerText = val ? val.toUpperCase() : 'YOUR NAME';
+      }
+      if (val.length >= 2) {
+        errName.classList.add('hidden');
+        nameEl.classList.remove('border-rose-500');
+        nameEl.classList.add('border-[#A48E7E]');
+      }
+    });
+
+    // 2. Format & Sync IC
+    icEl.addEventListener('input', (e) => {
+      let val = e.target.value.replace(/\D/g, ''); // strip non-digits
+      if (val.length > 12) val = val.slice(0, 12);
+      
+      let formatted = '';
+      if (val.length > 0) {
+        formatted += val.substring(0, 6);
+      }
+      if (val.length > 6) {
+        formatted += '-' + val.substring(6, 8);
+      }
+      if (val.length > 8) {
+        formatted += '-' + val.substring(8, 12);
+      }
+      e.target.value = formatted;
+
+      // Realtime validation
+      const cleanIC = formatted.replace(/-/g, '');
+      if (cleanIC.length === 12) {
+        errIc.classList.add('hidden');
+        icEl.classList.remove('border-rose-500');
+        icEl.classList.add('border-[#A48E7E]');
+      }
+    });
+
+    // 3. Sync Phone & validation
+    phoneEl.addEventListener('input', (e) => {
+      const phoneRegex = /^\+?[0-9\s\-]{8,15}$/;
+      if (phoneRegex.test(e.target.value)) {
+        errPhone.classList.add('hidden');
+        phoneEl.classList.remove('border-rose-500');
+        phoneEl.classList.add('border-[#A48E7E]');
+      }
+    });
+
+    // 4. Sync Email & validation
+    emailEl.addEventListener('input', (e) => {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (emailRegex.test(e.target.value)) {
+        errEmail.classList.add('hidden');
+        emailEl.classList.remove('border-rose-500');
+        emailEl.classList.add('border-[#A48E7E]');
+      }
+    });
+
+    // --- Form Submission Logic ---
+    async function submitMembershipForm(event) {
+      event.preventDefault();
+
+      errName.classList.add('hidden');
+      errIc.classList.add('hidden');
+      errPhone.classList.add('hidden');
+      errEmail.classList.add('hidden');
+
+      let isValid = true;
+
+      // Validate Name
+      if (!nameEl.value || nameEl.value.trim().length < 2) {
+        errName.classList.remove('hidden');
+        nameEl.classList.add('border-rose-500');
+        isValid = false;
+      }
+
+      // Validate IC
+      const cleanIC = icEl.value.replace(/[\s-]/g, '');
+      const icRegex = /^\d{12}$/;
+      if (!icRegex.test(cleanIC)) {
+        errIc.classList.remove('hidden');
+        icEl.classList.add('border-rose-500');
+        isValid = false;
+      }
+
+      // Validate Phone
+      const phoneRegex = /^\+?[0-9\s\-]{8,15}$/;
+      if (!phoneRegex.test(phoneEl.value)) {
+        errPhone.classList.remove('hidden');
+        phoneEl.classList.add('border-rose-500');
+        isValid = false;
+      }
+
+      // Validate Email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailEl.value)) {
+        errEmail.classList.remove('hidden');
+        emailEl.classList.add('border-rose-500');
+        isValid = false;
+      }
+
+      if (isValid) {
+        // Disable form button to prevent multi-submit
+        const submitBtn = event.target.querySelector('button[type="submit"]');
+        const originalBtnHtml = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Processing Application...</span>';
+
+        // Check if Supabase is initialized
+        if (typeof supabase !== 'undefined' && typeof SUPABASE_URL !== 'undefined' && SUPABASE_URL !== "YOUR_SUPABASE_URL_HERE") {
+          const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+          
+          try {
+            // 2. Insert member record with default status 'pending' and NULL member_id
+            const { error: insertErr } = await supabaseClient
+              .from('members')
+              .insert([{
+                member_id: null,
+                full_name: nameEl.value.trim(),
+                ic_number: cleanIC,
+                phone: phoneEl.value.trim(),
+                email: emailEl.value.trim(),
+                status: 'pending'
+              }]);
+
+            if (insertErr) {
+              if (insertErr.code === '23505') { // Duplicate unique key
+                if (insertErr.message.includes('email')) {
+                  throw new Error("This email address is already registered.");
+                } else if (insertErr.message.includes('ic_number')) {
+                  throw new Error("This IC number is already registered.");
+                }
+              }
+              throw insertErr;
+            }
+
+            // 3. Update the live card preview elements
+            document.getElementById('card-member-id').innerText = "PENDING APPROVAL";
+            document.getElementById('card-member-name').innerText = nameEl.value.trim().toUpperCase();
+
+            // Format member since date
+            const now = new Date();
+            const month = (now.getMonth() + 1).toString().padStart(2, '0');
+            const year = now.getFullYear();
+            document.getElementById('card-member-since').innerText = `${month}/${year}`;
+
+          } catch (err) {
+            alert(err.message || "An unexpected error occurred during registration. Please try again.");
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnHtml;
+            return;
+          }
+        } else {
+          // Fallback if Supabase credentials are not filled yet (Mock logic)
+          document.getElementById('card-member-id').innerText = "PENDING APPROVAL";
+          document.getElementById('card-member-name').innerText = nameEl.value.trim().toUpperCase();
+        }
+
+        // Form is valid! Fade out form, show success message.
+        document.getElementById('registration-form-container').classList.add('hidden');
+        
+        // Update success text for pending state
+        const successMsg = document.getElementById('registration-success-container');
+        successMsg.querySelector('h3').innerText = 'Application Submitted';
+        successMsg.querySelector('p').innerHTML = `Your digital membership request for <strong>${nameEl.value.trim().toUpperCase()}</strong> has been submitted. Our boutique team will verify your details.<br><br>Please check back later by logging in using your Phone and IC number to display your approved membership card.`;
+        
+        successMsg.classList.remove('hidden');
+        
+        // Highlight the card with a nice transition
+        const liveCard = document.getElementById('live-member-card');
+        if (liveCard) {
+          liveCard.classList.add('scale-105', 'border-[#A48E7E]', 'shadow-[0_0_30px_rgba(164,142,126,0.3)]');
+        }
+        
+        // Unlock the card
+        setCardLockedState(false);
+
+        // Reset submit button state
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHtml;
+      }
+    }
+
+    // Live card name typing synchronizer
+    function syncCardName(val) {
+      const cardNameEl = document.getElementById('card-member-name');
+      if (cardNameEl) {
+        cardNameEl.innerText = val && val.trim().length > 0 ? val.trim().toUpperCase() : 'YOUR NAME';
+      }
+    }
+
+    // Switch between Registration Form and Login Form Tabs
+    function switchFormTab(tabName) {
+      const regTab = document.getElementById('btn-register-tab');
+      const loginTab = document.getElementById('btn-login-tab');
+      const regContainer = document.getElementById('registration-form-container');
+      const loginContainer = document.getElementById('login-form-container');
+      const successContainer = document.getElementById('registration-success-container');
+
+      if (successContainer) successContainer.classList.add('hidden');
+      
+      if (tabName === 'register') {
+        regTab.className = "px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-widest bg-[#C5A059] text-black shadow-lg transition-all duration-300";
+        loginTab.className = "px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-widest text-white/60 hover:text-white transition-all duration-300";
+        if (regContainer) regContainer.classList.remove('hidden');
+        if (loginContainer) loginContainer.classList.add('hidden');
+        
+        // Reset card to preview default
+        document.getElementById('card-member-id').innerText = 'PENDING APPROVAL';
+        const nameVal = document.getElementById('member-name').value;
+        document.getElementById('card-member-name').innerText = nameVal && nameVal.trim() ? nameVal.trim().toUpperCase() : 'YOUR NAME';
+      } else {
+        loginTab.className = "px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-widest bg-[#C5A059] text-black shadow-lg transition-all duration-300";
+        regTab.className = "px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-widest text-white/60 hover:text-white transition-all duration-300";
+        if (regContainer) regContainer.classList.add('hidden');
+        if (loginContainer) loginContainer.classList.remove('hidden');
+        
+        // Reset card to blank preview
+        document.getElementById('card-member-id').innerText = 'CC-XXXXX';
+        document.getElementById('card-member-name').innerText = 'YOUR NAME';
+      }
+
+      // Reset active card highlights
+      const liveCard = document.getElementById('live-member-card');
+      if (liveCard) {
+        liveCard.classList.remove('scale-105', 'border-[#C5A059]', 'shadow-[0_0_35px_rgba(212,175,55,0.3)]');
+      }
+      
+      // Re-lock the card
+      setCardLockedState(true);
+    }
+
+    // Submit Member Login (Retrieve Card details via Phone + IC)
+    async function submitMemberLogin(event) {
+      event.preventDefault();
+      
+      const phoneVal = document.getElementById('login-phone').value.trim();
+      const icVal = document.getElementById('login-ic').value.replace(/[\s-]/g, '');
+
+      const errLoginPhone = document.getElementById('error-login-phone');
+      const errLoginIc = document.getElementById('error-login-ic');
+
+      errLoginPhone.classList.add('hidden');
+      errLoginIc.classList.add('hidden');
+
+      let isValid = true;
+      if (!phoneVal) {
+        errLoginPhone.classList.remove('hidden');
+        isValid = false;
+      }
+      if (!icVal || icVal.length < 12) {
+        errLoginIc.classList.remove('hidden');
+        isValid = false;
+      }
+
+      if (isValid) {
+        const submitBtn = event.target.querySelector('button[type="submit"]');
+        const originalBtnHtml = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Verifying Member Record...</span>';
+
+        if (typeof supabase !== 'undefined' && typeof SUPABASE_URL !== 'undefined' && SUPABASE_URL !== "YOUR_SUPABASE_URL_HERE") {
+          const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+          
+          try {
+            // Retrieve member matching Phone and IC
+            const { data, error } = await supabaseClient
+              .from('members')
+              .select('*')
+              .eq('phone', phoneVal)
+              .eq('ic_number', icVal)
+              .maybeSingle();
+
+            if (error) throw error;
+
+            if (!data) {
+              throw new Error("No record found matching the provided Phone Number and IC Number. Please check your credentials.");
+            }
+
+            if (data.status === 'pending') {
+              throw new Error("Your membership application is currently pending. Please check back later once approved by the boutique.");
+            }
+
+            // Successfully authenticated and approved! Update the card details
+            document.getElementById('card-member-id').innerText = data.member_id;
+            document.getElementById('card-member-name').innerText = data.full_name.toUpperCase();
+            
+            const joinDate = new Date(data.joined_at);
+            const month = (joinDate.getMonth() + 1).toString().padStart(2, '0');
+            const year = joinDate.getFullYear();
+            document.getElementById('card-member-since').innerText = `${month}/${year}`;
+
+            // Highlight the card
+            const liveCard = document.getElementById('live-member-card');
+            if (liveCard) {
+              liveCard.classList.add('scale-105', 'border-[#A48E7E]', 'shadow-[0_0_30px_rgba(164,142,126,0.3)]');
+            }
+            
+            // Unlock the card
+            setCardLockedState(false);
+
+            // Hide form and show success state
+            document.getElementById('login-form-container').classList.add('hidden');
+            
+            const successMsg = document.getElementById('registration-success-container');
+            successMsg.querySelector('h3').innerText = 'Membership Card Loaded';
+            successMsg.querySelector('p').innerHTML = `Welcome back to the Chempaka Club, <strong>${data.full_name.toUpperCase()}</strong>! Your membership details have loaded successfully. Enjoy your premium privileges.`;
+            successMsg.classList.remove('hidden');
+
+          } catch (err) {
+            alert(err.message);
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnHtml;
+          }
+        } else {
+          alert("Supabase integration parameters are missing. Cannot query record.");
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHtml;
+        }
+      }
+    }
+
+    function resetMembershipForm() {
+      nameEl.value = '';
+      icEl.value = '';
+      phoneEl.value = '+60';
+      emailEl.value = '';
+      document.getElementById('consent-check').checked = false;
+      document.getElementById('login-phone').value = '+60';
+      document.getElementById('login-ic').value = '';
+
+      errName.classList.add('hidden');
+      errIc.classList.add('hidden');
+      errPhone.classList.add('hidden');
+      errEmail.classList.add('hidden');
+      
+      nameEl.classList.remove('border-rose-500');
+      icEl.classList.remove('border-rose-500');
+      phoneEl.classList.remove('border-rose-500');
+      emailEl.classList.remove('border-rose-500');
+
+      document.getElementById('card-member-name').innerText = 'YOUR NAME';
+      document.getElementById('card-member-id').innerText = 'PENDING APPROVAL';
+
+      // Switch back to register
+      switchFormTab('register');
+    }
+
+    // --- Mock Save Card Action ---
+    function downloadDigitalCard() {
+      // Create simple feedback banner
+      const feedback = document.createElement('div');
+      feedback.className = 'fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs font-bold uppercase tracking-widest px-8 py-4 rounded shadow-2xl z-[100] transition-opacity duration-300 border border-neutral-800';
+      feedback.innerText = 'Card Welcome Package Saved Successfully';
+      document.body.appendChild(feedback);
+      
+      setTimeout(() => {
+        feedback.style.opacity = '0';
+        setTimeout(() => feedback.remove(), 300);
+      }, 2000);
+    }
+  </script>
+</body>
+
+</html>

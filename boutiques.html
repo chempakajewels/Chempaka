@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Butik Utama Shah Alam | CHEMPAKA Flagship Boutique</title>
+  <meta name="description"
+    content="Visit Chempaka's flagship boutique in Shah Alam. Experience private viewing suites, instant 916/999 gold valuations, and bespoke jewelry consultations.">
+
+  <!-- Google Fonts & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#A48E7E",
+            'primary-dark': '#8c7667',
+            gold: '#C5A059',
+            'gold-light': '#E6CA65',
+            surface: "#FAF9F6",
+            dark: '#1a1c1c',
+          },
+          fontFamily: {
+            serif: ["Cinzel", "serif"],
+            sans: ["Inter", "sans-serif"],
+            display: ["Playfair Display", "serif"],
+          },
+          maxWidth: {
+            'container-max': '1440px',
+          },
+          padding: {
+            'margin-desktop': '5rem',
+            'margin-mobile': '1.5rem',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #faf9f6;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #d3c3bb;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #A48E7E;
+    }
+
+    /* --- Main Header: glass layer --- */
+    header {
+      background-color: transparent;
+      border-bottom: none;
+      transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        backdrop-filter 0.4s ease,
+        color 0.3s ease;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.18) 70%, transparent 100%);
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+
+    .logo-text,
+    .scrolled-logo-text,
+    header .material-symbols-outlined {
+      transition: color 0.3s ease;
+    }
+
+    @media (hover: hover) {
+      header:hover {
+        background-color: rgba(255,255,255,0.98) !important;
+        backdrop-filter: blur(24px) !important;
+        -webkit-backdrop-filter: blur(24px) !important;
+        color: #000000 !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+        box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+      }
+
+      header:hover::before {
+        opacity: 0 !important;
+      }
+
+      header:hover .logo-text,
+      header:hover .scrolled-logo-text {
+        color: #000000 !important;
+      }
+
+      header:hover .nav-link {
+        color: #000000 !important;
+      }
+    }
+
+    .nav-link {
+      position: relative;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px !important;
+      letter-spacing: 0.05em !important;
+      font-weight: 400 !important;
+      text-transform: none;
+      padding-bottom: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 1px;
+      bottom: -2px;
+      left: 0;
+      background-color: currentColor;
+      transform-origin: center center;
+      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
+
+    .utility-link {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      font-weight: 400;
+      text-transform: none;
+      text-decoration: none;
+      transition: color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .utility-link:hover {
+      opacity: 0.7;
+    }
+
+    header#main-header:hover, header#main-header.scrolled {
+      background-color: rgba(255, 255, 255, 0.98) !important;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+      backdrop-filter: blur(12px);
+    }
+    header#main-header:hover *:not(#promo-banner):not(#promo-banner *), header#main-header.scrolled *:not(#promo-banner):not(#promo-banner *) {
+      color: #000000 !important;
+      border-color: rgba(0,0,0,0.1) !important;
+    }
+    header#main-header:hover .inline-nav-divider, header#main-header.scrolled .inline-nav-divider {
+      background-color: #e5e5e5 !important;
+    }
+
+    /* Subtle Card Elevation */
+    .bento-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .bento-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.07);
+    }
+  </style>
+</head>
+
+<body class="bg-[#FAF9F6] text-[#1a1c1c] font-sans antialiased overflow-x-hidden selection:bg-black selection:text-white">
+
+  <!-- MOBILE DRAWER -->
+  <div id="mobile-drawer"
+    class="fixed inset-y-0 left-0 w-80 bg-white text-black z-[100] transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl flex flex-col">
+    <div class="p-6 flex justify-between items-center border-b border-neutral-200">
+      <span class="font-serif tracking-[0.02em] text-lg uppercase font-normal" style="font-family: 'Cinzel', serif;">CHEMPAKA</span>
+      <button onclick="toggleMobileDrawer(false)" class="focus:outline-none bg-transparent border-none text-black p-0 cursor-pointer">
+        <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'wght' 300;">close</span>
+      </button>
+    </div>
+    <div class="flex-1 overflow-y-auto p-6 space-y-0">
+      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
+        href="index.html#sale" onclick="toggleMobileDrawer(false)">Sale</a>
+      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
+        href="showcase.html" onclick="toggleMobileDrawer(false)">Showcase</a>
+      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
+        href="about.html" onclick="toggleMobileDrawer(false)">Journal</a>
+      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
+        href="membership.html" onclick="toggleMobileDrawer(false)">Membership</a>
+      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors font-bold text-primary"
+        href="boutiques.html" onclick="toggleMobileDrawer(false)">Boutique</a>
+      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
+        href="boutiques.html#appointment-booking" onclick="toggleMobileDrawer(false)">Appointment</a>
+    </div>
+    <div class="p-6 border-t border-neutral-200 bg-neutral-100/50 space-y-4">
+      <a href="boutiques.html" class="flex items-center gap-2.5 py-1 text-[11px] font-medium tracking-[0.15em] text-neutral-600 hover:text-black transition-colors" onclick="toggleMobileDrawer(false)">
+        <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'wght' 300;">location_on</span> Shah Alam Flagship
+      </a>
+      <a href="membership.html" class="flex items-center gap-2.5 py-1 text-[11px] font-medium tracking-[0.15em] text-neutral-600 hover:text-black transition-colors" onclick="toggleMobileDrawer(false)">
+        <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'wght' 300;">person</span> Chempaka Club / Join
+      </a>
+    </div>
+  </div>
+
+  <div id="mobile-drawer-backdrop" class="fixed inset-0 bg-black/40 hidden z-[90]" onclick="toggleMobileDrawer(false)"></div>
+
+  <!-- Search Overlay -->
+  <div id="search-overlay" class="fixed inset-0 bg-white z-50 hidden flex flex-col p-6 md:p-10 transition-opacity duration-300">
+    <div class="max-w-container-max mx-auto w-full flex justify-between items-center mb-12">
+      <span class="font-serif tracking-widest text-lg uppercase text-black" style="font-family: 'Cinzel', serif;">CHEMPAKA</span>
+      <button onclick="toggleSearch(false)" class="bg-transparent border-none text-black p-0 cursor-pointer">
+        <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'wght' 300;">close</span>
+      </button>
+    </div>
+    <div class="max-w-3xl mx-auto w-full flex-1 flex flex-col justify-center">
+      <h2 class="font-serif text-3xl md:text-5xl text-black font-normal text-center mb-8">What are you looking for?</h2>
+      <div class="relative w-full border-b-2 border-black py-2 mb-4">
+        <input type="text" placeholder="Search collection, products..."
+          class="w-full bg-transparent text-xl md:text-2xl border-none outline-none focus:ring-0 p-0 text-black placeholder-neutral-300 font-sans" />
+        <span class="material-symbols-outlined absolute right-0 top-3 text-2xl text-neutral-400">search</span>
+      </div>
+      <p class="text-xs font-sans text-neutral-400 text-center tracking-wider">Press Enter to Search</p>
+    </div>
+  </div>
+
+  <!-- CANONICAL DUAL-ROW GLASS HEADER -->
+  <header id="main-header" class="fixed top-0 w-full z-50 transition-all duration-500 bg-transparent text-white border-b border-transparent">
+    <!-- Top Promotion Banner -->
+    <div id="promo-banner" class="bg-black text-white text-[11px] font-medium tracking-[0.15em] py-2.5 px-4 md:px-6 flex justify-between items-center z-50 transition-all duration-300">
+      <div class="flex-1 text-center select-none whitespace-normal break-words leading-relaxed">
+        Join the Chempaka Club today for exclusive in-store privileges | <a href="boutiques.html" class="underline underline-offset-2 hover:opacity-80 transition-opacity whitespace-nowrap">Visit Our Shah Alam Boutique</a>
+      </div>
+      <button onclick="dismissPromo()" class="text-white hover:opacity-70 transition-opacity bg-transparent border-none cursor-pointer p-0 ml-4" aria-label="Close promotional banner">
+        <span class="material-symbols-outlined text-[16px] leading-none" style="font-variation-settings: 'wght' 300;">close</span>
+      </button>
+    </div>
+
+    <!-- Utility Bar -->
+    <div id="utility-bar" class="hidden lg:grid grid-cols-3 items-center py-1.5 px-12 transition-all duration-300 overflow-hidden border-b border-white/10 transition-colors duration-300">
+      <div class="flex justify-start items-center">
+        <a href="boutiques.html" class="utility-link text-white transition-colors duration-300 flex items-center gap-1.5 hover:opacity-75">
+          <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'wght' 300;">location_on</span> Shah Alam Flagship
+        </a>
+      </div>
+      <div class="utility-link text-neutral-400 select-none text-center text-xs">
+        Chempaka Gold Exchange &amp; Valuation Available at Shah Alam Boutique
+      </div>
+      <div class="flex justify-end items-center gap-6">
+        <a href="membership.html" class="utility-link text-white transition-colors duration-300 flex items-center gap-1.5 hover:opacity-75">
+          <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'wght' 300;">person_outline</span> Login
+        </a>
+        <a href="#appointment-booking" class="utility-link text-white transition-colors duration-300 flex items-center gap-1.5 hover:opacity-75">
+          <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'wght' 300;">calendar_month</span> Book Appointment
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Navigation Container -->
+    <div id="navbar-container" class="relative transition-all duration-500 py-2 px-5 md:px-6 lg:px-12">
+      <div id="nav-desktop-layout" class="hidden md:flex flex-col transition-all duration-500">
+        <!-- Row 1: Centered Logo Wordmark -->
+        <div id="logo-row" class="flex justify-center pt-2 pb-2 transition-all duration-500">
+          <a href="index.html" class="font-serif tracking-[0.02em] text-[28px] md:text-[36px] lg:text-[44px] leading-none uppercase font-normal logo-text text-white transition-colors duration-300" style="font-family: 'Cinzel', serif;">CHEMPAKA</a>
+        </div>
+
+        <!-- Row 2: Navigation + Icons -->
+        <div id="links-row" class="grid grid-cols-12 items-center w-full transition-all duration-500">
+          <div class="col-span-3 lg:col-span-2 flex justify-start items-center">
+            <div id="scrolled-logo" class="opacity-0 w-0 overflow-hidden transition-all duration-500 shrink-0">
+              <a href="index.html" class="font-serif tracking-[0.02em] text-[18px] uppercase font-normal text-white transition-colors duration-300 scrolled-logo-text whitespace-nowrap" style="font-family: 'Cinzel', serif;">CHEMPAKA</a>
+            </div>
+          </div>
+
+          <div class="col-span-6 lg:col-span-8 flex justify-center">
+            <nav class="flex items-center gap-4 lg:gap-8 xl:gap-12 transition-all duration-300" aria-label="Main navigation">
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="index.html#sale">Sale</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="showcase.html">Showcase</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="about.html">Journal</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="membership.html">Membership</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80 font-bold border-b border-white" href="boutiques.html">Boutique</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="#appointment-booking">Appointment</a>
+
+              <span class="inline-nav-divider w-[1px] h-4 bg-neutral-200 select-none pointer-events-none transition-all duration-300"></span>
+
+              <div class="inline-nav-icons flex items-center gap-1 transition-all duration-300">
+                <button onclick="toggleSearch(true)" class="header-icon hover:opacity-65 transition-opacity bg-transparent border-none text-white transition-colors duration-300 p-0 cursor-pointer flex items-center justify-center" aria-label="Search">
+                  <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'wght' 300;">search</span>
+                </button>
+                <a href="membership.html" class="header-icon hover:opacity-65 transition-opacity flex items-center justify-center text-white transition-colors duration-300" aria-label="Wishlist">
+                  <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'wght' 300;">favorite_border</span>
+                </a>
+              </div>
+            </nav>
+          </div>
+
+          <div class="col-span-3 lg:col-span-2 flex justify-end items-center">
+            <div class="scrolled-nav-icons opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-1">
+              <button onclick="toggleSearch(true)" class="header-icon hover:opacity-65 transition-opacity bg-transparent border-none text-white transition-colors duration-300 p-0 cursor-pointer flex items-center justify-center" aria-label="Search">
+                <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'wght' 300;">search</span>
+              </button>
+              <a href="membership.html" class="header-icon hover:opacity-65 transition-opacity flex items-center justify-center text-white transition-colors duration-300" aria-label="Wishlist">
+                <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'wght' 300;">favorite_border</span>
+              </a>
+              <a href="membership.html" class="header-icon hover:opacity-65 transition-opacity flex items-center justify-center text-white transition-colors duration-300" aria-label="Account">
+                <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'wght' 300;">person_outline</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="nav-mobile-layout" class="flex md:hidden justify-between items-center w-full">
+        <button onclick="toggleMobileDrawer(true)" class="focus:outline-none bg-transparent border-none text-white transition-colors duration-300 p-0 cursor-pointer" aria-label="Open menu">
+          <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'wght' 300;">menu</span>
+        </button>
+        <a href="index.html" class="font-serif tracking-[0.02em] text-[20px] uppercase font-normal logo-text text-white transition-colors duration-300" style="font-family: 'Cinzel', serif;">CHEMPAKA</a>
+        <div class="flex items-center gap-1">
+          <button onclick="toggleSearch(true)" class="bg-transparent border-none text-white transition-colors duration-300 p-0 cursor-pointer flex items-center justify-center w-10 h-10" aria-label="Search">
+            <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'wght' 300;">search</span>
+          </button>
+          <a href="membership.html" class="flex items-center justify-center w-10 h-10 text-inherit" aria-label="Account">
+            <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'wght' 300;">person_outline</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <main class="w-full">
+
+    <!-- ============================================
+         SECTION 1: HERO (THE SHAH ALAM FLAGSHIP SANCTUARY)
+         ============================================ -->
+    <section class="relative w-full min-h-[85vh] lg:min-h-screen bg-[#0d0d0d] flex items-center justify-center overflow-hidden">
+      <!-- Backdrop Image -->
+      <div class="absolute inset-0 z-0">
+        <img src="hero_model_hijab.jpg" alt="Chempaka Shah Alam Flagship Boutique Lounge" class="w-full h-full object-cover object-top opacity-60">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#FAF9F6] via-black/40 to-black/70"></div>
+      </div>
+
+      <!-- Hero Content -->
+      <div class="relative z-10 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center pt-32 pb-20 space-y-6">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-widest text-gold">
+          <span class="material-symbols-outlined text-sm">stars</span>
+          <span>Flagship Boutique Sanctuary • Shah Alam</span>
+        </div>
+        <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-normal text-white leading-tight">
+          Butik Utama <br><span class="italic font-serif text-gold">Shah Alam</span>
+        </h1>
+        <p class="font-sans text-sm md:text-base font-light text-neutral-300 max-w-xl mx-auto leading-relaxed">
+          Chempaka’s sole flagship sanctuary located in Setia Alam. Step into an unhurried haven of soundproof VIP suites, instant 916/999 gold exchange, and master goldsmith consultations.
+        </p>
+
+        <!-- Quick Action CTAs -->
+        <div class="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#appointment-booking" class="w-full sm:w-auto bg-gold text-black hover:bg-gold-light px-8 py-4 text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-lg">
+            Schedule Private Viewing
+          </a>
+          <a href="#flagship-tour" class="w-full sm:w-auto bg-black/60 backdrop-blur-md text-white hover:bg-white hover:text-black border border-white/30 px-8 py-4 text-xs font-semibold uppercase tracking-widest transition-all duration-300">
+            Explore Boutique Lounge Areas
+          </a>
+        </div>
+
+        <!-- Trust Badges Bar -->
+        <div class="pt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto text-left border-t border-white/15 text-white/80 text-xs font-light">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-gold text-2xl">verified</span>
+            <span>100% Certified 916 & 999 Solid Gold</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-gold text-2xl">meeting_room</span>
+            <span>Soundproof VIP Private Lounge</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-gold text-2xl">published_with_changes</span>
+            <span>Zero-Deduction Gold Trade-In Valuation</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-gold text-2xl">support_agent</span>
+            <span>Sub-2 Hour Concierge Response</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         SECTION 2: FEATURED FLAGSHIP SHOWCASE (3-AREA TOUR)
+         ============================================ -->
+    <section id="flagship-tour" class="py-20 md:py-28 px-margin-mobile md:px-margin-desktop bg-[#FAF9F6] border-b border-neutral-200">
+      <div class="max-w-container-max mx-auto space-y-12">
+        
+        <!-- Header -->
+        <div class="text-center space-y-3">
+          <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-primary">Flagship Sanctuary</span>
+          <h2 class="font-display text-3xl md:text-5xl text-neutral-900 font-normal">Inside Butik Utama Shah Alam</h2>
+          <p class="font-sans text-xs md:text-sm text-neutral-500 max-w-md mx-auto font-light">
+            Our exclusive flagship boutique is divided into 3 dedicated zones designed for private luxury consultations.
+          </p>
+        </div>
+
+        <!-- Interactive Area Tour Tabs -->
+        <div class="flex flex-wrap justify-center gap-3 border-b border-neutral-200 pb-6">
+          <button onclick="switchArea('vip-lounge')" id="tab-vip-lounge" class="area-tab active px-6 py-3 rounded-full text-xs uppercase font-bold tracking-widest bg-black text-white transition-all shadow-md">
+            1. VIP Private Lounge
+          </button>
+          <button onclick="switchArea('gold-vault')" id="tab-gold-vault" class="area-tab px-6 py-3 rounded-full text-xs uppercase font-medium tracking-widest bg-white border border-neutral-300 text-neutral-700 hover:border-black transition-all">
+            2. Gold Exchange & Valuation Vault
+          </button>
+          <button onclick="switchArea('cad-studio')" id="tab-cad-studio" class="area-tab px-6 py-3 rounded-full text-xs uppercase font-medium tracking-widest bg-white border border-neutral-300 text-neutral-700 hover:border-black transition-all">
+            3. Master Goldsmith CAD Studio
+          </button>
+        </div>
+
+        <!-- Active Area Card Grid -->
+        <div id="area-card-container" class="bg-white border border-neutral-200 p-8 md:p-12 shadow-sm rounded-lg grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <!-- Image Preview -->
+          <div class="lg:col-span-7 relative h-80 md:h-[420px] rounded overflow-hidden group">
+            <img id="area-img" src="hero_model_hijab.jpg" alt="VIP Private Lounge Shah Alam" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-md text-white px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Open Today • 10:00 AM - 6:00 PM</span>
+            </div>
+          </div>
+
+          <!-- Area Specs Column -->
+          <div class="lg:col-span-5 space-y-6">
+            <div>
+              <span id="area-tag" class="text-[10px] uppercase font-bold tracking-widest text-primary block">Private Viewing Room</span>
+              <h3 id="area-title" class="font-display text-3xl text-neutral-900 mt-1 font-normal">Soundproof VIP Viewing Suite</h3>
+              <p id="area-desc" class="font-sans text-xs text-neutral-500 font-light mt-3 leading-relaxed">
+                An acoustically isolated private suite where high jewelry masterworks and royal Malay filigree pieces are presented with dedicated concierge hospitality.
+              </p>
+            </div>
+
+            <!-- Operating Info Box -->
+            <div class="space-y-3 pt-4 border-t border-b border-neutral-200 py-4 text-xs font-light text-neutral-600">
+              <div class="flex items-center justify-between">
+                <span class="font-medium text-neutral-400">Address:</span>
+                <span class="font-medium text-black text-right max-w-[200px]">Seksyen U13, Setia Alam, Shah Alam</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="font-medium text-neutral-400">Direct Phone:</span>
+                <span class="font-medium text-black">+60 17-811 3204</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="font-medium text-neutral-400">Hospitality:</span>
+                <span id="area-spec" class="font-medium text-black">Artisanal Beverage Service & Valet</span>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex flex-col sm:flex-row items-center gap-4 pt-2">
+              <a href="https://www.google.com/maps/search/?api=1&query=Setia+Dagang+AL+U13/AL+Alam+Nusantara+Shah+Alam" target="_blank"
+                class="w-full sm:w-auto bg-black text-white hover:bg-neutral-800 px-6 py-3.5 text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-colors">
+                <span>Google Maps Route</span>
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+              </a>
+              <a href="#appointment-booking" class="w-full sm:w-auto bg-primary/10 border border-primary/30 text-primary hover:bg-primary hover:text-white px-6 py-3.5 text-xs font-bold uppercase tracking-widest text-center transition-colors">
+                Reserve Session Here
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         SECTION 3: 3-STEP VIP APPOINTMENT SCHEDULER
+         ============================================ -->
+    <section id="appointment-booking" class="py-20 md:py-28 px-margin-mobile md:px-margin-desktop bg-white border-b border-neutral-200">
+      <div class="max-w-4xl mx-auto space-y-12">
+
+        <!-- Title -->
+        <div class="text-center space-y-3">
+          <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-primary">Private Appointment</span>
+          <h2 class="font-display text-3xl md:text-5xl text-neutral-900 font-normal">Reserve Your Viewing Session</h2>
+          <p class="font-sans text-xs md:text-sm text-neutral-500 max-w-md mx-auto font-light leading-relaxed">
+            Consultations take place exclusively at **Butik Utama Shah Alam**. Our concierge team confirms appointments within 2 business hours.
+          </p>
+        </div>
+
+        <!-- Referred Piece Alert (Appears if user clicked "Book Viewing" from showcase.html) -->
+        <div id="referred-piece-banner" class="hidden bg-[#FAF7F4] border border-primary/30 p-4 rounded text-xs flex items-center justify-between">
+          <div class="flex items-center gap-2 text-neutral-700 font-light">
+            <span class="material-symbols-outlined text-primary text-base">auto_awesome</span>
+            <span>Requested Piece: <strong id="referred-piece-name" class="font-semibold text-black">Chempaka Royal Choker</strong></span>
+          </div>
+          <span class="text-[10px] uppercase font-bold text-primary tracking-widest">Pre-filled</span>
+        </div>
+
+        <!-- Step Indicator Pills -->
+        <div class="grid grid-cols-3 gap-2 text-center text-xs font-semibold uppercase tracking-widest border-b border-neutral-200 pb-4">
+          <div id="step-pill-1" class="text-primary border-b-2 border-primary pb-2">01. Service</div>
+          <div id="step-pill-2" class="text-neutral-400 pb-2">02. Schedule</div>
+          <div id="step-pill-3" class="text-neutral-400 pb-2">03. Guest Details</div>
+        </div>
+
+        <!-- Multi-Step Booking Form Container -->
+        <div class="bg-[#FAF9F6] border border-neutral-200 p-8 md:p-12 shadow-sm rounded-lg">
+          <form id="vip-booking-form" onsubmit="handleFormSubmission(event)">
+            
+            <!-- STEP 1: SERVICE SELECT -->
+            <div id="booking-step-1" class="space-y-8">
+              <h3 class="font-display text-2xl text-neutral-900">Select Consultation Type</h3>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Location (Fixed to Shah Alam) -->
+                <div class="space-y-2">
+                  <label class="block text-[11px] font-bold uppercase tracking-widest text-neutral-600">Boutique Location</label>
+                  <input type="text" readonly value="Butik Utama Shah Alam (Seksyen U13)" class="w-full bg-neutral-100 border border-neutral-300 rounded p-3.5 text-xs text-neutral-800 font-medium cursor-not-allowed">
+                  <span class="text-[10px] text-neutral-400 block">Chempaka’s sole flagship sanctuary</span>
+                </div>
+
+                <!-- Select Service -->
+                <div class="space-y-2">
+                  <label class="block text-[11px] font-bold uppercase tracking-widest text-neutral-600">Service Required</label>
+                  <select id="form-service" required class="w-full bg-white border border-neutral-300 rounded p-3.5 text-xs text-neutral-800 outline-none focus:border-black transition-colors font-light">
+                    <option value="Gold Exchange & Valuation">Gold Exchange & High-Precision Valuation</option>
+                    <option value="Custom Jewelry Fitting">Custom Heirloom & Bespoke Fitting</option>
+                    <option value="VIP Showroom Viewing">VIP Showroom Private Viewing</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Action Button -->
+              <div class="pt-4 flex justify-end">
+                <button type="button" onclick="goToStep(2)" class="bg-black hover:bg-neutral-800 text-white px-8 py-3.5 text-xs font-bold uppercase tracking-widest flex items-center gap-2 transition-colors">
+                  <span>Next: Select Date & Time</span>
+                  <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 2: DATE & TIME SELECT -->
+            <div id="booking-step-2" class="hidden space-y-8">
+              <h3 class="font-display text-2xl text-neutral-900">Choose Preferred Date & Time Slot</h3>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Date Picker -->
+                <div class="space-y-2">
+                  <label class="block text-[11px] font-bold uppercase tracking-widest text-neutral-600">Select Date</label>
+                  <input type="date" id="form-date" required class="w-full bg-white border border-neutral-300 rounded p-3 text-xs text-neutral-800 outline-none focus:border-black font-light">
+                </div>
+
+                <!-- Time Slot Chips -->
+                <div class="space-y-2">
+                  <label class="block text-[11px] font-bold uppercase tracking-widest text-neutral-600">Select Preferred Slot</label>
+                  <div class="grid grid-cols-2 gap-2">
+                    <button type="button" onclick="selectTimeSlot('11:00 AM')" class="time-chip p-3 bg-white border border-neutral-300 rounded text-xs font-medium text-center hover:border-black transition-all">11:00 AM</button>
+                    <button type="button" onclick="selectTimeSlot('01:00 PM')" class="time-chip p-3 bg-white border border-neutral-300 rounded text-xs font-medium text-center hover:border-black transition-all">01:00 PM</button>
+                    <button type="button" onclick="selectTimeSlot('03:00 PM')" class="time-chip p-3 bg-white border border-neutral-300 rounded text-xs font-medium text-center hover:border-black transition-all">03:00 PM</button>
+                    <button type="button" onclick="selectTimeSlot('05:00 PM')" class="time-chip p-3 bg-white border border-neutral-300 rounded text-xs font-medium text-center hover:border-black transition-all">05:00 PM</button>
+                  </div>
+                  <input type="hidden" id="form-time" required value="03:00 PM">
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="pt-4 flex items-center justify-between">
+                <button type="button" onclick="goToStep(1)" class="text-xs uppercase font-bold tracking-widest text-neutral-500 hover:text-black">
+                  &larr; Back
+                </button>
+                <button type="button" onclick="goToStep(3)" class="bg-black hover:bg-neutral-800 text-white px-8 py-3.5 text-xs font-bold uppercase tracking-widest flex items-center gap-2 transition-colors">
+                  <span>Next: Guest Information</span>
+                  <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 3: GUEST DETAILS & CONFIRM -->
+            <div id="booking-step-3" class="hidden space-y-8">
+              <h3 class="font-display text-2xl text-neutral-900">Your Contact Details</h3>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                  <label class="block text-[11px] font-bold uppercase tracking-widest text-neutral-600">Full Name</label>
+                  <input type="text" id="form-name" required placeholder="Tengku Amir" class="w-full bg-white border border-neutral-300 rounded p-3 text-xs text-neutral-800 outline-none focus:border-black font-light">
+                </div>
+                <div class="space-y-2">
+                  <label class="block text-[11px] font-bold uppercase tracking-widest text-neutral-600">Phone Number (WhatsApp)</label>
+                  <input type="tel" id="form-phone" required placeholder="+60 17-811 3204" class="w-full bg-white border border-neutral-300 rounded p-3 text-xs text-neutral-800 outline-none focus:border-black font-light">
+                </div>
+              </div>
+
+              <div class="space-y-2">
+                <label class="block text-[11px] font-bold uppercase tracking-widest text-neutral-600">Special Notes or Requested Jewelry Piece</label>
+                <textarea id="form-notes" rows="2" placeholder="Mention any specific piece, gold weight, or custom gemstone requirements..." class="w-full bg-white border border-neutral-300 rounded p-3 text-xs text-neutral-800 outline-none focus:border-black font-light"></textarea>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="pt-4 flex items-center justify-between">
+                <button type="button" onclick="goToStep(2)" class="text-xs uppercase font-bold tracking-widest text-neutral-500 hover:text-black">
+                  &larr; Back
+                </button>
+                <button type="submit" class="bg-primary hover:bg-primary-dark text-white px-10 py-4 text-xs font-bold uppercase tracking-widest flex items-center gap-2 transition-colors shadow-lg">
+                  <span>Confirm VIP Appointment</span>
+                  <span class="material-symbols-outlined text-sm">check_circle</span>
+                </button>
+              </div>
+            </div>
+
+          </form>
+
+          <!-- SUCCESS CONFIRMATION CARD (Hidden until submission) -->
+          <div id="booking-success" class="hidden text-center space-y-6 py-8">
+            <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+              <span class="material-symbols-outlined text-3xl">verified</span>
+            </div>
+            <div>
+              <h3 class="font-display text-3xl text-neutral-900 font-normal">Appointment Reserved</h3>
+              <p class="font-sans text-xs text-neutral-500 max-w-sm mx-auto font-light mt-2">
+                Your private viewing session at <strong class="text-black font-medium">Butik Utama Shah Alam</strong> has been reserved. Our concierge will contact you via WhatsApp shortly.
+              </p>
+            </div>
+
+            <!-- Receipt Summary Grid -->
+            <div class="bg-white border border-neutral-200 p-6 rounded text-xs text-left max-w-md mx-auto space-y-3">
+              <div class="flex justify-between border-b border-neutral-100 pb-2">
+                <span class="text-neutral-400">Guest Name:</span>
+                <span id="res-name" class="font-semibold text-black">Tengku Amir</span>
+              </div>
+              <div class="flex justify-between border-b border-neutral-100 pb-2">
+                <span class="text-neutral-400">Service:</span>
+                <span id="res-service" class="font-semibold text-black">Gold Exchange & Valuation</span>
+              </div>
+              <div class="flex justify-between border-b border-neutral-100 pb-2">
+                <span class="text-neutral-400">Boutique:</span>
+                <span class="font-semibold text-black">Butik Utama Shah Alam</span>
+              </div>
+              <div class="flex justify-between border-b border-neutral-100 pb-2">
+                <span class="text-neutral-400">Date & Slot:</span>
+                <span id="res-datetime" class="font-semibold text-black">12 Aug 2026 @ 3:00 PM</span>
+              </div>
+            </div>
+
+            <button onclick="resetScheduler()" class="inline-block text-xs uppercase font-bold tracking-widest text-primary border-b border-primary pb-0.5 hover:text-black hover:border-black transition-colors">
+              Book Another Session
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         SECTION 4: THE BOUTIQUE EXPERIENCE (BENTO GRID)
+         ============================================ -->
+    <section class="py-20 md:py-28 px-margin-mobile md:px-margin-desktop bg-[#FAF9F6] border-b border-neutral-200">
+      <div class="max-w-container-max mx-auto space-y-12">
+        
+        <div class="text-center space-y-3">
+          <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-primary">Unrivalled Hospitality</span>
+          <h2 class="font-display text-3xl md:text-5xl text-neutral-900 font-normal">The Shah Alam Lounge Experience</h2>
+          <p class="font-sans text-xs md:text-sm text-neutral-500 max-w-md mx-auto font-light">
+            Every boutique visit is designed to be an immersive, private, and memorable luxury journey.
+          </p>
+        </div>
+
+        <!-- Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Bento Tile 1: Private Suites (Spans 2 cols on md) -->
+          <div class="md:col-span-2 bento-card bg-white border border-neutral-200 p-8 md:p-12 rounded-lg flex flex-col justify-between space-y-6">
+            <div class="space-y-3">
+              <span class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                <span class="material-symbols-outlined text-xl">meeting_room</span>
+              </span>
+              <h3 class="font-display text-2xl text-neutral-900">Soundproof VIP Viewing Suite</h3>
+              <p class="font-sans text-xs text-neutral-500 font-light leading-relaxed max-w-lg">
+                Enjoy complete confidentiality in our acoustically insulated private lounge at Setia Alam. Inspect high jewelry masterworks away from public view with dedicated security measures.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-neutral-100 flex items-center gap-2 text-xs font-semibold text-primary uppercase tracking-wider">
+              <span>Included in All Private Appointments</span>
+              <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </div>
+          </div>
+
+          <!-- Bento Tile 2: XRF Gold Testing -->
+          <div class="bento-card bg-white border border-neutral-200 p-8 rounded-lg flex flex-col justify-between space-y-6">
+            <div class="space-y-3">
+              <span class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                <span class="material-symbols-outlined text-xl">biotech</span>
+              </span>
+              <h3 class="font-display text-2xl text-neutral-900">XRF Spectrometer Gold Vault</h3>
+              <p class="font-sans text-xs text-neutral-500 font-light leading-relaxed">
+                Non-destructive 916/999 purity analysis performed in front of you within 60 seconds with printed valuation certificates.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-neutral-100 text-[11px] font-mono text-neutral-400">
+              Accuracy: 99.99% Precision
+            </div>
+          </div>
+
+          <!-- Bento Tile 3: Custom CAD Studio -->
+          <div class="bento-card bg-white border border-neutral-200 p-8 rounded-lg flex flex-col justify-between space-y-6">
+            <div class="space-y-3">
+              <span class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                <span class="material-symbols-outlined text-xl">draw</span>
+              </span>
+              <h3 class="font-display text-2xl text-neutral-900">3D CAD Bespoke Workshop</h3>
+              <p class="font-sans text-xs text-neutral-500 font-light leading-relaxed">
+                Co-create custom bridal rings or royal crest pendants with live 3D rendering and physical wax prototype fitting.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-neutral-100 text-[11px] font-mono text-neutral-400">
+              Master Goldsmith On-Site
+            </div>
+          </div>
+
+          <!-- Bento Tile 4: Signature Hospitality (Spans 2 cols on md) -->
+          <div class="md:col-span-2 bento-card bg-white border border-neutral-200 p-8 md:p-12 rounded-lg flex flex-col justify-between space-y-6">
+            <div class="space-y-3">
+              <span class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                <span class="material-symbols-outlined text-xl">local_bar</span>
+              </span>
+              <h3 class="font-display text-2xl text-neutral-900">Artisanal Hospitality & Private Valet</h3>
+              <p class="font-sans text-xs text-neutral-500 font-light leading-relaxed max-w-lg">
+                Relax with complimentary sparkling beverages, premium teas, and traditional pastries while your gold items undergo complimentary ultrasonic cleaning.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-neutral-100 flex items-center gap-2 text-xs font-semibold text-primary uppercase tracking-wider">
+              <span>Complimentary Reserved Parking Provided</span>
+              <span class="material-symbols-outlined text-sm">directions_car</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         SECTION 5: CONCIERGE HOTLINE & ACCORDION FAQ
+         ============================================ -->
+    <section class="py-20 md:py-28 px-margin-mobile md:px-margin-desktop bg-white">
+      <div class="max-w-4xl mx-auto space-y-16">
+        
+        <!-- WhatsApp Concierge Card -->
+        <div class="bg-black text-white p-8 md:p-12 rounded-lg flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl">
+          <div class="space-y-2 text-center md:text-left">
+            <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-gold">Shah Alam Concierge Line</span>
+            <h3 class="font-display text-2xl md:text-3xl font-normal">Need Immediate Assistance?</h3>
+            <p class="font-sans text-xs text-neutral-400 font-light max-w-md">
+              Speak directly with our Chief Concierge for urgent gold trade-in quotes or same-day private appointments at Butik Utama Shah Alam.
+            </p>
+          </div>
+          <a href="https://wa.me/60178113204" target="_blank" class="shrink-0 bg-gold text-black hover:bg-gold-light px-8 py-4 text-xs font-bold uppercase tracking-widest transition-all shadow-lg flex items-center gap-2">
+            <span>WhatsApp Concierge</span>
+            <span class="material-symbols-outlined text-base">chat</span>
+          </a>
+        </div>
+
+        <!-- FAQ Accordion Container -->
+        <div class="space-y-6">
+          <div class="text-center space-y-2">
+            <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-primary">Frequently Asked Questions</span>
+            <h2 class="font-display text-3xl text-neutral-900 font-normal">Boutique Visit Policies</h2>
+          </div>
+
+          <div class="space-y-4 border-t border-neutral-200 pt-6">
+            
+            <!-- FAQ Item 1 -->
+            <div class="border-b border-neutral-200 pb-4">
+              <button onclick="toggleFaq(1)" class="w-full flex items-center justify-between text-left py-2 font-display text-lg text-neutral-900 hover:text-primary transition-colors focus:outline-none">
+                <span>Do I need an appointment or are walk-ins welcome?</span>
+                <span id="faq-icon-1" class="material-symbols-outlined text-neutral-400">add</span>
+              </button>
+              <div id="faq-content-1" class="hidden pt-2 text-xs text-neutral-500 font-light leading-relaxed">
+                Walk-in guests are always welcome at our Shah Alam main showroom. However, private soundproof VIP suites and gemologist gold valuation sessions require prior reservations to ensure zero wait times.
+              </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="border-b border-neutral-200 pb-4">
+              <button onclick="toggleFaq(2)" class="w-full flex items-center justify-between text-left py-2 font-display text-lg text-neutral-900 hover:text-primary transition-colors focus:outline-none">
+                <span>What documents are required for Gold Exchange & Valuation?</span>
+                <span id="faq-icon-2" class="material-symbols-outlined text-neutral-400">add</span>
+              </button>
+              <div id="faq-content-2" class="hidden pt-2 text-xs text-neutral-500 font-light leading-relaxed">
+                Please bring a valid Government NRIC or Passport along with your gold items. Purchase receipts are helpful but not required as our XRF spectrometers perform instant metallurgical verification on site.
+              </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="border-b border-neutral-200 pb-4">
+              <button onclick="toggleFaq(3)" class="w-full flex items-center justify-between text-left py-2 font-display text-lg text-neutral-900 hover:text-primary transition-colors focus:outline-none">
+                <span>Can I customize existing heirloom gold pieces?</span>
+                <span id="faq-icon-3" class="material-symbols-outlined text-neutral-400">add</span>
+              </button>
+              <div id="faq-content-3" class="hidden pt-2 text-xs text-neutral-500 font-light leading-relaxed">
+                Yes! Our master goldsmiths at Shah Alam specialize in melting down older 916/999 gold jewelry and re-forging it into modern 3D CAD-designed statement pieces while retaining the original sentimental gold.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- CANONICAL 12-COLUMN FOOTER -->
+  <footer class="bg-black text-white py-16 lg:py-24 px-margin-mobile md:px-margin-desktop border-t border-[#222222]">
+    <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-10">
+      <div class="md:col-span-4 space-y-4">
+        <h4 class="font-sans text-[11px] font-bold uppercase tracking-widest text-[#cccccc]">Join the Chempaka Club</h4>
+        <p class="font-sans text-xs text-[#888888] leading-relaxed font-light">
+          Subscribe to receive updates on boutique events, exclusive collections, and priority booking options.
+        </p>
+        <div class="pt-2">
+          <a href="membership.html"
+            class="inline-flex items-center gap-1.5 bg-[#222222] text-white hover:bg-white hover:text-black py-3 px-6 text-xs font-bold uppercase tracking-widest transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150">
+            <span>Register Now</span>
+            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="md:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8">
+        <div class="space-y-4">
+          <h4 class="font-sans text-[11px] font-bold uppercase tracking-widest text-[#cccccc]">Our Brand</h4>
+          <ul class="space-y-2 text-xs text-[#888888] font-light">
+            <li><a href="about.html#heritage" class="hover:text-white transition-colors duration-200 block py-0.5">Masters of Gold</a></li>
+            <li><a href="about.html#heritage" class="hover:text-white transition-colors duration-200 block py-0.5">Heritage Story</a></li>
+            <li><a href="about.html#heritage" class="hover:text-white transition-colors duration-200 block py-0.5">Sustainability</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-4">
+          <h4 class="font-sans text-[11px] font-bold uppercase tracking-widest text-[#cccccc]">Valuations</h4>
+          <ul class="space-y-2 text-xs text-[#888888] font-light">
+            <li><a href="index.html#our-services" class="hover:text-white transition-colors duration-200 block py-0.5">Gold Exchange</a></li>
+            <li><a href="index.html#our-services" class="hover:text-white transition-colors duration-200 block py-0.5">Bespoke Design</a></li>
+            <li><a href="index.html#our-services" class="hover:text-white transition-colors duration-200 block py-0.5">Private Lounge</a></li>
+          </ul>
+        </div>
+
+        <div class="col-span-2 sm:col-span-1 space-y-4">
+          <h4 class="font-sans text-[11px] font-bold uppercase tracking-widest text-[#cccccc]">Boutique</h4>
+          <ul class="space-y-2 text-xs text-[#888888] font-light">
+            <li><a href="boutiques.html#flagship-tour" class="hover:text-white transition-colors duration-200 block py-0.5">Shah Alam Flagship</a></li>
+            <li><a href="boutiques.html#appointment-booking" class="hover:text-white transition-colors duration-200 block py-0.5">Private Viewing</a></li>
+            <li><a href="boutiques.html#appointment-booking" class="hover:text-white transition-colors duration-200 block py-0.5">Contact Concierge</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="max-w-container-max mx-auto border-t border-[#222222] my-10"></div>
+
+    <div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="space-y-2 text-center md:text-left">
+        <div class="flex items-center justify-center md:justify-start gap-1.5 text-xs text-[#888888]">
+          <span class="material-symbols-outlined text-[16px] text-white">globe</span>
+          <span class="select-none">English</span>
+        </div>
+        <div class="mt-1 text-[10px] leading-relaxed max-w-sm md:max-w-md text-[#666666]">
+          &copy; 2026 Chempaka Trading Sdn Bhd. All rights reserved. CHEMPAKA and the Chempaka logo are
+          trademarks of Chempaka Trading Sdn Bhd.
+        </div>
+      </div>
+
+      <div class="order-first md:order-none shrink-0 md:justify-self-center text-center">
+        <span class="font-serif text-3xl font-normal tracking-[0.02em] text-white uppercase select-none"
+          style="font-family: 'Cinzel', serif; letter-spacing: 0.02em;">CHEMPAKA</span>
+      </div>
+
+      <!-- Social Icons -->
+      <div class="flex space-x-4 shrink-0 md:justify-self-end">
+        <a href="#" class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300" aria-label="Facebook">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" /></svg>
+        </a>
+        <a href="#" class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300" aria-label="Pinterest">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.162 0 7.396 2.967 7.396 6.93 0 4.135-2.607 7.462-6.227 7.462-1.216 0-2.359-.631-2.75-1.378l-.749 2.853c-.27 1.03-1 2.317-1.492 3.116 1.124.347 2.317.535 3.551.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z" /></svg>
+        </a>
+        <a href="#" class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300" aria-label="Instagram">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 0.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /></svg>
+        </a>
+        <a href="#" class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300" aria-label="Youtube">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.163c-.272-1.026-1.08-1.834-2.106-2.108C19.52 3.545 12 3.545 12 3.545s-7.52 0-9.392.51c-1.026.274-1.834 1.082-2.108 2.108C0 8.037 0 12 0 12s0 3.963.5 5.837c.274 1.026 1.082 1.834 2.108 2.108 1.872.51 9.392.51 9.392.51s7.52 0 9.392-.51c1.026-.274 1.834-1.082 2.108-2.108.5-1.874.5-5.837.5-5.837s0-3.963-.5-5.837zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z" /></svg>
+        </a>
+        <a href="#" class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300" aria-label="Tiktok">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.74-3.99-1.72-.08.65-.06 1.32-.06 1.98 0 2.01-.38 4.03-1.48 5.69-1.37 2.07-3.79 3.38-6.29 3.39-2.19.01-4.41-.84-5.83-2.53-1.63-1.93-2.21-4.7-1.43-7.14C4.16 7.4 6.3 5.48 8.89 5.09c.83-.12 1.68-.07 2.51-.08.01 1.43-.01 2.87-.01 4.3-.64-.09-1.3-.02-1.92.17-1.12.35-2.07 1.25-2.39 2.37-.46 1.57.17 3.42 1.54 4.25.92.56 2.04.66 3.06.33 1.09-.36 1.97-1.28 2.29-2.37.11-.38.16-.78.16-1.18V.02z" /></svg>
+        </a>
+        <a href="#" class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300" aria-label="X">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Header scrolled logic & mobile drawer / search handlers
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('main-header');
+      if (header) {
+        if (window.scrollY > 40) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      }
+    });
+
+    function toggleMobileDrawer(open) {
+      const drawer = document.getElementById('mobile-drawer');
+      const backdrop = document.getElementById('mobile-drawer-backdrop');
+      if (open) {
+        drawer?.classList.remove('-translate-x-full');
+        backdrop?.classList.remove('hidden');
+      } else {
+        drawer?.classList.add('-translate-x-full');
+        backdrop?.classList.add('hidden');
+      }
+    }
+
+    function toggleSearch(open) {
+      const search = document.getElementById('search-overlay');
+      if (open) {
+        search?.classList.remove('hidden');
+        search?.classList.add('flex');
+      } else {
+        search?.classList.add('hidden');
+        search?.classList.remove('flex');
+      }
+    }
+
+    function dismissPromo() {
+      const promo = document.getElementById('promo-banner');
+      if (promo) promo.style.display = 'none';
+    }
+
+    // Shah Alam 3-Area Tour Data Store
+    const AREA_DATA = {
+      'vip-lounge': {
+        title: 'Soundproof VIP Viewing Suite',
+        tag: 'Private Viewing Room',
+        desc: 'An acoustically isolated private suite where high jewelry masterworks and royal Malay filigree pieces are presented with dedicated concierge hospitality.',
+        spec: 'Artisanal Beverage Service & Valet',
+        img: 'hero_model_hijab.jpg'
+      },
+      'gold-vault': {
+        title: '916/999 Gold Exchange & Valuation Vault',
+        tag: 'Metallurgical Analysis Center',
+        desc: 'Equipped with non-destructive Thermo Scientific XRF Spectrometers. Get 60-second precise purity readouts and zero-deduction instant trade-in payouts.',
+        spec: 'Non-Destructive Spectrometer Testing',
+        img: 'hero_model_jewelry.jpg'
+      },
+      'cad-studio': {
+        title: 'Master Goldsmith 3D CAD Workshop',
+        tag: 'Bespoke Craft Studio',
+        desc: 'Collaborate directly with senior Kelantan goldsmiths. Review 3D digital renderings, select custom gemstones, and try on physical wax prototypes.',
+        spec: 'On-Site Master Goldsmith Consultation',
+        img: 'custom_category.jpg'
+      }
+    };
+
+    function switchArea(key) {
+      const data = AREA_DATA[key];
+      if (!data) return;
+
+      document.getElementById('area-title').textContent = data.title;
+      document.getElementById('area-tag').textContent = data.tag;
+      document.getElementById('area-desc').textContent = data.desc;
+      document.getElementById('area-spec').textContent = data.spec;
+      document.getElementById('area-img').src = data.img;
+
+      // Tab button active state update
+      document.querySelectorAll('.area-tab').forEach(tab => {
+        tab.className = 'area-tab px-6 py-3 rounded-full text-xs uppercase font-medium tracking-widest bg-white border border-neutral-300 text-neutral-700 hover:border-black transition-all';
+      });
+      const activeTab = document.getElementById(`tab-${key}`);
+      if (activeTab) {
+        activeTab.className = 'area-tab active px-6 py-3 rounded-full text-xs uppercase font-bold tracking-widest bg-black text-white transition-all shadow-md';
+      }
+    }
+
+    // Step-by-step Scheduler Logic
+    function goToStep(stepNum) {
+      document.getElementById('booking-step-1').classList.add('hidden');
+      document.getElementById('booking-step-2').classList.add('hidden');
+      document.getElementById('booking-step-3').classList.add('hidden');
+
+      document.getElementById(`booking-step-${stepNum}`).classList.remove('hidden');
+
+      // Update Step Pills
+      [1, 2, 3].forEach(i => {
+        const pill = document.getElementById(`step-pill-${i}`);
+        if (i === stepNum) {
+          pill.className = 'text-primary border-b-2 border-primary pb-2';
+        } else if (i < stepNum) {
+          pill.className = 'text-black font-bold pb-2';
+        } else {
+          pill.className = 'text-neutral-400 pb-2';
+        }
+      });
+    }
+
+    function selectTimeSlot(timeStr) {
+      document.getElementById('form-time').value = timeStr;
+      document.querySelectorAll('.time-chip').forEach(chip => {
+        if (chip.textContent.trim() === timeStr) {
+          chip.className = 'time-chip p-3 bg-black text-white border border-black rounded text-xs font-bold text-center shadow-md';
+        } else {
+          chip.className = 'time-chip p-3 bg-white border border-neutral-300 rounded text-xs font-medium text-center hover:border-black transition-all';
+        }
+      });
+    }
+
+    function handleFormSubmission(e) {
+      e.preventDefault();
+
+      const service = document.getElementById('form-service').value;
+      const date = document.getElementById('form-date').value || 'Tomorrow';
+      const time = document.getElementById('form-time').value;
+      const name = document.getElementById('form-name').value;
+
+      document.getElementById('res-name').textContent = name;
+      document.getElementById('res-service').textContent = service;
+      document.getElementById('res-datetime').textContent = `${date} @ ${time}`;
+
+      document.getElementById('vip-booking-form').classList.add('hidden');
+      document.getElementById('booking-success').classList.remove('hidden');
+    }
+
+    function resetScheduler() {
+      document.getElementById('vip-booking-form').reset();
+      document.getElementById('booking-success').classList.add('hidden');
+      document.getElementById('vip-booking-form').classList.remove('hidden');
+      goToStep(1);
+    }
+
+    // Toggle FAQ Accordion
+    function toggleFaq(num) {
+      const content = document.getElementById(`faq-content-${num}`);
+      const icon = document.getElementById(`faq-icon-${num}`);
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        icon.textContent = 'remove';
+      } else {
+        content.classList.add('hidden');
+        icon.textContent = 'add';
+      }
+    }
+
+    // URL Query Parameter Pre-fill (e.g. from showcase.html ?piece=Chempaka%20Royal%20Choker)
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const piece = params.get('piece');
+      if (piece) {
+        const banner = document.getElementById('referred-piece-banner');
+        const pieceName = document.getElementById('referred-piece-name');
+        const notes = document.getElementById('form-notes');
+
+        pieceName.textContent = piece;
+        if (notes) notes.value = `Interested in viewing requested piece: ${piece}`;
+        banner.classList.remove('hidden');
+      }
+
+      // Default Date Picker to Tomorrow
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const dateInput = document.getElementById('form-date');
+      if (dateInput) {
+        dateInput.value = tomorrow.toISOString().split('T')[0];
+        dateInput.min = new Date().toISOString().split('T')[0];
+      }
+
+      // Default Time Chip select
+      selectTimeSlot('03:00 PM');
+    });
+  </script>
+</body>
+</html>
