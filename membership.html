@@ -26,7 +26,7 @@
             "on-primary-fixed-variant": "#5c412f",
             "inverse-surface": "#2f3131",
             "on-tertiary": "#ffffff",
-            "primary": "#A48E7E",
+            "primary": "#A4B5B9",
             "surface-container-highest": "#e2e2e2",
             "on-secondary": "#ffffff",
             "on-error-container": "#93000a",
@@ -38,16 +38,16 @@
             "on-background": "#1a1c1c",
             "on-secondary-container": "#775e4a",
             "surface-dim": "#dadada",
-            "primary-container": "#a48e7e",
+            "primary-container": "#a4b5b9",
             "on-surface-variant": "#4f453e",
-            "surface": "#f9f9f9",
+            "surface": "#EAE7E2",
             "surface-container-lowest": "#ffffff",
             "on-primary-container": "#fff4ef",
             "tertiary-fixed-dim": "#d0c5b9",
             "on-secondary-fixed": "#291808",
             "on-primary": "#ffffff",
             "inverse-primary": "#e6bfa7",
-            "surface-bright": "#f9f9f9",
+            "surface-bright": "#EAE7E2",
             "on-tertiary-fixed-variant": "#4d463d",
             "on-error": "#ffffff",
             "secondary-fixed": "#fedcc3",
@@ -56,19 +56,20 @@
             "secondary-container": "#fbd9c0",
             "error-container": "#ffdad6",
             "surface-tint": "#765845",
-            "background": "#f9f9f9",
+            "background": "#EAE7E2",
             "primary-fixed-dim": "#e6bfa7",
             "secondary-fixed-dim": "#e1c0a8",
             "on-tertiary-container": "#fff4ea",
             "on-secondary-fixed-variant": "#594230",
             "outline-variant": "#d3c3bb",
-            "surface-container-low": "#f3f3f4",
+            "surface-container-low": "#EAE7E2",
             "tertiary-fixed": "#ece1d5",
-            "secondary": "#2B3E56",
+            "secondary": "#2C2F44",
             "inverse-on-surface": "#f0f1f1",
             "surface-variant": "#e2e2e2",
             "on-primary-fixed": "#2b1608",
-            "surface-container-high": "#e8e8e8"
+            "surface-container-high": "#e8e8e8",
+            "accent-blue": "#D0D2DE"
           },
           "borderRadius": {
             "DEFAULT": "0.25rem",
@@ -85,8 +86,6 @@
             "margin-mobile": "20px"
           },
           "fontFamily": {
-            "serif": ["Playfair Display", "serif"],
-            "sans": ["Inter", "sans-serif"],
             "headline-lg": ["Playfair Display"],
             "headline-lg-mobile": ["Playfair Display"],
             "label-md": ["Inter"],
@@ -111,83 +110,72 @@
     }
   </script>
   <style>
-    /* ========================================
-           CHEMPAKA HEADER — LINEAR-STYLE GLASS
-           Default: transparent frosted glass over hero
-           Scrolled: pure white, collapsed, minimal
-           ======================================== */
-
+    /* Force header to be white background with black text on boutiques/membership pages */
     header {
-      background-color: transparent;
-      border-bottom: none;
-      transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-        backdrop-filter 0.4s ease,
-        color 0.3s ease;
-    }
-
-    header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 70%, transparent 100%);
-      pointer-events: none;
-      transition: opacity 0.4s ease;
-      z-index: -1;
-    }
-
-    .logo-text,
-    .scrolled-logo-text,
-    header .material-symbols-outlined {
-      transition: color 0.3s ease;
-    }
-
-    @media (hover: hover) {
-      header:hover {
-        background-color: rgba(255,255,255,0.98) !important;
-        backdrop-filter: blur(24px) !important;
-        -webkit-backdrop-filter: blur(24px) !important;
-        color: #000000 !important;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
-        box-shadow: 0 1px 0 rgba(0,0,0,0.05);
-      }
-
-      header:hover::before {
-        opacity: 0 !important;
-      }
-
-      header:hover .logo-text,
-      header:hover .scrolled-logo-text,
-      header:hover .nav-link,
-      header:hover .material-symbols-outlined,
-      header:hover .utility-link {
-        color: #000000 !important;
-      }
-
-      header:hover #utility-bar {
-        border-bottom-color: rgba(0, 0, 0, 0.08) !important;
-      }
-    }
-
-    header.scrolled {
-      background-color: rgba(255,255,255,0.97) !important;
-      backdrop-filter: blur(20px) !important;
-      -webkit-backdrop-filter: blur(20px) !important;
+      background-color: #ffffff !important;
       color: #000000 !important;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
-      box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
     }
 
-    header.scrolled #utility-bar,
-    header.scrolled #promo-banner,
-    header.scrolled #logo-row {
+    header::before,
+    header::after {
+      opacity: 0 !important;
+    }
+
+    header .logo-text,
+    header .scrolled-logo-text {
+      color: #000000 !important;
+    }
+
+    header .nav-link {
+      color: #000000 !important;
+    }
+
+    header .nav-link:hover {
+      color: #000000 !important;
+    }
+
+    header .material-symbols-outlined {
+      color: #000000 !important;
+    }
+
+    header .utility-link {
+      color: #000000 !important;
+    }
+
+    header #utility-bar {
+      border-bottom-color: rgba(0, 0, 0, 0.1) !important;
+    }
+
+    /* --- Collapsed scrolled state --- */
+    header.scrolled {
+      background-color: #ffffff !important;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    }
+
+    header.scrolled #utility-bar {
       height: 0;
       padding-top: 0;
       padding-bottom: 0;
       opacity: 0;
       overflow: hidden;
-      margin-bottom: 0;
       border-bottom-width: 0;
+    }
+
+    header.scrolled #promo-banner {
+      height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+
+    header.scrolled #logo-row {
+      height: 0;
+      opacity: 0;
+      overflow: hidden;
+      margin-bottom: 0;
+      padding: 0;
     }
 
     header.scrolled #scrolled-logo {
@@ -217,6 +205,7 @@
       font-size: 14px !important;
       letter-spacing: 0.05em !important;
       font-weight: 400 !important;
+      text-transform: none;
       padding-bottom: 3px;
       cursor: pointer;
       text-decoration: none;
@@ -236,8 +225,7 @@
       transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    .nav-link:hover::after,
-    .nav-link.active::after {
+    .nav-link:hover::after {
       transform: scaleX(1);
     }
 
@@ -246,6 +234,7 @@
       font-size: 14px;
       letter-spacing: 0.05em;
       font-weight: 400;
+      text-transform: none;
       text-decoration: none;
       transition: color 0.2s ease, opacity 0.2s ease;
     }
@@ -254,132 +243,75 @@
       opacity: 0.7;
     }
 
-    /* ========================================
-           OBSIDIAN METALLIC LUXURY DESIGN SYSTEM
-           Canvas: #050505 Pitch Black
-           Accent: #C5A059 / #D4AF37 Brushed Gold
-           ======================================== */
-    .bg-obsidian-page {
-      background-color: #050505;
-    }
-
-    .text-gold-gradient {
-      background: linear-gradient(135deg, #FFF0C2 0%, #D4AF37 50%, #A47E24 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .bg-gold-metallic {
-      background: linear-gradient(135deg, #E5C158 0%, #C5A059 50%, #9E7B3B 100%);
-    }
-
-    .bg-gold-metallic:hover {
-      background: linear-gradient(135deg, #F3D068 0%, #D4AF37 50%, #B08B46 100%);
-      box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
-    }
-
-    .border-gold-glow {
-      border-color: rgba(197, 160, 89, 0.25);
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .border-gold-glow:hover {
-      border-color: rgba(212, 175, 55, 0.6);
-      box-shadow: 0 0 30px rgba(197, 160, 89, 0.12);
-    }
-
-    /* 3D Photorealistic Obsidian & Brushed Gold Digital Member Pass */
-    .obsidian-gold-card {
+    /* Glassmorphism Digital Member Card */
+    .frosted-glass-card {
       position: relative;
-      background: linear-gradient(135deg, #181612 0%, #070707 35%, #15130f 70%, #050505 100%);
-      border: 1px solid rgba(212, 175, 55, 0.45);
-      border-right-color: rgba(212, 175, 55, 0.25);
-      border-bottom-color: rgba(212, 175, 55, 0.2);
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 
-                  inset 0 1px 1px rgba(255, 240, 194, 0.35),
-                  0 0 30px rgba(197, 160, 89, 0.12);
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-right-color: rgba(255, 255, 255, 0.05);
+      border-bottom-color: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45), 
+                  inset 0 1px 0 rgba(255, 255, 255, 0.15);
       border-radius: 20px;
       overflow: hidden;
-      transition: transform 0.12s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+      transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
       transform-style: preserve-3d;
       perspective: 1000px;
       width: 100%;
-      max-width: 420px;
+      max-width: 380px;
       aspect-ratio: 1.586;
     }
 
-    .obsidian-gold-card::before {
+    /* Metallic reflection flare line */
+    .frosted-glass-card::before {
       content: '';
       position: absolute;
       inset: 0;
       background: linear-gradient(
         135deg,
-        rgba(212, 175, 55, 0.18) 0%,
-        rgba(255, 255, 255, 0) 45%,
-        rgba(212, 175, 55, 0.08) 100%
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 0.03) 100%
       );
       pointer-events: none;
       z-index: 1;
     }
 
-    /* Dynamic Glare Lens */
+    /* Glare overlay */
     .card-glare {
       position: absolute;
       inset: 0;
       background: radial-gradient(
         circle at var(--glare-x, 50%) var(--glare-y, 50%),
-        rgba(255, 235, 170, 0.32) 0%,
-        rgba(255, 255, 255, 0) 65%
+        rgba(255, 255, 255, 0.28) 0%,
+        rgba(255, 255, 255, 0) 60%
       );
-      mix-blend-mode: color-dodge;
+      mix-blend-mode: overlay;
       pointer-events: none;
       opacity: 0;
       transition: opacity 0.3s ease;
       z-index: 2;
     }
 
-    .obsidian-gold-card:hover .card-glare {
+    .frosted-glass-card:hover .card-glare {
       opacity: 1;
     }
-
-    /* Micro Metallic Shimmer Animation */
-    .shimmer-line {
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 60%;
-      height: 100%;
-      background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255, 240, 194, 0.12) 50%,
-        transparent 100%
-      );
-      transform: skewX(-25deg);
-      animation: metallicShimmer 6s infinite ease-in-out;
-      pointer-events: none;
-      z-index: 3;
-    }
-
-    @keyframes metallicShimmer {
-      0% { left: -100%; }
-      30% { left: 200%; }
-      100% { left: 200%; }
-    }
-  </style>
   </style>
 </head>
 
-<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden">
-  <!-- TopNavBar -->
+<body
+  class="bg-background text-on-background font-body-md antialiased overflow-x-hidden pt-[180px] md:pt-[240px] lg:pt-[260px] scrolled-pt">
+  <!-- TopNavBar (Swarovski-Exact Layout) -->
   <header id="main-header"
-    class="fixed top-0 w-full z-50 transition-all duration-500 bg-transparent text-white border-b border-transparent">
+    class="fixed top-0 w-full z-50 transition-all duration-500 bg-white text-black border-b border-neutral-200">
     <!-- Top Promotion Banner -->
     <div id="promo-banner"
       class="bg-black text-white text-[11px] font-medium tracking-[0.15em] py-2.5 px-4 md:px-6 flex justify-between items-center z-50 transition-all duration-300">
       <div class="flex-1 text-center select-none whitespace-normal break-words leading-relaxed">
         Join the Chempaka Club today for exclusive in-store privileges | <a href="boutiques.html"
-          class="underline underline-offset-2 hover:opacity-80 transition-opacity whitespace-nowrap">Visit Our Shah Alam Boutique</a>
+          class="underline underline-offset-2 hover:opacity-80 transition-opacity whitespace-nowrap">Visit Our Boutiques</a>
       </div>
       <button onclick="dismissPromo()"
         class="text-white hover:opacity-70 transition-opacity bg-transparent border-none cursor-pointer p-0 ml-4"
@@ -391,25 +323,25 @@
 
     <!-- Utility Bar -->
     <div id="utility-bar"
-      class="hidden lg:grid grid-cols-3 items-center py-1.5 px-12 transition-all duration-300 overflow-hidden border-b border-white/10 transition-colors duration-300">
+      class="hidden lg:grid grid-cols-3 items-center py-2 px-16 transition-all duration-300 overflow-hidden border-b border-neutral-100">
       <div class="flex justify-start items-center">
-        <a href="boutiques.html" class="utility-link text-white transition-colors duration-300 flex items-center gap-1.5 hover:opacity-75">
+        <a href="boutiques.html" class="utility-link text-black flex items-center gap-1.5 hover:opacity-75">
           <span class="material-symbols-outlined text-[18px]"
             style="font-variation-settings: 'wght' 300;">location_on</span>
-          Shah Alam Flagship
+          Stores
         </a>
       </div>
       <div class="utility-link text-neutral-500 select-none text-center text-xs">
-        Chempaka Gold Exchange &amp; Valuation Available at Shah Alam Boutique
+        Chempaka Gold Exchange &amp; Valuation Available in Boutiques
       </div>
       <div class="flex justify-end items-center gap-6">
-        <a href="membership.html" class="utility-link text-white transition-colors duration-300 flex items-center gap-1.5 hover:opacity-75">
+        <a href="membership.html" class="utility-link text-black flex items-center gap-1.5 hover:opacity-75">
           <span class="material-symbols-outlined text-[18px]"
             style="font-variation-settings: 'wght' 300;">person_outline</span>
           Login
         </a>
         <a href="boutiques.html#appointment-booking"
-          class="utility-link text-white transition-colors duration-300 flex items-center gap-1.5 hover:opacity-75">
+          class="utility-link text-black flex items-center gap-1.5 hover:opacity-75">
           <span class="material-symbols-outlined text-[18px]"
             style="font-variation-settings: 'wght' 300;">calendar_month</span>
           Book Appointment
@@ -418,12 +350,12 @@
     </div>
 
     <!-- Main Navigation Container -->
-    <div id="navbar-container" class="relative transition-all duration-500 py-2 px-5 md:px-6 lg:px-12">
+    <div id="navbar-container" class="relative transition-all duration-500 py-4 px-5 md:px-6 lg:px-16">
       <div id="nav-desktop-layout" class="hidden md:flex flex-col transition-all duration-500">
         <!-- Row 1: Centered Logo Wordmark -->
-        <div id="logo-row" class="flex justify-center pt-2 pb-2 transition-all duration-500">
+        <div id="logo-row" class="flex justify-center pt-3 pb-3 transition-all duration-500">
           <a href="index.html"
-            class="font-serif tracking-[0.02em] text-[28px] md:text-[36px] lg:text-[44px] leading-none uppercase font-normal logo-text text-white transition-colors duration-300"
+            class="font-serif tracking-[0.02em] text-[36px] md:text-[56px] lg:text-[110px] leading-none uppercase font-normal logo-text text-black"
             style="font-family: 'Cinzel', serif; letter-spacing: 0.02em;">CHEMPAKA</a>
         </div>
 
@@ -433,34 +365,34 @@
           <div class="col-span-3 lg:col-span-2 flex justify-start items-center">
             <div id="scrolled-logo" class="opacity-0 w-0 overflow-hidden transition-all duration-500 shrink-0">
               <a href="index.html"
-                class="font-serif tracking-[0.02em] text-[18px] uppercase font-normal text-white transition-colors duration-300 scrolled-logo-text whitespace-nowrap"
+                class="font-serif tracking-[0.02em] text-[18px] uppercase font-normal text-black scrolled-logo-text whitespace-nowrap"
                 style="font-family: 'Cinzel', serif; letter-spacing: 0.02em;">CHEMPAKA</a>
             </div>
           </div>
 
           <!-- Center: Navigation Links -->
           <div class="col-span-6 lg:col-span-8 flex justify-center">
-            <nav class="flex items-center gap-4 lg:gap-8 xl:gap-12 transition-all duration-300"
+            <nav class="flex items-center gap-3 lg:gap-5 xl:gap-10 transition-all duration-300"
               aria-label="Main navigation">
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="index.html#sale">Sale</a>
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="showcase.html">Showcase</a>
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="about.html">Journal</a>
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80 font-bold active" href="membership.html">Membership</a>
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="boutiques.html">Boutique</a>
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="boutiques.html#appointment-booking">Appointment</a>
+              <a class="nav-link text-black hover:opacity-80" href="index.html#sale">Sale</a>
+              <a class="nav-link text-black hover:opacity-80" href="index.html#our-collection">Showcase</a>
+              <a class="nav-link text-black hover:opacity-80" href="about.html">Journal</a>
+              <a class="nav-link text-black hover:opacity-80 font-bold" href="membership.html">Membership</a>
+              <a class="nav-link text-black hover:opacity-80" href="boutiques.html">Boutiques</a>
+              <a class="nav-link text-black hover:opacity-80" href="boutiques.html#appointment-booking">Appointment</a>
 
               <span
                 class="inline-nav-divider w-[1px] h-4 bg-neutral-200 select-none pointer-events-none transition-all duration-300"></span>
 
               <div class="inline-nav-icons flex items-center gap-1 transition-all duration-300">
                 <button onclick="toggleSearch(true)"
-                  class="header-icon hover:opacity-65 transition-opacity bg-transparent border-none text-white transition-colors duration-300 p-0 cursor-pointer flex items-center justify-center"
+                  class="header-icon hover:opacity-65 transition-opacity bg-transparent border-none text-black p-0 cursor-pointer flex items-center justify-center"
                   aria-label="Search">
                   <span class="material-symbols-outlined text-[22px]"
                     style="font-variation-settings: 'wght' 300;">search</span>
                 </button>
                 <a href="membership.html"
-                  class="header-icon hover:opacity-65 transition-opacity flex items-center justify-center text-white transition-colors duration-300"
+                  class="header-icon hover:opacity-65 transition-opacity flex items-center justify-center text-black"
                   aria-label="Wishlist">
                   <span class="material-symbols-outlined text-[22px]"
                     style="font-variation-settings: 'wght' 300;">favorite_border</span>
@@ -474,19 +406,19 @@
             <div
               class="scrolled-nav-icons opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-1">
               <button onclick="toggleSearch(true)"
-                class="header-icon hover:opacity-65 transition-opacity bg-transparent border-none text-white transition-colors duration-300 p-0 cursor-pointer flex items-center justify-center"
+                class="header-icon hover:opacity-65 transition-opacity bg-transparent border-none text-black p-0 cursor-pointer flex items-center justify-center"
                 aria-label="Search">
                 <span class="material-symbols-outlined text-[22px]"
                   style="font-variation-settings: 'wght' 300;">search</span>
               </button>
               <a href="membership.html"
-                class="header-icon hover:opacity-65 transition-opacity flex items-center justify-center text-white transition-colors duration-300"
+                class="header-icon hover:opacity-65 transition-opacity flex items-center justify-center text-black"
                 aria-label="Wishlist">
                 <span class="material-symbols-outlined text-[22px]"
                   style="font-variation-settings: 'wght' 300;">favorite_border</span>
               </a>
               <a href="membership.html"
-                class="header-icon hover:opacity-65 transition-opacity flex items-center justify-center text-white transition-colors duration-300"
+                class="header-icon hover:opacity-65 transition-opacity flex items-center justify-center text-black"
                 aria-label="Account">
                 <span class="material-symbols-outlined text-[22px]"
                   style="font-variation-settings: 'wght' 300;">person_outline</span>
@@ -499,14 +431,14 @@
       <!-- Mobile Layout -->
       <div id="nav-mobile-layout" class="flex md:hidden justify-between items-center w-full">
         <button onclick="toggleMobileDrawer(true)"
-          class="focus:outline-none bg-transparent border-none text-white transition-colors duration-300 p-0 cursor-pointer" aria-label="Open menu">
+          class="focus:outline-none bg-transparent border-none text-black p-0 cursor-pointer" aria-label="Open menu">
           <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'wght' 300;">menu</span>
         </button>
-        <a href="index.html" class="font-serif tracking-[0.02em] text-[20px] uppercase font-normal logo-text text-white transition-colors duration-300"
+        <a href="index.html" class="font-serif tracking-[0.02em] text-[20px] uppercase font-normal logo-text text-black"
           style="font-family: 'Cinzel', serif; letter-spacing: 0.02em;">CHEMPAKA</a>
         <div class="flex items-center gap-1">
           <button onclick="toggleSearch(true)"
-            class="bg-transparent border-none text-white transition-colors duration-300 p-0 cursor-pointer flex items-center justify-center w-10 h-10"
+            class="bg-transparent border-none text-black p-0 cursor-pointer flex items-center justify-center w-10 h-10"
             aria-label="Search">
             <span class="material-symbols-outlined text-[22px]"
               style="font-variation-settings: 'wght' 300;">search</span>
@@ -536,7 +468,7 @@
       <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
         href="index.html#sale" onclick="toggleMobileDrawer(false)">Sale</a>
       <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
-        href="showcase.html" onclick="toggleMobileDrawer(false)">Showcase</a>
+        href="index.html#our-collection" onclick="toggleMobileDrawer(false)">Showcase</a>
       <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
         href="about.html" onclick="toggleMobileDrawer(false)">Journal</a>
       <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
@@ -584,159 +516,120 @@
     </div>
   </div>
 
-  <main class="bg-[#050505] text-white">
-    <!-- Obsidian Metallic Hero Section -->
-    <section class="relative bg-[#050505] text-white min-h-[92dvh] grid grid-cols-1 md:grid-cols-2 overflow-hidden">
-      <!-- Background metallic glow circles -->
-      <div class="absolute inset-0 pointer-events-none z-0">
-        <div class="absolute -top-[10%] -left-[10%] w-[500px] h-[500px] rounded-full bg-[#C5A059] opacity-10 blur-[140px]"></div>
-        <div class="absolute top-[40%] right-[0%] w-[600px] h-[600px] rounded-full bg-[#D4AF37] opacity-5 blur-[160px]"></div>
-      </div>
-
-      <!-- Left: Editorial Typography -->
-      <div class="w-full flex flex-col justify-center px-6 md:px-16 py-28 md:py-0 relative z-10">
-        <div class="max-w-xl space-y-8">
-          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/5 border border-[#C5A059]/30 text-[#D4AF37]">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse"></span>
-            <span class="font-mono text-[10px] uppercase tracking-[0.25em] font-semibold">Chempaka Club</span>
-          </div>
-
-          <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-normal leading-[1.02] tracking-tight text-white" style="font-family: 'Playfair Display', serif;">
-            The Inner <br /><span class="text-gold-gradient italic font-normal">Circle</span>
+  <main>
+    <!-- Hero Section -->
+    <section class="relative bg-[#0D141C] text-white min-h-[90dvh] grid grid-cols-1 md:grid-cols-2">
+      <!-- Left: Typography -->
+      <div class="w-full flex flex-col justify-center px-margin-mobile md:px-margin-desktop py-24 md:py-0 relative z-10">
+        <div class="max-w-xl">
+          <h1 class="font-serif text-4xl md:text-6xl lg:text-8xl font-normal leading-[1.05] tracking-tight text-white mb-6" style="font-family: 'Playfair Display', serif;">
+            The Inner <br />Glow
           </h1>
-
-          <p class="font-sans text-white/70 text-base md:text-lg leading-relaxed font-light max-w-md">
-            Welcome to a curated realm of Malaysian gold craftsmanship, private boutique lounges, and bespoke privilege.
+          <p class="font-sans text-white/70 text-sm md:text-base leading-relaxed font-light max-w-sm mb-12">
+            Welcome to a curated circle of heritage, craftsmanship, and personal luxury.
           </p>
-
-          <div class="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-            <a href="#club-registration" class="inline-flex items-center justify-center gap-3 bg-gold-metallic text-black px-8 py-4 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-lg shadow-lg">
-              <span>Apply for Pass</span>
-              <span class="material-symbols-outlined text-[16px]">arrow_downward</span>
-            </a>
-            <a href="#club-benefits" class="inline-flex items-center justify-center gap-3 border border-white/20 hover:border-[#C5A059] text-white hover:text-[#D4AF37] px-8 py-4 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-lg bg-white/5">
-              <span>Explore Privileges</span>
-            </a>
-          </div>
+          <a href="#club-registration" class="inline-flex items-center gap-3 bg-white hover:bg-neutral-200 text-black px-8 py-4 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-sm w-max">
+            <span>Request Membership</span>
+            <span class="material-symbols-outlined text-[16px]">arrow_downward</span>
+          </a>
         </div>
       </div>
       
-      <!-- Right: High-Fashion Jewelry Crafts Imagery -->
-      <div class="w-full min-h-[50vh] md:min-h-[92dvh] h-full relative">
-        <div class="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-transparent z-10 pointer-events-none hidden md:block"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent z-10 pointer-events-none md:hidden"></div>
-        <img src="assets/images/hero_model_jewelry.jpg" alt="Chempaka High Jewelry Membership" class="absolute inset-0 w-full h-full object-cover object-center" />
+      <!-- Right: Image -->
+      <div class="w-full min-h-[50vh] md:min-h-[90dvh] h-full relative">
+        <div class="absolute inset-0 bg-black/10 z-10 pointer-events-none"></div>
+        <img src="assets/images/hero_model_jewelry.jpg" alt="Chempaka Fine Jewelry" class="absolute inset-0 w-full h-full object-cover" />
       </div>
     </section>
 
-    <!-- Obsidian Privileges Bento Section -->
-    <section id="club-benefits" class="w-full bg-[#080808] py-24 lg:py-36 px-6 md:px-16 border-t border-white/10 relative scroll-mt-20">
-      <div class="max-w-container-max mx-auto space-y-20">
-        
+    <!-- Unified Benefits Section -->
+    <section id="club-benefits" class="w-full bg-[#EAE7E2] py-24 lg:py-32 px-margin-mobile md:px-margin-desktop scroll-mt-20">
+      <div class="max-w-container-max mx-auto space-y-16">
         <!-- Section Header -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/10 pb-10">
-          <div class="max-w-2xl space-y-3">
-            <span class="font-mono text-xs text-[#C5A059] uppercase tracking-[0.2em]">01 — Exclusive Privileges</span>
-            <h2 class="font-serif text-4xl md:text-6xl font-normal text-white leading-tight" style="font-family: 'Playfair Display', serif;">
-              Curated Privileges
-            </h2>
-          </div>
-          <p class="font-sans text-white/60 text-sm md:text-base font-light max-w-md leading-relaxed">
-            Every registered member steps into a lifetime of bespoke services, instant welcome upgrades, and private boutique consultations.
+        <div class="text-left max-w-2xl">
+          <h2 class="font-serif text-4xl md:text-6xl font-normal text-black leading-tight mb-6" style="font-family: 'Playfair Display', serif;">
+            Privileges
+          </h2>
+          <p class="font-sans text-neutral-600 text-sm md:text-base font-light max-w-md">
+            Every registered member steps into a lifetime of curated services, luxury upgrades, and private boutique consultations.
           </p>
         </div>
         
-        <!-- High-Contrast Obsidian Bento Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Asymmetric Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           
-          <!-- Bento 1: Featured Welcome Reward (Spans 2 Cols) -->
-          <div class="md:col-span-2 relative min-h-[380px] md:min-h-[420px] rounded-2xl overflow-hidden border border-[#C5A059]/30 group hover:border-[#D4AF37] transition-all duration-500">
-            <img src="assets/images/hero_necklace.jpg" alt="Welcome Voucher Reward" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent"></div>
-            <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
-              <div class="w-12 h-12 rounded-xl bg-[#D4AF37]/20 border border-[#D4AF37]/40 text-[#D4AF37] flex items-center justify-center mb-6 backdrop-blur-md">
-                <span class="material-symbols-outlined text-[24px]">stars</span>
+          <!-- Row 1: Featured 2/3 Image Card + 1/3 Dark Mode Card -->
+          <div class="md:col-span-2 lg:col-span-2 relative min-h-[350px] md:min-h-[400px] rounded-lg overflow-hidden group">
+            <img src="assets/images/hero_necklace.jpg" alt="Welcome Reward" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute inset-0 p-8 flex flex-col justify-end">
+              <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'wght' 300;">stars</span>
               </div>
-              <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-[#C5A059] mb-1">Instant Activation</span>
-              <h3 class="font-serif text-3xl md:text-4xl font-normal text-white mb-3" style="font-family: 'Playfair Display', serif;">10% Welcome Reward</h3>
-              <p class="font-sans text-white/70 text-sm md:text-base font-light max-w-lg leading-relaxed">
-                Receive an instant voucher upon registration, redeemable toward your next fine gold or handcrafted jewelry piece at any Chempaka boutique.
+              <h3 class="font-serif text-2xl md:text-3xl font-normal text-white mb-3" style="font-family: 'Playfair Display', serif;">10% Welcome Reward</h3>
+              <p class="font-sans text-white/80 text-sm font-light max-w-md">
+                Receive an exclusive voucher immediately upon approval, valid for your next in-store gold or jewelry purchase at any Chempaka boutique.
               </p>
             </div>
           </div>
           
-          <!-- Bento 2: VIP Lounge Access -->
-          <div class="md:col-span-1 bg-[#101010] rounded-2xl p-8 md:p-10 border border-white/10 hover:border-[#C5A059]/50 flex flex-col justify-between group transition-all duration-500 min-h-[350px]">
-            <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-[#D4AF37] flex items-center justify-center transition-colors group-hover:bg-[#D4AF37] group-hover:text-black">
-              <span class="material-symbols-outlined text-[24px]">local_cafe</span>
+          <div class="md:col-span-1 lg:col-span-1 bg-[#0D141C] rounded-lg p-8 md:p-10 flex flex-col justify-between group min-h-[300px] md:min-h-[400px]">
+            <div class="w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center transition-colors group-hover:bg-white group-hover:text-black">
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'wght' 300;">local_cafe</span>
             </div>
-            <div class="space-y-3">
-              <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-white/40">Private Access</span>
-              <h3 class="font-serif text-2xl font-normal text-white" style="font-family: 'Playfair Display', serif;">VIP Showroom Lounge</h3>
+            <div>
+              <h3 class="font-serif text-2xl font-normal text-white mb-3" style="font-family: 'Playfair Display', serif;">VIP Showroom</h3>
               <p class="font-sans text-white/60 text-sm font-light leading-relaxed">
-                Priority reservations for our private boutique lounges with complimentary artisan refreshments and dedicated concierge attention.
+                Enjoy priority booking and access to our private, air-conditioned boutique lounges with complimentary gourmet refreshments.
               </p>
             </div>
           </div>
           
-          <!-- Bento 3: Birthday Celebration -->
-          <div class="md:col-span-1 bg-[#101010] rounded-2xl p-8 md:p-10 border border-white/10 hover:border-[#C5A059]/50 flex flex-col justify-between group transition-all duration-500 min-h-[320px]">
-            <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-[#D4AF37] flex items-center justify-center transition-colors group-hover:bg-[#D4AF37] group-hover:text-black">
-              <span class="material-symbols-outlined text-[24px]">cake</span>
+          <!-- Row 2: 3-column minimal cards -->
+          <div class="md:col-span-1 lg:col-span-1 bg-white rounded-lg p-8 md:p-10 border border-neutral-200 hover:border-black transition-colors duration-300">
+            <div class="w-10 h-10 mb-8 flex items-center text-black">
+              <span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'wght' 300;">cake</span>
             </div>
-            <div class="space-y-3">
-              <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-white/40">Anniversary Gift</span>
-              <h3 class="font-serif text-2xl font-normal text-white" style="font-family: 'Playfair Display', serif;">Birthday Privileges</h3>
-              <p class="font-sans text-white/60 text-sm font-light leading-relaxed">
-                Celebrate your birth month with private styling consultations and an exclusive birthday voucher from seasonal collections.
-              </p>
-            </div>
+            <h3 class="font-serif text-xl font-normal text-black mb-3" style="font-family: 'Playfair Display', serif;">Birthday Gifts</h3>
+            <p class="font-sans text-neutral-600 text-sm font-light leading-relaxed">
+              Celebrate your birth month with styling consultations and a luxury gift voucher from our seasonal collections.
+            </p>
           </div>
           
-          <!-- Bento 4: Lifetime Ultrasonic Care -->
-          <div class="md:col-span-1 bg-[#101010] rounded-2xl p-8 md:p-10 border border-white/10 hover:border-[#C5A059]/50 flex flex-col justify-between group transition-all duration-500 min-h-[320px]">
-            <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-[#D4AF37] flex items-center justify-center transition-colors group-hover:bg-[#D4AF37] group-hover:text-black">
-              <span class="material-symbols-outlined text-[24px]">cleaning_services</span>
+          <div class="md:col-span-1 lg:col-span-1 bg-white rounded-lg p-8 md:p-10 border border-neutral-200 hover:border-black transition-colors duration-300">
+            <div class="w-10 h-10 mb-8 flex items-center text-black">
+              <span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'wght' 300;">cleaning_services</span>
             </div>
-            <div class="space-y-3">
-              <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-white/40">Complimentary Maintenance</span>
-              <h3 class="font-serif text-2xl font-normal text-white" style="font-family: 'Playfair Display', serif;">Lifetime Gold Care</h3>
-              <p class="font-sans text-white/60 text-sm font-light leading-relaxed">
-                Bring your Chempaka gold pieces back anytime for complimentary ultrasonic deep cleaning and expert prong inspection.
-              </p>
-            </div>
+            <h3 class="font-serif text-xl font-normal text-black mb-3" style="font-family: 'Playfair Display', serif;">Lifetime Care</h3>
+            <p class="font-sans text-neutral-600 text-sm font-light leading-relaxed">
+              Bring your Chempaka gold back anytime for complimentary cleaning and expert ultrasonic inspection.
+            </p>
           </div>
           
-          <!-- Bento 5: Gold Valuation -->
-          <div class="md:col-span-1 bg-[#101010] rounded-2xl p-8 md:p-10 border border-white/10 hover:border-[#C5A059]/50 flex flex-col justify-between group transition-all duration-500 min-h-[320px]">
-            <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-[#D4AF37] flex items-center justify-center transition-colors group-hover:bg-[#D4AF37] group-hover:text-black">
-              <span class="material-symbols-outlined text-[24px]">balance</span>
+          <div class="md:col-span-1 lg:col-span-1 bg-white rounded-lg p-8 md:p-10 border border-neutral-200 hover:border-black transition-colors duration-300">
+            <div class="w-10 h-10 mb-8 flex items-center text-black">
+              <span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'wght' 300;">balance</span>
             </div>
-            <div class="space-y-3">
-              <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-white/40">Valuation & Exchange</span>
-              <h3 class="font-serif text-2xl font-normal text-white" style="font-family: 'Playfair Display', serif;">Priority Trade-In</h3>
-              <p class="font-sans text-white/60 text-sm font-light leading-relaxed">
-                Access real-time gold market valuation. Members receive guaranteed preferential exchange rates on all gold trade-ins.
-              </p>
-            </div>
+            <h3 class="font-serif text-xl font-normal text-black mb-3" style="font-family: 'Playfair Display', serif;">Gold Valuation</h3>
+            <p class="font-sans text-neutral-600 text-sm font-light leading-relaxed">
+              Access exclusive, real-time gold exchange rates. Members receive priority service for gold trade-ins.
+            </p>
           </div>
           
-          <!-- Bento 6: Bespoke Sizing (Full Width Banner) -->
-          <div class="md:col-span-2 lg:col-span-3 bg-gradient-to-r from-[#14120e] via-[#0b0a08] to-[#14120e] rounded-2xl p-8 md:p-12 border border-[#C5A059]/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-            <div class="flex-1 max-w-2xl space-y-4">
-              <div class="inline-flex items-center gap-2 text-[#D4AF37]">
-                <span class="material-symbols-outlined text-[24px]">design_services</span>
-                <span class="font-mono text-[11px] uppercase tracking-[0.2em]">Artisan Consultation</span>
+          <!-- Row 3: Full Width -->
+          <div class="md:col-span-2 lg:col-span-3 bg-[#A48E7E]/10 rounded-lg p-8 md:p-12 border border-[#A48E7E]/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            <div class="flex-1 max-w-xl">
+              <div class="w-10 h-10 mb-6 flex items-center text-[#A48E7E]">
+                <span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'wght' 300;">design_services</span>
               </div>
-              <h3 class="font-serif text-3xl font-normal text-white" style="font-family: 'Playfair Display', serif;">Bespoke Sizing & Custom Atelier</h3>
-              <p class="font-sans text-white/70 text-sm md:text-base font-light leading-relaxed">
-                Enjoy priority scheduling and direct design assistance for custom engagement mountings, ring sizing, and heirloom re-design with master artisans.
+              <h3 class="font-serif text-2xl font-normal text-black mb-3" style="font-family: 'Playfair Display', serif;">Bespoke Sizing</h3>
+              <p class="font-sans text-neutral-700 text-sm font-light leading-relaxed">
+                Enjoy priority scheduling and design assistance for custom engagement settings, and sizing alterations directly with our master artisans.
               </p>
             </div>
             <div class="shrink-0">
-              <a href="boutiques.html#appointment-booking" class="inline-flex items-center gap-3 bg-gold-metallic text-black px-8 py-4 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-lg shadow-lg">
-                <span>Book Atelier Session</span>
-                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              <a href="boutiques.html#appointment-booking" class="inline-flex items-center gap-2 border border-black hover:bg-black hover:text-white px-6 py-3 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-sm text-black">
+                Book Consultation
               </a>
             </div>
           </div>
@@ -745,149 +638,144 @@
       </div>
     </section>
 
-    <!-- Registration & Interactive 3D Card Portal Section -->
-    <section id="club-registration" class="w-full bg-[#050505] py-24 lg:py-36 px-6 md:px-16 border-t border-white/10 relative scroll-mt-20 overflow-hidden">
-      <!-- Background ambient glow -->
+    <!-- Registration & Live Preview Section -->
+    <section id="club-registration" class="w-full bg-[#0D141C] py-20 lg:py-32 px-margin-mobile md:px-margin-desktop scroll-mt-24 relative overflow-hidden">
+      <!-- Background highlights -->
       <div class="absolute inset-0 pointer-events-none">
-        <div class="absolute top-[20%] left-[10%] w-[450px] h-[450px] rounded-full bg-[#C5A059] opacity-10 blur-[150px]"></div>
-        <div class="absolute bottom-[20%] right-[10%] w-[550px] h-[550px] rounded-full bg-[#D4AF37] opacity-5 blur-[180px]"></div>
+        <div class="absolute top-[20%] left-[10%] w-[350px] h-[350px] rounded-full bg-[#2B3E56] opacity-30 blur-[100px]"></div>
+        <div class="absolute bottom-[20%] right-[10%] w-[450px] h-[450px] rounded-full bg-[#A48E7E] opacity-10 blur-[130px]"></div>
       </div>
 
-      <div class="max-w-container-max mx-auto relative z-10 space-y-16">
-        
-        <!-- Workspace Header & Tab Selector -->
-        <div class="text-center max-w-2xl mx-auto space-y-6">
-          <span class="font-mono text-xs text-[#C5A059] uppercase tracking-[0.25em]">02 — Membership Portal</span>
-          <h2 class="font-serif text-4xl md:text-6xl font-normal text-white" style="font-family: 'Playfair Display', serif;">
-            Digital Pass Portal
-          </h2>
-          
-          <!-- Dual-Tab Navigation -->
-          <div class="inline-flex p-1.5 rounded-xl bg-white/5 border border-white/10">
-            <button id="btn-register-tab" onclick="switchFormTab('register')" class="px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-widest bg-[#C5A059] text-black shadow-lg transition-all duration-300">
-              Apply For Membership
-            </button>
-            <button id="btn-login-tab" onclick="switchFormTab('login')" class="px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-widest text-white/60 hover:text-white transition-all duration-300">
-              Access Member Pass
-            </button>
-          </div>
+      <div class="max-w-container-max mx-auto relative z-10">
+        <!-- Tab Selector for Registration Page -->
+        <div class="flex justify-center gap-6 mb-12 border-b border-white/10 pb-4">
+          <button id="btn-register-tab" onclick="switchFormTab('register')" class="text-sm font-bold uppercase tracking-widest border-b-2 border-[#A48E7E] text-white pb-2 transition-all">
+            Apply For Membership
+          </button>
+          <button id="btn-login-tab" onclick="switchFormTab('login')" class="text-sm font-bold uppercase tracking-widest border-b-2 border-transparent text-white/50 hover:text-white pb-2 transition-all">
+            Member Card Login
+          </button>
         </div>
 
-        <div id="registration-workspace" class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div id="registration-workspace" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          <!-- Left Column: Form & Access Workspaces -->
+          <!-- Left Column: Registration Form & Login Form -->
           <div class="lg:col-span-7 space-y-8">
-            
-            <!-- 1. Application Form Container -->
-            <div id="registration-form-container" class="bg-[#0C0C0C] border border-white/10 rounded-2xl p-8 md:p-12 shadow-2xl transition-all duration-500">
-              <div class="space-y-3 mb-10 border-b border-white/10 pb-6">
-                <span class="text-[10px] font-mono tracking-[0.2em] uppercase text-[#C5A059]">Chempaka Club Registration</span>
-                <h3 class="font-serif text-3xl text-white font-normal">Personal Information</h3>
-                <p class="font-sans text-white/60 text-xs font-light leading-relaxed">
-                  Complete your credentials below. As you type your name, watch your signature digital pass update in real-time.
+            <!-- Apply Form Container -->
+            <div id="registration-form-container" class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-2xl transition-all duration-500">
+              <div class="space-y-2 mb-8">
+                <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-[#A48E7E]">Digital Application</span>
+                <h3 class="font-serif text-3xl text-white font-normal">Apply for Chempaka Club</h3>
+                <p class="font-sans text-white/60 text-xs font-light">
+                  Please complete the form below. Your application will be sent to the boutique admin for verification and approval.
                 </p>
               </div>
               
               <form id="membership-form" onsubmit="submitMembershipForm(event)" class="space-y-6">
-                <!-- Full Name (Synchronized Live with Member Card) -->
-                <div class="space-y-2">
-                  <label for="member-name" class="block text-xs font-mono uppercase tracking-widest text-[#C5A059]">
-                    Full Name (As per NRIC)
+                <!-- Name -->
+                <div class="relative">
+                  <input type="text" id="member-name" required placeholder=" "
+                    class="peer w-full bg-white/5 border-b border-[#A48E7E]/30 focus:border-[#A48E7E] focus:outline-none py-3.5 px-4 text-sm text-white placeholder-transparent transition-all duration-300 rounded-t-lg focus:bg-white/10" />
+                  <label for="member-name"
+                    class="absolute left-4 top-3.5 text-xs text-white/40 peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-focus:top-1.5 peer-focus:text-xs peer-focus:text-[#A48E7E] transition-all pointer-events-none uppercase tracking-widest font-semibold">
+                    Full Name
                   </label>
-                  <input type="text" id="member-name" required placeholder="e.g. NURUL AIN BINTI AHMAD"
-                    oninput="syncCardName(this.value)"
-                    class="w-full bg-white/5 border border-white/15 focus:border-[#D4AF37] focus:outline-none py-3.5 px-4 text-sm text-white placeholder-white/20 transition-all duration-300 rounded-lg focus:ring-1 focus:ring-[#D4AF37]" />
-                  <p id="error-name" class="text-rose-400 text-[10px] uppercase font-bold tracking-widest mt-1 hidden">
+                  <p id="error-name" class="text-rose-500 text-[10px] uppercase font-bold tracking-widest mt-1.5 hidden">
                     Please enter your full name (minimum 2 characters)
                   </p>
                 </div>
 
                 <!-- IC Number -->
-                <div class="space-y-2">
-                  <label for="member-ic" class="block text-xs font-mono uppercase tracking-widest text-white/70">
-                    Malaysian IC Number
+                <div class="relative">
+                  <input type="text" id="member-ic" required placeholder=" "
+                    class="peer w-full bg-white/5 border-b border-[#A48E7E]/30 focus:border-[#A48E7E] focus:outline-none py-3.5 px-4 text-sm text-white placeholder-transparent transition-all duration-300 rounded-t-lg focus:bg-white/10" />
+                  <label for="member-ic"
+                    class="absolute left-4 top-3.5 text-xs text-white/40 peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-focus:top-1.5 peer-focus:text-xs peer-focus:text-[#A48E7E] transition-all pointer-events-none uppercase tracking-widest font-semibold">
+                    IC Number (e.g. YYMMDD-XX-XXXX)
                   </label>
-                  <input type="text" id="member-ic" required placeholder="YYMMDD-XX-XXXX"
-                    class="w-full bg-white/5 border border-white/15 focus:border-[#D4AF37] focus:outline-none py-3.5 px-4 text-sm text-white placeholder-white/20 transition-all duration-300 rounded-lg focus:ring-1 focus:ring-[#D4AF37]" />
-                  <p id="error-ic" class="text-rose-400 text-[10px] uppercase font-bold tracking-widest mt-1 hidden">
-                    Please enter a valid 12-digit Malaysian IC number
+                  <p id="error-ic" class="text-rose-500 text-[10px] uppercase font-bold tracking-widest mt-1.5 hidden">
+                    Please enter a valid Malaysian IC number (12 digits)
                   </p>
                 </div>
 
                 <!-- Phone -->
-                <div class="space-y-2">
-                  <label for="member-phone" class="block text-xs font-mono uppercase tracking-widest text-white/70">
-                    Mobile Phone Number
+                <div class="relative">
+                  <input type="tel" id="member-phone" required placeholder=" " value="+60"
+                    class="peer w-full bg-white/5 border-b border-[#A48E7E]/30 focus:border-[#A48E7E] focus:outline-none py-3.5 px-4 text-sm text-white placeholder-transparent transition-all duration-300 rounded-t-lg focus:bg-white/10" />
+                  <label for="member-phone"
+                    class="absolute left-4 top-3.5 text-xs text-white/40 peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-focus:top-1.5 peer-focus:text-xs peer-focus:text-[#A48E7E] transition-all pointer-events-none uppercase tracking-widest font-semibold">
+                    Phone Number (e.g. +60123456789)
                   </label>
-                  <input type="tel" id="member-phone" required placeholder="+60123456789" value="+60"
-                    class="w-full bg-white/5 border border-white/15 focus:border-[#D4AF37] focus:outline-none py-3.5 px-4 text-sm text-white placeholder-white/20 transition-all duration-300 rounded-lg focus:ring-1 focus:ring-[#D4AF37]" />
-                  <p id="error-phone" class="text-rose-400 text-[10px] uppercase font-bold tracking-widest mt-1 hidden">
-                    Please enter a valid mobile number with country code
+                  <p id="error-phone" class="text-rose-500 text-[10px] uppercase font-bold tracking-widest mt-1.5 hidden">
+                    Please enter a valid phone number
                   </p>
                 </div>
 
                 <!-- Email -->
-                <div class="space-y-2">
-                  <label for="member-email" class="block text-xs font-mono uppercase tracking-widest text-white/70">
+                <div class="relative">
+                  <input type="email" id="member-email" required placeholder=" "
+                    class="peer w-full bg-white/5 border-b border-[#A48E7E]/30 focus:border-[#A48E7E] focus:outline-none py-3.5 px-4 text-sm text-white placeholder-transparent transition-all duration-300 rounded-t-lg focus:bg-white/10" />
+                  <label for="member-email"
+                    class="absolute left-4 top-3.5 text-xs text-white/40 peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-focus:top-1.5 peer-focus:text-xs peer-focus:text-[#A48E7E] transition-all pointer-events-none uppercase tracking-widest font-semibold">
                     Email Address
                   </label>
-                  <input type="email" id="member-email" required placeholder="name@domain.com"
-                    class="w-full bg-white/5 border border-white/15 focus:border-[#D4AF37] focus:outline-none py-3.5 px-4 text-sm text-white placeholder-white/20 transition-all duration-300 rounded-lg focus:ring-1 focus:ring-[#D4AF37]" />
-                  <p id="error-email" class="text-rose-400 text-[10px] uppercase font-bold tracking-widest mt-1 hidden">
+                  <p id="error-email" class="text-rose-500 text-[10px] uppercase font-bold tracking-widest mt-1.5 hidden">
                     Please enter a valid email address
                   </p>
                 </div>
 
                 <!-- Consent checkbox -->
                 <div class="flex items-start gap-3 pt-2">
-                  <input type="checkbox" id="consent-check" required class="mt-1 accent-[#C5A059] border-white/20 bg-white/5 rounded cursor-pointer w-4 h-4" />
+                  <input type="checkbox" id="consent-check" required class="mt-1 accent-[#A48E7E] border-white/20 bg-white/5 rounded cursor-pointer w-4 h-4 focus:ring-offset-0 focus:ring-[#A48E7E]" />
                   <label for="consent-check" class="text-[11px] text-white/70 leading-normal cursor-pointer select-none">
-                    I agree to the membership terms of Chempaka Trading Sdn Bhd, and consent to receive digital boutique offers and private viewing invites.
+                    I agree to the terms and privacy policy of Chempaka Trading Sdn Bhd, and consent to receive membership communications and boutique notifications.
                   </label>
                 </div>
 
                 <!-- Submit Button -->
                 <div class="pt-6">
                   <button type="submit"
-                    class="w-full bg-gold-metallic text-black py-4 px-8 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-lg shadow-xl flex items-center justify-center gap-3 group">
+                    class="w-full bg-[#A48E7E] hover:bg-[#8A6A56] text-white py-4 px-8 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-lg shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group">
                     <span>Submit Application</span>
-                    <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+                    <span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_forward</span>
                   </button>
                 </div>
               </form>
             </div>
 
-            <!-- 2. Member Pass Login Form Container -->
-            <div id="login-form-container" class="hidden bg-[#0C0C0C] border border-white/10 rounded-2xl p-8 md:p-12 shadow-2xl transition-all duration-500">
-              <div class="space-y-3 mb-10 border-b border-white/10 pb-6">
-                <span class="text-[10px] font-mono tracking-[0.2em] uppercase text-[#C5A059]">Authenticated Pass Verification</span>
-                <h3 class="font-serif text-3xl text-white font-normal">Retrieve Digital Pass</h3>
-                <p class="font-sans text-white/60 text-xs font-light leading-relaxed">
-                  Enter your registered Phone Number and IC Number below to load and unlock your active digital member pass.
+            <!-- Member Login Form Container -->
+            <div id="login-form-container" class="hidden bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-2xl transition-all duration-500">
+              <div class="space-y-2 mb-8">
+                <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-[#A48E7E]">Member Access</span>
+                <h3 class="font-serif text-3xl text-white font-normal">Retrieve Member Card</h3>
+                <p class="font-sans text-white/60 text-xs font-light">
+                  Enter your registered Phone Number and IC Number below to display your dynamic digital membership card.
                 </p>
               </div>
               
               <form id="member-login-form" onsubmit="submitMemberLogin(event)" class="space-y-6">
                 <!-- Phone -->
-                <div class="space-y-2">
-                  <label for="login-phone" class="block text-xs font-mono uppercase tracking-widest text-[#C5A059]">
-                    Registered Phone Number
+                <div class="relative">
+                  <input type="tel" id="login-phone" required placeholder=" " value="+60"
+                    class="peer w-full bg-white/5 border-b border-[#A48E7E]/30 focus:border-[#A48E7E] focus:outline-none py-3.5 px-4 text-sm text-white placeholder-transparent transition-all duration-300 rounded-t-lg focus:bg-white/10" />
+                  <label for="login-phone"
+                    class="absolute left-4 top-3.5 text-xs text-white/40 peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-focus:top-1.5 peer-focus:text-xs peer-focus:text-[#A48E7E] transition-all pointer-events-none uppercase tracking-widest font-semibold">
+                    Phone Number (e.g. +60123456789)
                   </label>
-                  <input type="tel" id="login-phone" required placeholder="+60123456789" value="+60"
-                    class="w-full bg-white/5 border border-white/15 focus:border-[#D4AF37] focus:outline-none py-3.5 px-4 text-sm text-white placeholder-white/20 transition-all duration-300 rounded-lg focus:ring-1 focus:ring-[#D4AF37]" />
-                  <p id="error-login-phone" class="text-rose-400 text-[10px] uppercase font-bold tracking-widest mt-1 hidden">
+                  <p id="error-login-phone" class="text-rose-500 text-[10px] uppercase font-bold tracking-widest mt-1.5 hidden">
                     Please enter your registered phone number
                   </p>
                 </div>
 
                 <!-- IC Number -->
-                <div class="space-y-2">
-                  <label for="login-ic" class="block text-xs font-mono uppercase tracking-widest text-white/70">
-                    Registered IC Number
+                <div class="relative">
+                  <input type="text" id="login-ic" required placeholder=" "
+                    class="peer w-full bg-white/5 border-b border-[#A48E7E]/30 focus:border-[#A48E7E] focus:outline-none py-3.5 px-4 text-sm text-white placeholder-transparent transition-all duration-300 rounded-t-lg focus:bg-white/10" />
+                  <label for="login-ic"
+                    class="absolute left-4 top-3.5 text-xs text-white/40 peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-focus:top-1.5 peer-focus:text-xs peer-focus:text-[#A48E7E] transition-all pointer-events-none uppercase tracking-widest font-semibold">
+                    IC Number (e.g. YYMMDD-XX-XXXX)
                   </label>
-                  <input type="text" id="login-ic" required placeholder="YYMMDD-XX-XXXX"
-                    class="w-full bg-white/5 border border-white/15 focus:border-[#D4AF37] focus:outline-none py-3.5 px-4 text-sm text-white placeholder-white/20 transition-all duration-300 rounded-lg focus:ring-1 focus:ring-[#D4AF37]" />
-                  <p id="error-login-ic" class="text-rose-400 text-[10px] uppercase font-bold tracking-widest mt-1 hidden">
+                  <p id="error-login-ic" class="text-rose-500 text-[10px] uppercase font-bold tracking-widest mt-1.5 hidden">
                     Please enter your 12-digit IC number
                   </p>
                 </div>
@@ -895,115 +783,101 @@
                 <!-- Submit Button -->
                 <div class="pt-6">
                   <button type="submit"
-                    class="w-full bg-gold-metallic text-black py-4 px-8 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-lg shadow-xl flex items-center justify-center gap-3 group">
-                    <span>Unlock Digital Pass</span>
-                    <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">lock_open</span>
+                    class="w-full bg-[#A48E7E] hover:bg-[#8A6A56] text-white py-4 px-8 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-lg shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group">
+                    <span>Access Digital Card</span>
+                    <span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_forward</span>
                   </button>
                 </div>
               </form>
             </div>
             
-            <!-- 3. Success / Unlocked Container -->
-            <div id="registration-success-container" class="hidden bg-[#0C0C0C] border border-[#C5A059]/40 rounded-2xl p-8 md:p-12 shadow-2xl text-center space-y-6 transition-all duration-500">
-              <div class="w-16 h-16 bg-[#C5A059]/20 text-[#D4AF37] border border-[#D4AF37]/30 flex items-center justify-center rounded-full mx-auto animate-pulse">
-                <span class="material-symbols-outlined text-3xl">verified</span>
+            <!-- Success Container -->
+            <div id="registration-success-container" class="hidden bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-2xl text-center space-y-6 transition-all duration-500">
+              <div class="w-16 h-16 bg-[#A48E7E]/20 text-[#A48E7E] flex items-center justify-center rounded-full mx-auto animate-bounce">
+                <span class="material-symbols-outlined text-3xl">check_circle</span>
               </div>
-              <h3 class="font-serif text-3xl text-white font-normal" style="font-family: 'Playfair Display', serif;">Member Pass Unlocked</h3>
+              <h3 class="font-serif text-3xl text-white font-normal" style="font-family: 'Playfair Display', serif;">Welcome to the Club</h3>
               <p class="font-sans text-white/80 text-sm max-w-md mx-auto leading-relaxed font-light">
-                Your signature Chempaka digital pass is active! Show your card at any boutique to enjoy your instant 10% welcome voucher and VIP lounge privileges.
+                Your application has been approved! Your signature digital member card is now active, and your welcome voucher has been delivered to your email.
               </p>
               
               <div class="pt-6 flex flex-col sm:flex-row gap-4 justify-center">
                 <button onclick="downloadDigitalCard()"
-                  class="bg-gold-metallic text-black px-6 py-3.5 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-lg flex items-center justify-center gap-2 shadow-lg">
+                  class="bg-[#A48E7E] hover:bg-[#8A6A56] text-white px-6 py-3 text-xs font-bold uppercase tracking-widest transition-colors duration-300 rounded-lg flex items-center justify-center gap-2 shadow-lg">
                   <span class="material-symbols-outlined text-sm">download</span>
-                  <span>Save Digital Pass</span>
+                  <span>Save Digital Card</span>
                 </button>
                 <button onclick="resetMembershipForm()"
-                  class="border border-white/20 hover:border-[#C5A059] text-white hover:text-[#D4AF37] bg-white/5 px-6 py-3.5 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-lg">
+                  class="border border-white/20 hover:border-white text-white bg-white/5 hover:bg-white/10 px-6 py-3 text-xs font-bold uppercase tracking-widest transition-colors duration-300 rounded-lg">
                   Register Another Member
                 </button>
               </div>
             </div>
           </div>
           
-          <!-- Right Column: Interactive 3D Photorealistic Obsidian & Gold Member Card -->
+          <!-- Right Column: Digital Frosted Glass Card Preview -->
           <div class="lg:col-span-5 flex flex-col items-center justify-center space-y-6">
-            <span class="font-mono text-[10px] font-semibold tracking-[0.25em] uppercase text-[#C5A059] select-none">
-              Interactive 3D Digital Pass
-            </span>
+            <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-white/50 select-none">Live Digital Card Preview</span>
             
-            <!-- 3D Obsidian Member Card Wrapper -->
+            <!-- Frosted Glass Card Wrapper -->
             <div class="w-full flex justify-center py-4 px-2">
-              <div id="live-member-card" class="obsidian-gold-card flex flex-col justify-between p-7 select-none relative">
-                
-                <!-- Metallic Shimmer Light Beam -->
-                <div class="shimmer-line"></div>
-
+              <div id="live-member-card" class="frosted-glass-card flex flex-col justify-between p-6 select-none relative">
                 <!-- Glare overlay element -->
                 <div class="card-glare"></div>
                 
                 <!-- Lock Overlay -->
-                <div id="card-lock-overlay" class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/65 backdrop-blur-[3px] transition-opacity duration-500 rounded-[20px]">
-                  <div class="w-12 h-12 rounded-full bg-[#C5A059]/20 border border-[#D4AF37]/40 text-[#D4AF37] flex items-center justify-center mb-4">
-                    <span class="material-symbols-outlined text-2xl">lock</span>
-                  </div>
-                  <span class="text-white text-xs uppercase tracking-[0.2em] font-bold text-center px-6 leading-relaxed">
-                    Chempaka Club<br><span class="text-[#C5A059] font-light">Apply or Login to Unlock Pass</span>
-                  </span>
+                <div id="card-lock-overlay" class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/40 backdrop-blur-[2px] transition-opacity duration-500 rounded-[20px]">
+                  <span class="material-symbols-outlined text-white text-3xl mb-3 opacity-90 font-light" style="font-variation-settings: 'wght' 300;">lock</span>
+                  <span class="text-white text-[10px] uppercase tracking-[0.2em] font-semibold text-center px-4 leading-relaxed">Join membership to<br>unlock your card</span>
                 </div>
 
-                <!-- Content Wrapper -->
+                <!-- Blurred Content Wrapper -->
                 <div id="card-content-wrapper" class="flex flex-col justify-between h-full blur-[6px] opacity-60 pointer-events-none transition-all duration-500 relative z-10">
-                  
-                  <!-- Card Header: Brand & Emblem -->
-                  <div class="flex justify-between items-start z-10 relative">
+                  <!-- Card Header -->
+                <div class="flex justify-between items-start z-10 relative">
+                  <div>
+                    <span class="font-serif text-base tracking-[0.1em] text-white" style="font-family: 'Cinzel', serif;">CHEMPAKA</span>
+                    <span class="block text-[7px] text-[#A48E7E] font-semibold tracking-widest uppercase mt-0.5">Club Member</span>
+                  </div>
+                  <span class="material-symbols-outlined text-xl text-[#A48E7E] filter drop-shadow-[0_0_8px_rgba(164,142,126,0.3)]">stars</span>
+                </div>
+                
+                <!-- Card Chip -->
+                <div class="flex items-center gap-3 z-10 relative">
+                  <div class="w-10 h-7 rounded-md bg-gradient-to-br from-[#E2D2C2] via-[#A48E7E] to-[#8A6A56] opacity-80 border border-white/20 flex flex-col justify-between p-1.5">
+                    <div class="w-full h-[1px] bg-black/20"></div>
+                    <div class="w-2/3 h-[1px] bg-black/20"></div>
+                    <div class="w-full h-[1px] bg-black/20"></div>
+                  </div>
+                  <div class="h-6 w-[1px] bg-white/10"></div>
+                  <span class="material-symbols-outlined text-white/40 text-sm">wifi</span>
+                </div>
+                
+                <!-- Card Footer Details -->
+                <div class="space-y-3.5 z-10 relative">
+                  <div>
+                    <span class="block text-[7px] text-white/40 uppercase tracking-widest font-semibold">Member Number</span>
+                    <span id="card-member-id" class="font-mono text-xs md:text-sm tracking-widest text-[#A48E7E]">CC-88470</span>
+                  </div>
+                  <div class="flex justify-between items-end">
                     <div>
-                      <span class="font-serif text-lg tracking-[0.15em] text-white" style="font-family: 'Cinzel', serif;">CHEMPAKA</span>
-                      <span class="block text-[8px] text-[#C5A059] font-mono tracking-widest uppercase mt-0.5 font-semibold">Gold Exchange & Concierge</span>
+                      <span class="block text-[7px] text-white/40 uppercase tracking-widest font-semibold">Cardholder</span>
+                      <span id="card-member-name" class="font-sans text-xs text-white uppercase tracking-widest font-bold">YOUR NAME</span>
                     </div>
-                    <div class="w-8 h-8 rounded-full bg-[#C5A059]/15 border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37]">
-                      <span class="material-symbols-outlined text-lg">workspace_premium</span>
-                    </div>
-                  </div>
-                  
-                  <!-- Smart Metallic Chip & Contactless Emblem -->
-                  <div class="flex items-center gap-4 z-10 relative">
-                    <div class="w-11 h-8 rounded-md bg-gradient-to-br from-[#F3E5AB] via-[#C5A059] to-[#8A6A56] border border-amber-200/40 shadow-inner flex flex-col justify-between p-1.5">
-                      <div class="w-full h-[1px] bg-black/30"></div>
-                      <div class="w-3/4 h-[1px] bg-black/30"></div>
-                      <div class="w-full h-[1px] bg-black/30"></div>
-                    </div>
-                    <div class="h-6 w-[1px] bg-white/15"></div>
-                    <span class="material-symbols-outlined text-[#C5A059] text-sm opacity-80">contactless</span>
-                  </div>
-                  
-                  <!-- Card Footer Details -->
-                  <div class="space-y-4 z-10 relative">
-                    <div>
-                      <span class="block text-[7.5px] text-white/50 uppercase tracking-widest font-mono">Member ID</span>
-                      <span id="card-member-id" class="font-mono text-sm tracking-[0.2em] text-[#D4AF37] font-bold">CC-88470</span>
-                    </div>
-                    <div class="flex justify-between items-end">
-                      <div class="max-w-[70%] overflow-hidden">
-                        <span class="block text-[7.5px] text-white/50 uppercase tracking-widest font-mono">Cardholder</span>
-                        <span id="card-member-name" class="font-sans text-xs text-white uppercase tracking-widest font-bold truncate block">YOUR NAME</span>
-                      </div>
-                      <div class="text-right">
-                        <span class="block text-[7.5px] text-white/50 uppercase tracking-widest font-mono">Member Since</span>
-                        <span id="card-member-since" class="font-mono text-xs text-white/90 tracking-widest">08/2026</span>
-                      </div>
+                    <div class="text-right">
+                      <span class="block text-[7px] text-white/40 uppercase tracking-widest font-semibold">Member Since</span>
+                      <span id="card-member-since" class="font-sans text-xs text-white tracking-widest">07/2026</span>
                     </div>
                   </div>
-
+                </div>
+                <!-- End Blurred Content Wrapper -->
                 </div>
               </div>
             </div>
             
-            <div class="flex items-center gap-2 text-[11px] text-white/50 font-mono tracking-wide">
-              <span class="material-symbols-outlined text-sm text-[#C5A059]">touch_app</span>
-              <span>Move cursor to tilt and reflect metallic gold shimmer</span>
-            </div>
+            <p class="text-[10px] text-white/40 max-w-[280px] text-center font-sans tracking-wide">
+              Move your mouse over the card to experience the luxury reflection overlay.
+            </p>
           </div>
           
         </div>
@@ -1011,7 +885,7 @@
     </section>
   </main>
 
-  <!-- Footer -->
+  <!-- Footer (Swarovski-Exact Style) -->
   <footer class="bg-black text-white py-16 lg:py-24 px-margin-mobile md:px-margin-desktop border-t border-[#222222]">
     <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-10">
       <div class="md:col-span-4 space-y-4">
@@ -1020,8 +894,8 @@
           Subscribe to receive updates on boutique events, exclusive collections, and priority booking options.
         </p>
         <div class="pt-2">
-          <a href="membership.html"
-            class="inline-flex items-center gap-1.5 bg-[#222222] text-white hover:bg-white hover:text-black py-3 px-6 text-xs font-bold uppercase tracking-widest transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150">
+          <a href="membership.html#"
+            class="inline-flex items-center gap-1.5 bg-[#222222] text-white hover:bg-white hover:text-black py-3 px-6 text-xs font-bold uppercase tracking-widest transition-all duration-300">
             <span>Register Now</span>
             <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
           </a>
@@ -1068,8 +942,8 @@
           <span class="select-none">English</span>
         </div>
         <div class="mt-1 text-[10px] leading-relaxed max-w-sm md:max-w-md text-[#666666]">
-          &copy; 2026 Chempaka Trading Sdn Bhd. All rights reserved. CHEMPAKA and the Chempaka logo are
-          trademarks of Chempaka Trading Sdn Bhd.
+          &copy; 2026 Chempaka Trading Sdn Bhd. Company registration number 200901004470 (847404-D). All rights reserved.
+          CHEMPAKA and the SWAN logo are registered and trademarks of Chempaka AG.
         </div>
       </div>
 
@@ -1081,7 +955,7 @@
       <!-- Social Icons -->
       <div class="flex space-x-4 shrink-0 md:justify-self-end">
         <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
+          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300"
           aria-label="Facebook">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
             <path
@@ -1089,7 +963,7 @@
           </svg>
         </a>
         <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
+          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300"
           aria-label="Pinterest">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
             <path
@@ -1097,15 +971,15 @@
           </svg>
         </a>
         <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
+          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300"
           aria-label="Instagram">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
             <path
-              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 0.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
           </svg>
         </a>
         <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
+          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300"
           aria-label="Youtube">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
             <path
@@ -1113,7 +987,7 @@
           </svg>
         </a>
         <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
+          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300"
           aria-label="Tiktok">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
             <path
@@ -1121,7 +995,7 @@
           </svg>
         </a>
         <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
+          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300"
           aria-label="X">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
             <path
@@ -1434,14 +1308,6 @@
       }
     }
 
-    // Live card name typing synchronizer
-    function syncCardName(val) {
-      const cardNameEl = document.getElementById('card-member-name');
-      if (cardNameEl) {
-        cardNameEl.innerText = val && val.trim().length > 0 ? val.trim().toUpperCase() : 'YOUR NAME';
-      }
-    }
-
     // Switch between Registration Form and Login Form Tabs
     function switchFormTab(tabName) {
       const regTab = document.getElementById('btn-register-tab');
@@ -1450,23 +1316,22 @@
       const loginContainer = document.getElementById('login-form-container');
       const successContainer = document.getElementById('registration-success-container');
 
-      if (successContainer) successContainer.classList.add('hidden');
+      successContainer.classList.add('hidden');
       
       if (tabName === 'register') {
-        regTab.className = "px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-widest bg-[#C5A059] text-black shadow-lg transition-all duration-300";
-        loginTab.className = "px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-widest text-white/60 hover:text-white transition-all duration-300";
-        if (regContainer) regContainer.classList.remove('hidden');
-        if (loginContainer) loginContainer.classList.add('hidden');
+        regTab.className = "text-sm font-bold uppercase tracking-widest border-b-2 border-[#A48E7E] text-white pb-2 transition-all";
+        loginTab.className = "text-sm font-bold uppercase tracking-widest border-b-2 border-transparent text-white/50 hover:text-white pb-2 transition-all";
+        regContainer.classList.remove('hidden');
+        loginContainer.classList.add('hidden');
         
         // Reset card to preview default
         document.getElementById('card-member-id').innerText = 'PENDING APPROVAL';
-        const nameVal = document.getElementById('member-name').value;
-        document.getElementById('card-member-name').innerText = nameVal && nameVal.trim() ? nameVal.trim().toUpperCase() : 'YOUR NAME';
+        document.getElementById('card-member-name').innerText = 'YOUR NAME';
       } else {
-        loginTab.className = "px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-widest bg-[#C5A059] text-black shadow-lg transition-all duration-300";
-        regTab.className = "px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-widest text-white/60 hover:text-white transition-all duration-300";
-        if (regContainer) regContainer.classList.add('hidden');
-        if (loginContainer) loginContainer.classList.remove('hidden');
+        loginTab.className = "text-sm font-bold uppercase tracking-widest border-b-2 border-[#A48E7E] text-white pb-2 transition-all";
+        regTab.className = "text-sm font-bold uppercase tracking-widest border-b-2 border-transparent text-white/50 hover:text-white pb-2 transition-all";
+        regContainer.classList.add('hidden');
+        loginContainer.classList.remove('hidden');
         
         // Reset card to blank preview
         document.getElementById('card-member-id').innerText = 'CC-XXXXX';
@@ -1476,7 +1341,7 @@
       // Reset active card highlights
       const liveCard = document.getElementById('live-member-card');
       if (liveCard) {
-        liveCard.classList.remove('scale-105', 'border-[#C5A059]', 'shadow-[0_0_35px_rgba(212,175,55,0.3)]');
+        liveCard.classList.remove('scale-105', 'border-[#A48E7E]', 'shadow-[0_0_30px_rgba(164,142,126,0.3)]');
       }
       
       // Re-lock the card
@@ -1516,15 +1381,15 @@
           const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
           
           try {
-            // Retrieve member matching Phone and IC
-            const { data, error } = await supabaseClient
-              .from('members')
-              .select('*')
-              .eq('phone', phoneVal)
-              .eq('ic_number', icVal)
-              .maybeSingle();
+            // Retrieve member matching Phone and IC via a server-side lookup
+            // (the members table itself is not publicly readable -- this RPC
+            // returns only the card-safe fields for the single matching row).
+            const { data: rows, error } = await supabaseClient
+              .rpc('member_login', { p_phone: phoneVal, p_ic: icVal });
 
             if (error) throw error;
+
+            const data = rows && rows.length > 0 ? rows[0] : null;
 
             if (!data) {
               throw new Error("No record found matching the provided Phone Number and IC Number. Please check your credentials.");
