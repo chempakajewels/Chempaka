@@ -8,3 +8,16 @@ Thumbs.db
 # Secrets
 .env
 .env.local
+
+# Local tooling - large binaries and archives, not project source.
+# These total ~154 MB; committing them would permanently bloat the repo
+# (git history keeps blobs forever, even after a later delete).
+tools/archives/
+tools/supabase-cli/
+tools/supabase-cli-v2/
+
+# Supabase CLI local state (contains project linkage / connection strings)
+supabase/.temp/
+
+# Node
+node_modules/
