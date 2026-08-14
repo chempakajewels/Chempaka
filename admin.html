@@ -327,13 +327,39 @@
       }
     }
 
+    // Build a <td> with plain text content -- never innerHTML -- so member-
+    // supplied fields (full_name, ic_number, phone, email) can never be
+    // interpreted as markup, since these rows originate from public,
+    // unauthenticated registrations.
+    function memberCell(text, className) {
+      const td = document.createElement("td");
+      td.className = className;
+      td.textContent = text;
+      return td;
+    }
+
+    function actionButton(label, className, onClick) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.textContent = label;
+      btn.className = className;
+      btn.addEventListener("click", onClick);
+      return btn;
+    }
+
+    function formatJoinedDate(value) {
+      return new Date(value).toLocaleDateString("en-US", {
+        year: 'numeric', month: 'short', day: 'numeric'
+      });
+    }
+
     function renderMembers(list) {
       const pendingTbody = document.getElementById("pending-table-body");
       const approvedTbody = document.getElementById("approved-table-body");
-      
+
       const noPending = document.getElementById("no-pending-msg");
       const noApproved = document.getElementById("no-approved-msg");
-      
+
       pendingTbody.innerHTML = "";
       approvedTbody.innerHTML = "";
 
@@ -351,26 +377,19 @@
         pendingList.forEach(member => {
           const tr = document.createElement("tr");
           tr.className = "hover:bg-gray-900/30 transition-all";
-          
-          const dateStr = new Date(member.joined_at).toLocaleDateString("en-US", {
-            year: 'numeric', month: 'short', day: 'numeric'
-          });
 
-          tr.innerHTML = `
-            <td class="px-6 py-4 font-medium text-white">${member.full_name}</td>
-            <td class="px-6 py-4">${member.ic_number}</td>
-            <td class="px-6 py-4 text-xs">${member.phone}</td>
-            <td class="px-6 py-4 text-xs text-gray-400">${member.email}</td>
-            <td class="px-6 py-4 text-xs text-gray-500">${dateStr}</td>
-            <td class="px-6 py-4 text-center flex justify-center gap-4">
-              <button onclick="approveMember('${member.id}', '${member.full_name}')" class="text-emerald-500 hover:text-emerald-400 font-bold text-xs uppercase tracking-wider bg-transparent border-none cursor-pointer">
-                Approve
-              </button>
-              <button onclick="deleteMember('${member.id}', '${member.full_name}', 'Reject')" class="text-rose-500 hover:text-rose-400 font-bold text-xs uppercase tracking-wider bg-transparent border-none cursor-pointer">
-                Reject
-              </button>
-            </td>
-          `;
+          tr.appendChild(memberCell(member.full_name, "px-6 py-4 font-medium text-white"));
+          tr.appendChild(memberCell(member.ic_number, "px-6 py-4"));
+          tr.appendChild(memberCell(member.phone, "px-6 py-4 text-xs"));
+          tr.appendChild(memberCell(member.email, "px-6 py-4 text-xs text-gray-400"));
+          tr.appendChild(memberCell(formatJoinedDate(member.joined_at), "px-6 py-4 text-xs text-gray-500"));
+
+          const actionsTd = document.createElement("td");
+          actionsTd.className = "px-6 py-4 text-center flex justify-center gap-4";
+          actionsTd.appendChild(actionButton("Approve", "text-emerald-500 hover:text-emerald-400 font-bold text-xs uppercase tracking-wider bg-transparent border-none cursor-pointer", () => approveMember(member.id, member.full_name)));
+          actionsTd.appendChild(actionButton("Reject", "text-rose-500 hover:text-rose-400 font-bold text-xs uppercase tracking-wider bg-transparent border-none cursor-pointer", () => deleteMember(member.id, member.full_name, 'Reject')));
+          tr.appendChild(actionsTd);
+
           pendingTbody.appendChild(tr);
         });
       }
@@ -383,24 +402,19 @@
         approvedList.forEach(member => {
           const tr = document.createElement("tr");
           tr.className = "hover:bg-gray-900/30 transition-all";
-          
-          const dateStr = new Date(member.joined_at).toLocaleDateString("en-US", {
-            year: 'numeric', month: 'short', day: 'numeric'
-          });
 
-          tr.innerHTML = `
-            <td class="px-6 py-4 font-mono text-xs text-[#A48E7E]">${member.member_id}</td>
-            <td class="px-6 py-4 font-medium text-white">${member.full_name}</td>
-            <td class="px-6 py-4">${member.ic_number}</td>
-            <td class="px-6 py-4 text-xs">${member.phone}</td>
-            <td class="px-6 py-4 text-xs text-gray-400">${member.email}</td>
-            <td class="px-6 py-4 text-xs text-gray-500">${dateStr}</td>
-            <td class="px-6 py-4 text-center">
-              <button onclick="deleteMember('${member.id}', '${member.full_name}', 'Revoke')" class="text-rose-500 hover:text-rose-400 font-bold text-xs uppercase tracking-wider bg-transparent border-none cursor-pointer">
-                Revoke
-              </button>
-            </td>
-          `;
+          tr.appendChild(memberCell(member.member_id, "px-6 py-4 font-mono text-xs text-[#A48E7E]"));
+          tr.appendChild(memberCell(member.full_name, "px-6 py-4 font-medium text-white"));
+          tr.appendChild(memberCell(member.ic_number, "px-6 py-4"));
+          tr.appendChild(memberCell(member.phone, "px-6 py-4 text-xs"));
+          tr.appendChild(memberCell(member.email, "px-6 py-4 text-xs text-gray-400"));
+          tr.appendChild(memberCell(formatJoinedDate(member.joined_at), "px-6 py-4 text-xs text-gray-500"));
+
+          const actionsTd = document.createElement("td");
+          actionsTd.className = "px-6 py-4 text-center";
+          actionsTd.appendChild(actionButton("Revoke", "text-rose-500 hover:text-rose-400 font-bold text-xs uppercase tracking-wider bg-transparent border-none cursor-pointer", () => deleteMember(member.id, member.full_name, 'Revoke')));
+          tr.appendChild(actionsTd);
+
           approvedTbody.appendChild(tr);
         });
       }
