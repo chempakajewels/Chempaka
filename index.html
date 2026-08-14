@@ -6,12 +6,80 @@
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>Chempaka - Where Gold Makes Memories</title>
+
+  <!-- SEO -->
+  <meta name="description"
+    content="Chempaka crafts fine gold jewellery in Malaysia - rings, bracelets, necklaces and bespoke commissions. Visit our Shah Alam boutique or join the Chempaka Club." />
+  <link rel="canonical" href="https://www.chempakajewel.com/" />
+
+  <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Chempaka" />
+  <meta property="og:locale" content="en_MY" />
+  <meta property="og:title" content="Chempaka - Where Gold Makes Memories" />
+  <meta property="og:description"
+    content="Fine gold jewellery crafted in Malaysia - rings, bracelets, necklaces and bespoke commissions." />
+  <meta property="og:url" content="https://www.chempakajewel.com/" />
+  <meta property="og:image" content="https://www.chempakajewel.com/assets/images/hero_necklace.jpg" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="571" />
+  <meta property="og:image:alt" content="A Chempaka gold necklace" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Chempaka - Where Gold Makes Memories" />
+  <meta name="twitter:description"
+    content="Fine gold jewellery crafted in Malaysia - rings, bracelets, necklaces and bespoke commissions." />
+  <meta name="twitter:image" content="https://www.chempakajewel.com/assets/images/hero_necklace.jpg" />
+
+  <!-- Structured data: tells Google who the business is, not just what the page says -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.chempakajewel.com/#organization",
+        "name": "Chempaka",
+        "legalName": "Chempaka Trading Sdn Bhd",
+        "url": "https://www.chempakajewel.com/",
+        "image": "https://www.chempakajewel.com/assets/images/hero_necklace.jpg",
+        "description": "Fine gold jewellery crafted in Malaysia - rings, bracelets, necklaces and bespoke commissions.",
+        "telephone": "+60178113204",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Seksyen U13, 12, Jln Setia Dagang AL U13/AL, Alam Nusantara",
+          "addressLocality": "Shah Alam",
+          "addressRegion": "Selangor",
+          "postalCode": "40170",
+          "addressCountry": "MY"
+        },
+        "sameAs": [
+          "https://www.instagram.com/chempakajewels/",
+          "https://www.tiktok.com/@chempakajewels"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.chempakajewel.com/#website",
+        "url": "https://www.chempakajewel.com/",
+        "name": "Chempaka",
+        "inLanguage": "en-MY",
+        "publisher": { "@id": "https://www.chempakajewel.com/#organization" }
+      }
+    ]
+  }
+  </script>
+
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
     rel="stylesheet" />
   <link
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&amp;family=Noto+Sans:wght@300;400;500;600&amp;family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
     rel="stylesheet" />
   <!-- Supabase CDN Client -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -26,7 +94,7 @@
             "on-primary-fixed-variant": "#5c412f",
             "inverse-surface": "#2f3131",
             "on-tertiary": "#ffffff",
-            "primary": "#A48E7E",
+            "primary": "#A4B5B9",
             "surface-container-highest": "#e2e2e2",
             "on-secondary": "#ffffff",
             "on-error-container": "#93000a",
@@ -38,16 +106,16 @@
             "on-background": "#1a1c1c",
             "on-secondary-container": "#775e4a",
             "surface-dim": "#dadada",
-            "primary-container": "#a48e7e",
+            "primary-container": "#a4b5b9",
             "on-surface-variant": "#4f453e",
-            "surface": "#f9f9f9",
+            "surface": "#ffffff",
             "surface-container-lowest": "#ffffff",
             "on-primary-container": "#fff4ef",
             "tertiary-fixed-dim": "#d0c5b9",
             "on-secondary-fixed": "#291808",
             "on-primary": "#ffffff",
             "inverse-primary": "#e6bfa7",
-            "surface-bright": "#f9f9f9",
+            "surface-bright": "#ffffff",
             "on-tertiary-fixed-variant": "#4d463d",
             "on-error": "#ffffff",
             "secondary-fixed": "#fedcc3",
@@ -56,19 +124,20 @@
             "secondary-container": "#fbd9c0",
             "error-container": "#ffdad6",
             "surface-tint": "#765845",
-            "background": "#f9f9f9",
+            "background": "#ffffff",
             "primary-fixed-dim": "#e6bfa7",
             "secondary-fixed-dim": "#e1c0a8",
             "on-tertiary-container": "#fff4ea",
             "on-secondary-fixed-variant": "#594230",
             "outline-variant": "#d3c3bb",
-            "surface-container-low": "#f3f3f4",
+            "surface-container-low": "#ffffff",
             "tertiary-fixed": "#ece1d5",
-            "secondary": "#2B3E56",
+            "secondary": "#2C2F44",
             "inverse-on-surface": "#f0f1f1",
             "surface-variant": "#e2e2e2",
             "on-primary-fixed": "#2b1608",
-            "surface-container-high": "#e8e8e8"
+            "surface-container-high": "#e8e8e8",
+            "accent-blue": "#D0D2DE"
           },
           "borderRadius": {
             "DEFAULT": "0.25rem",
@@ -85,8 +154,6 @@
             "margin-mobile": "20px"
           },
           "fontFamily": {
-            "serif": ["Playfair Display", "serif"],
-            "sans": ["Inter", "sans-serif"],
             "headline-lg": ["Playfair Display"],
             "headline-lg-mobile": ["Playfair Display"],
             "label-md": ["Inter"],
@@ -132,7 +199,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.18) 70%, transparent 100%);
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.52) 0%, rgba(0, 0, 0, 0.18) 70%, transparent 100%);
       pointer-events: none;
       transition: opacity 0.4s ease;
       z-index: -1;
@@ -147,12 +214,12 @@
     /* --- Hover state: solid white --- */
     @media (hover: hover) {
       header:hover {
-        background-color: rgba(255,255,255,0.98) !important;
+        background-color: rgba(255, 255, 255, 0.98) !important;
         backdrop-filter: blur(24px) !important;
         -webkit-backdrop-filter: blur(24px) !important;
         color: #000000 !important;
         border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
-        box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
       }
 
       header:hover::before {
@@ -196,12 +263,12 @@
 
     /* --- Scrolled state: crisp white, compact --- */
     header.scrolled {
-      background-color: rgba(255,255,255,0.97) !important;
+      background-color: rgba(255, 255, 255, 0.97) !important;
       backdrop-filter: blur(20px) !important;
       -webkit-backdrop-filter: blur(20px) !important;
       color: #000000 !important;
       border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
-      box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+      box-shadow: 0 1px 12px rgba(0, 0, 0, 0.06);
     }
 
     header.scrolled::before {
@@ -281,9 +348,9 @@
     }
 
     /* ========================================
-           NAV LINK STYLING
+           SWAROVSKI-EXACT NAV LINK STYLING
            14px, uppercase, 400 weight, 0.05em spacing
-           Font: Noto Sans
+           Font: Noto Sans (closest to SWAFont)
            Thin underline animation from center
            ======================================== */
     .nav-link {
@@ -325,7 +392,7 @@
 
     /* ========================================
            UTILITY BAR LINK STYLING
-           11px, uppercase, 500 weight
+           Swarovski utility links: 11px, uppercase, 500 weight
            Font: Noto Sans
            ======================================== */
     .utility-link {
@@ -350,7 +417,7 @@
       opacity: 0;
       transform: translateY(28px);
       transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .fade-in-up.visible {
@@ -359,11 +426,25 @@
     }
 
     /* Staggered delay variants */
-    .fade-in-up.delay-1 { transition-delay: 0.08s; }
-    .fade-in-up.delay-2 { transition-delay: 0.16s; }
-    .fade-in-up.delay-3 { transition-delay: 0.24s; }
-    .fade-in-up.delay-4 { transition-delay: 0.32s; }
-    .fade-in-up.delay-5 { transition-delay: 0.40s; }
+    .fade-in-up.delay-1 {
+      transition-delay: 0.08s;
+    }
+
+    .fade-in-up.delay-2 {
+      transition-delay: 0.16s;
+    }
+
+    .fade-in-up.delay-3 {
+      transition-delay: 0.24s;
+    }
+
+    .fade-in-up.delay-4 {
+      transition-delay: 0.32s;
+    }
+
+    .fade-in-up.delay-5 {
+      transition-delay: 0.40s;
+    }
 
     /* Respect reduced motion */
     @media (prefers-reduced-motion: reduce) {
@@ -376,7 +457,7 @@
 
     .product-card {
       transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                  box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .product-card:hover {
@@ -421,12 +502,10 @@
     #hero-scrim {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        105deg,
-        rgba(0,0,0,0.72) 0%,
-        rgba(0,0,0,0.42) 45%,
-        rgba(0,0,0,0.08) 100%
-      );
+      background: linear-gradient(105deg,
+          rgba(0, 0, 0, 0.72) 0%,
+          rgba(0, 0, 0, 0.42) 45%,
+          rgba(0, 0, 0, 0.08) 100%);
       z-index: 1;
     }
 
@@ -437,7 +516,7 @@
       left: 0;
       right: 0;
       height: 220px;
-      background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 100%);
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.35) 0%, transparent 100%);
       z-index: 1;
     }
 
@@ -468,12 +547,12 @@
       font-weight: 500;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.65);
+      color: rgba(255, 255, 255, 0.65);
       margin-bottom: 20px;
     }
 
     .hero-headline {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', serif;
       font-size: clamp(2.8rem, 7vw, 6rem);
       font-weight: 400;
       line-height: 1.02;
@@ -487,7 +566,7 @@
       font-size: clamp(0.9rem, 1.6vw, 1.05rem);
       font-weight: 300;
       line-height: 1.65;
-      color: rgba(255,255,255,0.72);
+      color: rgba(255, 255, 255, 0.72);
       margin-top: 20px;
       max-width: 520px;
     }
@@ -529,7 +608,7 @@
       align-items: center;
       gap: 8px;
       background: transparent;
-      color: rgba(255,255,255,0.88);
+      color: rgba(255, 255, 255, 0.88);
       font-family: 'Inter', 'Noto Sans', sans-serif;
       font-size: 12px;
       font-weight: 500;
@@ -538,23 +617,68 @@
       padding: 14px 0;
       text-decoration: none;
       border: none;
-      border-bottom: 1px solid rgba(255,255,255,0.38);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.38);
       transition: color 0.3s ease, border-color 0.3s ease;
       white-space: nowrap;
     }
 
     .hero-cta-secondary:hover {
       color: #ffffff;
-      border-bottom-color: rgba(255,255,255,0.9);
+      border-bottom-color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Hero scroll indicator */
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 28px;
+      right: 6vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      z-index: 10;
+      color: rgba(255, 255, 255, 0.45);
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.25);
+      animation: scrollLinePulse 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    }
+
+    @keyframes scrollLinePulse {
+
+      0%,
+      100% {
+        transform: scaleY(1);
+        opacity: 0.3;
+      }
+
+      50% {
+        transform: scaleY(1.4);
+        opacity: 0.7;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      #hero-bg-div img { opacity: 0.72; transition: none; }
+      .hero-scroll-line {
+        animation: none;
+      }
+
+      #hero-bg-div img {
+        opacity: 0.72;
+        transition: none;
+      }
     }
 
     /* ========================================
            HEADER ICON STYLING
-           ~20px icons, thin weight
+           Swarovski uses ~20px icons, thin weight
            ======================================== */
     header .header-icon {
       display: flex;
@@ -570,7 +694,7 @@
       opacity: 0.65;
     }
 
-    /* --- Octagon Category Card --- */
+    /* --- Swarovski Octagon Category Card --- */
     .clip-octagon {
       clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
       transition: background-color 0.3s ease;
@@ -605,27 +729,31 @@
     .group:hover .category-link-text::after {
       transform: scaleX(1);
     }
-  
+
     /* --- Header Transparent to Solid State --- */
-    header#main-header:hover, header#main-header.scrolled {
+    header#main-header:hover,
+    header#main-header.scrolled {
       background-color: rgba(255, 255, 255, 0.98) !important;
       border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
       backdrop-filter: blur(12px);
     }
-    header#main-header:hover *:not(#promo-banner):not(#promo-banner *), header#main-header.scrolled *:not(#promo-banner):not(#promo-banner *) {
+
+    header#main-header:hover *:not(#promo-banner):not(#promo-banner *),
+    header#main-header.scrolled *:not(#promo-banner):not(#promo-banner *) {
       color: #000000 !important;
-      border-color: rgba(0,0,0,0.1) !important;
-    }
-    header#main-header:hover .inline-nav-divider, header#main-header.scrolled .inline-nav-divider {
-      background-color: #e5e5e5 !important;
+      border-color: rgba(0, 0, 0, 0.1) !important;
     }
 
+    header#main-header:hover .inline-nav-divider,
+    header#main-header.scrolled .inline-nav-divider {
+      background-color: #e5e5e5 !important;
+    }
   </style>
 
 </head>
 
 <body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden">
-  <!-- TopNavBar -->
+  <!-- TopNavBar (Swarovski-Exact Layout) -->
   <header id="main-header"
     class="fixed top-0 w-full z-50 transition-all duration-500 bg-transparent text-white border-b border-transparent">
     <!-- Top Promotion Banner -->
@@ -633,7 +761,8 @@
       class="bg-black text-white text-[11px] font-medium tracking-[0.15em] py-2.5 px-4 md:px-6 flex justify-between items-center z-50 transition-all duration-300">
       <div class="flex-1 text-center select-none whitespace-normal break-words leading-relaxed">
         Join the Chempaka Club today for exclusive in-store privileges | <a href="boutiques.html"
-          class="underline underline-offset-2 hover:opacity-80 transition-opacity whitespace-nowrap">Visit Our Shah Alam Boutique</a>
+          class="underline underline-offset-2 hover:opacity-80 transition-opacity whitespace-nowrap">Visit Our
+          Boutiques</a>
       </div>
       <button onclick="dismissPromo()"
         class="text-white hover:opacity-70 transition-opacity bg-transparent border-none cursor-pointer p-0 ml-4"
@@ -647,17 +776,19 @@
     <div id="utility-bar"
       class="hidden lg:grid grid-cols-3 items-center py-1.5 px-12 transition-all duration-300 overflow-hidden border-b border-white/10 transition-colors duration-300">
       <div class="flex justify-start items-center">
-        <a href="boutiques.html" class="utility-link text-white transition-colors duration-300 flex items-center gap-1.5 hover:opacity-75">
+        <a href="boutiques.html"
+          class="utility-link text-white transition-colors duration-300 flex items-center gap-1.5 hover:opacity-75">
           <span class="material-symbols-outlined text-[18px]"
             style="font-variation-settings: 'wght' 300;">location_on</span>
-          Shah Alam Flagship
+          Stores
         </a>
       </div>
       <div class="utility-link text-neutral-500 select-none text-center text-xs">
-        Chempaka Gold Exchange &amp; Valuation Available at Shah Alam Boutique
+        Chempaka Gold Exchange &amp; Valuation Available in Boutiques
       </div>
       <div class="flex justify-end items-center gap-6">
-        <a href="membership.html" class="utility-link text-white transition-colors duration-300 flex items-center gap-1.5 hover:opacity-75">
+        <a href="membership.html"
+          class="utility-link text-white transition-colors duration-300 flex items-center gap-1.5 hover:opacity-75">
           <span class="material-symbols-outlined text-[18px]"
             style="font-variation-settings: 'wght' 300;">person_outline</span>
           Login
@@ -696,12 +827,18 @@
           <div class="col-span-6 lg:col-span-8 flex justify-center">
             <nav class="flex items-center gap-4 lg:gap-8 xl:gap-12 transition-all duration-300"
               aria-label="Main navigation">
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="index.html#sale">Sale</a>
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="showcase.html">Showcase</a>
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="about.html">Journal</a>
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="membership.html">Membership</a>
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="boutiques.html">Boutique</a>
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="boutiques.html#appointment-booking">Appointment</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80"
+                href="index.html#sale">Sale</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80"
+                href="index.html#our-collection">Showcase</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80"
+                href="about.html">Journal</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80 font-bold"
+                href="membership.html">Membership</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80"
+                href="boutiques.html">Boutiques</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80"
+                href="boutiques.html#appointment-booking">Appointment</a>
 
               <span
                 class="inline-nav-divider w-[1px] h-4 bg-neutral-200 select-none pointer-events-none transition-all duration-300"></span>
@@ -753,10 +890,12 @@
       <!-- Mobile Layout -->
       <div id="nav-mobile-layout" class="flex md:hidden justify-between items-center w-full">
         <button onclick="toggleMobileDrawer(true)"
-          class="focus:outline-none bg-transparent border-none text-white transition-colors duration-300 p-0 cursor-pointer" aria-label="Open menu">
+          class="focus:outline-none bg-transparent border-none text-white transition-colors duration-300 p-0 cursor-pointer"
+          aria-label="Open menu">
           <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'wght' 300;">menu</span>
         </button>
-        <a href="index.html" class="font-serif tracking-[0.02em] text-[20px] uppercase font-normal logo-text text-white transition-colors duration-300"
+        <a href="index.html"
+          class="font-serif tracking-[0.02em] text-[20px] uppercase font-normal logo-text text-white transition-colors duration-300"
           style="font-family: 'Cinzel', serif; letter-spacing: 0.02em;">CHEMPAKA</a>
         <div class="flex items-center gap-1">
           <button onclick="toggleSearch(true)"
@@ -790,7 +929,7 @@
       <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
         href="index.html#sale" onclick="toggleMobileDrawer(false)">Sale</a>
       <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
-        href="showcase.html" onclick="toggleMobileDrawer(false)">Showcase</a>
+        href="index.html#our-collection" onclick="toggleMobileDrawer(false)">Showcase</a>
       <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
         href="about.html" onclick="toggleMobileDrawer(false)">Journal</a>
       <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
@@ -865,18 +1004,25 @@
           </a>
           <a href="#our-collection" class="hero-cta-secondary">
             Explore Collection
-            <span class="material-symbols-outlined" style="font-size:14px; font-variation-settings:'wght' 300;">arrow_forward</span>
+            <span class="material-symbols-outlined"
+              style="font-size:14px; font-variation-settings:'wght' 300;">arrow_forward</span>
           </a>
         </div>
       </div>
 
+      <!-- Scroll indicator -->
+      <div class="hero-scroll-hint">
+        <div class="hero-scroll-line"></div>
+        <span>Scroll</span>
+      </div>
     </section>
 
     <!-- Section 2: Masters of Gold since 1995 (Intro Section) -->
     <section id="masters-of-gold"
       class="bg-white py-16 lg:py-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
       <div class="text-center max-w-3xl mx-auto space-y-6">
-        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-black tracking-wide font-normal fade-in-up">Masters of Gold
+        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-black tracking-wide font-normal fade-in-up">Masters
+          of Gold
           since 1995</h2>
         <p class="font-sans text-neutral-600 text-sm md:text-base leading-relaxed font-light fade-in-up delay-2">
           Since 1995, Chempaka's passion for innovation and design, and mastery of gold craftsmanship has defined
@@ -886,7 +1032,7 @@
       </div>
     </section>
 
-    <!-- Section 3: Shop by Category -->
+    <!-- Section 3: Shop by Category (Swarovski Octagonal Grid) -->
     <section id="our-collection"
       class="bg-white pb-20 lg:pb-28 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto scroll-mt-24">
       <div class="text-center mb-16 fade-in-up">
@@ -937,38 +1083,39 @@
       </div>
     </section>
 
-    <!-- Section 3: Heirloom Gifting Campaign -->
+    <!-- Section 3: Disney Winnie the Pooh Split Campaign -->
     <section class="w-full bg-white grid grid-cols-1 md:grid-cols-2">
       <!-- Left Side: Media Element -->
       <div class="relative w-full aspect-square overflow-hidden">
-        <img src="assets/images/hero_heart_ring.jpg" alt="Chempaka heirloom gifting collection"
+        <img src="assets/images/winnie_the_pooh_crystal.jpg" alt="Disney Winnie the Pooh reimagined in crystal form"
           class="absolute inset-0 w-full h-full object-cover" />
       </div>
       <!-- Right Side: Content Block -->
       <div
         class="flex flex-col justify-center items-center text-center px-8 py-16 md:px-16 lg:px-24 text-black bg-white md:aspect-square">
         <div class="max-w-md space-y-6">
-          <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-normal leading-tight">Gifts Worth Keeping</h2>
+          <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-normal leading-tight">Disney Winnie the Pooh</h2>
           <p class="font-sans text-sm md:text-base text-gray-700 leading-relaxed font-light">
-            From christenings to milestone birthdays, our gifting edit turns 916 and 999 gold into keepsakes
-            passed down rather than put away. Each piece is hand-finished in-house and comes presented in
-            signature Chempaka packaging, ready to become someone's next heirloom.
+            Journey into the Hundred Acre Wood to discover Pooh, Piglet, Eeyore, and Tigger reimagined in crystal form.
+            Celebrating 100 years of Winnie the Pooh, the new Disney x Swarovski collection brings each beloved
+            character to life with light, movement, and wonder. A heart-warming range of Winnie the Pooh gifts and
+            collectibles, each figurine is presented in bespoke illustrated packaging.
           </p>
           <div class="flex flex-col items-center space-y-4 pt-4">
-            <a href="boutiques.html#appointment-booking"
+            <a href="#"
               class="inline-block font-sans text-sm font-semibold text-black underline underline-offset-4 hover:text-neutral-600 transition-colors">
-              Book a Gifting Consultation
+              Explore Winnie the Pooh gifts
             </a>
-            <a href="#our-collection"
+            <a href="#"
               class="inline-block font-sans text-sm font-semibold text-black underline underline-offset-4 hover:text-neutral-600 transition-colors">
-              Browse the Gifting Edit
+              Shop Winnie the Pooh figurines
             </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 4: Horizontal Product Carousel 1 - "Shine On" (Melati Collection) -->
+    <!-- Section 4: Horizontal Product Carousel 1 - "Shine On" (Gema Collection) -->
     <section class="bg-white py-16 lg:py-24 px-margin-mobile md:px-margin-desktop">
       <div class="max-w-container-max mx-auto">
         <div class="text-center mb-12">
@@ -981,16 +1128,17 @@
           <a href="boutiques.html#appointment-booking"
             class="group block bg-white border border-neutral-100 p-4 relative transition-all duration-300 hover:shadow-lg">
             <div class="aspect-square w-full overflow-hidden bg-[#f7f7f7] mb-6 relative">
-              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.44_202606252242.jpeg" alt="Melati Layered Necklace"
+              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.44_202606252242.jpeg"
+                alt="Gema Necklace"
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             </div>
             <div class="space-y-2 text-center">
-              <span class="block text-[10px] font-bold uppercase tracking-widest text-secondary mb-1">Members Only</span>
+              <span class="block text-[10px] font-bold uppercase tracking-widest text-red-600 mb-1">Members Only</span>
               <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Necklaces</h3>
-              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Melati Layered Necklace</p>
-              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">Multi-strand, 916 gold</p>
+              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Gema Strandage Necklace</p>
+              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">Multi-colored, gold-tone plated</p>
               <div class="flex items-center justify-center space-x-2 pt-1">
-                <p class="font-sans text-sm font-bold text-secondary">Member: MYR 2,400</p>
+                <p class="font-sans text-sm font-bold text-red-600">Member: MYR 2,400</p>
                 <p class="font-sans text-xs text-neutral-400 line-through">MYR 3,000</p>
               </div>
               <div
@@ -1005,16 +1153,17 @@
           <a href="boutiques.html#appointment-booking"
             class="group block bg-white border border-neutral-100 p-4 relative transition-all duration-300 hover:shadow-lg">
             <div class="aspect-square w-full overflow-hidden bg-[#f7f7f7] mb-6 relative">
-              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.45_202606252242_2.jpeg" alt="Melati Drop Stud Earrings"
+              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.45_202606252242_2.jpeg"
+                alt="Gema Earrings"
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             </div>
             <div class="space-y-2 text-center">
-              <span class="block text-[10px] font-bold uppercase tracking-widest text-secondary mb-1">Members Only</span>
+              <span class="block text-[10px] font-bold uppercase tracking-widest text-red-600 mb-1">Members Only</span>
               <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Earrings</h3>
-              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Melati Drop Stud Earrings</p>
-              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">Vibrant gemstones, 916 gold</p>
+              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Gema Drop Stud Earrings</p>
+              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">Vibrant crystals, rhodium plated</p>
               <div class="flex items-center justify-center space-x-2 pt-1">
-                <p class="font-sans text-sm font-bold text-secondary">Member: MYR 1,100</p>
+                <p class="font-sans text-sm font-bold text-red-600">Member: MYR 1,100</p>
                 <p class="font-sans text-xs text-neutral-400 line-through">MYR 1,375</p>
               </div>
               <div
@@ -1029,16 +1178,17 @@
           <a href="boutiques.html#appointment-booking"
             class="group block bg-white border border-neutral-100 p-4 relative transition-all duration-300 hover:shadow-lg">
             <div class="aspect-square w-full overflow-hidden bg-[#f7f7f7] mb-6 relative">
-              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.45_202606252242.jpeg" alt="Melati Link Bracelet"
+              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.45_202606252242.jpeg"
+                alt="Gema Bracelet"
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             </div>
             <div class="space-y-2 text-center">
-              <span class="block text-[10px] font-bold uppercase tracking-widest text-secondary mb-1">Members Only</span>
+              <span class="block text-[10px] font-bold uppercase tracking-widest text-red-600 mb-1">Members Only</span>
               <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Bracelets</h3>
-              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Melati Link Bracelet</p>
-              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">Asymmetric link design, 916 gold</p>
+              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Gema Link Mixed Bracelet</p>
+              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">Asymmetric designs, gold-plated</p>
               <div class="flex items-center justify-center space-x-2 pt-1">
-                <p class="font-sans text-sm font-bold text-secondary">Member: MYR 1,800</p>
+                <p class="font-sans text-sm font-bold text-red-600">Member: MYR 1,800</p>
                 <p class="font-sans text-xs text-neutral-400 line-through">MYR 2,250</p>
               </div>
               <div
@@ -1053,16 +1203,17 @@
           <a href="boutiques.html#appointment-booking"
             class="group block bg-white border border-neutral-100 p-4 relative transition-all duration-300 hover:shadow-lg">
             <div class="aspect-square w-full overflow-hidden bg-[#f7f7f7] mb-6 relative">
-              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.43_202606252242.jpeg" alt="Melati Layered Ring Set"
+              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.43_202606252242.jpeg"
+                alt="Gema Ring"
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             </div>
             <div class="space-y-2 text-center">
-              <span class="block text-[10px] font-bold uppercase tracking-widest text-secondary mb-1">Members Only</span>
+              <span class="block text-[10px] font-bold uppercase tracking-widest text-red-600 mb-1">Members Only</span>
               <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Rings</h3>
-              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Melati Layered Ring Set</p>
-              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">Pastel gemstones, 916 gold</p>
+              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Gema Layered Ring Set</p>
+              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">Pastel gemstones, rhodium plated</p>
               <div class="flex items-center justify-center space-x-2 pt-1">
-                <p class="font-sans text-sm font-bold text-secondary">Member: MYR 1,500</p>
+                <p class="font-sans text-sm font-bold text-red-600">Member: MYR 1,500</p>
                 <p class="font-sans text-xs text-neutral-400 line-through">MYR 1,875</p>
               </div>
               <div
@@ -1084,21 +1235,22 @@
           <h2 class="font-serif text-3xl md:text-4xl text-black font-normal">Timeless Love</h2>
         </div>
 
-        <!-- Product Cards: horizontal scroll-snap row -->
-        <div class="flex gap-6 lg:gap-8 overflow-x-auto snap-x snap-mandatory pb-4">
+        <!-- Product Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           <!-- Card 1 (Sale) -->
           <a href="boutiques.html#appointment-booking"
-            class="group block bg-white border border-neutral-100 p-4 relative transition-all duration-300 hover:shadow-lg shrink-0 w-[78vw] sm:w-[45vw] lg:w-[280px] snap-start">
+            class="group block bg-white border border-neutral-100 p-4 relative transition-all duration-300 hover:shadow-lg">
             <div class="aspect-square w-full overflow-hidden bg-[#f7f7f7] mb-6 relative">
-              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.47_202606252242.jpeg" alt="Cahaya Tennis Bracelet"
+              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.47_202606252242.jpeg"
+                alt="Matrix Bracelet"
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             </div>
             <div class="space-y-2 text-center">
               <span class="block text-[10px] font-bold uppercase tracking-widest text-black mb-1">Boutique Only</span>
               <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Bracelets</h3>
-              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Cahaya Tennis Bracelet</p>
-              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">White round cut gemstones, 916
-                gold</p>
+              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Matrix Tennis Bracelet</p>
+              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">White round cut crystals, rhodium
+                plated</p>
               <p class="font-sans text-sm font-bold text-black pt-1">MYR 3,625</p>
               <div
                 class="pt-3 border-t border-neutral-100 mt-2 flex items-center justify-center gap-1.5 text-black group-hover:text-neutral-500 transition-colors">
@@ -1110,16 +1262,17 @@
           </a>
           <!-- Card 2 (Sale) -->
           <a href="boutiques.html#appointment-booking"
-            class="group block bg-white border border-neutral-100 p-4 relative transition-all duration-300 hover:shadow-lg shrink-0 w-[78vw] sm:w-[45vw] lg:w-[280px] snap-start">
+            class="group block bg-white border border-neutral-100 p-4 relative transition-all duration-300 hover:shadow-lg">
             <div class="aspect-square w-full overflow-hidden bg-[#f7f7f7] mb-6 relative">
-              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.46_202606252242_2.jpeg" alt="Cahaya Heart Pendant"
+              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.46_202606252242_2.jpeg"
+                alt="Hyperbola Pendant"
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             </div>
             <div class="space-y-2 text-center">
               <span class="block text-[10px] font-bold uppercase tracking-widest text-black mb-1">Boutique Only</span>
               <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Necklaces</h3>
-              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Cahaya Heart Pendant</p>
-              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">White gemstones, mixed gold finish
+              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Hyperbola Heart Pendant</p>
+              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">White crystals, mixed metal finish
               </p>
               <p class="font-sans text-sm font-bold text-black pt-1">MYR 1,500</p>
               <div
@@ -1132,16 +1285,17 @@
           </a>
           <!-- Card 3 (Sale) -->
           <a href="boutiques.html#appointment-booking"
-            class="group block bg-white border border-neutral-100 p-4 relative transition-all duration-300 hover:shadow-lg shrink-0 w-[78vw] sm:w-[45vw] lg:w-[280px] snap-start">
+            class="group block bg-white border border-neutral-100 p-4 relative transition-all duration-300 hover:shadow-lg">
             <div class="aspect-square w-full overflow-hidden bg-[#f7f7f7] mb-6 relative">
-              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.47_202606252242_2.jpeg" alt="Cahaya Square Stud Earrings"
+              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.47_202606252242_2.jpeg"
+                alt="Attract Earrings"
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             </div>
             <div class="space-y-2 text-center">
               <span class="block text-[10px] font-bold uppercase tracking-widest text-black mb-1">Boutique Only</span>
               <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Earrings</h3>
-              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Cahaya Square Stud Earrings</p>
-              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">White gems, 916 gold bezel</p>
+              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Attract Square Stud Earrings</p>
+              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">White gems, gold-plated bezel</p>
               <p class="font-sans text-sm font-bold text-black pt-1">MYR 850</p>
               <div
                 class="pt-3 border-t border-neutral-100 mt-2 flex items-center justify-center gap-1.5 text-black group-hover:text-neutral-500 transition-colors">
@@ -1153,17 +1307,18 @@
           </a>
           <!-- Card 4 (Sale) -->
           <a href="boutiques.html#appointment-booking"
-            class="group block bg-white border border-neutral-100 p-4 relative transition-all duration-300 hover:shadow-lg shrink-0 w-[78vw] sm:w-[45vw] lg:w-[280px] snap-start">
+            class="group block bg-white border border-neutral-100 p-4 relative transition-all duration-300 hover:shadow-lg">
             <div class="aspect-square w-full overflow-hidden bg-[#f7f7f7] mb-6 relative">
-              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.46_202606252242.jpeg" alt="Cahaya Solitaire Ring"
+              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.46_202606252242.jpeg"
+                alt="Swan Ring"
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             </div>
             <div class="space-y-2 text-center">
               <span class="block text-[10px] font-bold uppercase tracking-widest text-black mb-1">Boutique Only</span>
               <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Rings</h3>
-              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Cahaya Classic Solitaire Ring</p>
-              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">White brilliant cut gemstone,
-                916 gold</p>
+              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Swan Classic Solitaire Ring</p>
+              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">White brilliant swan cut crystal,
+                gold-tone</p>
               <p class="font-sans text-sm font-bold text-black pt-1">MYR 1,187</p>
               <div
                 class="pt-3 border-t border-neutral-100 mt-2 flex items-center justify-center gap-1.5 text-black group-hover:text-neutral-500 transition-colors">
@@ -1194,7 +1349,7 @@
           <div class="flex flex-col items-center space-y-4 pt-4">
             <a href="boutiques.html#appointment-booking"
               class="inline-block font-sans text-sm font-semibold text-black underline underline-offset-4 hover:text-neutral-600 transition-colors">
-              Book Boutique Viewing
+              Book Boutique Consultation
             </a>
             <a href="#our-collection"
               class="inline-block font-sans text-sm font-semibold text-black underline underline-offset-4 hover:text-neutral-600 transition-colors">
@@ -1251,7 +1406,7 @@
             <div class="pt-8">
               <a href="boutiques.html#appointment-booking"
                 class="inline-block bg-primary text-black px-8 py-3.5 text-xs font-bold uppercase tracking-widest hover:bg-neutral-800 transition-colors">
-                Book Boutique Viewing
+                Book In-Store Appointment
               </a>
             </div>
           </div>
@@ -1369,7 +1524,7 @@
         <!-- Service 1 -->
         <div
           class="flex flex-col items-center text-center space-y-4 p-6 border border-neutral-100 bg-white transition-all duration-300 hover:shadow-md">
-          <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-1 text-primary">
+          <div class="w-14 h-14 bg-accent-blue/20 rounded-full flex items-center justify-center mb-1 text-secondary">
             <span class="material-symbols-outlined text-[28px]">chat</span>
           </div>
           <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Live Chat Support</h3>
@@ -1379,7 +1534,7 @@
         <!-- Service 2 -->
         <div
           class="flex flex-col items-center text-center space-y-4 p-6 border border-neutral-100 bg-white transition-all duration-300 hover:shadow-md">
-          <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-1 text-primary">
+          <div class="w-14 h-14 bg-accent-blue/20 rounded-full flex items-center justify-center mb-1 text-secondary">
             <span class="material-symbols-outlined text-[28px]">calendar_month</span>
           </div>
           <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Book an Appointment</h3>
@@ -1389,7 +1544,7 @@
         <!-- Service 3 -->
         <div
           class="flex flex-col items-center text-center space-y-4 p-6 border border-neutral-100 bg-white transition-all duration-300 hover:shadow-md">
-          <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-1 text-primary">
+          <div class="w-14 h-14 bg-accent-blue/20 rounded-full flex items-center justify-center mb-1 text-secondary">
             <span class="material-symbols-outlined text-[28px]">help</span>
           </div>
           <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Customer Services (FAQs)</h3>
@@ -1399,7 +1554,7 @@
         <!-- Service 4 -->
         <div
           class="flex flex-col items-center text-center space-y-4 p-6 border border-neutral-100 bg-white transition-all duration-300 hover:shadow-md">
-          <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-1 text-primary">
+          <div class="w-14 h-14 bg-accent-blue/20 rounded-full flex items-center justify-center mb-1 text-secondary">
             <span class="material-symbols-outlined text-[28px]">card_giftcard</span>
           </div>
           <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Gift Services</h3>
@@ -1409,9 +1564,11 @@
       </div>
     </section>
 
-  </main>
 
-  <!-- Footer -->
+
+
+
+  <!-- Footer (Swarovski-Exact Style) -->
   <footer class="bg-black text-white py-16 lg:py-24 px-margin-mobile md:px-margin-desktop border-t border-[#222222]">
     <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-10">
       <div class="md:col-span-4 space-y-4">
@@ -1421,7 +1578,7 @@
         </p>
         <div class="pt-2">
           <a href="membership.html"
-            class="inline-flex items-center gap-1.5 bg-[#222222] text-white hover:bg-white hover:text-black py-3 px-6 text-xs font-bold uppercase tracking-widest transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150">
+            class="inline-flex items-center gap-1.5 bg-[#222222] text-white hover:bg-white hover:text-black py-3 px-6 text-xs font-bold uppercase tracking-widest transition-all duration-300">
             <span>Register Now</span>
             <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
           </a>
@@ -1468,8 +1625,8 @@
           <span class="select-none">English</span>
         </div>
         <div class="mt-1 text-[10px] leading-relaxed max-w-sm md:max-w-md text-[#666666]">
-          &copy; 2026 Chempaka Trading Sdn Bhd. All rights reserved. CHEMPAKA and the Chempaka logo are
-          trademarks of Chempaka Trading Sdn Bhd.
+          &copy; 2026 Chempaka Trading Sdn Bhd. Company registration number 200901004470 (847404-D). All rights reserved.
+          CHEMPAKA and the SWAN logo are registered and trademarks of Chempaka AG.
         </div>
       </div>
 
@@ -1480,57 +1637,26 @@
 
       <!-- Social Icons -->
       <div class="flex space-x-4 shrink-0 md:justify-self-end">
-        <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
-          aria-label="Facebook">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-          </svg>
-        </a>
-        <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
-          aria-label="Pinterest">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.162 0 7.396 2.967 7.396 6.93 0 4.135-2.607 7.462-6.227 7.462-1.216 0-2.359-.631-2.75-1.378l-.749 2.853c-.27 1.03-1 2.317-1.492 3.116 1.124.347 2.317.535 3.551.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z" />
-          </svg>
-        </a>
-        <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
+        <a href="https://www.instagram.com/chempakajewels/" target="_blank" rel="noopener noreferrer"
+          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300"
           aria-label="Instagram">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
             <path
-              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 0.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
           </svg>
         </a>
-        <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
-          aria-label="Youtube">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M23.498 6.163c-.272-1.026-1.08-1.834-2.106-2.108C19.52 3.545 12 3.545 12 3.545s-7.52 0-9.392.51c-1.026.274-1.834 1.082-2.108 2.108C0 8.037 0 12 0 12s0 3.963.5 5.837c.274 1.026 1.082 1.834 2.108 2.108 1.872.51 9.392.51 9.392.51s7.52 0 9.392-.51c1.026-.274 1.834-1.082 2.108-2.108.5-1.874.5-5.837.5-5.837s0-3.963-.5-5.837zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z" />
-          </svg>
-        </a>
-        <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
+        <a href="https://www.tiktok.com/@chempakajewels" target="_blank" rel="noopener noreferrer"
+          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300"
           aria-label="Tiktok">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
             <path
               d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.74-3.99-1.72-.08.65-.06 1.32-.06 1.98 0 2.01-.38 4.03-1.48 5.69-1.37 2.07-3.79 3.38-6.29 3.39-2.19.01-4.41-.84-5.83-2.53-1.63-1.93-2.21-4.7-1.43-7.14C4.16 7.4 6.3 5.48 8.89 5.09c.83-.12 1.68-.07 2.51-.08.01 1.43-.01 2.87-.01 4.3-.64-.09-1.3-.02-1.92.17-1.12.35-2.07 1.25-2.39 2.37-.46 1.57.17 3.42 1.54 4.25.92.56 2.04.66 3.06.33 1.09-.36 1.97-1.28 2.29-2.37.11-.38.16-.78.16-1.18V.02z" />
           </svg>
         </a>
-        <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
-          aria-label="X">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-          </svg>
-        </a>
-      </div>
+        </div>
     </div>
   </footer>
+  </main>
   <script>
     // ============================================
     // Scroll Reveal: Intersection Observer
@@ -1734,7 +1860,7 @@
         try {
           const { data, error } = await supabaseClient.from('site_settings').select('*');
           if (error) throw error;
-          
+
           data.forEach(item => {
             const val = JSON.parse(item.value);
             if (item.key === 'promo_banner_text') {
@@ -1766,4 +1892,3 @@
 </body>
 
 </html>
-
