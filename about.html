@@ -5,7 +5,33 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Chempaka - Where Gold Makes Memories</title>
+  <title>The Chempaka Heritage - From Bullion to Boutique</title>
+
+  <!-- SEO -->
+  <meta name="description"
+    content="From bullion to boutique - the Chempaka heritage. Discover our story, our mastery of gold, and the craftsmanship behind every Chempaka piece." />
+  <link rel="canonical" href="https://www.chempakajewel.com/about" />
+
+  <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Chempaka" />
+  <meta property="og:locale" content="en_MY" />
+  <meta property="og:title" content="The Chempaka Heritage - From Bullion to Boutique" />
+  <meta property="og:description"
+    content="Our story, our mastery of gold, and the craftsmanship behind every Chempaka piece." />
+  <meta property="og:url" content="https://www.chempakajewel.com/about" />
+  <meta property="og:image" content="https://www.chempakajewel.com/assets/images/blog_gold_heritage.png" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="1024" />
+  <meta property="og:image:alt" content="Chempaka gold craftsmanship and heritage" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Chempaka Heritage - From Bullion to Boutique" />
+  <meta name="twitter:description"
+    content="Our story, our mastery of gold, and the craftsmanship behind every Chempaka piece." />
+  <meta name="twitter:image" content="https://www.chempakajewel.com/assets/images/blog_gold_heritage.png" />
+
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
@@ -29,7 +55,7 @@
             "on-primary-fixed-variant": "#5c412f",
             "inverse-surface": "#2f3131",
             "on-tertiary": "#ffffff",
-            "primary": "#A48E7E",
+            "primary": "#A4B5B9",
             "surface-container-highest": "#e2e2e2",
             "on-secondary": "#ffffff",
             "on-error-container": "#93000a",
@@ -41,16 +67,16 @@
             "on-background": "#1a1c1c",
             "on-secondary-container": "#775e4a",
             "surface-dim": "#dadada",
-            "primary-container": "#a48e7e",
+            "primary-container": "#a4b5b9",
             "on-surface-variant": "#4f453e",
-            "surface": "#f9f9f9",
+            "surface": "#ffffff",
             "surface-container-lowest": "#ffffff",
             "on-primary-container": "#fff4ef",
             "tertiary-fixed-dim": "#d0c5b9",
             "on-secondary-fixed": "#291808",
             "on-primary": "#ffffff",
             "inverse-primary": "#e6bfa7",
-            "surface-bright": "#f9f9f9",
+            "surface-bright": "#ffffff",
             "on-tertiary-fixed-variant": "#4d463d",
             "on-error": "#ffffff",
             "secondary-fixed": "#fedcc3",
@@ -59,19 +85,20 @@
             "secondary-container": "#fbd9c0",
             "error-container": "#ffdad6",
             "surface-tint": "#765845",
-            "background": "#f9f9f9",
+            "background": "#ffffff",
             "primary-fixed-dim": "#e6bfa7",
             "secondary-fixed-dim": "#e1c0a8",
             "on-tertiary-container": "#fff4ea",
             "on-secondary-fixed-variant": "#594230",
             "outline-variant": "#d3c3bb",
-            "surface-container-low": "#f3f3f4",
+            "surface-container-low": "#ffffff",
             "tertiary-fixed": "#ece1d5",
-            "secondary": "#2B3E56",
+            "secondary": "#2C2F44",
             "inverse-on-surface": "#f0f1f1",
             "surface-variant": "#e2e2e2",
             "on-primary-fixed": "#2b1608",
-            "surface-container-high": "#e8e8e8"
+            "surface-container-high": "#e8e8e8",
+            "accent-blue": "#D0D2DE"
           },
           "borderRadius": {
             "DEFAULT": "0.25rem",
@@ -88,8 +115,6 @@
             "margin-mobile": "20px"
           },
           "fontFamily": {
-            "serif": ["Playfair Display", "serif"],
-            "sans": ["Inter", "sans-serif"],
             "headline-lg": ["Playfair Display"],
             "headline-lg-mobile": ["Playfair Display"],
             "label-md": ["Inter"],
@@ -135,7 +160,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.18) 70%, transparent 100%);
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.52) 0%, rgba(0, 0, 0, 0.18) 70%, transparent 100%);
       pointer-events: none;
       transition: opacity 0.4s ease;
       z-index: -1;
@@ -150,12 +175,12 @@
     /* --- Hover state: solid white --- */
     @media (hover: hover) {
       header:hover {
-        background-color: rgba(255,255,255,0.98) !important;
+        background-color: rgba(255, 255, 255, 0.98) !important;
         backdrop-filter: blur(24px) !important;
         -webkit-backdrop-filter: blur(24px) !important;
         color: #000000 !important;
         border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
-        box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
       }
 
       header:hover::before {
@@ -199,12 +224,12 @@
 
     /* --- Scrolled state: crisp white, compact --- */
     header.scrolled {
-      background-color: rgba(255,255,255,0.97) !important;
+      background-color: rgba(255, 255, 255, 0.97) !important;
       backdrop-filter: blur(20px) !important;
       -webkit-backdrop-filter: blur(20px) !important;
       color: #000000 !important;
       border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
-      box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+      box-shadow: 0 1px 12px rgba(0, 0, 0, 0.06);
     }
 
     header.scrolled::before {
@@ -328,7 +353,7 @@
 
     /* ========================================
            UTILITY BAR LINK STYLING
-           11px, uppercase, 500 weight
+           Swarovski utility links: 11px, uppercase, 500 weight
            Font: Noto Sans
            ======================================== */
     .utility-link {
@@ -353,7 +378,7 @@
       opacity: 0;
       transform: translateY(28px);
       transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .fade-in-up.visible {
@@ -362,11 +387,25 @@
     }
 
     /* Staggered delay variants */
-    .fade-in-up.delay-1 { transition-delay: 0.08s; }
-    .fade-in-up.delay-2 { transition-delay: 0.16s; }
-    .fade-in-up.delay-3 { transition-delay: 0.24s; }
-    .fade-in-up.delay-4 { transition-delay: 0.32s; }
-    .fade-in-up.delay-5 { transition-delay: 0.40s; }
+    .fade-in-up.delay-1 {
+      transition-delay: 0.08s;
+    }
+
+    .fade-in-up.delay-2 {
+      transition-delay: 0.16s;
+    }
+
+    .fade-in-up.delay-3 {
+      transition-delay: 0.24s;
+    }
+
+    .fade-in-up.delay-4 {
+      transition-delay: 0.32s;
+    }
+
+    .fade-in-up.delay-5 {
+      transition-delay: 0.40s;
+    }
 
     /* Respect reduced motion */
     @media (prefers-reduced-motion: reduce) {
@@ -379,7 +418,7 @@
 
     .product-card {
       transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                  box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .product-card:hover {
@@ -424,12 +463,10 @@
     #hero-scrim {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        105deg,
-        rgba(0,0,0,0.72) 0%,
-        rgba(0,0,0,0.42) 45%,
-        rgba(0,0,0,0.08) 100%
-      );
+      background: linear-gradient(105deg,
+          rgba(0, 0, 0, 0.72) 0%,
+          rgba(0, 0, 0, 0.42) 45%,
+          rgba(0, 0, 0, 0.08) 100%);
       z-index: 1;
     }
 
@@ -440,7 +477,7 @@
       left: 0;
       right: 0;
       height: 220px;
-      background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 100%);
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.35) 0%, transparent 100%);
       z-index: 1;
     }
 
@@ -471,7 +508,7 @@
       font-weight: 500;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.65);
+      color: rgba(255, 255, 255, 0.65);
       margin-bottom: 20px;
     }
 
@@ -490,7 +527,7 @@
       font-size: clamp(0.9rem, 1.6vw, 1.05rem);
       font-weight: 300;
       line-height: 1.65;
-      color: rgba(255,255,255,0.72);
+      color: rgba(255, 255, 255, 0.72);
       margin-top: 20px;
       max-width: 520px;
     }
@@ -532,7 +569,7 @@
       align-items: center;
       gap: 8px;
       background: transparent;
-      color: rgba(255,255,255,0.88);
+      color: rgba(255, 255, 255, 0.88);
       font-family: 'Inter', 'Noto Sans', sans-serif;
       font-size: 12px;
       font-weight: 500;
@@ -541,14 +578,14 @@
       padding: 14px 0;
       text-decoration: none;
       border: none;
-      border-bottom: 1px solid rgba(255,255,255,0.38);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.38);
       transition: color 0.3s ease, border-color 0.3s ease;
       white-space: nowrap;
     }
 
     .hero-cta-secondary:hover {
       color: #ffffff;
-      border-bottom-color: rgba(255,255,255,0.9);
+      border-bottom-color: rgba(255, 255, 255, 0.9);
     }
 
     /* Hero scroll indicator */
@@ -561,7 +598,7 @@
       align-items: center;
       gap: 6px;
       z-index: 10;
-      color: rgba(255,255,255,0.45);
+      color: rgba(255, 255, 255, 0.45);
       font-family: 'Inter', sans-serif;
       font-size: 9px;
       letter-spacing: 0.18em;
@@ -571,23 +608,38 @@
     .hero-scroll-line {
       width: 1px;
       height: 40px;
-      background: rgba(255,255,255,0.25);
+      background: rgba(255, 255, 255, 0.25);
       animation: scrollLinePulse 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
     }
 
     @keyframes scrollLinePulse {
-      0%, 100% { transform: scaleY(1); opacity: 0.3; }
-      50% { transform: scaleY(1.4); opacity: 0.7; }
+
+      0%,
+      100% {
+        transform: scaleY(1);
+        opacity: 0.3;
+      }
+
+      50% {
+        transform: scaleY(1.4);
+        opacity: 0.7;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .hero-scroll-line { animation: none; }
-      #hero-bg-div img { opacity: 0.72; transition: none; }
+      .hero-scroll-line {
+        animation: none;
+      }
+
+      #hero-bg-div img {
+        opacity: 0.72;
+        transition: none;
+      }
     }
 
     /* ========================================
            HEADER ICON STYLING
-           ~20px icons, thin weight
+           Swarovski uses ~20px icons, thin weight
            ======================================== */
     header .header-icon {
       display: flex;
@@ -603,7 +655,7 @@
       opacity: 0.65;
     }
 
-    /* --- Octagon Category Card --- */
+    /* --- Swarovski Octagon Category Card --- */
     .clip-octagon {
       clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
       transition: background-color 0.3s ease;
@@ -638,26 +690,32 @@
     .group:hover .category-link-text::after {
       transform: scaleX(1);
     }
-  
+
     /* --- Header Transparent to Solid State --- */
-    header#main-header:hover, header#main-header.scrolled {
+    header#main-header:hover,
+    header#main-header.scrolled {
       background-color: rgba(255, 255, 255, 0.98) !important;
       border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
       backdrop-filter: blur(12px);
     }
-    header#main-header:hover *:not(#promo-banner):not(#promo-banner *), header#main-header.scrolled *:not(#promo-banner):not(#promo-banner *) {
+
+    header#main-header:hover *:not(#promo-banner):not(#promo-banner *),
+    header#main-header.scrolled *:not(#promo-banner):not(#promo-banner *) {
       color: #000000 !important;
-      border-color: rgba(0,0,0,0.1) !important;
-    }
-    header#main-header:hover .inline-nav-divider, header#main-header.scrolled .inline-nav-divider {
-      background-color: #e5e5e5 !important;
+      border-color: rgba(0, 0, 0, 0.1) !important;
     }
 
+    header#main-header:hover .inline-nav-divider,
+    header#main-header.scrolled .inline-nav-divider {
+      background-color: #e5e5e5 !important;
+    }
   </style>
 
 </head>
 
-<body class="bg-[#Fdfcfaf] text-neutral-900 font-sans antialiased overflow-x-hidden selection:bg-neutral-900 selection:text-white" style="background-color: #faf9f6;">
+<body
+  class="bg-[#Fdfcfaf] text-neutral-900 font-sans antialiased overflow-x-hidden selection:bg-neutral-900 selection:text-white"
+  style="background-color: #faf9f6;">
   <!-- MOBILE DRAWER INJECT -->
   <div id="mobile-drawer"
     class="fixed inset-y-0 left-0 w-80 bg-white text-black z-[100] transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl flex flex-col">
@@ -673,7 +731,7 @@
       <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
         href="index.html#sale" onclick="toggleMobileDrawer(false)">Sale</a>
       <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
-        href="showcase.html" onclick="toggleMobileDrawer(false)">Showcase</a>
+        href="index.html#our-collection" onclick="toggleMobileDrawer(false)">Showcase</a>
       <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
         href="about.html" onclick="toggleMobileDrawer(false)">Journal</a>
       <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
@@ -721,8 +779,8 @@
     </div>
   </div>
   <!-- Main Content -->
-  
-  
+
+
   <!-- HEADER INJECT -->
   <header id="main-header"
     class="fixed top-0 w-full z-50 transition-all duration-500 bg-transparent text-white border-b border-transparent">
@@ -731,7 +789,8 @@
       class="bg-black text-white text-[11px] font-medium tracking-[0.15em] py-2.5 px-4 md:px-6 flex justify-between items-center z-50 transition-all duration-300">
       <div class="flex-1 text-center select-none whitespace-normal break-words leading-relaxed">
         Join the Chempaka Club today for exclusive in-store privileges | <a href="boutiques.html"
-          class="underline underline-offset-2 hover:opacity-80 transition-opacity whitespace-nowrap">Visit Our Shah Alam Boutique</a>
+          class="underline underline-offset-2 hover:opacity-80 transition-opacity whitespace-nowrap">Visit Our
+          Boutiques</a>
       </div>
       <button onclick="dismissPromo()"
         class="text-white hover:opacity-70 transition-opacity bg-transparent border-none cursor-pointer p-0 ml-4"
@@ -745,17 +804,19 @@
     <div id="utility-bar"
       class="hidden lg:grid grid-cols-3 items-center py-1.5 px-12 transition-all duration-300 overflow-hidden border-b border-white/10 transition-colors duration-300">
       <div class="flex justify-start items-center">
-        <a href="boutiques.html" class="utility-link text-white transition-colors duration-300 flex items-center gap-1.5 hover:opacity-75">
+        <a href="boutiques.html"
+          class="utility-link text-white transition-colors duration-300 flex items-center gap-1.5 hover:opacity-75">
           <span class="material-symbols-outlined text-[18px]"
             style="font-variation-settings: 'wght' 300;">location_on</span>
-          Shah Alam Flagship
+          Stores
         </a>
       </div>
       <div class="utility-link text-neutral-500 select-none text-center text-xs">
-        Chempaka Gold Exchange &amp; Valuation Available at Shah Alam Boutique
+        Chempaka Gold Exchange &amp; Valuation Available in Boutiques
       </div>
       <div class="flex justify-end items-center gap-6">
-        <a href="membership.html" class="utility-link text-white transition-colors duration-300 flex items-center gap-1.5 hover:opacity-75">
+        <a href="membership.html"
+          class="utility-link text-white transition-colors duration-300 flex items-center gap-1.5 hover:opacity-75">
           <span class="material-symbols-outlined text-[18px]"
             style="font-variation-settings: 'wght' 300;">person_outline</span>
           Login
@@ -794,12 +855,18 @@
           <div class="col-span-6 lg:col-span-8 flex justify-center">
             <nav class="flex items-center gap-4 lg:gap-8 xl:gap-12 transition-all duration-300"
               aria-label="Main navigation">
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="index.html#sale">Sale</a>
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="showcase.html">Showcase</a>
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80 font-bold active" href="about.html">Journal</a>
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="membership.html">Membership</a>
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="boutiques.html">Boutique</a>
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80" href="boutiques.html#appointment-booking">Appointment</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80"
+                href="index.html#sale">Sale</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80"
+                href="index.html#our-collection">Showcase</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80"
+                href="about.html">Journal</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80 font-bold"
+                href="membership.html">Membership</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80"
+                href="boutiques.html">Boutiques</a>
+              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80"
+                href="boutiques.html#appointment-booking">Appointment</a>
 
               <span
                 class="inline-nav-divider w-[1px] h-4 bg-neutral-200 select-none pointer-events-none transition-all duration-300"></span>
@@ -851,10 +918,12 @@
       <!-- Mobile Layout -->
       <div id="nav-mobile-layout" class="flex md:hidden justify-between items-center w-full">
         <button onclick="toggleMobileDrawer(true)"
-          class="focus:outline-none bg-transparent border-none text-white transition-colors duration-300 p-0 cursor-pointer" aria-label="Open menu">
+          class="focus:outline-none bg-transparent border-none text-white transition-colors duration-300 p-0 cursor-pointer"
+          aria-label="Open menu">
           <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'wght' 300;">menu</span>
         </button>
-        <a href="index.html" class="font-serif tracking-[0.02em] text-[20px] uppercase font-normal logo-text text-white transition-colors duration-300"
+        <a href="index.html"
+          class="font-serif tracking-[0.02em] text-[20px] uppercase font-normal logo-text text-white transition-colors duration-300"
           style="font-family: 'Cinzel', serif; letter-spacing: 0.02em;">CHEMPAKA</a>
         <div class="flex items-center gap-1">
           <button onclick="toggleSearch(true)"
@@ -879,7 +948,9 @@
       <div class="w-full md:w-1/2 flex flex-col justify-center px-8 md:px-16 py-32 md:py-0 relative z-10">
         <div class="max-w-xl">
           <p class="font-sans text-[11px] font-medium tracking-[0.22em] uppercase text-white/60 mb-6">Our Heritage</p>
-          <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl font-normal leading-[1.05] tracking-tight text-white mb-6" style="font-family: 'Playfair Display', serif;">
+          <h1
+            class="font-serif text-4xl md:text-6xl lg:text-7xl font-normal leading-[1.05] tracking-tight text-white mb-6"
+            style="font-family: 'Playfair Display', serif;">
             The True Value <br />of Gold
           </h1>
           <p class="font-sans text-white/70 text-base leading-relaxed font-light max-w-sm mb-12">
@@ -889,64 +960,83 @@
       </div>
       <div class="w-full md:w-1/2 min-h-[50vh] md:min-h-[100dvh] relative">
         <div class="absolute inset-0 bg-black/10 z-10 pointer-events-none"></div>
-        <img src="assets/images/hero_gold_craft.png" alt="Gold Craftsmanship" class="absolute inset-0 w-full h-full object-cover" />
+        <img src="assets/images/hero_gold_craft.png" alt="Gold Craftsmanship"
+          class="absolute inset-0 w-full h-full object-cover" />
       </div>
     </section>
 
     <!-- JOURNAL INDEX (BENTO GRID) -->
     <section class="py-24 md:py-32 px-6 md:px-12 max-w-[1400px] mx-auto">
       <div class="mb-16">
-        <h2 class="font-serif text-4xl md:text-5xl font-normal text-black" style="font-family: 'Playfair Display', serif;">The Gold Journal</h2>
+        <h2 class="font-serif text-4xl md:text-5xl font-normal text-black"
+          style="font-family: 'Playfair Display', serif;">The Gold Journal</h2>
       </div>
-      
+
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Article 1: Large Card -->
-        <a href="#karats" class="group block md:col-span-2 relative min-h-[400px] lg:min-h-[500px] rounded-lg overflow-hidden bg-neutral-100">
-          <img src="assets/images/blog_gold_karats.png" alt="Gold Karats" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <a href="#karats"
+          class="group block md:col-span-2 relative min-h-[400px] lg:min-h-[500px] rounded-lg overflow-hidden bg-neutral-100">
+          <img src="assets/images/blog_gold_karats.png" alt="Gold Karats"
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
           <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
-            <span class="font-sans text-[10px] font-semibold tracking-widest uppercase text-white/70 mb-3">Education</span>
-            <h3 class="font-serif text-3xl md:text-4xl text-white mb-4" style="font-family: 'Playfair Display', serif;">Understanding Gold Karats: Why 916 and 999 Dominate</h3>
-            <p class="font-sans text-white/80 text-sm max-w-md line-clamp-2">A deep dive into the purity, allure, and cultural significance of high-karat gold in luxury jewelry.</p>
+            <span
+              class="font-sans text-[10px] font-semibold tracking-widest uppercase text-white/70 mb-3">Education</span>
+            <h3 class="font-serif text-3xl md:text-4xl text-white mb-4" style="font-family: 'Playfair Display', serif;">
+              Understanding Gold Karats: Why 916 and 999 Dominate</h3>
+            <p class="font-sans text-white/80 text-sm max-w-md line-clamp-2">A deep dive into the purity, allure, and
+              cultural significance of high-karat gold in luxury jewelry.</p>
           </div>
         </a>
 
         <!-- Article 2: Tall Card -->
-        <a href="#value" class="group block relative min-h-[400px] lg:min-h-[500px] rounded-lg overflow-hidden bg-[#0A0A0A]">
-          <img src="assets/images/blog_gold_value.png" alt="True Value of Gold" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-80" />
+        <a href="#value"
+          class="group block relative min-h-[400px] lg:min-h-[500px] rounded-lg overflow-hidden bg-[#0A0A0A]">
+          <img src="assets/images/blog_gold_value.png" alt="True Value of Gold"
+            class="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-80" />
           <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-between">
             <span class="font-sans text-[10px] font-semibold tracking-widest uppercase text-white/70">Investment</span>
             <div>
-              <h3 class="font-serif text-2xl text-white mb-4" style="font-family: 'Playfair Display', serif;">The True Value of Gold Market Prices</h3>
+              <h3 class="font-serif text-2xl text-white mb-4" style="font-family: 'Playfair Display', serif;">The True
+                Value of Gold Market Prices</h3>
             </div>
           </div>
         </a>
 
         <!-- Article 3: Standard Card -->
-        <a href="#alloys" class="group block relative min-h-[350px] rounded-lg overflow-hidden bg-white border border-neutral-200 hover:border-black transition-colors duration-300 p-8 md:p-10 flex flex-col justify-between">
+        <a href="#alloys"
+          class="group block relative min-h-[350px] rounded-lg overflow-hidden bg-white border border-neutral-200 hover:border-black transition-colors duration-300 p-8 md:p-10 flex flex-col justify-between">
           <span class="font-sans text-[10px] font-semibold tracking-widest uppercase text-black/50">Style Guide</span>
           <div>
-            <h3 class="font-serif text-2xl text-black mb-4" style="font-family: 'Playfair Display', serif;">Yellow, White, or Rose? Gold Alloys Explained</h3>
-            <p class="font-sans text-neutral-600 text-sm">Discover how different metals are mixed with pure gold to create stunning colors and durability.</p>
+            <h3 class="font-serif text-2xl text-black mb-4" style="font-family: 'Playfair Display', serif;">Yellow,
+              White, or Rose? Gold Alloys Explained</h3>
+            <p class="font-sans text-neutral-600 text-sm">Discover how different metals are mixed with pure gold to
+              create stunning colors and durability.</p>
           </div>
         </a>
 
         <!-- Article 4: Image Card -->
         <a href="#care" class="group block relative min-h-[350px] rounded-lg overflow-hidden bg-neutral-100">
-          <img src="assets/images/blog_gold_care.png" alt="Gold Care" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <img src="assets/images/blog_gold_care.png" alt="Gold Care"
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
           <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500"></div>
           <div class="absolute inset-0 p-8 md:p-10 flex flex-col justify-end">
-            <span class="font-sans text-[10px] font-semibold tracking-widest uppercase text-white/80 mb-2">Care & Maintenance</span>
-            <h3 class="font-serif text-2xl text-white" style="font-family: 'Playfair Display', serif;">Caring for 22K & 24K Gold</h3>
+            <span class="font-sans text-[10px] font-semibold tracking-widest uppercase text-white/80 mb-2">Care &
+              Maintenance</span>
+            <h3 class="font-serif text-2xl text-white" style="font-family: 'Playfair Display', serif;">Caring for 22K &
+              24K Gold</h3>
           </div>
         </a>
 
         <!-- Article 5: Standard Card -->
-        <a href="#heritage" class="group block relative min-h-[350px] rounded-lg overflow-hidden bg-secondary text-white p-8 md:p-10 flex flex-col justify-between">
+        <a href="#heritage"
+          class="group block relative min-h-[350px] rounded-lg overflow-hidden bg-[#2C2F44] text-white p-8 md:p-10 flex flex-col justify-between">
           <span class="font-sans text-[10px] font-semibold tracking-widest uppercase text-white/50">Our Story</span>
           <div>
-            <h3 class="font-serif text-2xl text-white mb-4" style="font-family: 'Playfair Display', serif;">From Bullion to Boutique: The Chempaka Heritage</h3>
-            <p class="font-sans text-white/70 text-sm">Explore the generations of master craftsmanship behind every piece we forge.</p>
+            <h3 class="font-serif text-2xl text-white mb-4" style="font-family: 'Playfair Display', serif;">From Bullion
+              to Boutique: The Chempaka Heritage</h3>
+            <p class="font-sans text-white/70 text-sm">Explore the generations of master craftsmanship behind every
+              piece we forge.</p>
           </div>
         </a>
       </div>
@@ -954,96 +1044,170 @@
 
     <!-- ARTICLES CONTAINER -->
     <div class="bg-white border-t border-neutral-200">
-      
+
       <!-- ARTICLE 1 -->
       <article id="karats" class="py-24 md:py-32 px-6 max-w-4xl mx-auto border-b border-neutral-200">
         <header class="mb-12 md:mb-16 text-center">
-          <span class="font-sans text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-500 block mb-6">Education</span>
-          <h2 class="font-serif text-4xl md:text-5xl font-normal text-black mb-6" style="font-family: 'Playfair Display', serif;">Understanding Gold Karats: Why 916 and 999 Dominate Luxury</h2>
+          <span
+            class="font-sans text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-500 block mb-6">Education</span>
+          <h2 class="font-serif text-4xl md:text-5xl font-normal text-black mb-6"
+            style="font-family: 'Playfair Display', serif;">Understanding Gold Karats: Why 916 and 999 Dominate Luxury
+          </h2>
         </header>
         <img src="assets/images/blog_gold_karats.png" alt="Gold Karats" class="w-full h-auto rounded-sm mb-12" />
         <div class="prose prose-lg max-w-[65ch] mx-auto text-neutral-700 font-light leading-relaxed">
-          <p>When selecting fine jewelry, the term "karat" (K) is the most critical indicator of quality and value. It measures the ratio of pure gold to other metals in an alloy out of 24 parts. Pure gold is 24K, meaning 24 out of 24 parts are gold. While Western markets often favor 14K or 18K for their durability, the Asian luxury market has long recognized 22K (916) and 24K (999) as the absolute pinnacle of fine jewelry.</p>
-          <h3 class="font-serif text-2xl text-black mt-10 mb-4" style="font-family: 'Playfair Display', serif;">The Allure of 916 Gold (22K)</h3>
-          <p>916 gold contains 91.6% pure gold, mixed with 8.4% alloys like copper or silver to provide structural strength. This karat weight strikes the perfect balance for intricate jewelry making while retaining the deep, mesmerizing yellow hue that lower karats simply cannot replicate. It is the gold standard for wedding jewelry and heirloom pieces across Asia.</p>
-          <h3 class="font-serif text-2xl text-black mt-10 mb-4" style="font-family: 'Playfair Display', serif;">The Absolute Purity of 999 Gold (24K)</h3>
-          <p>At 99.9% purity, 24K gold is the closest you can get to pure elemental gold. It is exceptionally soft, which means it requires masterful artisanship to mold into wearable jewelry. The color of 999 gold is unmistakable—a rich, luminous, almost warm orange-yellow that commands attention. Because of its softness, 24K pieces are often reserved for special occasions and are highly prized as liquid assets.</p>
-          <blockquote class="border-l-2 border-black pl-6 my-10 italic font-serif text-xl text-black">"To wear 24K gold is to wear the earth's rarest element in its most uncompromised form."</blockquote>
-          <p>At Chempaka, we specialize in 916 and 999 gold because we believe jewelry should not only be a triumph of design but a formidable store of wealth. When you purchase high-karat gold, you are making an investment that endures generations.</p>
+          <p>When selecting fine jewelry, the term "karat" (K) is the most critical indicator of quality and value. It
+            measures the ratio of pure gold to other metals in an alloy out of 24 parts. Pure gold is 24K, meaning 24
+            out of 24 parts are gold. While Western markets often favor 14K or 18K for their durability, the Asian
+            luxury market has long recognized 22K (916) and 24K (999) as the absolute pinnacle of fine jewelry.</p>
+          <h3 class="font-serif text-2xl text-black mt-10 mb-4" style="font-family: 'Playfair Display', serif;">The
+            Allure of 916 Gold (22K)</h3>
+          <p>916 gold contains 91.6% pure gold, mixed with 8.4% alloys like copper or silver to provide structural
+            strength. This karat weight strikes the perfect balance for intricate jewelry making while retaining the
+            deep, mesmerizing yellow hue that lower karats simply cannot replicate. It is the gold standard for wedding
+            jewelry and heirloom pieces across Asia.</p>
+          <h3 class="font-serif text-2xl text-black mt-10 mb-4" style="font-family: 'Playfair Display', serif;">The
+            Absolute Purity of 999 Gold (24K)</h3>
+          <p>At 99.9% purity, 24K gold is the closest you can get to pure elemental gold. It is exceptionally soft,
+            which means it requires masterful artisanship to mold into wearable jewelry. The color of 999 gold is
+            unmistakable—a rich, luminous, almost warm orange-yellow that commands attention. Because of its softness,
+            24K pieces are often reserved for special occasions and are highly prized as liquid assets.</p>
+          <blockquote class="border-l-2 border-black pl-6 my-10 italic font-serif text-xl text-black">"To wear 24K gold
+            is to wear the earth's rarest element in its most uncompromised form."</blockquote>
+          <p>At Chempaka, we specialize in 916 and 999 gold because we believe jewelry should not only be a triumph of
+            design but a formidable store of wealth. When you purchase high-karat gold, you are making an investment
+            that endures generations.</p>
         </div>
       </article>
 
       <!-- ARTICLE 2 -->
       <article id="value" class="py-24 md:py-32 px-6 max-w-4xl mx-auto border-b border-neutral-200">
         <header class="mb-12 md:mb-16 text-center">
-          <span class="font-sans text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-500 block mb-6">Investment</span>
-          <h2 class="font-serif text-4xl md:text-5xl font-normal text-black mb-6" style="font-family: 'Playfair Display', serif;">The True Value of Gold: Market Prices and Your Investment</h2>
+          <span
+            class="font-sans text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-500 block mb-6">Investment</span>
+          <h2 class="font-serif text-4xl md:text-5xl font-normal text-black mb-6"
+            style="font-family: 'Playfair Display', serif;">The True Value of Gold: Market Prices and Your Investment
+          </h2>
         </header>
         <img src="assets/images/blog_gold_value.png" alt="Gold Value" class="w-full h-auto rounded-sm mb-12" />
         <div class="prose prose-lg max-w-[65ch] mx-auto text-neutral-700 font-light leading-relaxed">
-          <p>Unlike fashion jewelry or even diamond pieces, which depreciate the moment they leave the showroom, high-karat gold jewelry operates on a completely different economic principle. The value of your 916 or 999 gold piece is intrinsically linked to the global commodities market.</p>
-          <h3 class="font-serif text-2xl text-black mt-10 mb-4" style="font-family: 'Playfair Display', serif;">How Gold Pricing Works</h3>
-          <p>The retail price of gold jewelry is calculated using a transparent formula: the live international spot price of gold (per gram), multiplied by the weight of the piece, plus a workmanship fee (often called a premium or 'making charge'). Because the spot price fluctuates daily based on global economic conditions, the value of your jewelry is dynamic.</p>
-          <p>During times of economic uncertainty, gold prices typically surge. This means that a 50-gram 916 gold necklace purchased a decade ago has likely doubled in intrinsic value today.</p>
-          <h3 class="font-serif text-2xl text-black mt-10 mb-4" style="font-family: 'Playfair Display', serif;">Trade-Ins and Liquidity</h3>
-          <p>One of the defining features of purchasing high-karat gold from a reputable jeweler like Chempaka is liquidity. Our members enjoy guaranteed trade-in valuations based on real-time market rates. This allows you to upgrade your jewelry over time without losing the foundational investment you made.</p>
-          <p>When you buy 916 or 999 gold, you are not merely purchasing an accessory; you are transferring your wealth into a wearable, untethered, and globally recognized currency.</p>
+          <p>Unlike fashion jewelry or even diamond pieces, which depreciate the moment they leave the showroom,
+            high-karat gold jewelry operates on a completely different economic principle. The value of your 916 or 999
+            gold piece is intrinsically linked to the global commodities market.</p>
+          <h3 class="font-serif text-2xl text-black mt-10 mb-4" style="font-family: 'Playfair Display', serif;">How Gold
+            Pricing Works</h3>
+          <p>The retail price of gold jewelry is calculated using a transparent formula: the live international spot
+            price of gold (per gram), multiplied by the weight of the piece, plus a workmanship fee (often called a
+            premium or 'making charge'). Because the spot price fluctuates daily based on global economic conditions,
+            the value of your jewelry is dynamic.</p>
+          <p>During times of economic uncertainty, gold prices typically surge. This means that a 50-gram 916 gold
+            necklace purchased a decade ago has likely doubled in intrinsic value today.</p>
+          <h3 class="font-serif text-2xl text-black mt-10 mb-4" style="font-family: 'Playfair Display', serif;">
+            Trade-Ins and Liquidity</h3>
+          <p>One of the defining features of purchasing high-karat gold from a reputable jeweler like Chempaka is
+            liquidity. Our members enjoy guaranteed trade-in valuations based on real-time market rates. This allows you
+            to upgrade your jewelry over time without losing the foundational investment you made.</p>
+          <p>When you buy 916 or 999 gold, you are not merely purchasing an accessory; you are transferring your wealth
+            into a wearable, untethered, and globally recognized currency.</p>
         </div>
       </article>
 
       <!-- ARTICLE 3 -->
       <article id="alloys" class="py-24 md:py-32 px-6 max-w-4xl mx-auto border-b border-neutral-200">
         <header class="mb-12 md:mb-16 text-center">
-          <span class="font-sans text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-500 block mb-6">Style Guide</span>
-          <h2 class="font-serif text-4xl md:text-5xl font-normal text-black mb-6" style="font-family: 'Playfair Display', serif;">Yellow, White, or Rose? A Guide to Gold Alloys</h2>
+          <span class="font-sans text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-500 block mb-6">Style
+            Guide</span>
+          <h2 class="font-serif text-4xl md:text-5xl font-normal text-black mb-6"
+            style="font-family: 'Playfair Display', serif;">Yellow, White, or Rose? A Guide to Gold Alloys</h2>
         </header>
         <img src="assets/images/blog_gold_alloys.png" alt="Gold Alloys" class="w-full h-auto rounded-sm mb-12" />
         <div class="prose prose-lg max-w-[65ch] mx-auto text-neutral-700 font-light leading-relaxed">
-          <p>While pure 24K gold is strictly yellow, the introduction of alloying metals allows goldsmiths to manipulate both the strength and the color of the final piece. The three primary colors of gold—yellow, white, and rose—each offer a distinct aesthetic and pair differently with various skin undertones.</p>
-          <h3 class="font-serif text-2xl text-black mt-10 mb-4" style="font-family: 'Playfair Display', serif;">Yellow Gold: The Classic Standard</h3>
-          <p>Yellow gold is alloyed with a mix of copper and silver to maintain its natural, warm hue while adding necessary strength. It is the most hypoallergenic of all the colors and pairs exceptionally well with warm or olive skin tones. For traditionalists, nothing compares to the rich glow of 22K yellow gold.</p>
-          <h3 class="font-serif text-2xl text-black mt-10 mb-4" style="font-family: 'Playfair Display', serif;">White Gold: Modern Brilliance</h3>
-          <p>To achieve a silvery-white finish, pure gold is alloyed with white metals such as nickel, palladium, or zinc. It is then often plated with rhodium to give it a mirror-like, bright white finish. White gold is highly durable and is the preferred choice for diamond settings, as it reflects the stone's brilliance rather than casting a yellow tint. It looks stunning on cooler skin tones.</p>
-          <h3 class="font-serif text-2xl text-black mt-10 mb-4" style="font-family: 'Playfair Display', serif;">Rose Gold: The Romantic Alternative</h3>
-          <p>Rose gold gains its beautiful pinkish hue through a higher concentration of copper in the alloy mix. The more copper used, the redder the gold appears. Rose gold is renowned for being universally flattering, complementing both warm and cool skin tones beautifully. It also happens to be the most durable of the three colors due to the strength of copper.</p>
+          <p>While pure 24K gold is strictly yellow, the introduction of alloying metals allows goldsmiths to manipulate
+            both the strength and the color of the final piece. The three primary colors of gold—yellow, white, and
+            rose—each offer a distinct aesthetic and pair differently with various skin undertones.</p>
+          <h3 class="font-serif text-2xl text-black mt-10 mb-4" style="font-family: 'Playfair Display', serif;">Yellow
+            Gold: The Classic Standard</h3>
+          <p>Yellow gold is alloyed with a mix of copper and silver to maintain its natural, warm hue while adding
+            necessary strength. It is the most hypoallergenic of all the colors and pairs exceptionally well with warm
+            or olive skin tones. For traditionalists, nothing compares to the rich glow of 22K yellow gold.</p>
+          <h3 class="font-serif text-2xl text-black mt-10 mb-4" style="font-family: 'Playfair Display', serif;">White
+            Gold: Modern Brilliance</h3>
+          <p>To achieve a silvery-white finish, pure gold is alloyed with white metals such as nickel, palladium, or
+            zinc. It is then often plated with rhodium to give it a mirror-like, bright white finish. White gold is
+            highly durable and is the preferred choice for diamond settings, as it reflects the stone's brilliance
+            rather than casting a yellow tint. It looks stunning on cooler skin tones.</p>
+          <h3 class="font-serif text-2xl text-black mt-10 mb-4" style="font-family: 'Playfair Display', serif;">Rose
+            Gold: The Romantic Alternative</h3>
+          <p>Rose gold gains its beautiful pinkish hue through a higher concentration of copper in the alloy mix. The
+            more copper used, the redder the gold appears. Rose gold is renowned for being universally flattering,
+            complementing both warm and cool skin tones beautifully. It also happens to be the most durable of the three
+            colors due to the strength of copper.</p>
         </div>
       </article>
 
       <!-- ARTICLE 4 -->
       <article id="care" class="py-24 md:py-32 px-6 max-w-4xl mx-auto border-b border-neutral-200">
         <header class="mb-12 md:mb-16 text-center">
-          <span class="font-sans text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-500 block mb-6">Care & Maintenance</span>
-          <h2 class="font-serif text-4xl md:text-5xl font-normal text-black mb-6" style="font-family: 'Playfair Display', serif;">Caring for 22K & 24K Gold: Maintaining the Luster</h2>
+          <span class="font-sans text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-500 block mb-6">Care
+            & Maintenance</span>
+          <h2 class="font-serif text-4xl md:text-5xl font-normal text-black mb-6"
+            style="font-family: 'Playfair Display', serif;">Caring for 22K & 24K Gold: Maintaining the Luster</h2>
         </header>
         <img src="assets/images/blog_gold_care.png" alt="Gold Care" class="w-full h-auto rounded-sm mb-12" />
         <div class="prose prose-lg max-w-[65ch] mx-auto text-neutral-700 font-light leading-relaxed">
-          <p>High-karat gold (916 and 999) requires a different approach to care than standard 14K or 18K jewelry. Because it contains less alloy, it is softer and more susceptible to bending, scratching, and dulling from everyday wear.</p>
-          <h3 class="font-serif text-2xl text-black mt-10 mb-4" style="font-family: 'Playfair Display', serif;">Daily Wear Precautions</h3>
-          <p>While 22K gold can be worn daily with mindfulness, 24K gold pieces should be reserved for special occasions. Always remove high-karat rings and bracelets when engaging in heavy lifting, gym workouts, or tasks that involve abrasive surfaces. Pure gold will easily scratch against harder metals like steel.</p>
-          <h3 class="font-serif text-2xl text-black mt-10 mb-4" style="font-family: 'Playfair Display', serif;">Cleaning High-Karat Gold</h3>
-          <p>Avoid harsh chemical cleaners or ultrasonic machines for your pure gold. The safest and most effective method is a simple bath in warm water mixed with a few drops of mild dish soap. Let the pieces soak for 15 minutes, then gently brush them with a baby-soft toothbrush. Rinse under warm water and pat dry with a lint-free microfiber cloth.</p>
-          <p>Chempaka members enjoy lifetime complimentary ultrasonic cleaning and inspection. Bring your pieces into any boutique annually to ensure clasps remain tight and the gold's original luster is professionally restored.</p>
+          <p>High-karat gold (916 and 999) requires a different approach to care than standard 14K or 18K jewelry.
+            Because it contains less alloy, it is softer and more susceptible to bending, scratching, and dulling from
+            everyday wear.</p>
+          <h3 class="font-serif text-2xl text-black mt-10 mb-4" style="font-family: 'Playfair Display', serif;">Daily
+            Wear Precautions</h3>
+          <p>While 22K gold can be worn daily with mindfulness, 24K gold pieces should be reserved for special
+            occasions. Always remove high-karat rings and bracelets when engaging in heavy lifting, gym workouts, or
+            tasks that involve abrasive surfaces. Pure gold will easily scratch against harder metals like steel.</p>
+          <h3 class="font-serif text-2xl text-black mt-10 mb-4" style="font-family: 'Playfair Display', serif;">Cleaning
+            High-Karat Gold</h3>
+          <p>Avoid harsh chemical cleaners or ultrasonic machines for your pure gold. The safest and most effective
+            method is a simple bath in warm water mixed with a few drops of mild dish soap. Let the pieces soak for 15
+            minutes, then gently brush them with a baby-soft toothbrush. Rinse under warm water and pat dry with a
+            lint-free microfiber cloth.</p>
+          <p>Chempaka members enjoy lifetime complimentary ultrasonic cleaning and inspection. Bring your pieces into
+            any boutique annually to ensure clasps remain tight and the gold's original luster is professionally
+            restored.</p>
         </div>
       </article>
 
       <!-- ARTICLE 5 -->
       <article id="heritage" class="py-24 md:py-32 px-6 max-w-4xl mx-auto">
         <header class="mb-12 md:mb-16 text-center">
-          <span class="font-sans text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-500 block mb-6">Our Story</span>
-          <h2 class="font-serif text-4xl md:text-5xl font-normal text-black mb-6" style="font-family: 'Playfair Display', serif;">From Bullion to Boutique: The Chempaka Heritage</h2>
+          <span class="font-sans text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-500 block mb-6">Our
+            Story</span>
+          <h2 class="font-serif text-4xl md:text-5xl font-normal text-black mb-6"
+            style="font-family: 'Playfair Display', serif;">From Bullion to Boutique: The Chempaka Heritage</h2>
         </header>
-        <img src="assets/images/blog_gold_heritage.png" alt="Chempaka Heritage" class="w-full h-auto rounded-sm mb-12" />
+        <img src="assets/images/blog_gold_heritage.png" alt="Chempaka Heritage"
+          class="w-full h-auto rounded-sm mb-12" />
         <div class="prose prose-lg max-w-[65ch] mx-auto text-neutral-700 font-light leading-relaxed">
-          <p>Chempaka was born from a singular vision: to bridge the gap between traditional Asian goldsmithing and modern, minimalist luxury. For decades, high-karat gold jewelry was seen purely as a financial safeguard—heavy, traditional pieces stored in safes and worn only on wedding days.</p>
-          <p>We believed that 916 and 999 gold deserved to be celebrated in contemporary design. Our master artisans, many of whom come from a long lineage of traditional goldsmiths, were challenged to apply their ancestral techniques to sleek, modern silhouettes.</p>
-          <h3 class="font-serif text-2xl text-black mt-10 mb-4" style="font-family: 'Playfair Display', serif;">The Artisan Process</h3>
-          <p>Every piece of Chempaka gold begins as raw bullion. We control the alloying process entirely in-house to ensure our 916 gold maintains a signature, radiant warmth that is unique to our brand. Our pieces are hand-finished, ensuring that the microscopic texture of the gold reflects light with a soft, elegant glow rather than a harsh, machine-made shine.</p>
-          <p>Today, Chempaka stands as a testament to the enduring power of gold. We create heirlooms that are uncompromised in their purity, timeless in their design, and formidable in their value. We invite you to experience the inner glow of Chempaka gold at our boutiques.</p>
+          <p>Chempaka was born from a singular vision: to bridge the gap between traditional Asian goldsmithing and
+            modern, minimalist luxury. For decades, high-karat gold jewelry was seen purely as a financial
+            safeguard—heavy, traditional pieces stored in safes and worn only on wedding days.</p>
+          <p>We believed that 916 and 999 gold deserved to be celebrated in contemporary design. Our master artisans,
+            many of whom come from a long lineage of traditional goldsmiths, were challenged to apply their ancestral
+            techniques to sleek, modern silhouettes.</p>
+          <h3 class="font-serif text-2xl text-black mt-10 mb-4" style="font-family: 'Playfair Display', serif;">The
+            Artisan Process</h3>
+          <p>Every piece of Chempaka gold begins as raw bullion. We control the alloying process entirely in-house to
+            ensure our 916 gold maintains a signature, radiant warmth that is unique to our brand. Our pieces are
+            hand-finished, ensuring that the microscopic texture of the gold reflects light with a soft, elegant glow
+            rather than a harsh, machine-made shine.</p>
+          <p>Today, Chempaka stands as a testament to the enduring power of gold. We create heirlooms that are
+            uncompromised in their purity, timeless in their design, and formidable in their value. We invite you to
+            experience the inner glow of Chempaka gold at our boutiques.</p>
         </div>
       </article>
-      
+
     </div>
-   <!-- Footer -->
+  </main>
+
+  <!-- Footer (Swarovski-Exact Style) -->
   <footer class="bg-black text-white py-16 lg:py-24 px-margin-mobile md:px-margin-desktop border-t border-[#222222]">
     <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-10">
       <div class="md:col-span-4 space-y-4">
@@ -1053,7 +1217,7 @@
         </p>
         <div class="pt-2">
           <a href="membership.html"
-            class="inline-flex items-center gap-1.5 bg-[#222222] text-white hover:bg-white hover:text-black py-3 px-6 text-xs font-bold uppercase tracking-widest transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150">
+            class="inline-flex items-center gap-1.5 bg-[#222222] text-white hover:bg-white hover:text-black py-3 px-6 text-xs font-bold uppercase tracking-widest transition-all duration-300">
             <span>Register Now</span>
             <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
           </a>
@@ -1100,8 +1264,8 @@
           <span class="select-none">English</span>
         </div>
         <div class="mt-1 text-[10px] leading-relaxed max-w-sm md:max-w-md text-[#666666]">
-          &copy; 2026 Chempaka Trading Sdn Bhd. All rights reserved. CHEMPAKA and the Chempaka logo are
-          trademarks of Chempaka Trading Sdn Bhd.
+          &copy; 2026 Chempaka Trading Sdn Bhd. Company registration number 200901004470 (847404-D). All rights reserved.
+          CHEMPAKA and the SWAN logo are registered and trademarks of Chempaka AG.
         </div>
       </div>
 
@@ -1112,55 +1276,23 @@
 
       <!-- Social Icons -->
       <div class="flex space-x-4 shrink-0 md:justify-self-end">
-        <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
-          aria-label="Facebook">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-          </svg>
-        </a>
-        <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
-          aria-label="Pinterest">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.162 0 7.396 2.967 7.396 6.93 0 4.135-2.607 7.462-6.227 7.462-1.216 0-2.359-.631-2.75-1.378l-.749 2.853c-.27 1.03-1 2.317-1.492 3.116 1.124.347 2.317.535 3.551.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z" />
-          </svg>
-        </a>
-        <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
+        <a href="https://www.instagram.com/chempakajewels/" target="_blank" rel="noopener noreferrer"
+          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300"
           aria-label="Instagram">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
             <path
-              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 0.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
           </svg>
         </a>
-        <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
-          aria-label="Youtube">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M23.498 6.163c-.272-1.026-1.08-1.834-2.106-2.108C19.52 3.545 12 3.545 12 3.545s-7.52 0-9.392.51c-1.026.274-1.834 1.082-2.108 2.108C0 8.037 0 12 0 12s0 3.963.5 5.837c.274 1.026 1.082 1.834 2.108 2.108 1.872.51 9.392.51 9.392.51s7.52 0 9.392-.51c1.026-.274 1.834-1.082 2.108-2.108.5-1.874.5-5.837.5-5.837s0-3.963-.5-5.837zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z" />
-          </svg>
-        </a>
-        <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
+        <a href="https://www.tiktok.com/@chempakajewels" target="_blank" rel="noopener noreferrer"
+          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300"
           aria-label="Tiktok">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
             <path
               d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.74-3.99-1.72-.08.65-.06 1.32-.06 1.98 0 2.01-.38 4.03-1.48 5.69-1.37 2.07-3.79 3.38-6.29 3.39-2.19.01-4.41-.84-5.83-2.53-1.63-1.93-2.21-4.7-1.43-7.14C4.16 7.4 6.3 5.48 8.89 5.09c.83-.12 1.68-.07 2.51-.08.01 1.43-.01 2.87-.01 4.3-.64-.09-1.3-.02-1.92.17-1.12.35-2.07 1.25-2.39 2.37-.46 1.57.17 3.42 1.54 4.25.92.56 2.04.66 3.06.33 1.09-.36 1.97-1.28 2.29-2.37.11-.38.16-.78.16-1.18V.02z" />
           </svg>
         </a>
-        <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300 motion-safe:active:scale-[0.97] active:duration-150"
-          aria-label="X">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-          </svg>
-        </a>
-      </div>
+        </div>
     </div>
   </footer>
 
@@ -1368,7 +1500,7 @@
         try {
           const { data, error } = await supabaseClient.from('site_settings').select('*');
           if (error) throw error;
-          
+
           data.forEach(item => {
             const val = JSON.parse(item.value);
             if (item.key === 'promo_banner_text') {
