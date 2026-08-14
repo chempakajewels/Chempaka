@@ -1,9 +1,27 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
 
 const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
+const WEBHOOK_SECRET = Deno.env.get('WEBHOOK_SECRET')
+
+function escapeHtml(value: string): string {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
 
 serve(async (req) => {
   try {
+    // The Authorization header alone only proves possession of the public
+    // anon key, which is embedded client-side. Require a second, private
+    // secret (set on the DB webhook and as a function secret) so this
+    // endpoint can't be driven directly with attacker-chosen record data.
+    if (WEBHOOK_SECRET && req.headers.get('x-webhook-secret') !== WEBHOOK_SECRET) {
+      return new Response("Unauthorized", { status: 401 })
+    }
+
     const payload = await req.json()
     console.log('Webhook payload received:', payload)
 
@@ -16,7 +34,7 @@ serve(async (req) => {
     }
 
     const toEmail = record.email
-    const name = record.full_name
+    const name = escapeHtml(record.full_name ?? '')
     
     // Use the newly verified custom domain sender address
     const fromEmail = 'concierge@chempakajewel.com'
