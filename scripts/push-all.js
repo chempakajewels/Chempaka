@@ -68,19 +68,16 @@ async function pushFile(localPath, repoPath, message) {
 }
 
 async function run() {
-  const msg = 'security: lock down RLS to real admins, fix admin XSS, harden email webhook, remove hardcoded tokens from scripts';
-  await pushFile('c:/tmp/Chempaka/tools/db-setup.sql', 'tools/db-setup.sql', msg);
+  const msg = 'seo: add meta descriptions, Open Graph/Twitter cards, canonicals, structured data, robots.txt and sitemap; wire real social links';
+  await pushFile('c:/tmp/Chempaka/index.html', 'index.html', msg);
+  await pushFile('c:/tmp/Chempaka/about.html', 'about.html', msg);
+  await pushFile('c:/tmp/Chempaka/boutiques.html', 'boutiques.html', msg);
   await pushFile('c:/tmp/Chempaka/membership.html', 'membership.html', msg);
   await pushFile('c:/tmp/Chempaka/admin.html', 'admin.html', msg);
-  await pushFile('c:/tmp/Chempaka/supabase/functions/send-email/index.ts', 'supabase/functions/send-email/index.ts', msg);
-  await pushFile('c:/tmp/Chempaka/supabase/config.toml', 'supabase/config.toml', msg);
+  await pushFile('c:/tmp/Chempaka/robots.txt', 'robots.txt', msg);
+  await pushFile('c:/tmp/Chempaka/sitemap.xml', 'sitemap.xml', msg);
   await pushFile('c:/tmp/Chempaka/.gitignore', '.gitignore', msg);
   await pushFile('c:/tmp/Chempaka/scripts/push-all.js', 'scripts/push-all.js', msg);
-  await pushFile('c:/tmp/Chempaka/scripts/push-membership.js', 'scripts/push-membership.js', msg);
-  await pushFile('c:/tmp/Chempaka/scripts/push-images.js', 'scripts/push-images.js', msg);
-  await pushFile('c:/tmp/Chempaka/scripts/push-func.js', 'scripts/push-func.js', msg);
-  await pushFile('c:/tmp/Chempaka/scripts/recover2.js', 'scripts/recover2.js', msg);
-  await pushFile('c:/tmp/Chempaka/scripts/check_logs.js', 'scripts/check_logs.js', msg);
 }
 
 run().catch(console.error);
