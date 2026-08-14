@@ -5,7 +5,33 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Chempaka - Club Membership</title>
+  <title>Chempaka Club Membership</title>
+
+  <!-- SEO -->
+  <meta name="description"
+    content="Join the Chempaka Club for exclusive privileges - private collection showcases, priority valuation services and your own digital membership card." />
+  <link rel="canonical" href="https://www.chempakajewel.com/membership" />
+
+  <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Chempaka" />
+  <meta property="og:locale" content="en_MY" />
+  <meta property="og:title" content="Chempaka Club Membership" />
+  <meta property="og:description"
+    content="Exclusive privileges, private collection showcases and priority valuation services." />
+  <meta property="og:url" content="https://www.chempakajewel.com/membership" />
+  <meta property="og:image" content="https://www.chempakajewel.com/assets/images/hero_ring.jpg" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="571" />
+  <meta property="og:image:alt" content="Chempaka gold ring" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Chempaka Club Membership" />
+  <meta name="twitter:description"
+    content="Exclusive privileges, private collection showcases and priority valuation services." />
+  <meta name="twitter:image" content="https://www.chempakajewel.com/assets/images/hero_ring.jpg" />
+
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
@@ -252,8 +278,8 @@
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-right-color: rgba(255, 255, 255, 0.05);
       border-bottom-color: rgba(255, 255, 255, 0.05);
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45), 
-                  inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
       border-radius: 20px;
       overflow: hidden;
       transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
@@ -269,12 +295,10 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.15) 0%,
-        rgba(255, 255, 255, 0) 50%,
-        rgba(255, 255, 255, 0.03) 100%
-      );
+      background: linear-gradient(135deg,
+          rgba(255, 255, 255, 0.15) 0%,
+          rgba(255, 255, 255, 0) 50%,
+          rgba(255, 255, 255, 0.03) 100%);
       pointer-events: none;
       z-index: 1;
     }
@@ -283,11 +307,9 @@
     .card-glare {
       position: absolute;
       inset: 0;
-      background: radial-gradient(
-        circle at var(--glare-x, 50%) var(--glare-y, 50%),
-        rgba(255, 255, 255, 0.28) 0%,
-        rgba(255, 255, 255, 0) 60%
-      );
+      background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%),
+          rgba(255, 255, 255, 0.28) 0%,
+          rgba(255, 255, 255, 0) 60%);
       mix-blend-mode: overlay;
       pointer-events: none;
       opacity: 0;
@@ -311,7 +333,8 @@
       class="bg-black text-white text-[11px] font-medium tracking-[0.15em] py-2.5 px-4 md:px-6 flex justify-between items-center z-50 transition-all duration-300">
       <div class="flex-1 text-center select-none whitespace-normal break-words leading-relaxed">
         Join the Chempaka Club today for exclusive in-store privileges | <a href="boutiques.html"
-          class="underline underline-offset-2 hover:opacity-80 transition-opacity whitespace-nowrap">Visit Our Boutiques</a>
+          class="underline underline-offset-2 hover:opacity-80 transition-opacity whitespace-nowrap">Visit Our
+          Boutiques</a>
       </div>
       <button onclick="dismissPromo()"
         class="text-white hover:opacity-70 transition-opacity bg-transparent border-none cursor-pointer p-0 ml-4"
@@ -520,157 +543,200 @@
     <!-- Hero Section -->
     <section class="relative bg-[#0D141C] text-white min-h-[90dvh] grid grid-cols-1 md:grid-cols-2">
       <!-- Left: Typography -->
-      <div class="w-full flex flex-col justify-center px-margin-mobile md:px-margin-desktop py-24 md:py-0 relative z-10">
+      <div
+        class="w-full flex flex-col justify-center px-margin-mobile md:px-margin-desktop py-24 md:py-0 relative z-10">
         <div class="max-w-xl">
-          <h1 class="font-serif text-4xl md:text-6xl lg:text-8xl font-normal leading-[1.05] tracking-tight text-white mb-6" style="font-family: 'Playfair Display', serif;">
+          <h1
+            class="font-serif text-4xl md:text-6xl lg:text-8xl font-normal leading-[1.05] tracking-tight text-white mb-6"
+            style="font-family: 'Playfair Display', serif;">
             The Inner <br />Glow
           </h1>
           <p class="font-sans text-white/70 text-sm md:text-base leading-relaxed font-light max-w-sm mb-12">
             Welcome to a curated circle of heritage, craftsmanship, and personal luxury.
           </p>
-          <a href="#club-registration" class="inline-flex items-center gap-3 bg-white hover:bg-neutral-200 text-black px-8 py-4 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-sm w-max">
+          <a href="#club-registration"
+            class="inline-flex items-center gap-3 bg-white hover:bg-neutral-200 text-black px-8 py-4 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-sm w-max">
             <span>Request Membership</span>
             <span class="material-symbols-outlined text-[16px]">arrow_downward</span>
           </a>
         </div>
       </div>
-      
+
       <!-- Right: Image -->
       <div class="w-full min-h-[50vh] md:min-h-[90dvh] h-full relative">
         <div class="absolute inset-0 bg-black/10 z-10 pointer-events-none"></div>
-        <img src="assets/images/hero_model_jewelry.jpg" alt="Chempaka Fine Jewelry" class="absolute inset-0 w-full h-full object-cover" />
+        <img src="assets/images/hero_model_jewelry.jpg" alt="Chempaka Fine Jewelry"
+          class="absolute inset-0 w-full h-full object-cover" />
       </div>
     </section>
 
     <!-- Unified Benefits Section -->
-    <section id="club-benefits" class="w-full bg-[#EAE7E2] py-24 lg:py-32 px-margin-mobile md:px-margin-desktop scroll-mt-20">
+    <section id="club-benefits"
+      class="w-full bg-[#EAE7E2] py-24 lg:py-32 px-margin-mobile md:px-margin-desktop scroll-mt-20">
       <div class="max-w-container-max mx-auto space-y-16">
         <!-- Section Header -->
         <div class="text-left max-w-2xl">
-          <h2 class="font-serif text-4xl md:text-6xl font-normal text-black leading-tight mb-6" style="font-family: 'Playfair Display', serif;">
+          <h2 class="font-serif text-4xl md:text-6xl font-normal text-black leading-tight mb-6"
+            style="font-family: 'Playfair Display', serif;">
             Privileges
           </h2>
           <p class="font-sans text-neutral-600 text-sm md:text-base font-light max-w-md">
-            Every registered member steps into a lifetime of curated services, luxury upgrades, and private boutique consultations.
+            Every registered member steps into a lifetime of curated services, luxury upgrades, and private boutique
+            consultations.
           </p>
         </div>
-        
+
         <!-- Asymmetric Bento Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          
+
           <!-- Row 1: Featured 2/3 Image Card + 1/3 Dark Mode Card -->
-          <div class="md:col-span-2 lg:col-span-2 relative min-h-[350px] md:min-h-[400px] rounded-lg overflow-hidden group">
-            <img src="assets/images/hero_necklace.jpg" alt="Welcome Reward" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div
+            class="md:col-span-2 lg:col-span-2 relative min-h-[350px] md:min-h-[400px] rounded-lg overflow-hidden group">
+            <img src="assets/images/hero_necklace.jpg" alt="Welcome Reward"
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
             <div class="absolute inset-0 p-8 flex flex-col justify-end">
-              <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center mb-6">
-                <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'wght' 300;">stars</span>
+              <div
+                class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-[20px]"
+                  style="font-variation-settings: 'wght' 300;">stars</span>
               </div>
-              <h3 class="font-serif text-2xl md:text-3xl font-normal text-white mb-3" style="font-family: 'Playfair Display', serif;">10% Welcome Reward</h3>
+              <h3 class="font-serif text-2xl md:text-3xl font-normal text-white mb-3"
+                style="font-family: 'Playfair Display', serif;">10% Welcome Reward</h3>
               <p class="font-sans text-white/80 text-sm font-light max-w-md">
-                Receive an exclusive voucher immediately upon approval, valid for your next in-store gold or jewelry purchase at any Chempaka boutique.
+                Receive an exclusive voucher immediately upon approval, valid for your next in-store gold or jewelry
+                purchase at any Chempaka boutique.
               </p>
             </div>
           </div>
-          
-          <div class="md:col-span-1 lg:col-span-1 bg-[#0D141C] rounded-lg p-8 md:p-10 flex flex-col justify-between group min-h-[300px] md:min-h-[400px]">
-            <div class="w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center transition-colors group-hover:bg-white group-hover:text-black">
-              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'wght' 300;">local_cafe</span>
+
+          <div
+            class="md:col-span-1 lg:col-span-1 bg-[#0D141C] rounded-lg p-8 md:p-10 flex flex-col justify-between group min-h-[300px] md:min-h-[400px]">
+            <div
+              class="w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center transition-colors group-hover:bg-white group-hover:text-black">
+              <span class="material-symbols-outlined text-[20px]"
+                style="font-variation-settings: 'wght' 300;">local_cafe</span>
             </div>
             <div>
-              <h3 class="font-serif text-2xl font-normal text-white mb-3" style="font-family: 'Playfair Display', serif;">VIP Showroom</h3>
+              <h3 class="font-serif text-2xl font-normal text-white mb-3"
+                style="font-family: 'Playfair Display', serif;">VIP Showroom</h3>
               <p class="font-sans text-white/60 text-sm font-light leading-relaxed">
-                Enjoy priority booking and access to our private, air-conditioned boutique lounges with complimentary gourmet refreshments.
+                Enjoy priority booking and access to our private, air-conditioned boutique lounges with complimentary
+                gourmet refreshments.
               </p>
             </div>
           </div>
-          
+
           <!-- Row 2: 3-column minimal cards -->
-          <div class="md:col-span-1 lg:col-span-1 bg-white rounded-lg p-8 md:p-10 border border-neutral-200 hover:border-black transition-colors duration-300">
+          <div
+            class="md:col-span-1 lg:col-span-1 bg-white rounded-lg p-8 md:p-10 border border-neutral-200 hover:border-black transition-colors duration-300">
             <div class="w-10 h-10 mb-8 flex items-center text-black">
-              <span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'wght' 300;">cake</span>
+              <span class="material-symbols-outlined text-[28px]"
+                style="font-variation-settings: 'wght' 300;">cake</span>
             </div>
-            <h3 class="font-serif text-xl font-normal text-black mb-3" style="font-family: 'Playfair Display', serif;">Birthday Gifts</h3>
+            <h3 class="font-serif text-xl font-normal text-black mb-3" style="font-family: 'Playfair Display', serif;">
+              Birthday Gifts</h3>
             <p class="font-sans text-neutral-600 text-sm font-light leading-relaxed">
-              Celebrate your birth month with styling consultations and a luxury gift voucher from our seasonal collections.
+              Celebrate your birth month with styling consultations and a luxury gift voucher from our seasonal
+              collections.
             </p>
           </div>
-          
-          <div class="md:col-span-1 lg:col-span-1 bg-white rounded-lg p-8 md:p-10 border border-neutral-200 hover:border-black transition-colors duration-300">
+
+          <div
+            class="md:col-span-1 lg:col-span-1 bg-white rounded-lg p-8 md:p-10 border border-neutral-200 hover:border-black transition-colors duration-300">
             <div class="w-10 h-10 mb-8 flex items-center text-black">
-              <span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'wght' 300;">cleaning_services</span>
+              <span class="material-symbols-outlined text-[28px]"
+                style="font-variation-settings: 'wght' 300;">cleaning_services</span>
             </div>
-            <h3 class="font-serif text-xl font-normal text-black mb-3" style="font-family: 'Playfair Display', serif;">Lifetime Care</h3>
+            <h3 class="font-serif text-xl font-normal text-black mb-3" style="font-family: 'Playfair Display', serif;">
+              Lifetime Care</h3>
             <p class="font-sans text-neutral-600 text-sm font-light leading-relaxed">
               Bring your Chempaka gold back anytime for complimentary cleaning and expert ultrasonic inspection.
             </p>
           </div>
-          
-          <div class="md:col-span-1 lg:col-span-1 bg-white rounded-lg p-8 md:p-10 border border-neutral-200 hover:border-black transition-colors duration-300">
+
+          <div
+            class="md:col-span-1 lg:col-span-1 bg-white rounded-lg p-8 md:p-10 border border-neutral-200 hover:border-black transition-colors duration-300">
             <div class="w-10 h-10 mb-8 flex items-center text-black">
-              <span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'wght' 300;">balance</span>
+              <span class="material-symbols-outlined text-[28px]"
+                style="font-variation-settings: 'wght' 300;">balance</span>
             </div>
-            <h3 class="font-serif text-xl font-normal text-black mb-3" style="font-family: 'Playfair Display', serif;">Gold Valuation</h3>
+            <h3 class="font-serif text-xl font-normal text-black mb-3" style="font-family: 'Playfair Display', serif;">
+              Gold Valuation</h3>
             <p class="font-sans text-neutral-600 text-sm font-light leading-relaxed">
               Access exclusive, real-time gold exchange rates. Members receive priority service for gold trade-ins.
             </p>
           </div>
-          
+
           <!-- Row 3: Full Width -->
-          <div class="md:col-span-2 lg:col-span-3 bg-[#A48E7E]/10 rounded-lg p-8 md:p-12 border border-[#A48E7E]/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+          <div
+            class="md:col-span-2 lg:col-span-3 bg-[#A48E7E]/10 rounded-lg p-8 md:p-12 border border-[#A48E7E]/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             <div class="flex-1 max-w-xl">
               <div class="w-10 h-10 mb-6 flex items-center text-[#A48E7E]">
-                <span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'wght' 300;">design_services</span>
+                <span class="material-symbols-outlined text-[28px]"
+                  style="font-variation-settings: 'wght' 300;">design_services</span>
               </div>
-              <h3 class="font-serif text-2xl font-normal text-black mb-3" style="font-family: 'Playfair Display', serif;">Bespoke Sizing</h3>
+              <h3 class="font-serif text-2xl font-normal text-black mb-3"
+                style="font-family: 'Playfair Display', serif;">Bespoke Sizing</h3>
               <p class="font-sans text-neutral-700 text-sm font-light leading-relaxed">
-                Enjoy priority scheduling and design assistance for custom engagement settings, and sizing alterations directly with our master artisans.
+                Enjoy priority scheduling and design assistance for custom engagement settings, and sizing alterations
+                directly with our master artisans.
               </p>
             </div>
             <div class="shrink-0">
-              <a href="boutiques.html#appointment-booking" class="inline-flex items-center gap-2 border border-black hover:bg-black hover:text-white px-6 py-3 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-sm text-black">
+              <a href="boutiques.html#appointment-booking"
+                class="inline-flex items-center gap-2 border border-black hover:bg-black hover:text-white px-6 py-3 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-sm text-black">
                 Book Consultation
               </a>
             </div>
           </div>
-          
+
         </div>
       </div>
     </section>
 
     <!-- Registration & Live Preview Section -->
-    <section id="club-registration" class="w-full bg-[#0D141C] py-20 lg:py-32 px-margin-mobile md:px-margin-desktop scroll-mt-24 relative overflow-hidden">
+    <section id="club-registration"
+      class="w-full bg-[#0D141C] py-20 lg:py-32 px-margin-mobile md:px-margin-desktop scroll-mt-24 relative overflow-hidden">
       <!-- Background highlights -->
       <div class="absolute inset-0 pointer-events-none">
-        <div class="absolute top-[20%] left-[10%] w-[350px] h-[350px] rounded-full bg-[#2B3E56] opacity-30 blur-[100px]"></div>
-        <div class="absolute bottom-[20%] right-[10%] w-[450px] h-[450px] rounded-full bg-[#A48E7E] opacity-10 blur-[130px]"></div>
+        <div
+          class="absolute top-[20%] left-[10%] w-[350px] h-[350px] rounded-full bg-[#2B3E56] opacity-30 blur-[100px]">
+        </div>
+        <div
+          class="absolute bottom-[20%] right-[10%] w-[450px] h-[450px] rounded-full bg-[#A48E7E] opacity-10 blur-[130px]">
+        </div>
       </div>
 
       <div class="max-w-container-max mx-auto relative z-10">
         <!-- Tab Selector for Registration Page -->
         <div class="flex justify-center gap-6 mb-12 border-b border-white/10 pb-4">
-          <button id="btn-register-tab" onclick="switchFormTab('register')" class="text-sm font-bold uppercase tracking-widest border-b-2 border-[#A48E7E] text-white pb-2 transition-all">
+          <button id="btn-register-tab" onclick="switchFormTab('register')"
+            class="text-sm font-bold uppercase tracking-widest border-b-2 border-[#A48E7E] text-white pb-2 transition-all">
             Apply For Membership
           </button>
-          <button id="btn-login-tab" onclick="switchFormTab('login')" class="text-sm font-bold uppercase tracking-widest border-b-2 border-transparent text-white/50 hover:text-white pb-2 transition-all">
+          <button id="btn-login-tab" onclick="switchFormTab('login')"
+            class="text-sm font-bold uppercase tracking-widest border-b-2 border-transparent text-white/50 hover:text-white pb-2 transition-all">
             Member Card Login
           </button>
         </div>
 
         <div id="registration-workspace" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           <!-- Left Column: Registration Form & Login Form -->
           <div class="lg:col-span-7 space-y-8">
             <!-- Apply Form Container -->
-            <div id="registration-form-container" class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-2xl transition-all duration-500">
+            <div id="registration-form-container"
+              class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-2xl transition-all duration-500">
               <div class="space-y-2 mb-8">
                 <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-[#A48E7E]">Digital Application</span>
                 <h3 class="font-serif text-3xl text-white font-normal">Apply for Chempaka Club</h3>
                 <p class="font-sans text-white/60 text-xs font-light">
-                  Please complete the form below. Your application will be sent to the boutique admin for verification and approval.
+                  Please complete the form below. Your application will be sent to the boutique admin for verification
+                  and approval.
                 </p>
               </div>
-              
+
               <form id="membership-form" onsubmit="submitMembershipForm(event)" class="space-y-6">
                 <!-- Name -->
                 <div class="relative">
@@ -680,7 +746,8 @@
                     class="absolute left-4 top-3.5 text-xs text-white/40 peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-focus:top-1.5 peer-focus:text-xs peer-focus:text-[#A48E7E] transition-all pointer-events-none uppercase tracking-widest font-semibold">
                     Full Name
                   </label>
-                  <p id="error-name" class="text-rose-500 text-[10px] uppercase font-bold tracking-widest mt-1.5 hidden">
+                  <p id="error-name"
+                    class="text-rose-500 text-[10px] uppercase font-bold tracking-widest mt-1.5 hidden">
                     Please enter your full name (minimum 2 characters)
                   </p>
                 </div>
@@ -706,7 +773,8 @@
                     class="absolute left-4 top-3.5 text-xs text-white/40 peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-focus:top-1.5 peer-focus:text-xs peer-focus:text-[#A48E7E] transition-all pointer-events-none uppercase tracking-widest font-semibold">
                     Phone Number (e.g. +60123456789)
                   </label>
-                  <p id="error-phone" class="text-rose-500 text-[10px] uppercase font-bold tracking-widest mt-1.5 hidden">
+                  <p id="error-phone"
+                    class="text-rose-500 text-[10px] uppercase font-bold tracking-widest mt-1.5 hidden">
                     Please enter a valid phone number
                   </p>
                 </div>
@@ -719,16 +787,20 @@
                     class="absolute left-4 top-3.5 text-xs text-white/40 peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-focus:top-1.5 peer-focus:text-xs peer-focus:text-[#A48E7E] transition-all pointer-events-none uppercase tracking-widest font-semibold">
                     Email Address
                   </label>
-                  <p id="error-email" class="text-rose-500 text-[10px] uppercase font-bold tracking-widest mt-1.5 hidden">
+                  <p id="error-email"
+                    class="text-rose-500 text-[10px] uppercase font-bold tracking-widest mt-1.5 hidden">
                     Please enter a valid email address
                   </p>
                 </div>
 
                 <!-- Consent checkbox -->
                 <div class="flex items-start gap-3 pt-2">
-                  <input type="checkbox" id="consent-check" required class="mt-1 accent-[#A48E7E] border-white/20 bg-white/5 rounded cursor-pointer w-4 h-4 focus:ring-offset-0 focus:ring-[#A48E7E]" />
-                  <label for="consent-check" class="text-[11px] text-white/70 leading-normal cursor-pointer select-none">
-                    I agree to the terms and privacy policy of Chempaka Trading Sdn Bhd, and consent to receive membership communications and boutique notifications.
+                  <input type="checkbox" id="consent-check" required
+                    class="mt-1 accent-[#A48E7E] border-white/20 bg-white/5 rounded cursor-pointer w-4 h-4 focus:ring-offset-0 focus:ring-[#A48E7E]" />
+                  <label for="consent-check"
+                    class="text-[11px] text-white/70 leading-normal cursor-pointer select-none">
+                    I agree to the terms and privacy policy of Chempaka Trading Sdn Bhd, and consent to receive
+                    membership communications and boutique notifications.
                   </label>
                 </div>
 
@@ -737,22 +809,25 @@
                   <button type="submit"
                     class="w-full bg-[#A48E7E] hover:bg-[#8A6A56] text-white py-4 px-8 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-lg shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group">
                     <span>Submit Application</span>
-                    <span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+                    <span
+                      class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_forward</span>
                   </button>
                 </div>
               </form>
             </div>
 
             <!-- Member Login Form Container -->
-            <div id="login-form-container" class="hidden bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-2xl transition-all duration-500">
+            <div id="login-form-container"
+              class="hidden bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-2xl transition-all duration-500">
               <div class="space-y-2 mb-8">
                 <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-[#A48E7E]">Member Access</span>
                 <h3 class="font-serif text-3xl text-white font-normal">Retrieve Member Card</h3>
                 <p class="font-sans text-white/60 text-xs font-light">
-                  Enter your registered Phone Number and IC Number below to display your dynamic digital membership card.
+                  Enter your registered Phone Number and IC Number below to display your dynamic digital membership
+                  card.
                 </p>
               </div>
-              
+
               <form id="member-login-form" onsubmit="submitMemberLogin(event)" class="space-y-6">
                 <!-- Phone -->
                 <div class="relative">
@@ -762,7 +837,8 @@
                     class="absolute left-4 top-3.5 text-xs text-white/40 peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-focus:top-1.5 peer-focus:text-xs peer-focus:text-[#A48E7E] transition-all pointer-events-none uppercase tracking-widest font-semibold">
                     Phone Number (e.g. +60123456789)
                   </label>
-                  <p id="error-login-phone" class="text-rose-500 text-[10px] uppercase font-bold tracking-widest mt-1.5 hidden">
+                  <p id="error-login-phone"
+                    class="text-rose-500 text-[10px] uppercase font-bold tracking-widest mt-1.5 hidden">
                     Please enter your registered phone number
                   </p>
                 </div>
@@ -775,7 +851,8 @@
                     class="absolute left-4 top-3.5 text-xs text-white/40 peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-focus:top-1.5 peer-focus:text-xs peer-focus:text-[#A48E7E] transition-all pointer-events-none uppercase tracking-widest font-semibold">
                     IC Number (e.g. YYMMDD-XX-XXXX)
                   </label>
-                  <p id="error-login-ic" class="text-rose-500 text-[10px] uppercase font-bold tracking-widest mt-1.5 hidden">
+                  <p id="error-login-ic"
+                    class="text-rose-500 text-[10px] uppercase font-bold tracking-widest mt-1.5 hidden">
                     Please enter your 12-digit IC number
                   </p>
                 </div>
@@ -785,22 +862,27 @@
                   <button type="submit"
                     class="w-full bg-[#A48E7E] hover:bg-[#8A6A56] text-white py-4 px-8 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-lg shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group">
                     <span>Access Digital Card</span>
-                    <span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+                    <span
+                      class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_forward</span>
                   </button>
                 </div>
               </form>
             </div>
-            
+
             <!-- Success Container -->
-            <div id="registration-success-container" class="hidden bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-2xl text-center space-y-6 transition-all duration-500">
-              <div class="w-16 h-16 bg-[#A48E7E]/20 text-[#A48E7E] flex items-center justify-center rounded-full mx-auto animate-bounce">
+            <div id="registration-success-container"
+              class="hidden bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-2xl text-center space-y-6 transition-all duration-500">
+              <div
+                class="w-16 h-16 bg-[#A48E7E]/20 text-[#A48E7E] flex items-center justify-center rounded-full mx-auto animate-bounce">
                 <span class="material-symbols-outlined text-3xl">check_circle</span>
               </div>
-              <h3 class="font-serif text-3xl text-white font-normal" style="font-family: 'Playfair Display', serif;">Welcome to the Club</h3>
+              <h3 class="font-serif text-3xl text-white font-normal" style="font-family: 'Playfair Display', serif;">
+                Welcome to the Club</h3>
               <p class="font-sans text-white/80 text-sm max-w-md mx-auto leading-relaxed font-light">
-                Your application has been approved! Your signature digital member card is now active, and your welcome voucher has been delivered to your email.
+                Your application has been approved! Your signature digital member card is now active, and your welcome
+                voucher has been delivered to your email.
               </p>
-              
+
               <div class="pt-6 flex flex-col sm:flex-row gap-4 justify-center">
                 <button onclick="downloadDigitalCard()"
                   class="bg-[#A48E7E] hover:bg-[#8A6A56] text-white px-6 py-3 text-xs font-bold uppercase tracking-widest transition-colors duration-300 rounded-lg flex items-center justify-center gap-2 shadow-lg">
@@ -814,72 +896,88 @@
               </div>
             </div>
           </div>
-          
+
           <!-- Right Column: Digital Frosted Glass Card Preview -->
           <div class="lg:col-span-5 flex flex-col items-center justify-center space-y-6">
-            <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-white/50 select-none">Live Digital Card Preview</span>
-            
+            <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-white/50 select-none">Live Digital Card
+              Preview</span>
+
             <!-- Frosted Glass Card Wrapper -->
             <div class="w-full flex justify-center py-4 px-2">
-              <div id="live-member-card" class="frosted-glass-card flex flex-col justify-between p-6 select-none relative">
+              <div id="live-member-card"
+                class="frosted-glass-card flex flex-col justify-between p-6 select-none relative">
                 <!-- Glare overlay element -->
                 <div class="card-glare"></div>
-                
+
                 <!-- Lock Overlay -->
-                <div id="card-lock-overlay" class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/40 backdrop-blur-[2px] transition-opacity duration-500 rounded-[20px]">
-                  <span class="material-symbols-outlined text-white text-3xl mb-3 opacity-90 font-light" style="font-variation-settings: 'wght' 300;">lock</span>
-                  <span class="text-white text-[10px] uppercase tracking-[0.2em] font-semibold text-center px-4 leading-relaxed">Join membership to<br>unlock your card</span>
+                <div id="card-lock-overlay"
+                  class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/40 backdrop-blur-[2px] transition-opacity duration-500 rounded-[20px]">
+                  <span class="material-symbols-outlined text-white text-3xl mb-3 opacity-90 font-light"
+                    style="font-variation-settings: 'wght' 300;">lock</span>
+                  <span
+                    class="text-white text-[10px] uppercase tracking-[0.2em] font-semibold text-center px-4 leading-relaxed">Join
+                    membership to<br>unlock your card</span>
                 </div>
 
                 <!-- Blurred Content Wrapper -->
-                <div id="card-content-wrapper" class="flex flex-col justify-between h-full blur-[6px] opacity-60 pointer-events-none transition-all duration-500 relative z-10">
+                <div id="card-content-wrapper"
+                  class="flex flex-col justify-between h-full blur-[6px] opacity-60 pointer-events-none transition-all duration-500 relative z-10">
                   <!-- Card Header -->
-                <div class="flex justify-between items-start z-10 relative">
-                  <div>
-                    <span class="font-serif text-base tracking-[0.1em] text-white" style="font-family: 'Cinzel', serif;">CHEMPAKA</span>
-                    <span class="block text-[7px] text-[#A48E7E] font-semibold tracking-widest uppercase mt-0.5">Club Member</span>
-                  </div>
-                  <span class="material-symbols-outlined text-xl text-[#A48E7E] filter drop-shadow-[0_0_8px_rgba(164,142,126,0.3)]">stars</span>
-                </div>
-                
-                <!-- Card Chip -->
-                <div class="flex items-center gap-3 z-10 relative">
-                  <div class="w-10 h-7 rounded-md bg-gradient-to-br from-[#E2D2C2] via-[#A48E7E] to-[#8A6A56] opacity-80 border border-white/20 flex flex-col justify-between p-1.5">
-                    <div class="w-full h-[1px] bg-black/20"></div>
-                    <div class="w-2/3 h-[1px] bg-black/20"></div>
-                    <div class="w-full h-[1px] bg-black/20"></div>
-                  </div>
-                  <div class="h-6 w-[1px] bg-white/10"></div>
-                  <span class="material-symbols-outlined text-white/40 text-sm">wifi</span>
-                </div>
-                
-                <!-- Card Footer Details -->
-                <div class="space-y-3.5 z-10 relative">
-                  <div>
-                    <span class="block text-[7px] text-white/40 uppercase tracking-widest font-semibold">Member Number</span>
-                    <span id="card-member-id" class="font-mono text-xs md:text-sm tracking-widest text-[#A48E7E]">CC-88470</span>
-                  </div>
-                  <div class="flex justify-between items-end">
+                  <div class="flex justify-between items-start z-10 relative">
                     <div>
-                      <span class="block text-[7px] text-white/40 uppercase tracking-widest font-semibold">Cardholder</span>
-                      <span id="card-member-name" class="font-sans text-xs text-white uppercase tracking-widest font-bold">YOUR NAME</span>
+                      <span class="font-serif text-base tracking-[0.1em] text-white"
+                        style="font-family: 'Cinzel', serif;">CHEMPAKA</span>
+                      <span class="block text-[7px] text-[#A48E7E] font-semibold tracking-widest uppercase mt-0.5">Club
+                        Member</span>
                     </div>
-                    <div class="text-right">
-                      <span class="block text-[7px] text-white/40 uppercase tracking-widest font-semibold">Member Since</span>
-                      <span id="card-member-since" class="font-sans text-xs text-white tracking-widest">07/2026</span>
+                    <span
+                      class="material-symbols-outlined text-xl text-[#A48E7E] filter drop-shadow-[0_0_8px_rgba(164,142,126,0.3)]">stars</span>
+                  </div>
+
+                  <!-- Card Chip -->
+                  <div class="flex items-center gap-3 z-10 relative">
+                    <div
+                      class="w-10 h-7 rounded-md bg-gradient-to-br from-[#E2D2C2] via-[#A48E7E] to-[#8A6A56] opacity-80 border border-white/20 flex flex-col justify-between p-1.5">
+                      <div class="w-full h-[1px] bg-black/20"></div>
+                      <div class="w-2/3 h-[1px] bg-black/20"></div>
+                      <div class="w-full h-[1px] bg-black/20"></div>
+                    </div>
+                    <div class="h-6 w-[1px] bg-white/10"></div>
+                    <span class="material-symbols-outlined text-white/40 text-sm">wifi</span>
+                  </div>
+
+                  <!-- Card Footer Details -->
+                  <div class="space-y-3.5 z-10 relative">
+                    <div>
+                      <span class="block text-[7px] text-white/40 uppercase tracking-widest font-semibold">Member
+                        Number</span>
+                      <span id="card-member-id"
+                        class="font-mono text-xs md:text-sm tracking-widest text-[#A48E7E]">CC-88470</span>
+                    </div>
+                    <div class="flex justify-between items-end">
+                      <div>
+                        <span
+                          class="block text-[7px] text-white/40 uppercase tracking-widest font-semibold">Cardholder</span>
+                        <span id="card-member-name"
+                          class="font-sans text-xs text-white uppercase tracking-widest font-bold">YOUR NAME</span>
+                      </div>
+                      <div class="text-right">
+                        <span class="block text-[7px] text-white/40 uppercase tracking-widest font-semibold">Member
+                          Since</span>
+                        <span id="card-member-since" class="font-sans text-xs text-white tracking-widest">07/2026</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <!-- End Blurred Content Wrapper -->
+                  <!-- End Blurred Content Wrapper -->
                 </div>
               </div>
             </div>
-            
+
             <p class="text-[10px] text-white/40 max-w-[280px] text-center font-sans tracking-wide">
               Move your mouse over the card to experience the luxury reflection overlay.
             </p>
           </div>
-          
+
         </div>
       </div>
     </section>
@@ -906,27 +1004,36 @@
         <div class="space-y-4">
           <h4 class="font-sans text-[11px] font-bold uppercase tracking-widest text-[#cccccc]">Our Brand</h4>
           <ul class="space-y-2 text-xs text-[#888888] font-light">
-            <li><a href="about.html#heritage" class="hover:text-white transition-colors duration-200 block py-0.5">Masters of Gold</a></li>
-            <li><a href="about.html#heritage" class="hover:text-white transition-colors duration-200 block py-0.5">Heritage Story</a></li>
-            <li><a href="about.html#heritage" class="hover:text-white transition-colors duration-200 block py-0.5">Sustainability</a></li>
+            <li><a href="about.html#heritage"
+                class="hover:text-white transition-colors duration-200 block py-0.5">Masters of Gold</a></li>
+            <li><a href="about.html#heritage"
+                class="hover:text-white transition-colors duration-200 block py-0.5">Heritage Story</a></li>
+            <li><a href="about.html#heritage"
+                class="hover:text-white transition-colors duration-200 block py-0.5">Sustainability</a></li>
           </ul>
         </div>
 
         <div class="space-y-4">
           <h4 class="font-sans text-[11px] font-bold uppercase tracking-widest text-[#cccccc]">Valuations</h4>
           <ul class="space-y-2 text-xs text-[#888888] font-light">
-            <li><a href="index.html#our-services" class="hover:text-white transition-colors duration-200 block py-0.5">Gold Exchange</a></li>
-            <li><a href="index.html#our-services" class="hover:text-white transition-colors duration-200 block py-0.5">Bespoke Design</a></li>
-            <li><a href="index.html#our-services" class="hover:text-white transition-colors duration-200 block py-0.5">Private Lounge</a></li>
+            <li><a href="index.html#our-services"
+                class="hover:text-white transition-colors duration-200 block py-0.5">Gold Exchange</a></li>
+            <li><a href="index.html#our-services"
+                class="hover:text-white transition-colors duration-200 block py-0.5">Bespoke Design</a></li>
+            <li><a href="index.html#our-services"
+                class="hover:text-white transition-colors duration-200 block py-0.5">Private Lounge</a></li>
           </ul>
         </div>
 
         <div class="col-span-2 sm:col-span-1 space-y-4">
           <h4 class="font-sans text-[11px] font-bold uppercase tracking-widest text-[#cccccc]">Boutiques</h4>
           <ul class="space-y-2 text-xs text-[#888888] font-light">
-            <li><a href="boutiques.html#store-locator" class="hover:text-white transition-colors duration-200 block py-0.5">Boutique Finder</a></li>
-            <li><a href="boutiques.html#appointment-booking" class="hover:text-white transition-colors duration-200 block py-0.5">Private Viewing</a></li>
-            <li><a href="boutiques.html#appointment-booking" class="hover:text-white transition-colors duration-200 block py-0.5">Contact Styling</a></li>
+            <li><a href="boutiques.html#store-locator"
+                class="hover:text-white transition-colors duration-200 block py-0.5">Boutique Finder</a></li>
+            <li><a href="boutiques.html#appointment-booking"
+                class="hover:text-white transition-colors duration-200 block py-0.5">Private Viewing</a></li>
+            <li><a href="boutiques.html#appointment-booking"
+                class="hover:text-white transition-colors duration-200 block py-0.5">Contact Styling</a></li>
           </ul>
         </div>
       </div>
@@ -942,7 +1049,8 @@
           <span class="select-none">English</span>
         </div>
         <div class="mt-1 text-[10px] leading-relaxed max-w-sm md:max-w-md text-[#666666]">
-          &copy; 2026 Chempaka Trading Sdn Bhd. Company registration number 200901004470 (847404-D). All rights reserved.
+          &copy; 2026 Chempaka Trading Sdn Bhd. Company registration number 200901004470 (847404-D). All rights
+          reserved.
           CHEMPAKA and the SWAN logo are registered and trademarks of Chempaka AG.
         </div>
       </div>
@@ -954,23 +1062,7 @@
 
       <!-- Social Icons -->
       <div class="flex space-x-4 shrink-0 md:justify-self-end">
-        <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300"
-          aria-label="Facebook">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-          </svg>
-        </a>
-        <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300"
-          aria-label="Pinterest">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.162 0 7.396 2.967 7.396 6.93 0 4.135-2.607 7.462-6.227 7.462-1.216 0-2.359-.631-2.75-1.378l-.749 2.853c-.27 1.03-1 2.317-1.492 3.116 1.124.347 2.317.535 3.551.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z" />
-          </svg>
-        </a>
-        <a href="#"
+        <a href="https://www.instagram.com/chempakajewels/" target="_blank" rel="noopener noreferrer"
           class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300"
           aria-label="Instagram">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -978,15 +1070,7 @@
               d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
           </svg>
         </a>
-        <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300"
-          aria-label="Youtube">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M23.498 6.163c-.272-1.026-1.08-1.834-2.106-2.108C19.52 3.545 12 3.545 12 3.545s-7.52 0-9.392.51c-1.026.274-1.834 1.082-2.108 2.108C0 8.037 0 12 0 12s0 3.963.5 5.837c.274 1.026 1.082 1.834 2.108 2.108 1.872.51 9.392.51 9.392.51s7.52 0 9.392-.51c1.026-.274 1.834-1.082 2.108-2.108.5-1.874.5-5.837.5-5.837s0-3.963-.5-5.837zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z" />
-          </svg>
-        </a>
-        <a href="#"
+        <a href="https://www.tiktok.com/@chempakajewels" target="_blank" rel="noopener noreferrer"
           class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300"
           aria-label="Tiktok">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -994,15 +1078,7 @@
               d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.74-3.99-1.72-.08.65-.06 1.32-.06 1.98 0 2.01-.38 4.03-1.48 5.69-1.37 2.07-3.79 3.38-6.29 3.39-2.19.01-4.41-.84-5.83-2.53-1.63-1.93-2.21-4.7-1.43-7.14C4.16 7.4 6.3 5.48 8.89 5.09c.83-.12 1.68-.07 2.51-.08.01 1.43-.01 2.87-.01 4.3-.64-.09-1.3-.02-1.92.17-1.12.35-2.07 1.25-2.39 2.37-.46 1.57.17 3.42 1.54 4.25.92.56 2.04.66 3.06.33 1.09-.36 1.97-1.28 2.29-2.37.11-.38.16-.78.16-1.18V.02z" />
           </svg>
         </a>
-        <a href="#"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300"
-          aria-label="X">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-          </svg>
-        </a>
-      </div>
+        </div>
     </div>
   </footer>
 
@@ -1060,10 +1136,10 @@
       const mm = String(now.getMonth() + 1).padStart(2, '0');
       const yyyy = now.getFullYear();
       const memberSinceStr = `${mm}/${yyyy}`;
-      
+
       const cardSinceEl = document.getElementById('card-member-since');
       if (cardSinceEl) cardSinceEl.innerText = memberSinceStr;
-      
+
       // 2. Set randomized Member ID initially
       const initialId = 'CC-' + Math.floor(10000 + Math.random() * 90000);
       const cardIdEl = document.getElementById('card-member-id');
@@ -1074,7 +1150,7 @@
     function setCardLockedState(isLocked) {
       const lockOverlay = document.getElementById('card-lock-overlay');
       const contentWrapper = document.getElementById('card-content-wrapper');
-      
+
       if (lockOverlay && contentWrapper) {
         if (isLocked) {
           lockOverlay.classList.remove('opacity-0', 'pointer-events-none');
@@ -1093,18 +1169,18 @@
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        
+
         const xPercent = (x / rect.width) * 100;
         const yPercent = (y / rect.height) * 100;
-        
+
         const tiltX = ((y / rect.height) - 0.5) * -15;
         const tiltY = ((x / rect.width) - 0.5) * 15;
-        
+
         card.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.03)`;
         card.style.setProperty('--glare-x', `${xPercent}%`);
         card.style.setProperty('--glare-y', `${yPercent}%`);
       });
-      
+
       card.addEventListener('mouseleave', () => {
         card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
         card.style.setProperty('--glare-x', '50%');
@@ -1141,7 +1217,7 @@
     icEl.addEventListener('input', (e) => {
       let val = e.target.value.replace(/\D/g, ''); // strip non-digits
       if (val.length > 12) val = val.slice(0, 12);
-      
+
       let formatted = '';
       if (val.length > 0) {
         formatted += val.substring(0, 6);
@@ -1236,7 +1312,7 @@
         // Check if Supabase is initialized
         if (typeof supabase !== 'undefined' && typeof SUPABASE_URL !== 'undefined' && SUPABASE_URL !== "YOUR_SUPABASE_URL_HERE") {
           const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-          
+
           try {
             // 2. Insert member record with default status 'pending' and NULL member_id
             const { error: insertErr } = await supabaseClient
@@ -1285,20 +1361,20 @@
 
         // Form is valid! Fade out form, show success message.
         document.getElementById('registration-form-container').classList.add('hidden');
-        
+
         // Update success text for pending state
         const successMsg = document.getElementById('registration-success-container');
         successMsg.querySelector('h3').innerText = 'Application Submitted';
         successMsg.querySelector('p').innerHTML = `Your digital membership request for <strong>${nameEl.value.trim().toUpperCase()}</strong> has been submitted. Our boutique team will verify your details.<br><br>Please check back later by logging in using your Phone and IC number to display your approved membership card.`;
-        
+
         successMsg.classList.remove('hidden');
-        
+
         // Highlight the card with a nice transition
         const liveCard = document.getElementById('live-member-card');
         if (liveCard) {
           liveCard.classList.add('scale-105', 'border-[#A48E7E]', 'shadow-[0_0_30px_rgba(164,142,126,0.3)]');
         }
-        
+
         // Unlock the card
         setCardLockedState(false);
 
@@ -1317,13 +1393,13 @@
       const successContainer = document.getElementById('registration-success-container');
 
       successContainer.classList.add('hidden');
-      
+
       if (tabName === 'register') {
         regTab.className = "text-sm font-bold uppercase tracking-widest border-b-2 border-[#A48E7E] text-white pb-2 transition-all";
         loginTab.className = "text-sm font-bold uppercase tracking-widest border-b-2 border-transparent text-white/50 hover:text-white pb-2 transition-all";
         regContainer.classList.remove('hidden');
         loginContainer.classList.add('hidden');
-        
+
         // Reset card to preview default
         document.getElementById('card-member-id').innerText = 'PENDING APPROVAL';
         document.getElementById('card-member-name').innerText = 'YOUR NAME';
@@ -1332,7 +1408,7 @@
         regTab.className = "text-sm font-bold uppercase tracking-widest border-b-2 border-transparent text-white/50 hover:text-white pb-2 transition-all";
         regContainer.classList.add('hidden');
         loginContainer.classList.remove('hidden');
-        
+
         // Reset card to blank preview
         document.getElementById('card-member-id').innerText = 'CC-XXXXX';
         document.getElementById('card-member-name').innerText = 'YOUR NAME';
@@ -1343,7 +1419,7 @@
       if (liveCard) {
         liveCard.classList.remove('scale-105', 'border-[#A48E7E]', 'shadow-[0_0_30px_rgba(164,142,126,0.3)]');
       }
-      
+
       // Re-lock the card
       setCardLockedState(true);
     }
@@ -1351,7 +1427,7 @@
     // Submit Member Login (Retrieve Card details via Phone + IC)
     async function submitMemberLogin(event) {
       event.preventDefault();
-      
+
       const phoneVal = document.getElementById('login-phone').value.trim();
       const icVal = document.getElementById('login-ic').value.replace(/[\s-]/g, '');
 
@@ -1379,7 +1455,7 @@
 
         if (typeof supabase !== 'undefined' && typeof SUPABASE_URL !== 'undefined' && SUPABASE_URL !== "YOUR_SUPABASE_URL_HERE") {
           const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-          
+
           try {
             // Retrieve member matching Phone and IC via a server-side lookup
             // (the members table itself is not publicly readable -- this RPC
@@ -1402,7 +1478,7 @@
             // Successfully authenticated and approved! Update the card details
             document.getElementById('card-member-id').innerText = data.member_id;
             document.getElementById('card-member-name').innerText = data.full_name.toUpperCase();
-            
+
             const joinDate = new Date(data.joined_at);
             const month = (joinDate.getMonth() + 1).toString().padStart(2, '0');
             const year = joinDate.getFullYear();
@@ -1413,13 +1489,13 @@
             if (liveCard) {
               liveCard.classList.add('scale-105', 'border-[#A48E7E]', 'shadow-[0_0_30px_rgba(164,142,126,0.3)]');
             }
-            
+
             // Unlock the card
             setCardLockedState(false);
 
             // Hide form and show success state
             document.getElementById('login-form-container').classList.add('hidden');
-            
+
             const successMsg = document.getElementById('registration-success-container');
             successMsg.querySelector('h3').innerText = 'Membership Card Loaded';
             successMsg.querySelector('p').innerHTML = `Welcome back to the Chempaka Club, <strong>${data.full_name.toUpperCase()}</strong>! Your membership details have loaded successfully. Enjoy your premium privileges.`;
@@ -1452,7 +1528,7 @@
       errIc.classList.add('hidden');
       errPhone.classList.add('hidden');
       errEmail.classList.add('hidden');
-      
+
       nameEl.classList.remove('border-rose-500');
       icEl.classList.remove('border-rose-500');
       phoneEl.classList.remove('border-rose-500');
@@ -1472,7 +1548,7 @@
       feedback.className = 'fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs font-bold uppercase tracking-widest px-8 py-4 rounded shadow-2xl z-[100] transition-opacity duration-300 border border-neutral-800';
       feedback.innerText = 'Card Welcome Package Saved Successfully';
       document.body.appendChild(feedback);
-      
+
       setTimeout(() => {
         feedback.style.opacity = '0';
         setTimeout(() => feedback.remove(), 300);
