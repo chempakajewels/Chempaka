@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Staff-only portal - not for indexing
+Disallow: /admin
+Disallow: /admin.html
+
+Sitemap: https://www.chempakajewel.com/sitemap.xml
