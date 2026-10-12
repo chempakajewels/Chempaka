@@ -290,7 +290,7 @@
 .site-promo__msg a { margin-left: 12px; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
 .site-promo__x { position: absolute; right: var(--space-12); top: 50%; transform: translateY(-50%); width: 32px; height: 32px; display: grid; place-items: center; background: none; border: 0; color: var(--on-panel); cursor: pointer; }
 .site-promo__x .cj-icon { font-size: 20px; }
-.site-hdr { position: relative; z-index: 3; background: #1c3f94; color: #fff; border-bottom: 1px solid transparent; transition: background-color .25s ease, color .25s ease, border-color .25s ease; }
+.site-hdr { position: relative; z-index: 3; background: #0a0a0a; color: #fff; border-top: 1px solid rgba(255, 255, 255, .14); border-bottom: 1px solid transparent; transition: background-color .25s ease, color .25s ease, border-color .25s ease; }
 .site-hdr a:not(.cj-btn) { color: inherit; }
 .site-hdr__meta { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 36px; font-size: 12px; letter-spacing: .04em; }
 .site-hdr__meta a { display: inline-flex; align-items: center; gap: 6px; }
@@ -796,22 +796,13 @@ fieldset.cj-field { border: 0; padding: 0; margin: 0; min-width: 0; }
 /* header: blue bar; the whole bar turns white while the pointer is over it or focus is inside it */
 .site-hdr__join { background: #fff; color: #0a0a0a; border-color: #fff; transition: background-color .25s ease, color .25s ease, border-color .25s ease; }
 @media (hover: hover) {
-  .site-hdr:hover { background: var(--surface); color: var(--ink); border-bottom-color: var(--hairline); }
+  .site-hdr:hover { background: var(--surface); color: var(--ink); border-top-color: var(--hairline); border-bottom-color: var(--hairline); }
   .site-hdr:hover .site-hdr__join { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
   .site-hdr:hover .site-hdr__join:hover { background: var(--gold-text); border-color: var(--gold-text); }
 }
-.site-hdr:has(:focus-visible) { background: var(--surface); color: var(--ink); border-bottom-color: var(--hairline); }
+.site-hdr:has(:focus-visible) { background: var(--surface); color: var(--ink); border-top-color: var(--hairline); border-bottom-color: var(--hairline); }
 .site-hdr:has(:focus-visible) .site-hdr__join { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
 @media (prefers-reduced-motion: reduce) { .site-hdr, .site-hdr__join { transition: none; } }
 
-/* ===== Part 8: blue hero with the header floating over it (white on hover) ===== */
-.site-hdr--overlay { position: absolute; top: 0; left: 0; right: 0; background: transparent; }
+/* ===== Part 8: blue hero ===== */
 .site-hero { background: radial-gradient(70% 90% at 72% 45%, #2f5fd0 0%, #1c3f94 52%, #12296b 100%); }
-@media (min-width: 901px) {
-  .site-hero { min-height: 680px; }
-  .site-hero .cj-container, .site-hero__slide .cj-container { padding-top: 136px; }
-}
-/* a soft blue scrim keeps the floating header legible over the photograph; it fades out when the header turns white */
-.site-hdr--overlay::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 190px; z-index: -1; pointer-events: none; background: linear-gradient(to bottom, rgba(18, 41, 107, .68), rgba(18, 41, 107, 0)); transition: opacity .25s ease; }
-@media (hover: hover) { .site-hdr--overlay:hover::before { opacity: 0; } }
-.site-hdr--overlay:has(:focus-visible)::before { opacity: 0; }
