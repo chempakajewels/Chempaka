@@ -1,0 +1,90 @@
+<!--{"title":"Chempaka - Admin Portal","description":"Chempaka staff portal.","noindex":true,"layout":"admin","noSiteJs":true,"scripts":["admin"]}-->
+<div class="site-admin-bar"><div class="cj-container">
+  <div class="site-kicker"><span class="cj-wordmark cj-wordmark--sm" style="color:var(--on-panel)">CHEMPAKA</span><span class="cj-rate__label" style="letter-spacing:.2em;color:var(--on-panel-muted)">Admin</span></div>
+  <div id="user-info" style="display:flex;align-items:center;gap:24px" hidden><span id="user-email" style="font-size:12px;color:var(--on-panel-muted)"></span><a href="index.html"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#open_in_new"/></svg> View site</a><button type="button" id="logout-btn"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#logout"/></svg> Log out</button></div>
+</div></div>
+
+<main>
+<section id="login-container" class="cj-section" style="padding:96px 0" hidden><div class="cj-container">
+  <div class="site-login">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <p class="cj-eyebrow" style="margin:0">Portal login</p>
+      <h1 class="cj-heading">Boutique admin</h1>
+      <p class="cj-muted" style="margin:0">Enter your administrator credentials to open the dashboard.</p>
+    </div>
+    <form class="cj-form" id="login-form">
+      <div class="cj-field"><label for="login-email">Email address</label><input id="login-email" type="email" class="cj-input" autocomplete="username" required></div>
+      <div class="cj-field"><label for="login-password">Password</label><input id="login-password" type="password" class="cj-input" autocomplete="current-password" required></div>
+      <p class="site-form-error" id="login-error" role="alert" hidden></p>
+      <button type="submit" class="cj-btn cj-btn--primary cj-btn--block">Authenticate</button>
+    </form>
+  </div>
+</div></section>
+
+<section id="dashboard-container" class="cj-section" style="padding-top:64px" hidden><div class="cj-container">
+  <div class="cj-head" style="margin-bottom:32px"><h1 class="cj-heading">Dashboard</h1></div>
+
+  <div class="cj-choices" role="group" aria-label="Dashboard sections" style="margin-bottom:48px">
+    <button type="button" class="cj-choice" data-tab="counter" aria-pressed="true">Counter check</button>
+    <button type="button" class="cj-choice" data-tab="members" aria-pressed="false">Member monitor</button>
+    <button type="button" class="cj-choice" data-tab="content" aria-pressed="false">Content management</button>
+  </div>
+
+  <div id="tab-counter" data-panel>
+    <div class="site-split site-split--form" style="gap:64px">
+      <div class="site-stack" style="gap:16px">
+        <h2 class="cj-heading">Counter check</h2>
+        <p class="cj-muted" style="margin:0">Confirm a member before applying member prices. Look them up by member ID, phone number or name, at the counter or when a customer messages on WhatsApp.</p>
+      </div>
+      <div class="site-stack" style="gap:24px;width:100%">
+        <form class="cj-form" style="width:100%" id="counter-form">
+          <div class="cj-field"><label for="counter-q">Member ID, phone or name</label><input id="counter-q" class="cj-input" placeholder="CC-123456 or +60 12-345 6789" autocomplete="off"></div>
+          <button type="submit" class="cj-btn cj-btn--primary">Check member</button>
+        </form>
+        <div id="counter-result" style="width:100%;display:grid;gap:16px"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-members" data-panel hidden>
+    <div class="site-stack" style="gap:64px;width:100%">
+      <div style="width:100%">
+        <div class="cj-head" style="margin-bottom:24px"><div><h2 class="cj-heading">Pending applications</h2><p class="cj-muted" style="margin:8px 0 0">Applications waiting for boutique review and membership code allocation.</p></div><span class="cj-badge cj-badge--member" id="pending-count">0 pending</span></div>
+        <div class="site-tablewrap"><table class="site-table">
+          <thead><tr><th scope="col">Full name</th><th scope="col">IC number</th><th scope="col">Phone</th><th scope="col">Email</th><th scope="col">Applied</th><th scope="col"><span class="site-sr">Actions</span></th></tr></thead>
+          <tbody id="pending-body"></tbody>
+        </table></div>
+        <div class="cj-notice" id="no-pending" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#check_circle"/></svg><div><b>All caught up</b>No pending membership applications.</div></div>
+      </div>
+      <div style="width:100%">
+        <div class="cj-head" style="margin-bottom:24px"><div><h2 class="cj-heading">Approved members</h2><p class="cj-muted" style="margin:8px 0 0">Enrolled Chempaka Club members with active membership codes.</p></div><span class="cj-badge" id="approved-count">0 members</span></div>
+        <div class="site-tablewrap"><table class="site-table">
+          <thead><tr><th scope="col">Member ID</th><th scope="col">Full name</th><th scope="col">IC number</th><th scope="col">Phone</th><th scope="col">Email</th><th scope="col">Joined</th><th scope="col"><span class="site-sr">Actions</span></th></tr></thead>
+          <tbody id="approved-body"></tbody>
+        </table></div>
+        <div class="cj-notice" id="no-approved" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#info"/></svg><div><b>No approved members yet</b>Approved members will appear here.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-content" data-panel hidden>
+    <div class="site-split site-split--form" style="gap:64px">
+      <div class="site-stack" style="gap:16px">
+        <h2 class="cj-heading">Site settings</h2>
+        <p class="cj-muted" style="margin:0">Manage the content served on the website in real time. Changes go live as soon as you publish.</p>
+      </div>
+      <form class="cj-form" id="settings-form">
+        <div class="cj-field"><label for="set-promo">Announcement bar text</label><input id="set-promo" class="cj-input" placeholder="Join the Chempaka Club and show your card at the counter for member prices."></div>
+        <div class="cj-field"><label for="set-title">Home hero title (HTML supported)</label><input id="set-title" class="cj-input" placeholder="Where gold makes memories."></div>
+        <div class="cj-field"><label for="set-sub">Home hero subtitle</label><input id="set-sub" class="cj-input" placeholder="Hand-finished gold jewellery."></div>
+        <div class="cj-field"><label for="set-ann">Header announcement</label><input id="set-ann" class="cj-input" placeholder="Gold exchange and valuation available at the Shah Alam boutique"><span class="cj-field__msg">Appears in the middle of the top row of the header.</span></div>
+        <p class="site-form-error" id="settings-error" role="alert" hidden></p>
+        <button type="submit" class="cj-btn cj-btn--primary">Publish changes live</button>
+        <div class="cj-notice" id="settings-ok" role="status" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#check_circle"/></svg><div><b>Settings updated</b>Changes are live on the website.</div></div>
+      </form>
+    </div>
+  </div>
+</div></section>
+
+<div class="cj-container" style="padding-bottom:32px"><p class="cj-caption" style="margin:0">&copy; 2026 Chempaka Trading Sdn Bhd. Admin panel security control.</p></div>
+</main>

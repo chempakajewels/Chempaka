@@ -1,895 +1,161 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Visit Our Boutiques - Chempaka Shah Alam</title>
-
-  <!-- SEO -->
-  <meta name="description"
-    content="Visit Chempaka at Butik Utama Shah Alam, Selangor. Book a private viewing or gold valuation with our concierge team. Opening hours 10:00 AM - 6:00 PM." />
-  <link rel="canonical" href="https://www.chempakajewel.com/boutiques" />
-
-  <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Chempaka" />
-  <meta property="og:locale" content="en_MY" />
-  <meta property="og:title" content="Visit Our Boutiques - Chempaka Shah Alam" />
-  <meta property="og:description"
-    content="Book a private viewing or gold valuation at Butik Utama Shah Alam, Selangor." />
-  <meta property="og:url" content="https://www.chempakajewel.com/boutiques" />
-  <meta property="og:image" content="https://www.chempakajewel.com/assets/images/hero_model_jewelry.jpg" />
-  <meta property="og:image:width" content="1024" />
-  <meta property="og:image:height" content="571" />
-  <meta property="og:image:alt" content="Chempaka jewellery boutique" />
-
-  <!-- Twitter / X -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Visit Our Boutiques - Chempaka Shah Alam" />
-  <meta name="twitter:description"
-    content="Book a private viewing or gold valuation at Butik Utama Shah Alam, Selangor." />
-  <meta name="twitter:image" content="https://www.chempakajewel.com/assets/images/hero_model_jewelry.jpg" />
-
-  <!-- Local business structured data: drives the Google Maps / local pack listing.
-       NOTE: opening hours are intentionally omitted until the trading days are
-       confirmed - publishing wrong hours here sends customers to a closed shop. -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "JewelryStore",
-    "@id": "https://www.chempakajewel.com/boutiques#butik-utama-shah-alam",
-    "name": "Chempaka - Butik Utama Shah Alam",
-    "url": "https://www.chempakajewel.com/boutiques",
-    "image": "https://www.chempakajewel.com/assets/images/hero_model_jewelry.jpg",
-    "telephone": "+60178113204",
-    "parentOrganization": { "@id": "https://www.chempakajewel.com/#organization" },
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Seksyen U13, 12, Jln Setia Dagang AL U13/AL, Alam Nusantara",
-      "addressLocality": "Shah Alam",
-      "addressRegion": "Selangor",
-      "postalCode": "40170",
-      "addressCountry": "MY"
-    }
-  }
-  </script>
-
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-    rel="stylesheet" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&amp;family=Noto+Sans:wght@300;400;500;600&amp;family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap"
-    rel="stylesheet" />
-  <script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          "colors": {
-            "surface-container": "#eeeeee",
-            "on-primary-fixed-variant": "#5c412f",
-            "inverse-surface": "#2f3131",
-            "on-tertiary": "#ffffff",
-            "primary": "#A4B5B9",
-            "surface-container-highest": "#e2e2e2",
-            "on-secondary": "#ffffff",
-            "on-error-container": "#93000a",
-            "tertiary-container": "#786f65",
-            "primary-fixed": "#ffdcc7",
-            "on-tertiary-fixed": "#201b14",
-            "error": "#ba1a1a",
-            "tertiary": "#5f574e",
-            "on-background": "#1a1c1c",
-            "on-secondary-container": "#775e4a",
-            "surface-dim": "#dadada",
-            "primary-container": "#a4b5b9",
-            "on-surface-variant": "#4f453e",
-            "surface": "#EAE7E2",
-            "surface-container-lowest": "#ffffff",
-            "on-primary-container": "#fff4ef",
-            "tertiary-fixed-dim": "#d0c5b9",
-            "on-secondary-fixed": "#291808",
-            "on-primary": "#ffffff",
-            "inverse-primary": "#e6bfa7",
-            "surface-bright": "#EAE7E2",
-            "on-tertiary-fixed-variant": "#4d463d",
-            "on-error": "#ffffff",
-            "secondary-fixed": "#fedcc3",
-            "outline": "#81746d",
-            "on-surface": "#1a1c1c",
-            "secondary-container": "#fbd9c0",
-            "error-container": "#ffdad6",
-            "surface-tint": "#765845",
-            "background": "#EAE7E2",
-            "primary-fixed-dim": "#e6bfa7",
-            "secondary-fixed-dim": "#e1c0a8",
-            "on-tertiary-container": "#fff4ea",
-            "on-secondary-fixed-variant": "#594230",
-            "outline-variant": "#d3c3bb",
-            "surface-container-low": "#EAE7E2",
-            "tertiary-fixed": "#ece1d5",
-            "secondary": "#2C2F44",
-            "inverse-on-surface": "#f0f1f1",
-            "surface-variant": "#e2e2e2",
-            "on-primary-fixed": "#2b1608",
-            "surface-container-high": "#e8e8e8",
-            "accent-blue": "#D0D2DE"
-          },
-          "borderRadius": {
-            "DEFAULT": "0.25rem",
-            "lg": "0.5rem",
-            "xl": "0.75rem",
-            "full": "9999px"
-          },
-          "spacing": {
-            "margin-desktop": "64px",
-            "section-gap": "120px",
-            "container-max": "1280px",
-            "gutter": "24px",
-            "unit": "8px",
-            "margin-mobile": "20px"
-          },
-          "fontFamily": {
-            "headline-lg": ["Playfair Display"],
-            "headline-lg-mobile": ["Playfair Display"],
-            "label-md": ["Inter"],
-            "display-lg-mobile": ["Playfair Display"],
-            "body-md": ["Inter"],
-            "body-lg": ["Inter"],
-            "display-lg": ["Playfair Display"],
-            "headline-md": ["Playfair Display"]
-          },
-          "fontSize": {
-            "headline-lg": ["40px", { "lineHeight": "48px", "fontWeight": "400" }],
-            "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "400" }],
-            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "500" }],
-            "display-lg-mobile": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
-            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
-            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
-            "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "400" }],
-            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "400" }]
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    /* Force header to be white background with black text on boutiques page */
-    header {
-      background-color: #ffffff !important;
-      color: #000000 !important;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
-    }
-    header::before,
-    header::after {
-      opacity: 0 !important;
-    }
-    header .logo-text,
-    header .scrolled-logo-text {
-      color: #000000 !important;
-    }
-    header .nav-link {
-      color: #000000 !important;
-    }
-    header .nav-link:hover {
-      color: #000000 !important;
-    }
-    header .material-symbols-outlined {
-      color: #000000 !important;
-    }
-    header .utility-link {
-      color: #000000 !important;
-    }
-    header #utility-bar {
-      border-bottom-color: rgba(0, 0, 0, 0.1) !important;
-    }
-
-    /* --- Collapsed scrolled state --- */
-    header.scrolled {
-      background-color: #ffffff !important;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
-    }
-    header.scrolled #utility-bar {
-      height: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-      opacity: 0;
-      overflow: hidden;
-    }
-    header.scrolled #promo-banner {
-      height: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-      opacity: 0;
-      overflow: hidden;
-    }
-    header.scrolled #logo-row {
-      height: 0;
-      opacity: 0;
-      overflow: hidden;
-      margin-bottom: 0;
-      padding: 0;
-    }
-    header.scrolled #scrolled-logo {
-      opacity: 1;
-      width: auto;
-      max-width: 200px;
-    }
-    header.scrolled #navbar-container {
-      padding-top: 10px;
-      padding-bottom: 10px;
-    }
-    header.scrolled .inline-nav-divider,
-    header.scrolled .inline-nav-icons {
-      display: none !important;
-    }
-    header.scrolled .scrolled-nav-icons {
-      opacity: 1 !important;
-      pointer-events: auto !important;
-    }
-
-    /* Custom input/select typography fallback */
-    input, select, textarea {
-      font-family: 'Noto Sans', sans-serif;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visit Our Boutiques - Chempaka Shah Alam</title>
+<meta name="description" content="Visit Chempaka at Butik Utama Shah Alam, Selangor. Book a private viewing or gold valuation with our concierge team. Opening hours 10:00 AM - 6:00 PM.">
+<link rel="canonical" href="https://www.chempakajewel.com/boutiques">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Chempaka">
+<meta property="og:locale" content="en_MY">
+<meta property="og:title" content="Visit Our Boutiques - Chempaka Shah Alam">
+<meta property="og:description" content="Book a private viewing or gold valuation at Butik Utama Shah Alam, Selangor.">
+<meta property="og:url" content="https://www.chempakajewel.com/boutiques">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Visit Our Boutiques - Chempaka Shah Alam">
+<meta name="twitter:description" content="Book a private viewing or gold valuation at Butik Utama Shah Alam, Selangor.">
+<meta property="og:image" content="https://www.chempakajewel.com/assets/images/hero_model_jewelry.jpg">
+<meta property="og:image:alt" content="Chempaka jewellery boutique">
+<meta name="twitter:image" content="https://www.chempakajewel.com/assets/images/hero_model_jewelry.jpg">
+<script>document.documentElement.className += " js";</script>
+<link rel="preload" href="assets/fonts/Jost-normal-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/BodoniModa-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/site.css">
 </head>
-
-<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden">
-  <!-- TopNavBar (Swarovski-Exact Layout) -->
-  <header id="main-header"
-    class="fixed top-0 w-full z-50 transition-all duration-500 bg-white text-black border-b border-neutral-100">
-    <!-- Top Promotion Banner -->
-    <div id="promo-banner"
-      class="bg-black text-white text-[11px] font-medium tracking-[0.15em] py-2.5 px-4 md:px-6 flex justify-between items-center z-50 transition-all duration-300">
-      <div class="flex-1 text-center select-none whitespace-normal break-words leading-relaxed">
-        Join the Chempaka Club today for exclusive in-store privileges | <a href="boutiques.html"
-          class="underline underline-offset-2 hover:opacity-80 transition-opacity whitespace-nowrap">Visit Our Boutiques</a>
-      </div>
-      <button onclick="dismissPromo()"
-        class="text-white hover:opacity-70 transition-opacity bg-transparent border-none cursor-pointer p-0 ml-4"
-        aria-label="Close promotional banner">
-        <span class="material-symbols-outlined text-[16px] leading-none"
-          style="font-variation-settings: 'wght' 300;">close</span>
-      </button>
-    </div>
-
-    <!-- Utility Bar -->
-    <div id="utility-bar"
-      class="hidden lg:grid grid-cols-3 items-center py-2 px-16 border-b border-neutral-200 transition-all duration-300 overflow-hidden">
-      <div class="flex justify-start items-center">
-        <a href="#store-locator" class="utility-link text-black/90 flex items-center gap-1.5 hover:text-black">
-          <span class="material-symbols-outlined text-[18px]"
-            style="font-variation-settings: 'wght' 300;">location_on</span>
-          Stores
-        </a>
-      </div>
-      <div class="utility-link text-neutral-500 select-none text-center">
-        Chempaka Gold Exchange &amp; Valuation Available in Boutiques
-      </div>
-      <div class="flex justify-end items-center gap-6">
-        <a href="membership.html" class="utility-link text-black/90 flex items-center gap-1.5 hover:text-black">
-          <span class="material-symbols-outlined text-[18px]"
-            style="font-variation-settings: 'wght' 300;">person_outline</span>
-          Login
-        </a>
-        <a href="#appointment-booking" class="utility-link text-black/90 flex items-center gap-1.5 hover:text-black">
-          <span class="material-symbols-outlined text-[18px]"
-            style="font-variation-settings: 'wght' 300;">calendar_month</span>
-          Book Appointment
-        </a>
-      </div>
-    </div>
-
-    <!-- Main Navigation Container -->
-    <div id="navbar-container" class="relative transition-all duration-500 py-4 px-5 md:px-6 lg:px-16">
-      <div id="nav-desktop-layout" class="hidden md:flex flex-col transition-all duration-500">
-        <!-- Row 1: Centered Logo Wordmark -->
-        <div id="logo-row" class="flex justify-center pt-3 pb-3 transition-all duration-500">
-          <a href="index.html"
-            class="font-serif tracking-[0.02em] text-[36px] md:text-[56px] lg:text-[110px] leading-none uppercase font-normal logo-text text-black"
-            style="font-family: 'Cinzel', serif; letter-spacing: 0.02em;">CHEMPAKA</a>
-        </div>
-
-        <!-- Row 2: Navigation + Icons -->
-        <div id="links-row" class="grid grid-cols-12 items-center w-full transition-all duration-500">
-          <div class="col-span-3 lg:col-span-2 flex justify-start items-center">
-            <div id="scrolled-logo" class="opacity-0 w-0 overflow-hidden transition-all duration-500 shrink-0">
-              <a href="index.html"
-                class="font-serif tracking-[0.02em] text-[18px] uppercase font-normal text-black scrolled-logo-text whitespace-nowrap"
-                style="font-family: 'Cinzel', serif; letter-spacing: 0.02em;">CHEMPAKA</a>
-            </div>
-          </div>
-
-          <div class="col-span-6 lg:col-span-8 flex justify-center">
-            <nav class="flex items-center gap-3 lg:gap-5 xl:gap-10 transition-all duration-300"
-              aria-label="Main navigation">
-              <a class="nav-link text-black/90 hover:text-black" href="index.html#sale">Sale</a>
-              <a class="nav-link text-black/90 hover:text-black" href="index.html#our-collection">Showcase</a>
-              <a class="nav-link text-black/90 hover:text-black" href="about.html">Journal</a>
-              <a class="nav-link text-black/90 hover:text-black" href="membership.html">Membership</a>
-              <a class="nav-link text-black/90 hover:text-black" href="#store-locator">Boutiques</a>
-              <a class="nav-link text-black/90 hover:text-black" href="#appointment-booking">Appointment</a>
-
-              <span class="inline-nav-divider w-[1px] h-4 bg-neutral-200 select-none pointer-events-none transition-all duration-300"></span>
-
-              <div class="inline-nav-icons flex items-center gap-1 transition-all duration-300">
-                <button onclick="toggleSearch(true)"
-                  class="header-icon hover:opacity-65 transition-opacity bg-transparent border-none text-black p-0 cursor-pointer flex items-center justify-center"
-                  aria-label="Search">
-                  <span class="material-symbols-outlined text-[22px]"
-                    style="font-variation-settings: 'wght' 300;">search</span>
-                </button>
-                <a href="membership.html"
-                  class="header-icon hover:opacity-65 transition-opacity flex items-center justify-center text-black"
-                  aria-label="Wishlist">
-                  <span class="material-symbols-outlined text-[22px]"
-                    style="font-variation-settings: 'wght' 300;">favorite_border</span>
-                </a>
-              </div>
-            </nav>
-          </div>
-
-          <div class="col-span-3 lg:col-span-2 flex justify-end items-center">
-            <div class="scrolled-nav-icons opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-1">
-              <button onclick="toggleSearch(true)"
-                class="header-icon hover:opacity-65 transition-opacity bg-transparent border-none text-black p-0 cursor-pointer flex items-center justify-center"
-                aria-label="Search">
-                <span class="material-symbols-outlined text-[22px]"
-                  style="font-variation-settings: 'wght' 300;">search</span>
-              </button>
-              <a href="membership.html"
-                class="header-icon hover:opacity-65 transition-opacity flex items-center justify-center text-black"
-                aria-label="Wishlist">
-                <span class="material-symbols-outlined text-[22px]"
-                  style="font-variation-settings: 'wght' 300;">favorite_border</span>
-              </a>
-              <a href="membership.html"
-                class="header-icon hover:opacity-65 transition-opacity flex items-center justify-center text-black"
-                aria-label="Account">
-                <span class="material-symbols-outlined text-[22px]"
-                  style="font-variation-settings: 'wght' 300;">person_outline</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Mobile Navigation Layout -->
-      <div id="nav-mobile-layout" class="flex md:hidden justify-between items-center w-full">
-        <button onclick="toggleMobileDrawer(true)"
-          class="focus:outline-none bg-transparent border-none text-black p-0 cursor-pointer" aria-label="Open menu">
-          <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'wght' 300;">menu</span>
-        </button>
-        <a href="index.html" class="font-serif tracking-[0.02em] text-[20px] uppercase font-normal logo-text text-black"
-          style="font-family: 'Cinzel', serif; letter-spacing: 0.02em;">CHEMPAKA</a>
-        <div class="flex items-center gap-1">
-          <button onclick="toggleSearch(true)"
-            class="bg-transparent border-none text-black p-0 cursor-pointer flex items-center justify-center w-10 h-10"
-            aria-label="Search">
-            <span class="material-symbols-outlined text-[22px]"
-              style="font-variation-settings: 'wght' 300;">search</span>
-          </button>
-          <a href="membership.html" class="flex items-center justify-center w-10 h-10 text-inherit"
-            aria-label="Account">
-            <span class="material-symbols-outlined text-[22px]"
-              style="font-variation-settings: 'wght' 300;">person_outline</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Search Overlay -->
-      <div id="search-overlay"
-        class="absolute inset-0 bg-white text-black hidden flex items-center px-4 md:px-16 z-30 transition-all duration-300">
-        <div class="flex items-center w-full max-w-2xl mx-auto gap-4">
-          <span class="material-symbols-outlined text-neutral-400 text-[22px]"
-            style="font-variation-settings: 'wght' 300;">search</span>
-          <input type="text" placeholder="What are you looking for?"
-            class="w-full bg-transparent border-none focus:ring-0 text-[14px] placeholder-neutral-400 focus:outline-none text-black font-light tracking-wide"
-            style="font-family: 'Noto Sans', sans-serif;" />
-          <button onclick="toggleSearch(false)"
-            class="bg-transparent border-none text-neutral-400 hover:text-black p-0 cursor-pointer transition-colors">
-            <span class="material-symbols-outlined text-[20px]"
-              style="font-variation-settings: 'wght' 300;">close</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- Mobile Navigation Drawer -->
-  <div id="mobile-drawer"
-    class="fixed inset-y-0 left-0 w-80 bg-white text-black z-[100] transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl flex flex-col">
-    <div class="p-6 flex justify-between items-center border-b border-neutral-200">
-      <span class="font-serif tracking-[0.02em] text-lg uppercase font-normal"
-        style="font-family: 'Cinzel', serif; letter-spacing: 0.02em;">CHEMPAKA</span>
-      <button onclick="toggleMobileDrawer(false)"
-        class="focus:outline-none bg-transparent border-none text-black p-0 cursor-pointer">
-        <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'wght' 300;">close</span>
-      </button>
-    </div>
-    <div class="flex-1 overflow-y-auto p-6 space-y-0">
-      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
-        href="index.html#sale" onclick="toggleMobileDrawer(false)">Sale</a>
-      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
-        href="index.html#our-collection" onclick="toggleMobileDrawer(false)">Showcase</a>
-      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
-        href="about.html" onclick="toggleMobileDrawer(false)">Journal</a>
-      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
-        href="membership.html" onclick="toggleMobileDrawer(false)">Membership</a>
-      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
-        href="#store-locator" onclick="toggleMobileDrawer(false)">Boutiques</a>
-      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
-        href="#appointment-booking" onclick="toggleMobileDrawer(false)">Appointment</a>
-    </div>
-    <div class="p-6 border-t border-neutral-200 bg-neutral-100/50 space-y-4">
-      <a href="#store-locator"
-        class="flex items-center gap-2.5 py-1 text-[11px] font-medium tracking-[0.15em] text-neutral-600 hover:text-black transition-colors"
-        onclick="toggleMobileDrawer(false)">
-        <span class="material-symbols-outlined text-[16px]"
-          style="font-variation-settings: 'wght' 300;">location_on</span> Stores
-      </a>
-      <a href="membership.html"
-        class="flex items-center gap-2.5 py-1 text-[11px] font-medium tracking-[0.15em] text-neutral-600 hover:text-black transition-colors"
-        onclick="toggleMobileDrawer(false)">
-        <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'wght' 300;">person</span>
-        Chempaka Club / Join
-      </a>
-    </div>
+<body class="cj site">
+<a class="site-skip" href="#main">Skip to content</a>
+<div class="site-promo" id="promo-banner"><div class="cj-container"><p class="site-promo__msg"><span id="promo-text">Join the Chempaka Club and show your card at the counter for member prices.</span><a href="membership.html">Join the Club</a></p><button type="button" class="site-promo__x" aria-label="Close announcement" data-dismiss-promo><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#close"/></svg></button></div></div>
+<header class="site-hdr"><div class="cj-container">
+  <div class="site-hdr__meta">
+    <a href="boutiques.html"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#location_on"/></svg> Boutiques</a>
+    <span class="site-hdr__announce" id="announce-text">Gold exchange and valuation available at the Shah Alam boutique</span>
+    <span class="site-hdr__metar"><a href="membership.html#access"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#person_outline"/></svg> Member login</a></span>
+  </div>
+  <div class="site-hdr__main">
+    <button type="button" class="site-hdr__menu" aria-label="Open menu" aria-controls="menu-drawer" data-open-menu><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#menu"/></svg><span>Menu</span></button>
+    <a href="index.html" class="cj-wordmark" aria-label="Chempaka home">CHEMPAKA</a>
+    <div class="site-hdr__icons"><button type="button" aria-label="Search" data-open-search><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#search"/></svg></button><a href="https://wa.me/60178113204" aria-label="WhatsApp us"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#chat"/></svg></a><a href="membership.html" class="cj-btn cj-btn--primary cj-btn--sm site-hdr__join">Join the Club</a></div>
+  </div>
+</div></header>
+<main id="main">
+<section class="cj-section" id="appointment"><div class="cj-container site-split site-split--form">
+  <div class="site-stack site-sticky">
+    <h1 class="cj-display-l">Book an appointment</h1>
+    <p class="cj-body-l cj-muted">Private viewing and valuation in our boutique lounge, with dedicated concierge assistance.</p>
+    <a href="https://wa.me/60178113204" class="cj-btn cj-btn--outline"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#chat"/></svg> WhatsApp us</a>
   </div>
 
-  <div id="drawer-backdrop" class="fixed inset-0 bg-black/40 hidden z-[90]" onclick="toggleMobileDrawer(false)"></div>
-
-  <main class="pt-[140px] md:pt-[160px] lg:pt-[240px] bg-white min-h-screen">
-    <!-- Section: Store Locator & Appointment Booking -->
-    <section id="store-locator" class="flex flex-col lg:flex-row bg-white relative">
-      
-      <!-- Left: Editorial Image -->
-      <div class="w-full lg:w-1/2 min-h-[75vh] md:min-h-[80vh] lg:min-h-screen relative">
-        <img src="assets/images/hero_model_hijab.jpg" alt="Boutique Experience" class="absolute inset-0 w-full h-full object-cover object-top lg:object-center" />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent lg:bg-black/10 lg:bg-none"></div>
-        <div class="absolute bottom-12 left-8 right-8 md:bottom-16 md:left-16 lg:bottom-24 lg:left-24 text-white max-w-md">
-          <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-normal leading-[1.1] mb-6" style="font-family: 'Playfair Display', serif;">Private Viewing <br> & Valuation</h2>
-          <p class="font-sans text-[13px] md:text-base font-light text-white/90 leading-relaxed">Experience our heritage collections in the comfort of a private lounge, with dedicated concierge assistance.</p>
+  <div class="site-panel">
+    <form class="cj-form" id="booking-form" novalidate>
+      <fieldset class="cj-field">
+        <legend>1 &middot; Choose a service</legend>
+        <div class="cj-choices">
+          <label><input type="radio" name="service" value="Gold exchange &amp; valuation" checked><span class="cj-choice">Gold exchange &amp; valuation</span></label>
+          <label><input type="radio" name="service" value="Custom fitting"><span class="cj-choice">Custom fitting</span></label>
+          <label><input type="radio" name="service" value="Bespoke consultation"><span class="cj-choice">Bespoke consultation</span></label>
+          <label><input type="radio" name="service" value="Private viewing"><span class="cj-choice">Private viewing</span></label>
+        </div>
+      </fieldset>
+      <div class="cj-field">
+        <label for="booking-boutique">2 &middot; Boutique</label>
+        <select id="booking-boutique" name="boutique" class="cj-input cj-select"><option>Butik Utama Shah Alam</option></select>
+      </div>
+      <div class="cj-field" data-field="date">
+        <label for="booking-date">3 &middot; Preferred date</label>
+        <input id="booking-date" name="date" type="date" class="cj-input" required>
+        <span class="cj-field__msg" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#error"/></svg> Choose today or a later date.</span>
+      </div>
+      <fieldset class="cj-field" data-field="time">
+        <legend>Preferred time</legend>
+        <div class="cj-choices">
+          <label><input type="radio" name="time" value="11:00 am"><span class="cj-choice">11:00 am</span></label>
+          <label><input type="radio" name="time" value="1:00 pm"><span class="cj-choice">1:00 pm</span></label>
+          <label><input type="radio" name="time" value="3:00 pm" checked><span class="cj-choice">3:00 pm</span></label>
+          <label><input type="radio" name="time" value="5:00 pm"><span class="cj-choice">5:00 pm</span></label>
+        </div>
+      </fieldset>
+      <div class="cj-form__row">
+        <div class="cj-field" data-field="name">
+          <label for="booking-name">4 &middot; Your name</label>
+          <input id="booking-name" name="name" class="cj-input" placeholder="Full name" autocomplete="name">
+          <span class="cj-field__msg" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#error"/></svg> Enter your name.</span>
+        </div>
+        <div class="cj-field" data-field="phone">
+          <label for="booking-phone">Phone</label>
+          <input id="booking-phone" name="phone" type="tel" class="cj-input" placeholder="+60 12-345 6789" autocomplete="tel">
+          <span class="cj-field__msg" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#error"/></svg> Enter a valid phone number.</span>
         </div>
       </div>
+      <div class="cj-field"><label for="booking-note">Anything we should prepare? (optional)</label><input id="booking-note" name="note" class="cj-input" placeholder="e.g. bringing three bangles and a broken chain"></div>
+      <button type="submit" class="cj-btn cj-btn--primary cj-btn--block">Continue</button>
+    </form>
 
-      <!-- Right: Booking Form & Boutique List -->
-      <div class="w-full lg:w-1/2 flex flex-col px-8 py-20 md:px-16 lg:py-32 xl:px-32">
-        
-        <div class="w-full max-w-xl mx-auto lg:mx-0">
-          <!-- Section Header -->
-          <div class="mb-10">
-            <div class="inline-flex items-center gap-2 px-3 py-1 bg-black/5 text-[9px] font-bold uppercase tracking-[0.25em] text-neutral-700 border border-black/10 mb-4">
-              <span class="w-1.5 h-1.5 rounded-full bg-black"></span>
-              Concierge Booking
-            </div>
-            <h3 id="appointment-booking" class="font-serif text-4xl md:text-5xl text-black font-light tracking-tight leading-tight scroll-mt-32 mb-3" style="font-family: 'Cormorant Garamond', 'Cinzel', serif;">Schedule Consultation</h3>
-            <p class="font-sans text-xs md:text-sm text-neutral-500 font-light leading-relaxed max-w-md">
-              Reserve your private salon session for bespoke gold valuation, custom jewelry fitting, or personal collection viewing.
-            </p>
-          </div>
-
-          <!-- Form Container -->
-          <div id="booking-form-container" class="bg-white border border-neutral-200/90 p-8 md:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.03)] relative">
-            <form id="consultation-form" onsubmit="submitBookingForm(event)" class="space-y-8">
-
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Select Boutique -->
-                <div class="relative group">
-                  <label for="booking-boutique" style="font-family: 'Cinzel', 'Cormorant Garamond', serif;" class="block text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-black transition-colors font-serif mb-1">SELECT BOUTIQUE</label>
-                  <div class="relative">
-                    <select id="booking-boutique" required
-                      class="w-full bg-transparent border-b border-neutral-300 focus:border-black focus:outline-none py-2.5 px-0 text-xs md:text-sm text-black appearance-none transition-all duration-300 font-sans font-medium tracking-wide cursor-pointer">
-                      <option value="" disabled selected class="text-neutral-400">Choose Boutique Location</option>
-                      <option value="Butik Utama Shah Alam" class="font-sans font-normal text-black py-2 bg-white">Butik Utama Shah Alam</option>
-                    </select>
-                    <span class="material-symbols-outlined absolute right-0 top-2.5 text-[18px] text-neutral-400 pointer-events-none transition-transform duration-300 group-focus-within:rotate-180">expand_more</span>
-                  </div>
-                  <p id="error-booking-boutique" class="text-error text-[10px] uppercase tracking-widest mt-2 hidden font-medium">Please select a boutique</p>
-                </div>
-
-                <!-- Select Service -->
-                <div class="relative group">
-                  <label for="booking-service" style="font-family: 'Cinzel', 'Cormorant Garamond', serif;" class="block text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-black transition-colors font-serif mb-1">SERVICE TYPE</label>
-                  <div class="relative">
-                    <select id="booking-service" required
-                      class="w-full bg-transparent border-b border-neutral-300 focus:border-black focus:outline-none py-2.5 px-0 text-xs md:text-sm text-black appearance-none transition-all duration-300 font-sans font-medium tracking-wide cursor-pointer">
-                      <option value="" disabled selected class="text-neutral-400">Choose Consultation Service</option>
-                      <option value="Gold Exchange" class="font-sans font-normal text-black py-2 bg-white">Gold Exchange & Valuation</option>
-                      <option value="Bespoke Design" class="font-sans font-normal text-black py-2 bg-white">Custom Jewelry Fitting</option>
-                      <option value="Private Viewing" class="font-sans font-normal text-black py-2 bg-white">VIP Showroom Viewing</option>
-                    </select>
-                    <span class="material-symbols-outlined absolute right-0 top-2.5 text-[18px] text-neutral-400 pointer-events-none transition-transform duration-300 group-focus-within:rotate-180">expand_more</span>
-                  </div>
-                  <p id="error-booking-service" class="text-error text-[10px] uppercase tracking-widest mt-2 hidden font-medium">Please select a service</p>
-                </div>
-              </div>
-
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Booking Date -->
-                <div class="relative group">
-                  <label for="booking-date" style="font-family: 'Cinzel', 'Cormorant Garamond', serif;" class="block text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-black transition-colors font-serif mb-1">PREFERRED DATE</label>
-                  <div class="relative">
-                    <input type="date" id="booking-date" required
-                      class="w-full bg-transparent border-b border-neutral-300 focus:border-black focus:outline-none py-2.5 px-0 text-xs md:text-sm text-black transition-all duration-300 font-sans font-medium tracking-wide cursor-pointer" />
-                    <span class="material-symbols-outlined absolute right-0 top-2.5 text-[18px] text-neutral-400 pointer-events-none">calendar_today</span>
-                  </div>
-                  <p id="error-booking-date" class="text-error text-[10px] uppercase tracking-widest mt-2 hidden font-medium">Please select a valid date</p>
-                </div>
-
-                <!-- Booking Time -->
-                <div class="relative group">
-                  <label for="booking-time" style="font-family: 'Cinzel', 'Cormorant Garamond', serif;" class="block text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-black transition-colors font-serif mb-1">PREFERRED TIME</label>
-                  <div class="relative">
-                    <select id="booking-time" required
-                      class="w-full bg-transparent border-b border-neutral-300 focus:border-black focus:outline-none py-2.5 px-0 text-xs md:text-sm text-black appearance-none transition-all duration-300 font-sans font-medium tracking-wide cursor-pointer">
-                      <option value="" disabled selected class="text-neutral-400">Choose Session Slot</option>
-                      <option value="11:00 AM" class="font-sans font-normal text-black py-2 bg-white">11:00 AM</option>
-                      <option value="1:00 PM" class="font-sans font-normal text-black py-2 bg-white">01:00 PM</option>
-                      <option value="3:00 PM" class="font-sans font-normal text-black py-2 bg-white">03:00 PM</option>
-                      <option value="5:00 PM" class="font-sans font-normal text-black py-2 bg-white">05:00 PM</option>
-                    </select>
-                    <span class="material-symbols-outlined absolute right-0 top-2.5 text-[18px] text-neutral-400 pointer-events-none transition-transform duration-300 group-focus-within:rotate-180">expand_more</span>
-                  </div>
-                  <p id="error-booking-time" class="text-error text-[10px] uppercase tracking-widest mt-2 hidden font-medium">Please select a time</p>
-                </div>
-              </div>
-
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Customer Name -->
-                <div class="relative group">
-                  <label for="booking-name" style="font-family: 'Cinzel', 'Cormorant Garamond', serif;" class="block text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-black transition-colors font-serif mb-1">FULL NAME</label>
-                  <input type="text" id="booking-name" required placeholder="e.g. Danial Adam"
-                    class="w-full bg-transparent border-b border-neutral-300 focus:border-black focus:outline-none py-2.5 px-0 text-xs md:text-sm text-black placeholder-neutral-300 transition-all duration-300 font-sans font-medium tracking-wide" />
-                  <p id="error-booking-name" class="text-error text-[10px] uppercase tracking-widest mt-2 hidden font-medium">Please enter your name</p>
-                </div>
-
-                <!-- Customer Phone -->
-                <div class="relative group">
-                  <label for="booking-phone" style="font-family: 'Cinzel', 'Cormorant Garamond', serif;" class="block text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-black transition-colors font-serif mb-1">PHONE NUMBER</label>
-                  <input type="tel" id="booking-phone" required placeholder="e.g. +60 17-811 3204"
-                    class="w-full bg-transparent border-b border-neutral-300 focus:border-black focus:outline-none py-2.5 px-0 text-xs md:text-sm text-black placeholder-neutral-300 transition-all duration-300 font-sans font-medium tracking-wide" />
-                  <p id="error-booking-phone" class="text-error text-[10px] uppercase tracking-widest mt-2 hidden font-medium">Please enter a valid phone</p>
-                </div>
-              </div>
-
-              <!-- Submit Booking -->
-              <div class="pt-4">
-                <button type="submit"
-                  style="font-family: 'Cinzel', 'Cormorant Garamond', serif;"
-                  class="group relative w-full bg-black hover:bg-neutral-900 text-white py-5 px-8 text-xs font-semibold uppercase tracking-[0.25em] transition-all duration-300 active:scale-[0.99] flex items-center justify-center gap-3 shadow-md hover:shadow-lg font-serif">
-                  <span>CONFIRM APPOINTMENT</span>
-                  <span class="material-symbols-outlined text-[16px] transition-transform duration-300 group-hover:translate-x-1">arrow_forward</span>
-                </button>
-              </div>
-            </form>
-          </div>
-
-          <!-- Success Booking Voucher Container (Hidden initially) -->
-          <div id="booking-success-container" class="hidden space-y-8 bg-black text-white p-8 md:p-12 border border-neutral-800 shadow-2xl relative overflow-hidden text-center transition-all duration-500 animate-fadeIn">
-            <div class="absolute -right-8 -top-8 w-32 h-32 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
-            
-            <div class="w-14 h-14 rounded-full border border-neutral-700 bg-neutral-900 flex items-center justify-center mx-auto text-white shadow-inner">
-              <span class="material-symbols-outlined text-[24px]">verified</span>
-            </div>
-
-            <div>
-              <span class="text-[9px] uppercase tracking-[0.3em] text-neutral-400 block mb-2 font-mono">CHEMPAKA CONCIERGE</span>
-              <h3 class="font-serif text-3xl md:text-4xl text-white font-normal tracking-wide" style="font-family: 'Cormorant Garamond', 'Cinzel', serif;">Appointment Confirmed</h3>
-            </div>
-
-            <p class="font-sans text-neutral-300 text-xs md:text-sm leading-relaxed font-light max-w-md mx-auto">
-              Your private session is reserved. Our concierge from <strong id="success-boutique-name" class="font-medium text-white">Butik Utama Shah Alam</strong> will contact you shortly to personalize your visit.
-            </p>
-
-            <div class="text-left space-y-3.5 pt-6 border-t border-neutral-800 text-xs">
-              <div class="flex justify-between border-b border-neutral-800/80 pb-3">
-                <span class="text-neutral-400 uppercase tracking-[0.15em] font-medium text-[10px]">Service</span>
-                <span id="success-booking-service" class="font-medium text-white tracking-wide">Gold Exchange</span>
-              </div>
-              <div class="flex justify-between border-b border-neutral-800/80 pb-3">
-                <span class="text-neutral-400 uppercase tracking-[0.15em] font-medium text-[10px]">Date & Time</span>
-                <span id="success-booking-datetime" class="font-medium text-white tracking-wide">28 June 2026 @ 3:00 PM</span>
-              </div>
-              <div class="flex justify-between pb-1">
-                <span class="text-neutral-400 uppercase tracking-[0.15em] font-medium text-[10px]">Guest</span>
-                <span id="success-booking-client" class="font-medium text-white tracking-wide">Danial</span>
-              </div>
-            </div>
-
-            <div class="pt-4">
-              <button onclick="resetBookingForm()"
-                class="inline-flex items-center gap-2 font-sans text-[10px] font-medium uppercase tracking-[0.25em] text-neutral-300 hover:text-white border-b border-neutral-700 hover:border-white pb-1 transition-all duration-300">
-                <span>Book Another Session</span>
-                <span class="material-symbols-outlined text-[14px]">autorenew</span>
-              </button>
-            </div>
-          </div>
-          
-          <!-- Boutique Directory -->
-          <div class="mt-24 pt-16 border-t border-neutral-200">
-            <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-black block mb-8">Directory</span>
-            
-            <!-- Boutique: Butik Utama Shah Alam -->
-            <div class="group">
-              <div class="flex justify-between items-end pb-4 border-b border-neutral-200 group-hover:border-black transition-colors duration-300">
-                <div>
-                  <h4 class="font-serif text-lg text-black font-normal mb-1">Butik Utama Shah Alam</h4>
-                  <p class="font-sans text-xs text-neutral-500 font-light leading-relaxed">
-                    Seksyen U13, 12, Jln Setia Dagang AL U13/AL,<br>
-                    Alam Nusantara, 40170 Shah Alam, Selangor
-                  </p>
-                  <p class="font-sans text-[11px] text-neutral-400 mt-2 flex items-center gap-3">
-                    <span>T: +60 17-811 3204</span>
-                    <span>H: 10:00 AM - 6:00 PM</span>
-                  </p>
-                </div>
-                <a href="https://www.google.com/maps/search/?api=1&query=Setia+Dagang+AL+U13/AL+Alam+Nusantara+Shah+Alam"
-                  target="_blank"
-                  class="text-neutral-400 hover:text-black transition-colors p-2" aria-label="Open in Google Maps">
-                  <span class="material-symbols-outlined text-[18px]">open_in_new</span>
-                </a>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer (Swarovski-Exact Style) -->
-  <footer class="bg-black text-white py-16 lg:py-24 px-margin-mobile md:px-margin-desktop border-t border-[#222222]">
-    <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-10">
-      <div class="md:col-span-4 space-y-4">
-        <h4 class="font-sans text-[11px] font-bold uppercase tracking-widest text-[#cccccc]">Join the Chempaka Club</h4>
-        <p class="font-sans text-xs text-[#888888] leading-relaxed font-light">
-          Subscribe to receive updates on boutique events, exclusive collections, and priority booking options.
-        </p>
-        <div class="pt-2">
-          <a href="membership.html"
-            class="inline-flex items-center gap-1.5 bg-[#222222] text-white hover:bg-white hover:text-black py-3 px-6 text-xs font-bold uppercase tracking-widest transition-all duration-300">
-            <span>Register Now</span>
-            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="md:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8">
-        <div class="space-y-4">
-          <h4 class="font-sans text-[11px] font-bold uppercase tracking-widest text-[#cccccc]">Our Brand</h4>
-          <ul class="space-y-2 text-xs text-[#888888] font-light">
-            <li><a href="about.html#heritage" class="hover:text-white transition-colors duration-200 block py-0.5">Masters of Gold</a></li>
-            <li><a href="about.html#heritage" class="hover:text-white transition-colors duration-200 block py-0.5">Heritage Story</a></li>
-            <li><a href="about.html#heritage" class="hover:text-white transition-colors duration-200 block py-0.5">Sustainability</a></li>
-          </ul>
-        </div>
-
-        <div class="space-y-4">
-          <h4 class="font-sans text-[11px] font-bold uppercase tracking-widest text-[#cccccc]">Valuations</h4>
-          <ul class="space-y-2 text-xs text-[#888888] font-light">
-            <li><a href="index.html#our-services" class="hover:text-white transition-colors duration-200 block py-0.5">Gold Exchange</a></li>
-            <li><a href="index.html#our-services" class="hover:text-white transition-colors duration-200 block py-0.5">Bespoke Design</a></li>
-            <li><a href="index.html#our-services" class="hover:text-white transition-colors duration-200 block py-0.5">Private Lounge</a></li>
-          </ul>
-        </div>
-
-        <div class="col-span-2 sm:col-span-1 space-y-4">
-          <h4 class="font-sans text-[11px] font-bold uppercase tracking-widest text-[#cccccc]">Boutiques</h4>
-          <ul class="space-y-2 text-xs text-[#888888] font-light">
-            <li><a href="boutiques.html#store-locator" class="hover:text-white transition-colors duration-200 block py-0.5">Boutique Finder</a></li>
-            <li><a href="boutiques.html#appointment-booking" class="hover:text-white transition-colors duration-200 block py-0.5">Private Viewing</a></li>
-            <li><a href="boutiques.html#appointment-booking" class="hover:text-white transition-colors duration-200 block py-0.5">Contact Styling</a></li>
-          </ul>
-        </div>
+    <div id="booking-result" hidden>
+      <div class="cj-notice" role="status"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#check_circle"/></svg><div><b>Your request is ready</b><span id="booking-summary"></span> Send it on WhatsApp and our concierge will confirm the time with you.</div></div>
+      <div class="site-stack" style="margin-top:24px;gap:16px;align-items:stretch">
+        <a href="https://wa.me/60178113204" id="booking-wa" class="cj-btn cj-btn--primary cj-btn--block"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#chat"/></svg> Send on WhatsApp</a>
+        <button type="button" class="cj-btn cj-btn--outline cj-btn--block" id="booking-reset">Change the request</button>
       </div>
     </div>
+  </div>
+</div></section>
 
-    <!-- Divider -->
-    <div class="max-w-container-max mx-auto border-t border-[#222222] my-10"></div>
-
-    <div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-      <div class="space-y-2 text-center md:text-left">
-        <div class="flex items-center justify-center md:justify-start gap-1.5 text-xs text-[#888888]">
-          <span class="material-symbols-outlined text-[16px] text-white">globe</span>
-          <span class="select-none">English</span>
-        </div>
-        <div class="mt-1 text-[10px] leading-relaxed max-w-sm md:max-w-md text-[#666666]">
-          &copy; 2026 Chempaka Trading Sdn Bhd. Company registration number 200901004470 (847404-D). All rights reserved.
-          CHEMPAKA and the SWAN logo are registered and trademarks of Chempaka AG.
-        </div>
-      </div>
-
-      <div class="order-first md:order-none shrink-0 md:justify-self-center text-center">
-        <span class="font-serif text-3xl font-normal tracking-[0.02em] text-white uppercase select-none"
-          style="font-family: 'Cinzel', serif; letter-spacing: 0.02em;">CHEMPAKA</span>
-      </div>
-
-      <!-- Social Icons -->
-      <div class="flex space-x-4 shrink-0 md:justify-self-end">
-        <a href="https://www.instagram.com/chempakajewels/" target="_blank" rel="noopener noreferrer"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300"
-          aria-label="Instagram">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-          </svg>
-        </a>
-        <a href="https://www.tiktok.com/@chempakajewels" target="_blank" rel="noopener noreferrer"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300"
-          aria-label="Tiktok">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.74-3.99-1.72-.08.65-.06 1.32-.06 1.98 0 2.01-.38 4.03-1.48 5.69-1.37 2.07-3.79 3.38-6.29 3.39-2.19.01-4.41-.84-5.83-2.53-1.63-1.93-2.21-4.7-1.43-7.14C4.16 7.4 6.3 5.48 8.89 5.09c.83-.12 1.68-.07 2.51-.08.01 1.43-.01 2.87-.01 4.3-.64-.09-1.3-.02-1.92.17-1.12.35-2.07 1.25-2.39 2.37-.46 1.57.17 3.42 1.54 4.25.92.56 2.04.66 3.06.33 1.09-.36 1.97-1.28 2.29-2.37.11-.38.16-.78.16-1.18V.02z" />
-          </svg>
-        </a>
-        </div>
+<section class="cj-section cj-band" id="services"><div class="cj-container">
+  <div class="cj-head"><h2 class="cj-display-l">In the boutique</h2></div>
+  <div class="site-split site-split--even">
+    <div class="site-stack" style="border-top:1px solid var(--hairline);padding-top:24px;gap:16px">
+      <h3 class="cj-heading">Buying</h3>
+      <p class="cj-muted" style="margin:0">Feel the weight of the gold, have your ring sized, and work with a styling advisor on a bespoke engraving.</p>
+      <ul class="site-bullets"><li>Custom fittings and sizing</li><li>Complimentary ribbon wrapping</li><li>Member prices when you show your Club card</li><li>VIP showroom access for Club members</li></ul>
     </div>
-  </footer>
+    <div class="site-stack" style="border-top:1px solid var(--hairline);padding-top:24px;gap:16px">
+      <h3 class="cj-heading">Gold exchange and valuation</h3>
+      <p class="cj-muted" style="margin:0">Bring gold jewellery, heirlooms and precious metals for an instant valuation, with a cash payout or a trade-in value.</p>
+      <ul class="site-bullets"><li>On-site gemologist inspection</li><li>Transparent trade-in pricing</li><li>Immediate cash payout, if you prefer</li></ul>
+    </div>
+  </div>
+</div></section>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      };
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-      document.querySelectorAll('.fade-in-up').forEach((el) => {
-        observer.observe(el);
-      });
-    });
-
-    window.addEventListener('scroll', () => {
-      const header = document.getElementById('main-header');
-      if (window.scrollY > 40) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-
-    function dismissPromo() {
-      const banner = document.getElementById('promo-banner');
-      if (banner) {
-        banner.style.display = 'none';
-      }
-    }
-
-    function toggleSearch(open) {
-      const overlay = document.getElementById('search-overlay');
-      if (overlay) {
-        if (open) {
-          overlay.classList.remove('hidden');
-          overlay.querySelector('input').focus();
-        } else {
-          overlay.classList.add('hidden');
-        }
-      }
-    }
-
-    function toggleMobileDrawer(open) {
-      const drawer = document.getElementById('mobile-drawer');
-      const backdrop = document.getElementById('drawer-backdrop');
-      if (drawer && backdrop) {
-        if (open) {
-          drawer.classList.remove('-translate-x-full');
-          backdrop.classList.remove('hidden');
-          document.body.classList.add('overflow-hidden');
-        } else {
-          drawer.classList.add('-translate-x-full');
-          backdrop.classList.add('hidden');
-          document.body.classList.remove('overflow-hidden');
-        }
-      }
-    }
-
-    function submitBookingForm(event) {
-      event.preventDefault();
-      const boutiqueEl = document.getElementById('booking-boutique');
-      const serviceEl = document.getElementById('booking-service');
-      const dateEl = document.getElementById('booking-date');
-      const timeEl = document.getElementById('booking-time');
-      const nameEl = document.getElementById('booking-name');
-      const phoneEl = document.getElementById('booking-phone');
-
-      const errBoutique = document.getElementById('error-booking-boutique');
-      const errService = document.getElementById('error-booking-service');
-      const errDate = document.getElementById('error-booking-date');
-      const errTime = document.getElementById('error-booking-time');
-      const errName = document.getElementById('error-booking-name');
-      const errPhone = document.getElementById('error-booking-phone');
-
-      errBoutique.classList.add('hidden');
-      errService.classList.add('hidden');
-      errDate.classList.add('hidden');
-      errTime.classList.add('hidden');
-      errName.classList.add('hidden');
-      errPhone.classList.add('hidden');
-
-      let isValid = true;
-      if (!boutiqueEl.value) {
-        errBoutique.classList.remove('hidden');
-        isValid = false;
-      }
-      if (!serviceEl.value) {
-        errService.classList.remove('hidden');
-        isValid = false;
-      }
-      if (!dateEl.value) {
-        errDate.classList.remove('hidden');
-        isValid = false;
-      } else {
-        const today = new Date();
-        today.setHours(0,0,0,0);
-        const selectedDate = new Date(dateEl.value);
-        selectedDate.setHours(0,0,0,0);
-        if (selectedDate < today) {
-          errDate.classList.remove('hidden');
-          isValid = false;
-        }
-      }
-      if (!timeEl.value) {
-        errTime.classList.remove('hidden');
-        isValid = false;
-      }
-      if (!nameEl.value || nameEl.value.trim().length < 2) {
-        errName.classList.remove('hidden');
-        isValid = false;
-      }
-      const phoneRegex = /^\+?[0-9\s\-]{8,15}$/;
-      if (!phoneRegex.test(phoneEl.value)) {
-        errPhone.classList.remove('hidden');
-        isValid = false;
-      }
-
-      if (isValid) {
-        const boutiqueText = boutiqueEl.options[boutiqueEl.selectedIndex].text;
-        const serviceText = serviceEl.options[serviceEl.selectedIndex].text;
-        const parts = dateEl.value.split('-');
-        const formattedDate = (parts[2] && parts[1] && parts[0]) ? `${parts[2]}/${parts[1]}/${parts[0]}` : dateEl.value;
-
-        document.getElementById('success-boutique-name').innerText = boutiqueText;
-        document.getElementById('success-booking-service').innerText = serviceText;
-        document.getElementById('success-booking-datetime').innerText = `${formattedDate} @ ${timeEl.value}`;
-        document.getElementById('success-booking-client').innerText = nameEl.value;
-
-        document.getElementById('booking-form-container').classList.add('hidden');
-        document.getElementById('booking-success-container').classList.remove('hidden');
-      }
-    }
-
-    function resetBookingForm() {
-      document.getElementById('booking-boutique').value = '';
-      document.getElementById('booking-service').value = '';
-      document.getElementById('booking-date').value = '';
-      document.getElementById('booking-time').value = '';
-      document.getElementById('booking-name').value = '';
-      document.getElementById('booking-phone').value = '';
-
-      document.getElementById('error-booking-boutique').classList.add('hidden');
-      document.getElementById('error-booking-service').classList.add('hidden');
-      document.getElementById('error-booking-date').classList.add('hidden');
-      document.getElementById('error-booking-time').classList.add('hidden');
-      document.getElementById('error-booking-name').classList.add('hidden');
-      document.getElementById('error-booking-phone').classList.add('hidden');
-
-      document.getElementById('booking-form-container').classList.remove('hidden');
-      document.getElementById('booking-success-container').classList.add('hidden');
-    }
-  </script>
+<section class="cj-section" id="location"><div class="cj-container">
+  <div class="cj-head"><h2 class="cj-display-l">Location</h2></div>
+  <div class="cj-boutique" style="grid-template-columns:1fr;max-width:640px">
+    <div class="cj-boutique__info">
+      <h3 class="cj-heading">Butik Utama Shah Alam</h3>
+      <dl><dt>Address</dt><dd>Seksyen U13, 12, Jln Setia Dagang AL U13/AL, Alam Nusantara, 40170 Shah Alam, Selangor</dd>
+      <dt>Hours</dt><dd>10:00 AM - 6:00 PM</dd><dt>WhatsApp</dt><dd>+60 17-811 3204</dd></dl>
+      <div class="cj-hero__actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=Chempaka+Butik+Utama+Shah+Alam" class="cj-btn cj-btn--outline cj-btn--sm" rel="noopener"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#near_me"/></svg> Directions</a></div>
+    </div>
+  </div>
+</div></section>
+</main>
+<footer class="cj-footer"><div class="cj-container">
+  <div class="cj-footer__top">
+    <div><div class="cj-wordmark">CHEMPAKA</div><p>Masters of gold since 1995.</p><a href="membership.html" class="cj-btn cj-btn--on-panel cj-btn--sm">Join the Club</a></div>
+    <div><h5>Collections</h5><ul><li><a href="showcase.html">New In</a></li><li><a href="showcase.html?q=rings">Rings</a></li><li><a href="showcase.html?q=necklaces">Necklaces</a></li><li><a href="showcase.html?q=bracelets">Bracelets</a></li><li><a href="showcase.html?q=bespoke">Bespoke</a></li><li><a href="showcase.html">Showcase</a></li></ul></div>
+    <div><h5>Services</h5><ul><li><a href="boutiques.html#services">Gold exchange</a></li><li><a href="boutiques.html#services">Valuation</a></li><li><a href="boutiques.html#appointment">Private viewing</a></li><li><a href="https://wa.me/60178113204">WhatsApp us</a></li></ul></div>
+    <div><h5>Chempaka</h5><ul><li><a href="about.html">Our heritage</a></li><li><a href="about.html#journal">Journal</a></li><li><a href="membership.html">Chempaka Club</a></li><li><a href="boutiques.html">Boutiques</a></li></ul></div>
+  </div>
+  <div class="cj-footer__bottom"><span>&copy; 2026 Chempaka Trading Sdn Bhd (200901004470 / 847404-D). All rights reserved.</span><div class="cj-footer__social"><a href="https://www.instagram.com/chempakajewels/" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@chempakajewels" rel="noopener">TikTok</a></div></div>
+</div></footer>
+<div class="site-backdrop" id="menu-backdrop" hidden></div>
+<aside class="site-drawer" id="menu-drawer" aria-label="Menu" aria-hidden="true">
+  <div class="site-drawer__top"><span class="cj-wordmark cj-wordmark--sm">CHEMPAKA</span><button type="button" data-close-menu aria-label="Close menu"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#close"/></svg></button></div>
+  <nav aria-label="Site">
+    <div><h2>Collections</h2><ul><li><a href="showcase.html">New In</a></li><li><a href="showcase.html?q=rings">Rings</a></li><li><a href="showcase.html?q=necklaces">Necklaces</a></li><li><a href="showcase.html?q=bracelets">Bracelets</a></li><li><a href="showcase.html?q=bespoke">Bespoke</a></li><li><a href="showcase.html">Showcase</a></li></ul></div>
+    <div><h2>Chempaka</h2><ul><li><a href="membership.html">Chempaka Club</a></li><li><a href="about.html">Journal and heritage</a></li><li><a href="boutiques.html">Boutiques and appointments</a></li></ul></div>
+    <div><h2>Contact</h2><ul><li><a href="https://wa.me/60178113204">WhatsApp us</a></li></ul></div>
+  </nav>
+</aside>
+<div class="site-search" id="site-search" role="dialog" aria-label="Search" aria-modal="true" hidden>
+  <button type="button" class="site-search__close" data-close-search aria-label="Close search"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#close"/></svg></button>
+  <form action="showcase.html" method="get" role="search"><input type="search" name="q" placeholder="Search the showcase" aria-label="Search the showcase" autocomplete="off"><button type="submit" aria-label="Search"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#search"/></svg></button></form>
+  <ul><li><a href="showcase.html?q=rings">Rings</a></li><li><a href="showcase.html?q=necklaces">Necklaces</a></li><li><a href="showcase.html?q=bracelets">Bracelets</a></li><li><a href="showcase.html?q=bespoke">Bespoke</a></li></ul>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/booking.js"></script>
 </body>
-
 </html>
-
