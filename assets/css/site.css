@@ -828,3 +828,22 @@ html { scroll-padding-top: 140px; }
 
 /* member card: the Chempaka emblem sits where the chip was */
 .cj-card__chip { width: 52px; height: 41px; border-radius: 0; background: url(../images/brand/logo-mark-white.png) left center / contain no-repeat; opacity: .95; }
+
+/* member card: rounded corners like a real card (the radius is a share of the card, so it scales with it) */
+.cj-card { border-radius: 4.4% / 7%; }
+
+/* full-screen card for the staff (opened from the membership page; see membership.js) */
+.site-cardview { border: 0; padding: 0; margin: 0; width: 100vw; height: 100vh; height: 100dvh; max-width: none; max-height: none; background: #0a0a0a; color: #fff; }
+.site-cardview[open] { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-8); }
+.site-cardview::backdrop { background: #0a0a0a; }
+.site-cardview__close { position: absolute; top: var(--space-2); right: var(--space-2); width: 40px; height: 40px; display: grid; place-items: center; background: none; border: 1px solid rgba(255, 255, 255, .3); color: #fff; cursor: pointer; }
+.site-cardview__close:hover { border-color: #fff; }
+.site-cardview__close .cj-icon { font-size: 24px; }
+.site-cardview__stage { flex: none; }
+.site-cardview .cj-card { box-shadow: 0 0 0 1px rgba(255, 255, 255, .14); }
+.site-cardview__info { text-align: center; display: grid; gap: var(--space-2); padding: 0 var(--space-6); }
+.site-cardview__info[hidden] { display: none; }
+.site-cardview__status { margin: 0; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-on-panel); }
+.site-cardview__name { margin: 0; font-family: var(--font-display); font-size: 28px; line-height: 1.15; }
+.site-cardview__id { margin: 0; font-size: 32px; line-height: 40px; letter-spacing: .1em; font-variant-numeric: tabular-nums; }
+.site-cardview__hint { margin: var(--space-4) auto 0; max-width: 320px; font-size: 13px; line-height: 20px; color: var(--on-panel-muted); }

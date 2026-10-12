@@ -158,8 +158,90 @@
         document.getElementById('member-card').setAttribute('data-state', 'active');
         document.getElementById('member-card').setAttribute('aria-label', 'Chempaka Club member card for ' + row.full_name + ', member ' + row.member_id + ', member since ' + since);
         document.getElementById('card-note').textContent = 'Member since ' + since + '. Show this card at the counter to receive your member discount.';
+        var fsBtn = document.getElementById('card-fullscreen');
+        if (fsBtn) fsBtn.hidden = false;
         document.getElementById('member-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
       }, function () { restore(); showFormError(loginError, 'Something went wrong. Please try again.'); });
     });
+  }
+
+  // ---- full-screen card, to show the staff ----
+  // The retrieved card is cloned into a modal dialog and scaled to fit the screen. In portrait the name and
+  // member number are repeated in large type under the card; in a short (landscape phone) screen the card
+  // takes the whole height. Where the browser allows it the page also goes full screen and the screen stays awake.
+  var CARD_W = 360, CARD_H = 227;
+  var fsButton = document.getElementById('card-fullscreen');
+  if (fsButton) fsButton.addEventListener('click', openCardView);
+
+  function openCardView() {
+    var card = document.getElementById('member-card');
+    if (!card || card.getAttribute('data-state') !== 'active') return;
+    var name = document.getElementById('card-name').textContent;
+    var id = document.getElementById('card-id').textContent;
+
+    var dlg = document.createElement('dialog');
+    dlg.className = 'site-cardview';
+    dlg.setAttribute('aria-label', 'Chempaka Club member card, full screen');
+
+    var close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'site-cardview__close';
+    close.setAttribute('aria-label', 'Close full screen');
+    close.innerHTML = '<svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#close"/></svg>';
+
+    var stage = document.createElement('div');
+    stage.className = 'site-cardview__stage';
+    var clone = card.cloneNode(true);
+    clone.removeAttribute('id');
+    Array.prototype.forEach.call(clone.querySelectorAll('[id]'), function (n) { n.removeAttribute('id'); });
+    clone.style.width = CARD_W + 'px';
+    clone.style.maxWidth = 'none';
+    clone.style.transformOrigin = '0 0';
+    stage.appendChild(clone);
+
+    var info = document.createElement('div');
+    info.className = 'site-cardview__info';
+    info.innerHTML = '<p class="site-cardview__status">Active member</p><p class="site-cardview__name"></p><p class="site-cardview__id"></p><p class="site-cardview__hint">Show this screen to the staff at the counter. Turn your phone sideways for a larger card.</p>';
+    info.querySelector('.site-cardview__name').textContent = name;
+    info.querySelector('.site-cardview__id').textContent = id;
+
+    dlg.appendChild(close);
+    dlg.appendChild(stage);
+    dlg.appendChild(info);
+    document.body.appendChild(dlg);
+
+    function fit() {
+      var short = window.innerHeight < 520;
+      info.hidden = short;
+      var k = Math.min(window.innerWidth * 0.94 / CARD_W, (short ? window.innerHeight - 112 : window.innerHeight * 0.56) / CARD_H);
+      stage.style.width = Math.round(CARD_W * k) + 'px';
+      stage.style.height = Math.round(CARD_H * k) + 'px';
+      clone.style.transform = 'scale(' + k + ')';
+    }
+
+    var lock = null;
+    function done() {
+      window.removeEventListener('resize', fit);
+      document.body.classList.remove('is-locked');
+      if (lock && lock.release) { try { lock.release(); } catch (e) {} }
+      if (document.fullscreenElement && document.exitFullscreen) { try { document.exitFullscreen(); } catch (e) {} }
+      if (dlg.parentNode) dlg.parentNode.removeChild(dlg);
+      if (fsButton) fsButton.focus();
+    }
+
+    window.addEventListener('resize', fit);
+    dlg.addEventListener('close', done);
+    close.addEventListener('click', function () { if (dlg.close) dlg.close(); else done(); });
+    document.body.classList.add('is-locked');
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+    fit();
+    close.focus();
+
+    // best effort, and only where the browser supports it
+    var root = document.documentElement;
+    if (root.requestFullscreen) { try { var p = root.requestFullscreen(); if (p && p.catch) p.catch(function () {}); } catch (e) {} }
+    if (navigator.wakeLock && navigator.wakeLock.request) {
+      navigator.wakeLock.request('screen').then(function (l) { lock = l; if (!dlg.parentNode) { try { l.release(); } catch (e) {} } }, function () {});
+    }
   }
 })();
