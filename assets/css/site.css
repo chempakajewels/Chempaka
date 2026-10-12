@@ -804,5 +804,14 @@ fieldset.cj-field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .site-hdr:has(:focus-visible) .site-hdr__join { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
 @media (prefers-reduced-motion: reduce) { .site-hdr, .site-hdr__join { transition: none; } }
 
-/* ===== Part 8: blue hero ===== */
+/* ===== Part 8: blue hero; on the home page the header floats over it (white on hover) ===== */
+.site-hdr--overlay { position: absolute; top: 0; left: 0; right: 0; background: transparent; border-top-color: transparent; }
 .site-hero { background: radial-gradient(70% 90% at 72% 45%, #2f5fd0 0%, #1c3f94 52%, #12296b 100%); }
+@media (min-width: 901px) {
+  .site-hero { min-height: 680px; }
+  .site-hero .cj-container, .site-hero__slide .cj-container { padding-top: 136px; }
+}
+/* a soft blue scrim keeps the floating header legible over the photograph; it fades out when the header turns white */
+.site-hdr--overlay::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 190px; z-index: -1; pointer-events: none; background: linear-gradient(to bottom, rgba(18, 41, 107, .68), rgba(18, 41, 107, 0)); transition: opacity .25s ease; }
+@media (hover: hover) { .site-hdr--overlay:hover::before { opacity: 0; } }
+.site-hdr--overlay:has(:focus-visible)::before { opacity: 0; }
