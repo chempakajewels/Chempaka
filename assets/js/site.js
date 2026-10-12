@@ -16,6 +16,15 @@
     });
   });
 
+  // ---- header: transparent over the hero at the top of the home page, solid once scrolled ----
+  var sentinel = $('[data-sentinel]');
+  var hdr = $('.site-hdr');
+  if (sentinel && hdr && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      hdr.classList.toggle('is-stuck', !entries[0].isIntersecting);
+    }).observe(sentinel);
+  }
+
   // ---- menu drawer ----
   var drawer = $('#menu-drawer');
   var backdrop = $('#menu-backdrop');

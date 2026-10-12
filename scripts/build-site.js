@@ -52,6 +52,9 @@ function head(meta, file) {
     }
   }
   lines.push(
+    '<link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">',
+    '<link rel="icon" type="image/png" sizes="192x192" href="assets/images/brand/favicon-192.png">',
+    '<link rel="apple-touch-icon" href="assets/images/brand/favicon-180.png">',
     '<script>document.documentElement.className += " js";</script>',
     '<link rel="preload" href="assets/fonts/Jost-normal-300.woff2" as="font" type="font/woff2" crossorigin>',
     '<link rel="preload" href="assets/fonts/BodoniModa-normal-400.woff2" as="font" type="font/woff2" crossorigin>'
@@ -115,8 +118,9 @@ for (const file of fs.readdirSync(pageDir).filter((f) => f.endsWith('.html')).so
       '</head>',
       '<body class="cj site">',
       '<a class="site-skip" href="#main">Skip to content</a>',
+      meta.header === 'overlay' ? '<div class="site-sentinel" data-sentinel aria-hidden="true"></div>' : '',
       partials.promo.trim(),
-      meta.header === 'none' ? '' : header.trim(),
+      meta.header === 'none' ? '' : meta.header === 'overlay' ? overlay.trim() : header.trim(),
       '<main id="main">',
       body.trim(),
       '</main>',
