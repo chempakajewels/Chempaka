@@ -118,7 +118,7 @@ for (const file of fs.readdirSync(pageDir).filter((f) => f.endsWith('.html')).so
       '</head>',
       '<body class="cj site">',
       '<a class="site-skip" href="#main">Skip to content</a>',
-      meta.header === 'overlay' ? '<div class="site-sentinel" data-sentinel aria-hidden="true"></div>' : '',
+      '<div class="site-sentinel" data-sentinel aria-hidden="true"></div>',
       partials.promo.trim(),
       meta.header === 'none' ? '' : meta.header === 'overlay' ? overlay.trim() : header.trim(),
       '<main id="main">',

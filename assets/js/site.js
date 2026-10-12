@@ -16,7 +16,7 @@
     });
   });
 
-  // ---- header: transparent over the hero at the top of the home page, solid once scrolled ----
+  // ---- header: black (transparent over the hero on the home page) at the top, white once the page has scrolled ----
   var sentinel = $('[data-sentinel]');
   var hdr = $('.site-hdr');
   if (sentinel && hdr && 'IntersectionObserver' in window) {
