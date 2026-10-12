@@ -565,7 +565,9 @@ body.is-locked { overflow: hidden; }
 .cj-choices input[type="radio"] { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
 .cj-choices input[type="radio"]:checked + .cj-choice { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
 .cj-choices input[type="radio"]:focus-visible + .cj-choice { outline: 2px solid var(--focus); outline-offset: 2px; }
-.cj-choices .cj-choice { display: inline-flex; align-items: center; pointer-events: none; }
+.cj-choices .cj-choice { display: inline-flex; align-items: center; }
+/* radio-style chips (a label around a hidden radio): the click goes to the label, so the chip itself ignores the pointer. Real buttons (tabs, piece switchers) must stay clickable. */
+.cj-choices label .cj-choice { pointer-events: none; }
 .cj-field--error .cj-field__msg { display: flex; }
 .cj-field__msg[hidden] { display: none; }
 .cj-notice { margin-top: var(--space-4); }
