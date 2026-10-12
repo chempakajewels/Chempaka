@@ -4,7 +4,6 @@
   'use strict';
 
   var WA = 'https://wa.me/60178113204?text=';
-  var GOLD_916 = 'RM 385.00 per gram (916)';
 
   var CHAPTERS = [
     {
@@ -47,6 +46,9 @@
     return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
   }
 
+  // the 916 price comes from gold.js (live from /api/gold); the line is left out until a price is known
+  function goldToday() { return window.ChempakaGold ? window.ChempakaGold.text() : ''; }
+
   function detail(ci) {
     var p = CHAPTERS[ci].pieces[selected[ci]];
     var ask = WA + encodeURIComponent('Hi Chempaka, I’m interested in the ' + p.title + '.');
@@ -61,7 +63,7 @@
         '<div><dt>Craftsmanship</dt><dd>' + esc(p.craft) + '</dd></div>' +
       '</dl>' +
       '<p class="cj-muted" style="margin:0">' + esc(p.desc) + '</p>' +
-      (p.gold916 ? '<p class="cj-caption" style="margin:0">Gold today: ' + GOLD_916 + '.</p>' : '') +
+      (p.gold916 && goldToday() ? '<p class="cj-caption" style="margin:0">Gold today: ' + goldToday() + '.</p>' : '') +
       '<p class="cj-caption" style="margin:0">Club members receive a full buy-back guarantee and no trade-in deduction.</p>' +
       '<div class="cj-hero__actions"><a href="' + ask + '" class="cj-btn cj-btn--primary"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#chat"/></svg> WhatsApp us</a><a href="boutiques.html#appointment" class="cj-btn cj-btn--outline">Book an appointment</a></div>';
   }
@@ -124,6 +126,12 @@
   }
 
   render();
+
+  document.addEventListener('chempaka:gold', function () {
+    Array.prototype.forEach.call(root.querySelectorAll('[data-detail]'), function (el) {
+      el.innerHTML = detail(Number(el.getAttribute('data-detail')));
+    });
+  });
 
   if (q) {
     var note = document.getElementById('search-note');

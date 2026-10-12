@@ -18,7 +18,7 @@
 <body class="cj site">
 <div class="site-admin-bar"><div class="cj-container">
   <div class="site-kicker"><span class="cj-wordmark cj-wordmark--sm" style="color:var(--on-panel)">CHEMPAKA</span><span class="cj-rate__label" style="letter-spacing:.2em;color:var(--on-panel-muted)">Admin</span></div>
-  <div id="user-info" style="display:flex;align-items:center;gap:24px" hidden><span id="user-email" style="font-size:12px;color:var(--on-panel-muted)"></span><a href="index.html"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#open_in_new"/></svg> View site</a><button type="button" id="logout-btn"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#logout"/></svg> Log out</button></div>
+  <div id="user-info" style="display:flex;align-items:center;gap:24px" hidden><span id="user-email" class="site-admin-bar__email"></span><a href="index.html"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#open_in_new"/></svg> View site</a><button type="button" id="password-btn">Change password</button><button type="button" id="logout-btn"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#logout"/></svg> Log out</button></div>
 </div></div>
 
 <main>
@@ -39,11 +39,18 @@
 </div></section>
 
 <section id="dashboard-container" class="cj-section" style="padding-top:64px" hidden><div class="cj-container">
-  <div class="cj-head" style="margin-bottom:32px"><h1 class="cj-heading">Dashboard</h1></div>
+  <div class="cj-head" style="margin-bottom:32px"><h1 class="cj-heading">Dashboard</h1><button type="button" class="cj-btn cj-btn--outline cj-btn--sm" id="refresh-btn"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#refresh"/></svg> Refresh</button></div>
+
+  <dl class="site-stats" aria-label="Membership summary">
+    <div id="stat-pending-box"><dt>Pending applications</dt><dd id="stat-pending">0</dd></div>
+    <div><dt>Active members</dt><dd id="stat-approved">0</dd></div>
+    <div><dt>Joined this month</dt><dd id="stat-month">0</dd></div>
+    <div><dt>All records</dt><dd id="stat-total">0</dd></div>
+  </dl>
 
   <div class="cj-choices" role="group" aria-label="Dashboard sections" style="margin-bottom:48px">
     <button type="button" class="cj-choice" data-tab="counter" aria-pressed="true">Counter check</button>
-    <button type="button" class="cj-choice" data-tab="members" aria-pressed="false">Member monitor</button>
+    <button type="button" class="cj-choice" data-tab="members" aria-pressed="false">Member monitor <span class="cj-badge cj-badge--member" id="tab-pending-badge" hidden>0</span></button>
     <button type="button" class="cj-choice" data-tab="content" aria-pressed="false">Content management</button>
   </div>
 
@@ -58,28 +65,41 @@
           <div class="cj-field"><label for="counter-q">Member ID, phone or name</label><input id="counter-q" class="cj-input" placeholder="CC-123456 or +60 12-345 6789" autocomplete="off"></div>
           <button type="submit" class="cj-btn cj-btn--primary">Check member</button>
         </form>
-        <div id="counter-result" style="width:100%;display:grid;gap:16px"></div>
+        <div id="counter-result" style="width:100%;display:grid;gap:16px" aria-live="polite"></div>
       </div>
     </div>
   </div>
 
   <div id="tab-members" data-panel hidden>
+    <div class="site-toolbar">
+      <div class="cj-field site-toolbar__search"><label for="member-search" class="site-sr">Search members</label><input id="member-search" type="search" class="cj-input" placeholder="Search name, ID, phone or email" autocomplete="off"></div>
+      <div class="cj-field site-toolbar__filter"><label for="member-filter" class="site-sr">Show</label><select id="member-filter" class="cj-input cj-select"><option value="all">All members</option><option value="pending">Pending only</option><option value="approved">Approved only</option></select></div>
+      <div class="site-toolbar__actions">
+        <button type="button" class="cj-btn cj-btn--primary cj-btn--sm" id="add-member-btn"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#add"/></svg> Add member</button>
+        <button type="button" class="cj-btn cj-btn--outline cj-btn--sm" id="export-btn"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#download"/></svg> Export CSV</button>
+      </div>
+    </div>
+    <p class="cj-caption" id="member-summary" role="status" style="margin:0 0 32px"></p>
+    <div class="cj-notice" id="members-error" role="alert" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#error"/></svg><div><b>Could not load members</b><span id="members-error-text"></span> <button type="button" class="site-linkbtn" id="members-retry">Try again</button></div></div>
+
     <div class="site-stack" style="gap:64px;width:100%">
-      <div style="width:100%">
+      <div style="width:100%" id="pending-section">
         <div class="cj-head" style="margin-bottom:24px"><div><h2 class="cj-heading">Pending applications</h2><p class="cj-muted" style="margin:8px 0 0">Applications waiting for boutique review and membership code allocation.</p></div><span class="cj-badge cj-badge--member" id="pending-count">0 pending</span></div>
         <div class="site-tablewrap"><table class="site-table">
           <thead><tr><th scope="col">Full name</th><th scope="col">IC number</th><th scope="col">Phone</th><th scope="col">Email</th><th scope="col">Applied</th><th scope="col"><span class="site-sr">Actions</span></th></tr></thead>
           <tbody id="pending-body"></tbody>
         </table></div>
         <div class="cj-notice" id="no-pending" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#check_circle"/></svg><div><b>All caught up</b>No pending membership applications.</div></div>
+        <button type="button" class="cj-btn cj-btn--outline cj-btn--sm site-more" id="pending-more" hidden>Show more</button>
       </div>
-      <div style="width:100%">
+      <div style="width:100%" id="approved-section">
         <div class="cj-head" style="margin-bottom:24px"><div><h2 class="cj-heading">Approved members</h2><p class="cj-muted" style="margin:8px 0 0">Enrolled Chempaka Club members with active membership codes.</p></div><span class="cj-badge" id="approved-count">0 members</span></div>
         <div class="site-tablewrap"><table class="site-table">
           <thead><tr><th scope="col">Member ID</th><th scope="col">Full name</th><th scope="col">IC number</th><th scope="col">Phone</th><th scope="col">Email</th><th scope="col">Joined</th><th scope="col"><span class="site-sr">Actions</span></th></tr></thead>
           <tbody id="approved-body"></tbody>
         </table></div>
         <div class="cj-notice" id="no-approved" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#info"/></svg><div><b>No approved members yet</b>Approved members will appear here.</div></div>
+        <button type="button" class="cj-btn cj-btn--outline cj-btn--sm site-more" id="approved-more" hidden>Show more</button>
       </div>
     </div>
   </div>
@@ -88,7 +108,8 @@
     <div class="site-split site-split--form" style="gap:64px">
       <div class="site-stack" style="gap:16px">
         <h2 class="cj-heading">Site settings</h2>
-        <p class="cj-muted" style="margin:0">Manage the content served on the website in real time. Changes go live as soon as you publish.</p>
+        <p class="cj-muted" style="margin:0">Manage the content served on the website in real time. Changes go live as soon as you publish. Leave a field empty to show the standard wording from the site.</p>
+        <a href="index.html" class="cj-btn cj-btn--link" target="_blank" rel="noopener">View the home page</a>
       </div>
       <form class="cj-form" id="settings-form">
         <div class="cj-field"><label for="set-promo">Announcement bar text</label><input id="set-promo" class="cj-input" placeholder="Join the Chempaka Club and show your card at the counter for member prices."></div>
@@ -96,7 +117,7 @@
         <div class="cj-field"><label for="set-sub">Home hero subtitle</label><input id="set-sub" class="cj-input" placeholder="Hand-finished gold jewellery."></div>
         <div class="cj-field"><label for="set-ann">Header announcement</label><input id="set-ann" class="cj-input" placeholder="Gold exchange and valuation available at the Shah Alam boutique"><span class="cj-field__msg">Appears in the middle of the top row of the header.</span></div>
         <p class="site-form-error" id="settings-error" role="alert" hidden></p>
-        <button type="submit" class="cj-btn cj-btn--primary">Publish changes live</button>
+        <div class="cj-hero__actions"><button type="submit" class="cj-btn cj-btn--primary" id="settings-save">Publish changes live</button><button type="button" class="cj-btn cj-btn--outline" id="settings-reset">Discard changes</button></div>
         <div class="cj-notice" id="settings-ok" role="status" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#check_circle"/></svg><div><b>Settings updated</b>Changes are live on the website.</div></div>
       </form>
     </div>
@@ -105,6 +126,40 @@
 
 <div class="cj-container" style="padding-bottom:32px"><p class="cj-caption" style="margin:0">&copy; 2026 Chempaka Trading Sdn Bhd. Admin panel security control.</p></div>
 </main>
+
+<dialog class="site-dialog" id="member-dialog" aria-labelledby="member-dialog-title">
+  <form class="cj-form" id="member-form" novalidate>
+    <h2 class="cj-heading" id="member-dialog-title">Add member</h2>
+    <p class="cj-muted" id="member-dialog-note" style="margin:0"></p>
+    <div class="cj-field" data-field="name"><label for="md-name">Full name</label><input id="md-name" name="name" class="cj-input" placeholder="As on the IC" autocomplete="off"><span class="cj-field__msg" hidden>Enter the full name.</span></div>
+    <div class="cj-form__row">
+      <div class="cj-field" data-field="phone"><label for="md-phone">Phone</label><input id="md-phone" name="phone" type="tel" class="cj-input" placeholder="+60 12-345 6789" autocomplete="off"><span class="cj-field__msg" hidden>Enter a valid phone number.</span></div>
+      <div class="cj-field" data-field="email"><label for="md-email">Email</label><input id="md-email" name="email" type="email" class="cj-input" placeholder="name@example.com" autocomplete="off"><span class="cj-field__msg" hidden>Enter a valid email address.</span></div>
+    </div>
+    <div class="cj-field" data-field="ic"><label for="md-ic">IC number</label><input id="md-ic" name="ic" class="cj-input" inputmode="numeric" placeholder="YYMMDD-XX-XXXX" autocomplete="off"><span class="cj-field__msg" hidden>Enter the 12-digit IC number.</span></div>
+    <p class="site-form-error" id="member-dialog-error" role="alert" hidden></p>
+    <div class="site-dialog__actions"><button type="button" class="cj-btn cj-btn--outline" data-close>Cancel</button><button type="submit" class="cj-btn cj-btn--primary" id="member-dialog-save">Save</button></div>
+  </form>
+</dialog>
+
+<dialog class="site-dialog site-dialog--sm" id="confirm-dialog" aria-labelledby="confirm-title">
+  <div class="cj-form">
+    <h2 class="cj-heading" id="confirm-title">Are you sure?</h2>
+    <p class="cj-muted" id="confirm-text" style="margin:0"></p>
+    <div class="site-dialog__actions"><button type="button" class="cj-btn cj-btn--outline" id="confirm-no">Cancel</button><button type="button" class="cj-btn cj-btn--primary" id="confirm-yes">Confirm</button></div>
+  </div>
+</dialog>
+
+<dialog class="site-dialog site-dialog--sm" id="password-dialog" aria-labelledby="password-title">
+  <form class="cj-form" id="password-form" novalidate>
+    <h2 class="cj-heading" id="password-title">Change password</h2>
+    <div class="cj-field"><label for="pw-new">New password</label><input id="pw-new" type="password" class="cj-input" autocomplete="new-password"><span class="cj-field__msg">At least 8 characters.</span></div>
+    <div class="cj-field"><label for="pw-confirm">Confirm new password</label><input id="pw-confirm" type="password" class="cj-input" autocomplete="new-password"></div>
+    <p class="site-form-error" id="password-error" role="alert" hidden></p>
+    <div class="cj-notice" id="password-ok" role="status" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#check_circle"/></svg><div><b>Password updated</b>Use the new password the next time you sign in.</div></div>
+    <div class="site-dialog__actions"><button type="button" class="cj-btn cj-btn--outline" data-close>Close</button><button type="submit" class="cj-btn cj-btn--primary" id="password-save">Update password</button></div>
+  </form>
+</dialog>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
 <script src="assets/js/admin.js"></script>

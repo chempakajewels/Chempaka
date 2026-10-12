@@ -26,6 +26,12 @@ const TYPES = {
 http
   .createServer((req, res) => {
     let pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+    // /api/gold runs the same serverless function as on Vercel (see api/gold.js)
+    if (pathname === '/api/gold') {
+      res.status = (code) => { res.statusCode = code; return res; };
+      res.json = (body) => { res.setHeader('Content-Type', 'application/json; charset=utf-8'); res.end(JSON.stringify(body)); };
+      return require('../api/gold.js')(req, res);
+    }
     if (pathname.endsWith('/')) pathname += 'index.html';
     let file = path.join(root, pathname);
     if (!file.startsWith(root)) {

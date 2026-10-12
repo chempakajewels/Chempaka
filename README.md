@@ -28,3 +28,9 @@ The membership form, the card lookup, the admin portal and the announcement text
 
 - The Duta Chempaka section on the home page uses `assets/images/hero_model_hijab.jpg`, the same photograph as "The Royal Malay Heritage" in the showcase. That photograph is Ayu Damit.
 - Studio photography is in `assets/images/album/`.
+
+## Gold price
+
+The 916 gold price on the home page and the showcase is live. `api/gold.js` is a Vercel serverless function (served locally by `scripts/dev-server.js` as `/api/gold`) that takes the international gold price (gold-api.com, USD per ounce) and the USD to MYR rate (frankfurter.dev, with open.er-api.com as a backup), and returns MYR per gram for 999 and 916 gold. Vercel caches the answer for 15 minutes, so the sources are called a few times an hour whatever the traffic. No API key is needed. `assets/js/gold.js` shows it and keeps the last good price in the browser, so a failed request falls back to that price, or to "Ask us" if there is none.
+
+The figure is an indicative market price. The boutique’s counter rate can differ, and the page says so.
