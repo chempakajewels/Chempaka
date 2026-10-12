@@ -1,0 +1,5 @@
+/* Self-hosted variable fonts (latin subset): Bodoni Moda, Cinzel, Jost. */
+@font-face { font-family: 'Bodoni Moda'; font-style: normal; font-weight: 400 500; font-display: swap; src: url(../fonts/BodoniModa-normal-400.woff2) format('woff2'); }
+@font-face { font-family: 'Bodoni Moda'; font-style: italic; font-weight: 400; font-display: swap; src: url(../fonts/BodoniModa-italic-400.woff2) format('woff2'); }
+@font-face { font-family: 'Cinzel'; font-style: normal; font-weight: 400; font-display: swap; src: url(../fonts/Cinzel-normal-400.woff2) format('woff2'); }
+@font-face { font-family: 'Jost'; font-style: normal; font-weight: 300 500; font-display: swap; src: url(../fonts/Jost-normal-300.woff2) format('woff2'); }

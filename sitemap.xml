@@ -1,23 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www.chempakajewel.com/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://www.chempakajewel.com/about</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.chempakajewel.com/boutiques</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.chempakajewel.com/membership</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
+  <url><loc>https://www.chempakajewel.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.chempakajewel.com/membership</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.chempakajewel.com/boutiques</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.chempakajewel.com/showcase</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.chempakajewel.com/about</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.chempakajewel.com/article-karats</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.chempakajewel.com/article-gold-value</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.chempakajewel.com/article-alloys</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.chempakajewel.com/article-care</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
 </urlset>

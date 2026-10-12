@@ -1,1894 +1,243 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Chempaka - Where Gold Makes Memories</title>
-
-  <!-- SEO -->
-  <meta name="description"
-    content="Chempaka crafts fine gold jewellery in Malaysia - rings, bracelets, necklaces and bespoke commissions. Visit our Shah Alam boutique or join the Chempaka Club." />
-  <link rel="canonical" href="https://www.chempakajewel.com/" />
-
-  <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Chempaka" />
-  <meta property="og:locale" content="en_MY" />
-  <meta property="og:title" content="Chempaka - Where Gold Makes Memories" />
-  <meta property="og:description"
-    content="Fine gold jewellery crafted in Malaysia - rings, bracelets, necklaces and bespoke commissions." />
-  <meta property="og:url" content="https://www.chempakajewel.com/" />
-  <meta property="og:image" content="https://www.chempakajewel.com/assets/images/hero_necklace.jpg" />
-  <meta property="og:image:width" content="1024" />
-  <meta property="og:image:height" content="571" />
-  <meta property="og:image:alt" content="A Chempaka gold necklace" />
-
-  <!-- Twitter / X -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Chempaka - Where Gold Makes Memories" />
-  <meta name="twitter:description"
-    content="Fine gold jewellery crafted in Malaysia - rings, bracelets, necklaces and bespoke commissions." />
-  <meta name="twitter:image" content="https://www.chempakajewel.com/assets/images/hero_necklace.jpg" />
-
-  <!-- Structured data: tells Google who the business is, not just what the page says -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://www.chempakajewel.com/#organization",
-        "name": "Chempaka",
-        "legalName": "Chempaka Trading Sdn Bhd",
-        "url": "https://www.chempakajewel.com/",
-        "image": "https://www.chempakajewel.com/assets/images/hero_necklace.jpg",
-        "description": "Fine gold jewellery crafted in Malaysia - rings, bracelets, necklaces and bespoke commissions.",
-        "telephone": "+60178113204",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Seksyen U13, 12, Jln Setia Dagang AL U13/AL, Alam Nusantara",
-          "addressLocality": "Shah Alam",
-          "addressRegion": "Selangor",
-          "postalCode": "40170",
-          "addressCountry": "MY"
-        },
-        "sameAs": [
-          "https://www.instagram.com/chempakajewels/",
-          "https://www.tiktok.com/@chempakajewels"
-        ]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://www.chempakajewel.com/#website",
-        "url": "https://www.chempakajewel.com/",
-        "name": "Chempaka",
-        "inLanguage": "en-MY",
-        "publisher": { "@id": "https://www.chempakajewel.com/#organization" }
-      }
-    ]
-  }
-  </script>
-
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-    rel="stylesheet" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&amp;family=Noto+Sans:wght@300;400;500;600&amp;family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap"
-    rel="stylesheet" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-    rel="stylesheet" />
-  <!-- Supabase CDN Client -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="supabase-config.js"></script>
-  <script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          "colors": {
-            "surface-container": "#eeeeee",
-            "on-primary-fixed-variant": "#5c412f",
-            "inverse-surface": "#2f3131",
-            "on-tertiary": "#ffffff",
-            "primary": "#A4B5B9",
-            "surface-container-highest": "#e2e2e2",
-            "on-secondary": "#ffffff",
-            "on-error-container": "#93000a",
-            "tertiary-container": "#786f65",
-            "primary-fixed": "#ffdcc7",
-            "on-tertiary-fixed": "#201b14",
-            "error": "#ba1a1a",
-            "tertiary": "#5f574e",
-            "on-background": "#1a1c1c",
-            "on-secondary-container": "#775e4a",
-            "surface-dim": "#dadada",
-            "primary-container": "#a4b5b9",
-            "on-surface-variant": "#4f453e",
-            "surface": "#ffffff",
-            "surface-container-lowest": "#ffffff",
-            "on-primary-container": "#fff4ef",
-            "tertiary-fixed-dim": "#d0c5b9",
-            "on-secondary-fixed": "#291808",
-            "on-primary": "#ffffff",
-            "inverse-primary": "#e6bfa7",
-            "surface-bright": "#ffffff",
-            "on-tertiary-fixed-variant": "#4d463d",
-            "on-error": "#ffffff",
-            "secondary-fixed": "#fedcc3",
-            "outline": "#81746d",
-            "on-surface": "#1a1c1c",
-            "secondary-container": "#fbd9c0",
-            "error-container": "#ffdad6",
-            "surface-tint": "#765845",
-            "background": "#ffffff",
-            "primary-fixed-dim": "#e6bfa7",
-            "secondary-fixed-dim": "#e1c0a8",
-            "on-tertiary-container": "#fff4ea",
-            "on-secondary-fixed-variant": "#594230",
-            "outline-variant": "#d3c3bb",
-            "surface-container-low": "#ffffff",
-            "tertiary-fixed": "#ece1d5",
-            "secondary": "#2C2F44",
-            "inverse-on-surface": "#f0f1f1",
-            "surface-variant": "#e2e2e2",
-            "on-primary-fixed": "#2b1608",
-            "surface-container-high": "#e8e8e8",
-            "accent-blue": "#D0D2DE"
-          },
-          "borderRadius": {
-            "DEFAULT": "0.25rem",
-            "lg": "0.5rem",
-            "xl": "0.75rem",
-            "full": "9999px"
-          },
-          "spacing": {
-            "margin-desktop": "64px",
-            "section-gap": "120px",
-            "container-max": "1280px",
-            "gutter": "24px",
-            "unit": "8px",
-            "margin-mobile": "20px"
-          },
-          "fontFamily": {
-            "headline-lg": ["Playfair Display"],
-            "headline-lg-mobile": ["Playfair Display"],
-            "label-md": ["Inter"],
-            "display-lg-mobile": ["Playfair Display"],
-            "body-md": ["Inter"],
-            "body-lg": ["Inter"],
-            "display-lg": ["Playfair Display"],
-            "headline-md": ["Playfair Display"]
-          },
-          "fontSize": {
-            "headline-lg": ["40px", { "lineHeight": "48px", "fontWeight": "400" }],
-            "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "400" }],
-            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "500" }],
-            "display-lg-mobile": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
-            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
-            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
-            "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "400" }],
-            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "400" }]
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    /* ========================================
-           CHEMPAKA HEADER — LINEAR-STYLE GLASS
-           Default: transparent frosted glass over hero
-           Scrolled: pure white, collapsed, minimal
-           ======================================== */
-
-    /* --- Main Header: glass layer --- */
-    header {
-      background-color: transparent;
-      border-bottom: none;
-      transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-        backdrop-filter 0.4s ease,
-        color 0.3s ease;
-    }
-
-    /* --- Frosted glass gradient behind nav --- */
-    header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.52) 0%, rgba(0, 0, 0, 0.18) 70%, transparent 100%);
-      pointer-events: none;
-      transition: opacity 0.4s ease;
-      z-index: -1;
-    }
-
-    .logo-text,
-    .scrolled-logo-text,
-    header .material-symbols-outlined {
-      transition: color 0.3s ease;
-    }
-
-    /* --- Hover state: solid white --- */
-    @media (hover: hover) {
-      header:hover {
-        background-color: rgba(255, 255, 255, 0.98) !important;
-        backdrop-filter: blur(24px) !important;
-        -webkit-backdrop-filter: blur(24px) !important;
-        color: #000000 !important;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
-        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
-      }
-
-      header:hover::before {
-        opacity: 0 !important;
-      }
-
-      header:hover .logo-text,
-      header:hover .scrolled-logo-text {
-        color: #000000 !important;
-      }
-
-      header:hover .nav-link {
-        color: #000000 !important;
-      }
-
-      header:hover .nav-link:hover {
-        color: #000000 !important;
-      }
-
-      header:hover .material-symbols-outlined {
-        color: #000000 !important;
-      }
-
-      header:hover #utility-bar {
-        border-bottom-color: rgba(0, 0, 0, 0.08) !important;
-      }
-
-      header:hover .utility-link {
-        color: #000000 !important;
-      }
-    }
-
-    /* Style for dark carousel dots on light slides */
-    #carousel-dots-container.dots-dark .carousel-dot {
-      background-color: rgba(0, 0, 0, 0.25) !important;
-    }
-
-    #carousel-dots-container.dots-dark .carousel-dot.bg-white {
-      background-color: #000000 !important;
-    }
-
-    /* --- Scrolled state: crisp white, compact --- */
-    header.scrolled {
-      background-color: rgba(255, 255, 255, 0.97) !important;
-      backdrop-filter: blur(20px) !important;
-      -webkit-backdrop-filter: blur(20px) !important;
-      color: #000000 !important;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
-      box-shadow: 0 1px 12px rgba(0, 0, 0, 0.06);
-    }
-
-    header.scrolled::before {
-      opacity: 0 !important;
-    }
-
-    header.scrolled .logo-text,
-    header.scrolled .scrolled-logo-text {
-      color: #000000 !important;
-    }
-
-    header.scrolled .nav-link {
-      color: #1a1a1a !important;
-    }
-
-    header.scrolled .nav-link:hover {
-      color: #000000 !important;
-    }
-
-    /* Utility bar collapses away on scroll */
-    header.scrolled #utility-bar {
-      height: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-      opacity: 0;
-      overflow: hidden;
-      border-bottom-width: 0;
-    }
-
-    /* Promo banner collapses away on scroll */
-    header.scrolled #promo-banner {
-      height: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-      opacity: 0;
-      overflow: hidden;
-    }
-
-    /* Big centered logo collapses on scroll */
-    header.scrolled #logo-row {
-      height: 0;
-      opacity: 0;
-      overflow: hidden;
-      margin-bottom: 0;
-      padding: 0;
-    }
-
-    /* Small inline logo appears on scroll */
-    header.scrolled #scrolled-logo {
-      opacity: 1;
-      width: auto;
-      max-width: 200px;
-    }
-
-    header.scrolled #navbar-container {
-      padding-top: 10px;
-      padding-bottom: 10px;
-    }
-
-    header.scrolled .material-symbols-outlined {
-      color: #1a1a1a !important;
-    }
-
-    header.scrolled .utility-link {
-      color: #1a1a1a !important;
-    }
-
-    /* Toggle inline and scrolled navbar actions */
-    header.scrolled .inline-nav-divider,
-    header.scrolled .inline-nav-icons {
-      display: none !important;
-    }
-
-    header.scrolled .scrolled-nav-icons {
-      opacity: 1 !important;
-      pointer-events: auto !important;
-    }
-
-    /* ========================================
-           SWAROVSKI-EXACT NAV LINK STYLING
-           14px, uppercase, 400 weight, 0.05em spacing
-           Font: Noto Sans (closest to SWAFont)
-           Thin underline animation from center
-           ======================================== */
-    .nav-link {
-      position: relative;
-      font-family: 'Noto Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-      font-size: 14px !important;
-      letter-spacing: 0.05em !important;
-      font-weight: 400 !important;
-      text-transform: none;
-      padding-bottom: 3px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      transform: scaleX(0);
-      height: 1px;
-      bottom: -2px;
-      left: 0;
-      background-color: currentColor;
-      transform-origin: center center;
-      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .nav-link:hover::after {
-      transform: scaleX(1);
-    }
-
-    @media (min-width: 768px) and (max-width: 1023px) {
-      .nav-link {
-        font-size: 12px !important;
-        letter-spacing: 0.03em !important;
-      }
-    }
-
-    /* ========================================
-           UTILITY BAR LINK STYLING
-           Swarovski utility links: 11px, uppercase, 500 weight
-           Font: Noto Sans
-           ======================================== */
-    .utility-link {
-      font-family: 'Noto Sans', 'Inter', Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      letter-spacing: 0.05em;
-      font-weight: 400;
-      text-transform: none;
-      text-decoration: none;
-      transition: color 0.2s ease, opacity 0.2s ease;
-    }
-
-    .utility-link:hover {
-      opacity: 0.7;
-    }
-
-    /* ========================================
-           GENERAL ANIMATIONS — Spring-like easing
-           Hardware-accelerated: transform + opacity only
-           ======================================== */
-    .fade-in-up {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .fade-in-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Staggered delay variants */
-    .fade-in-up.delay-1 {
-      transition-delay: 0.08s;
-    }
-
-    .fade-in-up.delay-2 {
-      transition-delay: 0.16s;
-    }
-
-    .fade-in-up.delay-3 {
-      transition-delay: 0.24s;
-    }
-
-    .fade-in-up.delay-4 {
-      transition-delay: 0.32s;
-    }
-
-    .fade-in-up.delay-5 {
-      transition-delay: 0.40s;
-    }
-
-    /* Respect reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      .fade-in-up {
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
-    }
-
-    .product-card {
-      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-        box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .product-card:hover {
-      transform: translateY(-3px) scale(1.01);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.10);
-    }
-
-    .hover-lift {
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .hover-lift:hover {
-      transform: translateY(-4px);
-    }
-
-    /* ========================================
-           HERO SECTION STYLES
-           ======================================== */
-    #hero-banner {
-      position: relative;
-      width: 100%;
-      min-height: 100dvh;
-      overflow: hidden;
-      background: #0a0a0a;
-    }
-
-    #hero-bg-div {
-      position: absolute;
-      inset: 0;
-    }
-
-    #hero-bg-div img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 20%;
-      opacity: 0.72;
-      transition: opacity 1.2s ease;
-    }
-
-    /* Deep gradient scrim: stronger on left for text legibility */
-    #hero-scrim {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(105deg,
-          rgba(0, 0, 0, 0.72) 0%,
-          rgba(0, 0, 0, 0.42) 45%,
-          rgba(0, 0, 0, 0.08) 100%);
-      z-index: 1;
-    }
-
-    /* Bottom scrim for footer fade */
-    #hero-bottom-scrim {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 220px;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.35) 0%, transparent 100%);
-      z-index: 1;
-    }
-
-    #hero-content-box {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      top: 0;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 6vw 7vh;
-    }
-
-    @media (min-width: 1024px) {
-      #hero-content-box {
-        justify-content: center;
-        padding: 140px 8vw 0 8vw;
-        max-width: 68vw;
-      }
-    }
-
-    .hero-eyebrow {
-      font-family: 'Inter', 'Noto Sans', sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.65);
-      margin-bottom: 20px;
-    }
-
-    .hero-headline {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2.8rem, 7vw, 6rem);
-      font-weight: 400;
-      line-height: 1.02;
-      letter-spacing: -0.01em;
-      color: #ffffff;
-      margin: 0;
-    }
-
-    .hero-sub {
-      font-family: 'Noto Sans', 'Inter', sans-serif;
-      font-size: clamp(0.9rem, 1.6vw, 1.05rem);
-      font-weight: 300;
-      line-height: 1.65;
-      color: rgba(255, 255, 255, 0.72);
-      margin-top: 20px;
-      max-width: 520px;
-    }
-
-    .hero-cta-group {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 36px;
-    }
-
-    .hero-cta-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #ffffff;
-      color: #0a0a0a;
-      font-family: 'Inter', 'Noto Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      padding: 14px 28px;
-      text-decoration: none;
-      border: 1px solid #ffffff;
-      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
-      white-space: nowrap;
-    }
-
-    .hero-cta-primary:hover {
-      background: transparent;
-      color: #ffffff;
-      transform: translateY(-1px);
-    }
-
-    .hero-cta-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: rgba(255, 255, 255, 0.88);
-      font-family: 'Inter', 'Noto Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      padding: 14px 0;
-      text-decoration: none;
-      border: none;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.38);
-      transition: color 0.3s ease, border-color 0.3s ease;
-      white-space: nowrap;
-    }
-
-    .hero-cta-secondary:hover {
-      color: #ffffff;
-      border-bottom-color: rgba(255, 255, 255, 0.9);
-    }
-
-    /* Hero scroll indicator */
-    .hero-scroll-hint {
-      position: absolute;
-      bottom: 28px;
-      right: 6vw;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      z-index: 10;
-      color: rgba(255, 255, 255, 0.45);
-      font-family: 'Inter', sans-serif;
-      font-size: 9px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .hero-scroll-line {
-      width: 1px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.25);
-      animation: scrollLinePulse 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
-    }
-
-    @keyframes scrollLinePulse {
-
-      0%,
-      100% {
-        transform: scaleY(1);
-        opacity: 0.3;
-      }
-
-      50% {
-        transform: scaleY(1.4);
-        opacity: 0.7;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .hero-scroll-line {
-        animation: none;
-      }
-
-      #hero-bg-div img {
-        opacity: 0.72;
-        transition: none;
-      }
-    }
-
-    /* ========================================
-           HEADER ICON STYLING
-           Swarovski uses ~20px icons, thin weight
-           ======================================== */
-    header .header-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      transition: opacity 0.2s ease;
-      cursor: pointer;
-    }
-
-    header .header-icon:hover {
-      opacity: 0.65;
-    }
-
-    /* --- Swarovski Octagon Category Card --- */
-    .clip-octagon {
-      clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-      transition: background-color 0.3s ease;
-    }
-
-    .category-link-text {
-      position: relative;
-      display: inline-block;
-      font-family: 'Noto Sans', 'Inter', sans-serif;
-      font-size: 13px;
-      letter-spacing: 0.1em;
-      font-weight: 500;
-      text-transform: uppercase;
-      color: #1a1c1c;
-      transition: color 0.3s ease;
-      margin-top: 12px;
-    }
-
-    .category-link-text::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      transform: scaleX(0);
-      height: 1px;
-      bottom: -4px;
-      left: 0;
-      background-color: currentColor;
-      transform-origin: center center;
-      transition: transform 0.3s ease;
-    }
-
-    .group:hover .category-link-text::after {
-      transform: scaleX(1);
-    }
-
-    /* --- Header Transparent to Solid State --- */
-    header#main-header:hover,
-    header#main-header.scrolled {
-      background-color: rgba(255, 255, 255, 0.98) !important;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
-      backdrop-filter: blur(12px);
-    }
-
-    header#main-header:hover *:not(#promo-banner):not(#promo-banner *),
-    header#main-header.scrolled *:not(#promo-banner):not(#promo-banner *) {
-      color: #000000 !important;
-      border-color: rgba(0, 0, 0, 0.1) !important;
-    }
-
-    header#main-header:hover .inline-nav-divider,
-    header#main-header.scrolled .inline-nav-divider {
-      background-color: #e5e5e5 !important;
-    }
-  </style>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chempaka - Where Gold Makes Memories</title>
+<meta name="description" content="Chempaka crafts fine gold jewellery in Malaysia - rings, bracelets, necklaces and bespoke commissions. Visit our Shah Alam boutique or join the Chempaka Club.">
+<link rel="canonical" href="https://www.chempakajewel.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Chempaka">
+<meta property="og:locale" content="en_MY">
+<meta property="og:title" content="Chempaka - Where Gold Makes Memories">
+<meta property="og:description" content="Fine gold jewellery crafted in Malaysia - rings, bracelets, necklaces and bespoke commissions.">
+<meta property="og:url" content="https://www.chempakajewel.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chempaka - Where Gold Makes Memories">
+<meta name="twitter:description" content="Fine gold jewellery crafted in Malaysia - rings, bracelets, necklaces and bespoke commissions.">
+<meta property="og:image" content="https://www.chempakajewel.com/assets/images/album/hero-layered-necklace.jpg">
+<meta property="og:image:alt" content="Layered Chempaka gold necklaces on a display bust">
+<meta name="twitter:image" content="https://www.chempakajewel.com/assets/images/album/hero-layered-necklace.jpg">
+<script>document.documentElement.className += " js";</script>
+<link rel="preload" href="assets/fonts/Jost-normal-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/BodoniModa-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/images/hero_background_blue_2200.jpg" as="image">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/site.css">
 </head>
+<body class="cj site">
+<a class="site-skip" href="#main">Skip to content</a>
+<div class="site-promo" id="promo-banner"><div class="cj-container"><p class="site-promo__msg"><span id="promo-text">Join the Chempaka Club and show your card at the counter for member prices.</span><a href="membership.html">Join the Club</a></p><button type="button" class="site-promo__x" aria-label="Close announcement" data-dismiss-promo><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#close"/></svg></button></div></div>
+<main id="main">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.chempakajewel.com/#organization",
+      "name": "Chempaka",
+      "legalName": "Chempaka Trading Sdn Bhd",
+      "url": "https://www.chempakajewel.com/",
+      "image": "https://www.chempakajewel.com/assets/images/album/hero-layered-necklace.jpg",
+      "description": "Fine gold jewellery crafted in Malaysia - rings, bracelets, necklaces and bespoke commissions.",
+      "telephone": "+60178113204",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Seksyen U13, 12, Jln Setia Dagang AL U13/AL, Alam Nusantara",
+        "addressLocality": "Shah Alam",
+        "addressRegion": "Selangor",
+        "postalCode": "40170",
+        "addressCountry": "MY"
+      },
+      "sameAs": [
+        "https://www.instagram.com/chempakajewels/",
+        "https://www.tiktok.com/@chempakajewels"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.chempakajewel.com/#website",
+      "url": "https://www.chempakajewel.com/",
+      "name": "Chempaka",
+      "inLanguage": "en-MY",
+      "publisher": { "@id": "https://www.chempakajewel.com/#organization" }
+    }
+  ]
+}
+</script>
 
-<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden">
-  <!-- TopNavBar (Swarovski-Exact Layout) -->
-  <header id="main-header"
-    class="fixed top-0 w-full z-50 transition-all duration-500 bg-transparent text-white border-b border-transparent">
-    <!-- Top Promotion Banner -->
-    <div id="promo-banner"
-      class="bg-black text-white text-[11px] font-medium tracking-[0.15em] py-2.5 px-4 md:px-6 flex justify-between items-center z-50 transition-all duration-300">
-      <div class="flex-1 text-center select-none whitespace-normal break-words leading-relaxed">
-        Join the Chempaka Club today for exclusive in-store privileges | <a href="boutiques.html"
-          class="underline underline-offset-2 hover:opacity-80 transition-opacity whitespace-nowrap">Visit Our
-          Boutiques</a>
-      </div>
-      <button onclick="dismissPromo()"
-        class="text-white hover:opacity-70 transition-opacity bg-transparent border-none cursor-pointer p-0 ml-4"
-        aria-label="Close promotional banner">
-        <span class="material-symbols-outlined text-[16px] leading-none"
-          style="font-variation-settings: 'wght' 300;">close</span>
-      </button>
-    </div>
+<div class="site-herowrap">
+<header class="site-hdr site-hdr--overlay"><div class="cj-container">
+  <div class="site-hdr__meta">
+    <a href="boutiques.html"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#location_on"/></svg> Boutiques</a>
+    <span class="site-hdr__announce" id="announce-text">Gold exchange and valuation available at the Shah Alam boutique</span>
+    <span class="site-hdr__metar"><a href="membership.html#access"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#person_outline"/></svg> Member login</a></span>
+  </div>
+  <div class="site-hdr__main">
+    <button type="button" class="site-hdr__menu" aria-label="Open menu" aria-controls="menu-drawer" data-open-menu><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#menu"/></svg><span>Menu</span></button>
+    <a href="index.html" class="cj-wordmark" aria-label="Chempaka home">CHEMPAKA</a>
+    <div class="site-hdr__icons"><button type="button" aria-label="Search" data-open-search><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#search"/></svg></button><a href="https://wa.me/60178113204" aria-label="WhatsApp us"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#chat"/></svg></a><a href="membership.html" class="cj-btn cj-btn--primary cj-btn--sm site-hdr__join">Join the Club</a></div>
+  </div>
+</div></header>
 
-    <!-- Utility Bar -->
-    <div id="utility-bar"
-      class="hidden lg:grid grid-cols-3 items-center py-1.5 px-12 transition-all duration-300 overflow-hidden border-b border-white/10 transition-colors duration-300">
-      <div class="flex justify-start items-center">
-        <a href="boutiques.html"
-          class="utility-link text-white transition-colors duration-300 flex items-center gap-1.5 hover:opacity-75">
-          <span class="material-symbols-outlined text-[18px]"
-            style="font-variation-settings: 'wght' 300;">location_on</span>
-          Stores
-        </a>
-      </div>
-      <div class="utility-link text-neutral-500 select-none text-center text-xs">
-        Chempaka Gold Exchange &amp; Valuation Available in Boutiques
-      </div>
-      <div class="flex justify-end items-center gap-6">
-        <a href="membership.html"
-          class="utility-link text-white transition-colors duration-300 flex items-center gap-1.5 hover:opacity-75">
-          <span class="material-symbols-outlined text-[18px]"
-            style="font-variation-settings: 'wght' 300;">person_outline</span>
-          Login
-        </a>
-        <a href="boutiques.html#appointment-booking"
-          class="utility-link text-white transition-colors duration-300 flex items-center gap-1.5 hover:opacity-75">
-          <span class="material-symbols-outlined text-[18px]"
-            style="font-variation-settings: 'wght' 300;">calendar_month</span>
-          Book Appointment
-        </a>
-      </div>
-    </div>
+<section class="site-hero" aria-roledescription="carousel" aria-label="Featured" data-hero>
+  <div class="site-hero__slide is-active" data-slide aria-roledescription="slide" aria-label="1 of 2">
+    <div class="site-hero__img img-hero-blue" style="background-position:92% 50%" role="img" aria-label="A Chempaka gold bead necklace on blue silk"></div>
+    <div class="cj-container"><div class="site-hero__copy">
+      <p class="site-hero__eyebrow">Masters of Gold &middot; Est. 1995</p>
+      <h1 class="site-hero__title" id="hero-title">Where gold makes memories.</h1>
+      <p class="site-hero__body" id="hero-subtitle">Hand-finished gold jewellery. Join the Chempaka Club and show your card at the counter for member prices.</p>
+      <div class="site-hero__actions"><a href="membership.html" class="cj-btn site-btn-white">Join the Club</a><a href="membership.html#access" class="cj-btn site-btn-line">Show my card</a></div>
+    </div></div>
+  </div>
+  <div class="site-hero__slide" data-slide aria-roledescription="slide" aria-label="2 of 2" aria-hidden="true">
+    <div class="site-hero__img img-hero-blue" style="background-size:auto 150%;background-position:100% 88%" role="img" aria-label="Close view of a Chempaka gold bead necklace on blue silk"></div>
+    <div class="cj-container"><div class="site-hero__copy">
+      <p class="site-hero__eyebrow">Gold exchange and valuation</p>
+      <h2 class="site-hero__title">Bring your gold to the boutique.</h2>
+      <p class="site-hero__body">Our gemologists inspect and value it on site. Take the cash, or trade it in.</p>
+      <div class="site-hero__actions"><a href="boutiques.html#appointment" class="cj-btn site-btn-white">Book an appointment</a><a href="https://wa.me/60178113204" class="cj-btn site-btn-line">WhatsApp us</a></div>
+    </div></div>
+  </div>
+  <button type="button" class="site-hero__arrow site-hero__arrow--prev" aria-label="Previous slide" data-prev><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#chevron_left"/></svg></button>
+  <button type="button" class="site-hero__arrow site-hero__arrow--next" aria-label="Next slide" data-next><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#chevron_right"/></svg></button>
+  <div class="site-hero__dots" role="group" aria-label="Choose slide"><button type="button" class="site-hero__dot" aria-label="Show slide 1" aria-current="true" data-dot="0"></button><button type="button" class="site-hero__dot" aria-label="Show slide 2" aria-current="false" data-dot="1"></button></div>
+</section>
+</div>
 
-    <!-- Main Navigation Container -->
-    <div id="navbar-container" class="relative transition-all duration-500 py-2 px-5 md:px-6 lg:px-12">
-      <div id="nav-desktop-layout" class="hidden md:flex flex-col transition-all duration-500">
-        <!-- Row 1: Centered Logo Wordmark -->
-        <div id="logo-row" class="flex justify-center pt-2 pb-2 transition-all duration-500">
-          <a href="index.html"
-            class="font-serif tracking-[0.02em] text-[28px] md:text-[36px] lg:text-[44px] leading-none uppercase font-normal logo-text text-white transition-colors duration-300"
-            style="font-family: 'Cinzel', serif; letter-spacing: 0.02em;">CHEMPAKA</a>
-        </div>
+<section class="cj-editorial" aria-labelledby="duta-name">
+  <div class="cj-editorial__media img-hijab" style="background-position:55% 30%" role="img" aria-label="Ayu Damit, Chempaka brand ambassador, wearing Chempaka gold bracelets and rings"></div>
+  <div class="cj-editorial__copy">
+    <p class="cj-eyebrow" style="margin:0">Duta Chempaka</p>
+    <h2 id="duta-name" class="cj-display-l">Ayu Damit</h2>
+    <p class="cj-body-l cj-muted">Ayu Damit is Chempaka&rsquo;s brand ambassador.</p>
+    <div class="cj-hero__actions"><a href="showcase.html" class="cj-btn cj-btn--primary">View the showcase</a><a href="https://www.instagram.com/chempakajewels/" class="cj-btn cj-btn--link" rel="noopener">Follow on Instagram</a></div>
+  </div>
+</section>
 
-        <!-- Row 2: Navigation + Icons -->
-        <div id="links-row" class="grid grid-cols-12 items-center w-full transition-all duration-500">
-          <!-- Left: Scrolled Logo -->
-          <div class="col-span-3 lg:col-span-2 flex justify-start items-center">
-            <div id="scrolled-logo" class="opacity-0 w-0 overflow-hidden transition-all duration-500 shrink-0">
-              <a href="index.html"
-                class="font-serif tracking-[0.02em] text-[18px] uppercase font-normal text-white transition-colors duration-300 scrolled-logo-text whitespace-nowrap"
-                style="font-family: 'Cinzel', serif; letter-spacing: 0.02em;">CHEMPAKA</a>
-            </div>
-          </div>
+<section class="cj-section cj-band"><div class="cj-container site-split">
+  <div class="site-stack">
+    <h2 class="cj-display-l">Member prices at the counter</h2>
+    <ol class="cj-steps">
+      <li><span><b>Join online.</b> Your name, phone, email and IC number.</span></li>
+      <li><span><b>Get approved.</b> A boutique advisor reviews your application and sends your digital card by email.</span></li>
+      <li><span><b>Show your card at the counter,</b> or send your member number on WhatsApp.</span></li>
+    </ol>
+    <div class="cj-hero__actions"><a href="membership.html" class="cj-btn cj-btn--primary">Join the Club</a><a href="membership.html#access" class="cj-btn cj-btn--link">Show my card</a></div>
+  </div>
+  <div class="site-cardwrap"><div class="cj-card" role="img" aria-label="Chempaka Club digital member card">
+    <div class="cj-card__top"><span class="cj-wordmark">CHEMPAKA</span><span class="cj-card__tier">Club</span></div>
+    <div class="cj-card__chip"></div>
+    <div class="cj-card__row"><div><small>Cardholder</small><span>YOUR NAME</span></div><div style="text-align:right"><small>Member no.</small><span>CC-88470</span></div></div>
+  </div></div>
+</div></section>
 
-          <!-- Center: Navigation Links -->
-          <div class="col-span-6 lg:col-span-8 flex justify-center">
-            <nav class="flex items-center gap-4 lg:gap-8 xl:gap-12 transition-all duration-300"
-              aria-label="Main navigation">
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80"
-                href="index.html#sale">Sale</a>
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80"
-                href="index.html#our-collection">Showcase</a>
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80"
-                href="about.html">Journal</a>
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80 font-bold"
-                href="membership.html">Membership</a>
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80"
-                href="boutiques.html">Boutiques</a>
-              <a class="nav-link text-white transition-colors duration-300 hover:opacity-80"
-                href="boutiques.html#appointment-booking">Appointment</a>
+<section class="cj-section"><div class="cj-container">
+  <div class="cj-head"><h2 class="cj-display-l">Collections</h2><a href="showcase.html" class="cj-btn cj-btn--link">View the showcase</a></div>
+  <div class="site-bento">
+    <a href="showcase.html?q=necklaces" class="site-bento__tile site-bento__tile--lg img-necklace" style="background-position:center 30%"><span class="site-bento__label">Necklaces</span><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow_forward"/></svg></a>
+    <a href="showcase.html?q=rings" class="site-bento__tile img-ring"><span class="site-bento__label">Rings</span><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow_forward"/></svg></a>
+    <a href="showcase.html?q=bracelets" class="site-bento__tile img-bracelet"><span class="site-bento__label">Bracelets</span><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow_forward"/></svg></a>
+    <a href="showcase.html?q=bespoke" class="site-bento__tile img-custom"><span class="site-bento__label">Bespoke</span><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow_forward"/></svg></a>
+    <a href="showcase.html" class="site-bento__tile img-newin"><span class="site-bento__label">New In</span><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow_forward"/></svg></a>
+  </div>
+</div></section>
 
-              <span
-                class="inline-nav-divider w-[1px] h-4 bg-neutral-200 select-none pointer-events-none transition-all duration-300"></span>
+<section class="cj-section cj-band"><div class="cj-container">
+  <div class="cj-head"><h2 class="cj-display-l">From the collection</h2><a href="showcase.html" class="cj-btn cj-btn--link">View the showcase</a></div>
+  <div class="cj-products">
+    <article class="cj-product">
+      <a href="https://wa.me/60178113204?text=Hi%20Chempaka%2C%20I%27m%20interested%20in%20the%20graduated%20bead%20necklace." class="cj-product__img img-a-bead" aria-label="Graduated bead necklace, ask on WhatsApp"></a>
+      <div class="cj-product__body"><span class="cj-product__cat">Necklaces</span><span class="cj-product__name">Graduated bead necklace</span><div class="cj-product__cta"><a href="https://wa.me/60178113204?text=Hi%20Chempaka%2C%20I%27m%20interested%20in%20the%20graduated%20bead%20necklace." class="cj-btn cj-btn--link"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#chat"/></svg> WhatsApp us</a></div></div>
+    </article>
+    <article class="cj-product">
+      <a href="https://wa.me/60178113204?text=Hi%20Chempaka%2C%20I%27m%20interested%20in%20the%20layered%20gold%20chains." class="cj-product__img img-a-chains" aria-label="Layered gold chains, ask on WhatsApp"></a>
+      <div class="cj-product__body"><span class="cj-product__cat">Necklaces</span><span class="cj-product__name">Layered gold chains</span><div class="cj-product__cta"><a href="https://wa.me/60178113204?text=Hi%20Chempaka%2C%20I%27m%20interested%20in%20the%20layered%20gold%20chains." class="cj-btn cj-btn--link"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#chat"/></svg> WhatsApp us</a></div></div>
+    </article>
+    <article class="cj-product">
+      <a href="https://wa.me/60178113204?text=Hi%20Chempaka%2C%20I%27m%20interested%20in%20the%20tri-colour%20curb%20bracelet." class="cj-product__img img-a-tricolour" aria-label="Tri-colour curb bracelet, ask on WhatsApp"></a>
+      <div class="cj-product__body"><span class="cj-product__cat">Bracelets</span><span class="cj-product__name">Tri-colour curb bracelet</span><div class="cj-product__cta"><a href="https://wa.me/60178113204?text=Hi%20Chempaka%2C%20I%27m%20interested%20in%20the%20tri-colour%20curb%20bracelet." class="cj-btn cj-btn--link"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#chat"/></svg> WhatsApp us</a></div></div>
+    </article>
+    <article class="cj-product">
+      <a href="https://wa.me/60178113204?text=Hi%20Chempaka%2C%20I%27m%20interested%20in%20the%20floral%20link%20bracelet." class="cj-product__img img-a-floral" aria-label="Floral link bracelet, ask on WhatsApp"></a>
+      <div class="cj-product__body"><span class="cj-product__cat">Bracelets</span><span class="cj-product__name">Floral link bracelet</span><div class="cj-product__cta"><a href="https://wa.me/60178113204?text=Hi%20Chempaka%2C%20I%27m%20interested%20in%20the%20floral%20link%20bracelet." class="cj-btn cj-btn--link"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#chat"/></svg> WhatsApp us</a></div></div>
+    </article>
+  </div>
+  <p class="cj-muted" style="margin:32px 0 0;max-width:640px">Buy in the boutique or on WhatsApp. Prices follow today&rsquo;s gold rate and the weight of each piece. Show your Club card for member prices.</p>
+</div></section>
 
-              <div class="inline-nav-icons flex items-center gap-1 transition-all duration-300">
-                <button onclick="toggleSearch(true)"
-                  class="header-icon hover:opacity-65 transition-opacity bg-transparent border-none text-white transition-colors duration-300 p-0 cursor-pointer flex items-center justify-center"
-                  aria-label="Search">
-                  <span class="material-symbols-outlined text-[22px]"
-                    style="font-variation-settings: 'wght' 300;">search</span>
-                </button>
-                <a href="membership.html"
-                  class="header-icon hover:opacity-65 transition-opacity flex items-center justify-center text-white transition-colors duration-300"
-                  aria-label="Wishlist">
-                  <span class="material-symbols-outlined text-[22px]"
-                    style="font-variation-settings: 'wght' 300;">favorite_border</span>
-                </a>
-              </div>
-            </nav>
-          </div>
+<section class="cj-editorial">
+  <div class="cj-editorial__media img-model" style="background-position:60% 30%" role="img" aria-label="Model wearing gold rings and bangles"></div>
+  <div class="cj-editorial__copy">
+    <h2 class="cj-display-l">Bespoke jewellery</h2>
+    <p class="cj-body-l cj-muted">Co-create an heirloom piece with our master goldsmiths: tailored gem selection, 3D CAD modelling and private lounge fittings.</p>
+    <div class="cj-hero__actions"><a href="boutiques.html#appointment" class="cj-btn cj-btn--primary">Book an appointment</a><a href="showcase.html?q=bespoke" class="cj-btn cj-btn--link">View the showcase</a></div>
+  </div>
+</section>
 
-          <!-- Right: Action Icons (scrolled only) -->
-          <div class="col-span-3 lg:col-span-2 flex justify-end items-center">
-            <div
-              class="scrolled-nav-icons opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-1">
-              <button onclick="toggleSearch(true)"
-                class="header-icon hover:opacity-65 transition-opacity bg-transparent border-none text-white transition-colors duration-300 p-0 cursor-pointer flex items-center justify-center"
-                aria-label="Search">
-                <span class="material-symbols-outlined text-[22px]"
-                  style="font-variation-settings: 'wght' 300;">search</span>
-              </button>
-              <a href="membership.html"
-                class="header-icon hover:opacity-65 transition-opacity flex items-center justify-center text-white transition-colors duration-300"
-                aria-label="Wishlist">
-                <span class="material-symbols-outlined text-[22px]"
-                  style="font-variation-settings: 'wght' 300;">favorite_border</span>
-              </a>
-              <a href="membership.html"
-                class="header-icon hover:opacity-65 transition-opacity flex items-center justify-center text-white transition-colors duration-300"
-                aria-label="Account">
-                <span class="material-symbols-outlined text-[22px]"
-                  style="font-variation-settings: 'wght' 300;">person_outline</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+<section class="cj-exchange cj-section"><div class="cj-container cj-exchange__grid">
+  <div style="display:flex;flex-direction:column;gap:24px">
+    <h2 class="cj-display-l">Gold exchange and valuation</h2>
+    <p class="cj-body-l" style="color:var(--on-panel-muted)">Bring gold jewellery, heirlooms and precious metals to any Chempaka boutique for an instant valuation. Our gemologists offer a cash valuation or a trade-in value.</p>
+    <div class="cj-hero__actions"><a href="boutiques.html#appointment" class="cj-btn cj-btn--gold">Book an appointment</a><a href="https://wa.me/60178113204" class="cj-btn cj-btn--on-panel">WhatsApp us</a></div>
+  </div>
+  <div class="site-quote">
+    <p class="site-quote__label">916 gold today</p>
+    <p class="site-quote__fig">RM 385.00 <span>per gram</span></p>
+    <ul class="site-list"><li><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#check"/></svg>On-site gemologist inspection</li><li><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#check"/></svg>Transparent trade-in pricing</li><li><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#check"/></svg>Immediate cash payout, if you prefer</li></ul>
+  </div>
+</div></section>
 
-      <!-- Mobile Layout -->
-      <div id="nav-mobile-layout" class="flex md:hidden justify-between items-center w-full">
-        <button onclick="toggleMobileDrawer(true)"
-          class="focus:outline-none bg-transparent border-none text-white transition-colors duration-300 p-0 cursor-pointer"
-          aria-label="Open menu">
-          <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'wght' 300;">menu</span>
-        </button>
-        <a href="index.html"
-          class="font-serif tracking-[0.02em] text-[20px] uppercase font-normal logo-text text-white transition-colors duration-300"
-          style="font-family: 'Cinzel', serif; letter-spacing: 0.02em;">CHEMPAKA</a>
-        <div class="flex items-center gap-1">
-          <button onclick="toggleSearch(true)"
-            class="bg-transparent border-none text-white transition-colors duration-300 p-0 cursor-pointer flex items-center justify-center w-10 h-10"
-            aria-label="Search">
-            <span class="material-symbols-outlined text-[22px]"
-              style="font-variation-settings: 'wght' 300;">search</span>
-          </button>
-          <a href="membership.html" class="flex items-center justify-center w-10 h-10 text-inherit"
-            aria-label="Account">
-            <span class="material-symbols-outlined text-[22px]"
-              style="font-variation-settings: 'wght' 300;">person_outline</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </header>
+<section class="cj-section"><div class="cj-container">
+  <div class="cj-head"><h2 class="cj-display-l">Journal</h2><a href="about.html#journal" class="cj-btn cj-btn--link">All articles</a></div>
+  <div class="cj-journal cj-journal--four">
+    <a href="article-karats.html" class="cj-story"><div class="cj-story__img img-a-bead"></div><span class="cj-story__meta">Education</span><h3 class="cj-title">Understanding gold karats: why 916 and 999 dominate</h3><p>The purity, allure and cultural significance of high-karat gold.</p></a>
+    <a href="article-alloys.html" class="cj-story"><div class="cj-story__img img-a-tricolour"></div><span class="cj-story__meta">Style guide</span><h3 class="cj-title">Yellow, white or rose? A guide to gold alloys</h3><p>How different metals are mixed with pure gold to create colour and durability.</p></a>
+    <a href="article-care.html" class="cj-story"><div class="cj-story__img img-a-curb"></div><span class="cj-story__meta">Care &amp; maintenance</span><h3 class="cj-title">Caring for 22K and 24K gold: maintaining the lustre</h3><p>High-karat gold is softer, and needs a different kind of care from 14K or 18K jewellery.</p></a>
+    <a href="about.html#heritage" class="cj-story"><div class="cj-story__img img-a-woven"></div><span class="cj-story__meta">Our story</span><h3 class="cj-title">From bullion to boutique: the Chempaka heritage</h3><p>The generations of craftsmanship behind every piece we make.</p></a>
+  </div>
+</div></section>
 
-  <!-- Mobile Navigation Drawer -->
-  <div id="mobile-drawer"
-    class="fixed inset-y-0 left-0 w-80 bg-white text-black z-[100] transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl flex flex-col">
-    <div class="p-6 flex justify-between items-center border-b border-neutral-200">
-      <span class="font-serif tracking-[0.02em] text-lg uppercase font-normal"
-        style="font-family: 'Cinzel', serif; letter-spacing: 0.02em;">CHEMPAKA</span>
-      <button onclick="toggleMobileDrawer(false)"
-        class="focus:outline-none bg-transparent border-none text-black p-0 cursor-pointer">
-        <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'wght' 300;">close</span>
-      </button>
-    </div>
-    <div class="flex-1 overflow-y-auto p-6 space-y-0">
-      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
-        href="index.html#sale" onclick="toggleMobileDrawer(false)">Sale</a>
-      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
-        href="index.html#our-collection" onclick="toggleMobileDrawer(false)">Showcase</a>
-      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
-        href="about.html" onclick="toggleMobileDrawer(false)">Journal</a>
-      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
-        href="membership.html" onclick="toggleMobileDrawer(false)">Membership</a>
-      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
-        href="boutiques.html" onclick="toggleMobileDrawer(false)">Boutiques</a>
-      <a class="block py-4 border-b border-neutral-200/60 text-[14px] font-normal tracking-[0.05em] text-black hover:text-neutral-500 transition-colors"
-        href="boutiques.html#appointment-booking" onclick="toggleMobileDrawer(false)">Appointment</a>
-    </div>
-    <div class="p-6 border-t border-neutral-200 bg-neutral-100/50 space-y-4">
-      <a href="boutiques.html"
-        class="flex items-center gap-2.5 py-1 text-[11px] font-medium tracking-[0.15em] text-neutral-600 hover:text-black transition-colors"
-        onclick="toggleMobileDrawer(false)">
-        <span class="material-symbols-outlined text-[16px]"
-          style="font-variation-settings: 'wght' 300;">location_on</span> Stores
-      </a>
-      <a href="membership.html"
-        class="flex items-center gap-2.5 py-1 text-[11px] font-medium tracking-[0.15em] text-neutral-600 hover:text-black transition-colors"
-        onclick="toggleMobileDrawer(false)">
-        <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'wght' 300;">person</span>
-        Chempaka Club / Join
-      </a>
+<section class="site-visit" aria-labelledby="visit-title">
+  <iframe class="site-visit__map" title="Map showing Chempaka Butik Utama Shah Alam" src="https://www.google.com/maps?q=Setia+Dagang+AL+U13/AL+Alam+Nusantara+Shah+Alam&amp;z=17&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <div class="cj-container">
+    <div class="cj-boutique__info site-visit__card">
+      <h2 id="visit-title" class="cj-display-l">Visit us</h2>
+      <h3 class="cj-heading">Butik Utama Shah Alam</h3>
+      <dl><dt>Address</dt><dd>Seksyen U13, 12, Jln Setia Dagang AL U13/AL, Alam Nusantara, 40170 Shah Alam, Selangor</dd>
+      <dt>Hours</dt><dd>10:00 AM - 6:00 PM</dd><dt>WhatsApp</dt><dd>+60 17-811 3204</dd></dl>
+      <div class="cj-hero__actions"><a href="boutiques.html#appointment" class="cj-btn cj-btn--primary cj-btn--sm">Book an appointment</a><a href="https://wa.me/60178113204" class="cj-btn cj-btn--outline cj-btn--sm"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#chat"/></svg> WhatsApp us</a></div>
     </div>
   </div>
-
-  <div id="drawer-backdrop" class="fixed inset-0 bg-black/40 hidden z-[90]" onclick="toggleMobileDrawer(false)"></div>
-
-  <!-- Search Overlay -->
-  <div id="search-overlay"
-    class="fixed inset-0 bg-white z-50 hidden flex flex-col p-6 md:p-10 transition-opacity duration-300">
-    <div class="max-w-container-max mx-auto w-full flex justify-between items-center mb-12">
-      <span class="font-serif tracking-widest text-lg uppercase" style="font-family: 'Cinzel', serif;">CHEMPAKA</span>
-      <button onclick="toggleSearch(false)" class="bg-transparent border-none text-black p-0 cursor-pointer">
-        <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'wght' 300;">close</span>
-      </button>
-    </div>
-    <div class="max-w-3xl mx-auto w-full flex-1 flex flex-col justify-center">
-      <h2 class="font-serif text-3xl md:text-5xl text-black font-normal text-center mb-8">What are you looking for?</h2>
-      <div class="relative w-full border-b-2 border-black py-2 mb-4">
-        <input type="text" placeholder="Search collection, products..."
-          class="w-full bg-transparent text-xl md:text-2xl border-none outline-none focus:ring-0 p-0 text-black placeholder-neutral-300 font-sans" />
-        <span class="material-symbols-outlined absolute right-0 top-3 text-2xl text-neutral-400">search</span>
-      </div>
-      <p class="text-xs font-sans text-neutral-400 text-center tracking-wider">Press Enter to Search</p>
-    </div>
+</section>
+</main>
+<footer class="cj-footer"><div class="cj-container">
+  <div class="cj-footer__top">
+    <div><div class="cj-wordmark">CHEMPAKA</div><p>Masters of gold since 1995.</p><a href="membership.html" class="cj-btn cj-btn--on-panel cj-btn--sm">Join the Club</a></div>
+    <div><h5>Collections</h5><ul><li><a href="showcase.html">New In</a></li><li><a href="showcase.html?q=rings">Rings</a></li><li><a href="showcase.html?q=necklaces">Necklaces</a></li><li><a href="showcase.html?q=bracelets">Bracelets</a></li><li><a href="showcase.html?q=bespoke">Bespoke</a></li><li><a href="showcase.html">Showcase</a></li></ul></div>
+    <div><h5>Services</h5><ul><li><a href="boutiques.html#services">Gold exchange</a></li><li><a href="boutiques.html#services">Valuation</a></li><li><a href="boutiques.html#appointment">Private viewing</a></li><li><a href="https://wa.me/60178113204">WhatsApp us</a></li></ul></div>
+    <div><h5>Chempaka</h5><ul><li><a href="about.html">Our heritage</a></li><li><a href="about.html#journal">Journal</a></li><li><a href="membership.html">Chempaka Club</a></li><li><a href="boutiques.html">Boutiques</a></li></ul></div>
   </div>
-  <!-- Main Content -->
-  <main>
-    <!-- Hero Section — Editorial Dark -->
-    <section id="hero-banner" data-theme="dark">
-      <!-- Background image -->
-      <div id="hero-bg-div">
-        <img src="assets/images/hero_model_jewelry.jpg" alt="Chempaka fine jewellery" />
-      </div>
-      <!-- Left-to-right dark scrim for text legibility -->
-      <div id="hero-scrim"></div>
-      <!-- Bottom fade scrim -->
-      <div id="hero-bottom-scrim"></div>
-
-      <!-- Content: left-aligned, vertically centred on desktop / bottom on mobile -->
-      <div id="hero-content-box">
-        <p class="hero-eyebrow fade-in-up delay-1">Masters of Gold &middot; Est. 1995</p>
-        <h1 class="hero-headline fade-in-up delay-2">
-          Where Gold<br>Makes Memories
-        </h1>
-        <p class="hero-sub fade-in-up delay-3">
-          Discover hand-finished 18K gold jewellery, crafted for life's rarest moments.
-        </p>
-        <div class="hero-cta-group fade-in-up delay-4">
-          <a href="membership.html" class="hero-cta-primary">
-            Join the Club
-          </a>
-          <a href="#our-collection" class="hero-cta-secondary">
-            Explore Collection
-            <span class="material-symbols-outlined"
-              style="font-size:14px; font-variation-settings:'wght' 300;">arrow_forward</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Scroll indicator -->
-      <div class="hero-scroll-hint">
-        <div class="hero-scroll-line"></div>
-        <span>Scroll</span>
-      </div>
-    </section>
-
-    <!-- Section 2: Masters of Gold since 1995 (Intro Section) -->
-    <section id="masters-of-gold"
-      class="bg-white py-16 lg:py-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-      <div class="text-center max-w-3xl mx-auto space-y-6">
-        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-black tracking-wide font-normal fade-in-up">Masters
-          of Gold
-          since 1995</h2>
-        <p class="font-sans text-neutral-600 text-sm md:text-base leading-relaxed font-light fade-in-up delay-2">
-          Since 1995, Chempaka's passion for innovation and design, and mastery of gold craftsmanship has defined
-          Chempaka as the leading jewelry and accessories brand. Discover our classic categories reimagined with modern
-          light.
-        </p>
-      </div>
-    </section>
-
-    <!-- Section 3: Shop by Category (Swarovski Octagonal Grid) -->
-    <section id="our-collection"
-      class="bg-white pb-20 lg:pb-28 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto scroll-mt-24">
-      <div class="text-center mb-16 fade-in-up">
-        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-black tracking-wide font-normal">Shop by Category
-        </h2>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-10">
-        <!-- Item 1: Rings -->
-        <a href="#" class="group flex flex-col items-center">
-          <div class="aspect-[4/5] w-full bg-white overflow-hidden relative">
-            <img src="assets/images/ring_category.jpg" alt="Rings Category"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-          </div>
-          <span class="category-link-text">Rings</span>
-        </a>
-        <!-- Item 2: Bracelets -->
-        <a href="#" class="group flex flex-col items-center">
-          <div class="aspect-[4/5] w-full bg-white overflow-hidden relative">
-            <img src="assets/images/bracelet_category.jpg" alt="Bracelets Category"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-          </div>
-          <span class="category-link-text">Bracelets</span>
-        </a>
-        <!-- Item 3: Necklaces -->
-        <a href="#" class="group flex flex-col items-center">
-          <div class="aspect-[4/5] w-full bg-white overflow-hidden relative">
-            <img src="assets/images/necklace_category.jpg" alt="Necklaces Category"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-          </div>
-          <span class="category-link-text">Necklaces</span>
-        </a>
-        <!-- Item 4: Custom -->
-        <a href="#" class="group flex flex-col items-center">
-          <div class="aspect-[4/5] w-full bg-white overflow-hidden relative">
-            <img src="assets/images/custom_category.jpg" alt="Custom Category"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-          </div>
-          <span class="category-link-text">Custom</span>
-        </a>
-        <!-- Item 5: New In -->
-        <a href="#" class="group flex flex-col items-center">
-          <div class="aspect-[4/5] w-full bg-white overflow-hidden relative">
-            <img src="assets/images/new_in_category.jpg" alt="New In Category"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-          </div>
-          <span class="category-link-text">New In</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- Section 3: Disney Winnie the Pooh Split Campaign -->
-    <section class="w-full bg-white grid grid-cols-1 md:grid-cols-2">
-      <!-- Left Side: Media Element -->
-      <div class="relative w-full aspect-square overflow-hidden">
-        <img src="assets/images/winnie_the_pooh_crystal.jpg" alt="Disney Winnie the Pooh reimagined in crystal form"
-          class="absolute inset-0 w-full h-full object-cover" />
-      </div>
-      <!-- Right Side: Content Block -->
-      <div
-        class="flex flex-col justify-center items-center text-center px-8 py-16 md:px-16 lg:px-24 text-black bg-white md:aspect-square">
-        <div class="max-w-md space-y-6">
-          <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-normal leading-tight">Disney Winnie the Pooh</h2>
-          <p class="font-sans text-sm md:text-base text-gray-700 leading-relaxed font-light">
-            Journey into the Hundred Acre Wood to discover Pooh, Piglet, Eeyore, and Tigger reimagined in crystal form.
-            Celebrating 100 years of Winnie the Pooh, the new Disney x Swarovski collection brings each beloved
-            character to life with light, movement, and wonder. A heart-warming range of Winnie the Pooh gifts and
-            collectibles, each figurine is presented in bespoke illustrated packaging.
-          </p>
-          <div class="flex flex-col items-center space-y-4 pt-4">
-            <a href="#"
-              class="inline-block font-sans text-sm font-semibold text-black underline underline-offset-4 hover:text-neutral-600 transition-colors">
-              Explore Winnie the Pooh gifts
-            </a>
-            <a href="#"
-              class="inline-block font-sans text-sm font-semibold text-black underline underline-offset-4 hover:text-neutral-600 transition-colors">
-              Shop Winnie the Pooh figurines
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 4: Horizontal Product Carousel 1 - "Shine On" (Gema Collection) -->
-    <section class="bg-white py-16 lg:py-24 px-margin-mobile md:px-margin-desktop">
-      <div class="max-w-container-max mx-auto">
-        <div class="text-center mb-12">
-          <h2 class="font-serif text-3xl md:text-4xl text-black font-normal">Shine On</h2>
-        </div>
-
-        <!-- Product Cards Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          <!-- Card 1 -->
-          <a href="boutiques.html#appointment-booking"
-            class="group block bg-white border border-neutral-100 p-4 relative transition-all duration-300 hover:shadow-lg">
-            <div class="aspect-square w-full overflow-hidden bg-[#f7f7f7] mb-6 relative">
-              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.44_202606252242.jpeg"
-                alt="Gema Necklace"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            </div>
-            <div class="space-y-2 text-center">
-              <span class="block text-[10px] font-bold uppercase tracking-widest text-red-600 mb-1">Members Only</span>
-              <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Necklaces</h3>
-              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Gema Strandage Necklace</p>
-              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">Multi-colored, gold-tone plated</p>
-              <div class="flex items-center justify-center space-x-2 pt-1">
-                <p class="font-sans text-sm font-bold text-red-600">Member: MYR 2,400</p>
-                <p class="font-sans text-xs text-neutral-400 line-through">MYR 3,000</p>
-              </div>
-              <div
-                class="pt-3 border-t border-neutral-100 mt-2 flex items-center justify-center gap-1.5 text-black group-hover:text-neutral-500 transition-colors">
-                <span class="text-[10px] font-bold uppercase tracking-widest font-sans">Book Boutique Viewing</span>
-                <span
-                  class="material-symbols-outlined text-[16px] transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
-              </div>
-            </div>
-          </a>
-          <!-- Card 2 -->
-          <a href="boutiques.html#appointment-booking"
-            class="group block bg-white border border-neutral-100 p-4 relative transition-all duration-300 hover:shadow-lg">
-            <div class="aspect-square w-full overflow-hidden bg-[#f7f7f7] mb-6 relative">
-              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.45_202606252242_2.jpeg"
-                alt="Gema Earrings"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            </div>
-            <div class="space-y-2 text-center">
-              <span class="block text-[10px] font-bold uppercase tracking-widest text-red-600 mb-1">Members Only</span>
-              <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Earrings</h3>
-              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Gema Drop Stud Earrings</p>
-              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">Vibrant crystals, rhodium plated</p>
-              <div class="flex items-center justify-center space-x-2 pt-1">
-                <p class="font-sans text-sm font-bold text-red-600">Member: MYR 1,100</p>
-                <p class="font-sans text-xs text-neutral-400 line-through">MYR 1,375</p>
-              </div>
-              <div
-                class="pt-3 border-t border-neutral-100 mt-2 flex items-center justify-center gap-1.5 text-black group-hover:text-neutral-500 transition-colors">
-                <span class="text-[10px] font-bold uppercase tracking-widest font-sans">Book Boutique Viewing</span>
-                <span
-                  class="material-symbols-outlined text-[16px] transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
-              </div>
-            </div>
-          </a>
-          <!-- Card 3 -->
-          <a href="boutiques.html#appointment-booking"
-            class="group block bg-white border border-neutral-100 p-4 relative transition-all duration-300 hover:shadow-lg">
-            <div class="aspect-square w-full overflow-hidden bg-[#f7f7f7] mb-6 relative">
-              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.45_202606252242.jpeg"
-                alt="Gema Bracelet"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            </div>
-            <div class="space-y-2 text-center">
-              <span class="block text-[10px] font-bold uppercase tracking-widest text-red-600 mb-1">Members Only</span>
-              <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Bracelets</h3>
-              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Gema Link Mixed Bracelet</p>
-              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">Asymmetric designs, gold-plated</p>
-              <div class="flex items-center justify-center space-x-2 pt-1">
-                <p class="font-sans text-sm font-bold text-red-600">Member: MYR 1,800</p>
-                <p class="font-sans text-xs text-neutral-400 line-through">MYR 2,250</p>
-              </div>
-              <div
-                class="pt-3 border-t border-neutral-100 mt-2 flex items-center justify-center gap-1.5 text-black group-hover:text-neutral-500 transition-colors">
-                <span class="text-[10px] font-bold uppercase tracking-widest font-sans">Book Boutique Viewing</span>
-                <span
-                  class="material-symbols-outlined text-[16px] transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
-              </div>
-            </div>
-          </a>
-          <!-- Card 4 -->
-          <a href="boutiques.html#appointment-booking"
-            class="group block bg-white border border-neutral-100 p-4 relative transition-all duration-300 hover:shadow-lg">
-            <div class="aspect-square w-full overflow-hidden bg-[#f7f7f7] mb-6 relative">
-              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.43_202606252242.jpeg"
-                alt="Gema Ring"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            </div>
-            <div class="space-y-2 text-center">
-              <span class="block text-[10px] font-bold uppercase tracking-widest text-red-600 mb-1">Members Only</span>
-              <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Rings</h3>
-              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Gema Layered Ring Set</p>
-              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">Pastel gemstones, rhodium plated</p>
-              <div class="flex items-center justify-center space-x-2 pt-1">
-                <p class="font-sans text-sm font-bold text-red-600">Member: MYR 1,500</p>
-                <p class="font-sans text-xs text-neutral-400 line-through">MYR 1,875</p>
-              </div>
-              <div
-                class="pt-3 border-t border-neutral-100 mt-2 flex items-center justify-center gap-1.5 text-black group-hover:text-neutral-500 transition-colors">
-                <span class="text-[10px] font-bold uppercase tracking-widest font-sans">Book Boutique Viewing</span>
-                <span
-                  class="material-symbols-outlined text-[16px] transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 5: Horizontal Product Carousel 2 - "Timeless Love" (Classics Selection with Badges) -->
-    <section class="bg-white py-16 lg:py-24 px-margin-mobile md:px-margin-desktop">
-      <div class="max-w-container-max mx-auto">
-        <div class="text-center mb-12">
-          <h2 class="font-serif text-3xl md:text-4xl text-black font-normal">Timeless Love</h2>
-        </div>
-
-        <!-- Product Cards Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          <!-- Card 1 (Sale) -->
-          <a href="boutiques.html#appointment-booking"
-            class="group block bg-white border border-neutral-100 p-4 relative transition-all duration-300 hover:shadow-lg">
-            <div class="aspect-square w-full overflow-hidden bg-[#f7f7f7] mb-6 relative">
-              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.47_202606252242.jpeg"
-                alt="Matrix Bracelet"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            </div>
-            <div class="space-y-2 text-center">
-              <span class="block text-[10px] font-bold uppercase tracking-widest text-black mb-1">Boutique Only</span>
-              <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Bracelets</h3>
-              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Matrix Tennis Bracelet</p>
-              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">White round cut crystals, rhodium
-                plated</p>
-              <p class="font-sans text-sm font-bold text-black pt-1">MYR 3,625</p>
-              <div
-                class="pt-3 border-t border-neutral-100 mt-2 flex items-center justify-center gap-1.5 text-black group-hover:text-neutral-500 transition-colors">
-                <span class="text-[10px] font-bold uppercase tracking-widest font-sans">Book Boutique Viewing</span>
-                <span
-                  class="material-symbols-outlined text-[16px] transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
-              </div>
-            </div>
-          </a>
-          <!-- Card 2 (Sale) -->
-          <a href="boutiques.html#appointment-booking"
-            class="group block bg-white border border-neutral-100 p-4 relative transition-all duration-300 hover:shadow-lg">
-            <div class="aspect-square w-full overflow-hidden bg-[#f7f7f7] mb-6 relative">
-              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.46_202606252242_2.jpeg"
-                alt="Hyperbola Pendant"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            </div>
-            <div class="space-y-2 text-center">
-              <span class="block text-[10px] font-bold uppercase tracking-widest text-black mb-1">Boutique Only</span>
-              <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Necklaces</h3>
-              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Hyperbola Heart Pendant</p>
-              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">White crystals, mixed metal finish
-              </p>
-              <p class="font-sans text-sm font-bold text-black pt-1">MYR 1,500</p>
-              <div
-                class="pt-3 border-t border-neutral-100 mt-2 flex items-center justify-center gap-1.5 text-black group-hover:text-neutral-500 transition-colors">
-                <span class="text-[10px] font-bold uppercase tracking-widest font-sans">Book Boutique Viewing</span>
-                <span
-                  class="material-symbols-outlined text-[16px] transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
-              </div>
-            </div>
-          </a>
-          <!-- Card 3 (Sale) -->
-          <a href="boutiques.html#appointment-booking"
-            class="group block bg-white border border-neutral-100 p-4 relative transition-all duration-300 hover:shadow-lg">
-            <div class="aspect-square w-full overflow-hidden bg-[#f7f7f7] mb-6 relative">
-              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.47_202606252242_2.jpeg"
-                alt="Attract Earrings"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            </div>
-            <div class="space-y-2 text-center">
-              <span class="block text-[10px] font-bold uppercase tracking-widest text-black mb-1">Boutique Only</span>
-              <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Earrings</h3>
-              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Attract Square Stud Earrings</p>
-              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">White gems, gold-plated bezel</p>
-              <p class="font-sans text-sm font-bold text-black pt-1">MYR 850</p>
-              <div
-                class="pt-3 border-t border-neutral-100 mt-2 flex items-center justify-center gap-1.5 text-black group-hover:text-neutral-500 transition-colors">
-                <span class="text-[10px] font-bold uppercase tracking-widest font-sans">Book Boutique Viewing</span>
-                <span
-                  class="material-symbols-outlined text-[16px] transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
-              </div>
-            </div>
-          </a>
-          <!-- Card 4 (Sale) -->
-          <a href="boutiques.html#appointment-booking"
-            class="group block bg-white border border-neutral-100 p-4 relative transition-all duration-300 hover:shadow-lg">
-            <div class="aspect-square w-full overflow-hidden bg-[#f7f7f7] mb-6 relative">
-              <img src="assets/images/product_images/WhatsApp_Image_2026-05-24_at_5.34.46_202606252242.jpeg"
-                alt="Swan Ring"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            </div>
-            <div class="space-y-2 text-center">
-              <span class="block text-[10px] font-bold uppercase tracking-widest text-black mb-1">Boutique Only</span>
-              <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Rings</h3>
-              <p class="font-sans text-sm font-semibold text-black line-clamp-1">Swan Classic Solitaire Ring</p>
-              <p class="font-sans text-xs text-neutral-500 line-clamp-1 font-light">White brilliant swan cut crystal,
-                gold-tone</p>
-              <p class="font-sans text-sm font-bold text-black pt-1">MYR 1,187</p>
-              <div
-                class="pt-3 border-t border-neutral-100 mt-2 flex items-center justify-center gap-1.5 text-black group-hover:text-neutral-500 transition-colors">
-                <span class="text-[10px] font-bold uppercase tracking-widest font-sans">Book Boutique Viewing</span>
-                <span
-                  class="material-symbols-outlined text-[16px] transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 6: Campaign Spotlight - "Selah's Edit" (Inverted 50/50 Split) -->
-    <section class="w-full bg-white grid grid-cols-1 md:grid-cols-2 border-t border-b border-neutral-100">
-      <!-- Left Side: Content Block -->
-      <div
-        class="flex flex-col justify-center items-center text-center px-8 py-16 md:px-16 lg:px-24 text-black bg-white order-last md:order-first md:aspect-square">
-        <div class="max-w-md space-y-6">
-          <span class="text-xs font-bold tracking-widest uppercase text-neutral-500">Selah's Edit</span>
-          <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-normal leading-tight">Shining Brighter with Rubies
-          </h2>
-          <p class="font-sans text-sm md:text-base text-gray-700 leading-relaxed font-light">
-            Discover Selah's curated selection of vibrant rubies and hand-finished 18K gold. Crafted to bring out the
-            warmth and brilliance of every moment. Each piece is designed to tell a story and catch the light from every
-            angle.
-          </p>
-          <div class="flex flex-col items-center space-y-4 pt-4">
-            <a href="boutiques.html#appointment-booking"
-              class="inline-block font-sans text-sm font-semibold text-black underline underline-offset-4 hover:text-neutral-600 transition-colors">
-              Book Boutique Consultation
-            </a>
-            <a href="#our-collection"
-              class="inline-block font-sans text-sm font-semibold text-black underline underline-offset-4 hover:text-neutral-600 transition-colors">
-              Discover Collection
-            </a>
-          </div>
-        </div>
-      </div>
-      <!-- Right Side: Media Element -->
-      <div class="relative w-full aspect-square overflow-hidden order-first md:order-last">
-        <img src="assets/images/ruby_necklace.jpg" alt="Selah Ruby Campaign Shot"
-          class="absolute inset-0 w-full h-full object-cover" />
-      </div>
-    </section>
-
-    <!-- Section 7: Buy & Sell In-Store (Gold Exchange & Boutique Buying) -->
-    <section id="gold-exchange" class="py-16 lg:py-24 bg-white border-b border-neutral-100 scroll-mt-24">
-      <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-        <div class="text-center mb-16 max-w-3xl mx-auto space-y-4">
-          <span class="text-xs font-bold tracking-widest uppercase text-neutral-500">Physical Boutique Services</span>
-          <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-black tracking-wide font-normal">Exquisite
-            In-Store Buying & Selling</h2>
-          <p class="font-sans text-neutral-600 text-sm md:text-base leading-relaxed font-light">
-            Chempaka jewelry is made to be experienced in person. We invite you to visit our physical boutiques for
-            certified valuation, trade-ins, custom gold fitting, and expert guidance.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
-          <!-- Left: Boutique Buying Experience -->
-          <div
-            class="flex flex-col justify-between p-8 md:p-12 bg-white border border-neutral-100 rounded-none relative">
-            <div class="space-y-6">
-              <div class="w-12 h-12 bg-primary/10 text-primary flex items-center justify-center rounded-full">
-                <span class="material-symbols-outlined text-2xl">store</span>
-              </div>
-              <h3 class="font-serif text-2xl lg:text-3xl text-black font-normal">The Boutique Buying Experience</h3>
-              <p class="font-sans text-neutral-600 text-sm leading-relaxed font-light">
-                Purchasing fine jewelry requires an intimate touch. Visit a Chempaka boutique to feel the reassuring
-                weight of hand-finished 18K gold, receive customized ring sizing, and work with our dedicated styling
-                advisors to design bespoke engravings.
-              </p>
-              <ul class="space-y-3 font-sans text-xs text-neutral-700 font-semibold uppercase tracking-widest pt-2">
-                <li class="flex items-center gap-2"><span
-                    class="material-symbols-outlined text-[16px] text-primary">done</span> Custom fittings & sizing</li>
-                <li class="flex items-center gap-2"><span
-                    class="material-symbols-outlined text-[16px] text-primary">done</span> Complimentary premium
-                  ribbon-wrapping</li>
-                <li class="flex items-center gap-2"><span
-                    class="material-symbols-outlined text-[16px] text-primary">done</span> VIP showroom access for Club
-                  Members</li>
-              </ul>
-            </div>
-            <div class="pt-8">
-              <a href="boutiques.html#appointment-booking"
-                class="inline-block bg-primary text-black px-8 py-3.5 text-xs font-bold uppercase tracking-widest hover:bg-neutral-800 transition-colors">
-                Book In-Store Appointment
-              </a>
-            </div>
-          </div>
-
-          <!-- Right: Gold Exchange & Valuation -->
-          <div
-            class="flex flex-col justify-between p-8 md:p-12 bg-white border border-neutral-100 rounded-none relative">
-            <div class="space-y-6">
-              <div class="w-12 h-12 bg-primary/10 text-primary flex items-center justify-center rounded-full">
-                <span class="material-symbols-outlined text-2xl">currency_exchange</span>
-              </div>
-              <h3 class="font-serif text-2xl lg:text-3xl text-black font-normal">Chempaka Gold Exchange & Valuation</h3>
-              <p class="font-sans text-neutral-600 text-sm leading-relaxed font-light">
-                Unlock the value of your heritage assets. Bring your gold jewelry, heirlooms, and precious metals into
-                any Chempaka boutique for instant valuation. Our certified on-site gemologists offer highly competitive,
-                transparent cash valuations or generous boutique trade-in values.
-              </p>
-              <ul class="space-y-3 font-sans text-xs text-neutral-700 font-semibold uppercase tracking-widest pt-2">
-                <li class="flex items-center gap-2"><span
-                    class="material-symbols-outlined text-[16px] text-primary">done</span> On-site gemologist
-                  inspections</li>
-                <li class="flex items-center gap-2"><span
-                    class="material-symbols-outlined text-[16px] text-primary">done</span> Transparent trade-in pricing
-                </li>
-                <li class="flex items-center gap-2"><span
-                    class="material-symbols-outlined text-[16px] text-primary">done</span> Immediate cash payout option
-                </li>
-              </ul>
-            </div>
-            <div class="pt-8">
-              <a href="boutiques.html#appointment-booking"
-                class="inline-block bg-black text-white px-8 py-3.5 text-xs font-bold uppercase tracking-widest hover:bg-neutral-800 transition-colors">
-                Book In-Store Valuation
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-    <!-- Section 8: Editorial Stories (3 Columns) -->
-    <section id="about"
-      class="bg-white py-16 lg:py-24 px-margin-mobile md:px-margin-desktop border-t border-b border-neutral-100 scroll-mt-24">
-      <div class="max-w-container-max mx-auto">
-        <div class="text-center mb-16">
-          <h2 class="font-serif text-3xl md:text-4xl text-black font-normal">Stories & Inspiration</h2>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Story 1 -->
-          <div class="space-y-4 text-left">
-            <div class="aspect-[4/5] w-full overflow-hidden bg-[#f0f0f0] relative">
-              <img
-                src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=500&h=700&q=80"
-                alt="Met Gala 2026"
-                class="w-full h-full object-cover hover:opacity-90 transition-opacity duration-300" />
-            </div>
-            <h3 class="font-serif text-xl text-black font-normal pt-2">Met Gala 2026: A Crystal Masterpiece</h3>
-            <p class="font-sans text-xs text-neutral-500 leading-relaxed font-light">
-              Selah illuminates the red carpet with custom-crafted crystal couture and high-jewelry statement pieces,
-              turning heads in the year's most exclusive fashion event.
-            </p>
-            <a href="#"
-              class="inline-block font-sans text-xs font-semibold text-black underline underline-offset-4 hover:text-neutral-500 transition-colors">
-              Read more
-            </a>
-          </div>
-          <!-- Story 2 -->
-          <div class="space-y-4 text-left">
-            <div class="aspect-[4/5] w-full overflow-hidden bg-[#f0f0f0] relative">
-              <img
-                src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=500&h=700&q=80"
-                alt="Ring Stacking"
-                class="w-full h-full object-cover hover:opacity-90 transition-opacity duration-300" />
-            </div>
-            <h3 class="font-serif text-xl text-black font-normal pt-2">Art of Stacking: How to Wear Multiple Rings</h3>
-            <p class="font-sans text-xs text-neutral-500 leading-relaxed font-light">
-              Express your style individuality by combining contrasting metal bands, statement solitaires, and delicate
-              pavÃ© rings to create a customized daytime glow.
-            </p>
-            <a href="#"
-              class="inline-block font-sans text-xs font-semibold text-black underline underline-offset-4 hover:text-neutral-500 transition-colors">
-              Discover more
-            </a>
-          </div>
-          <!-- Story 3 -->
-          <div class="space-y-4 text-left">
-            <div class="aspect-[4/5] w-full overflow-hidden bg-[#f0f0f0] relative">
-              <img
-                src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=500&h=700&q=80"
-                alt="Milestones" class="w-full h-full object-cover hover:opacity-90 transition-opacity duration-300" />
-            </div>
-            <h3 class="font-serif text-xl text-black font-normal pt-2">Crafting Brilliance: Chempaka Milestones</h3>
-            <p class="font-sans text-xs text-neutral-500 leading-relaxed font-light">
-              Take a journey through the historical milestones that define our heritage of gold craftsmanship, creative
-              vision, and crystal engineering since 1995.
-            </p>
-            <a href="#"
-              class="inline-block font-sans text-xs font-semibold text-black underline underline-offset-4 hover:text-neutral-500 transition-colors">
-              Read more
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 9: Chempaka Services (4 Columns) -->
-    <section class="bg-white py-16 lg:py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-      <div class="text-center mb-12 max-w-3xl mx-auto">
-        <h2 class="font-serif text-3xl md:text-4xl text-black font-normal">Our Services</h2>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <!-- Service 1 -->
-        <div
-          class="flex flex-col items-center text-center space-y-4 p-6 border border-neutral-100 bg-white transition-all duration-300 hover:shadow-md">
-          <div class="w-14 h-14 bg-accent-blue/20 rounded-full flex items-center justify-center mb-1 text-secondary">
-            <span class="material-symbols-outlined text-[28px]">chat</span>
-          </div>
-          <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Live Chat Support</h3>
-          <p class="font-sans text-[11px] text-neutral-500 leading-relaxed font-light">Connect online with our expert
-            styling advisors for gift suggestions and care tips.</p>
-        </div>
-        <!-- Service 2 -->
-        <div
-          class="flex flex-col items-center text-center space-y-4 p-6 border border-neutral-100 bg-white transition-all duration-300 hover:shadow-md">
-          <div class="w-14 h-14 bg-accent-blue/20 rounded-full flex items-center justify-center mb-1 text-secondary">
-            <span class="material-symbols-outlined text-[28px]">calendar_month</span>
-          </div>
-          <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Book an Appointment</h3>
-          <p class="font-sans text-[11px] text-neutral-500 leading-relaxed font-light">Schedule an in-store private
-            consultation at your nearest boutique at your convenience.</p>
-        </div>
-        <!-- Service 3 -->
-        <div
-          class="flex flex-col items-center text-center space-y-4 p-6 border border-neutral-100 bg-white transition-all duration-300 hover:shadow-md">
-          <div class="w-14 h-14 bg-accent-blue/20 rounded-full flex items-center justify-center mb-1 text-secondary">
-            <span class="material-symbols-outlined text-[28px]">help</span>
-          </div>
-          <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Customer Services (FAQs)</h3>
-          <p class="font-sans text-[11px] text-neutral-500 leading-relaxed font-light">Find instant answers online about
-            order shipping, order tracking, and returns policy.</p>
-        </div>
-        <!-- Service 4 -->
-        <div
-          class="flex flex-col items-center text-center space-y-4 p-6 border border-neutral-100 bg-white transition-all duration-300 hover:shadow-md">
-          <div class="w-14 h-14 bg-accent-blue/20 rounded-full flex items-center justify-center mb-1 text-secondary">
-            <span class="material-symbols-outlined text-[28px]">card_giftcard</span>
-          </div>
-          <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-black">Gift Services</h3>
-          <p class="font-sans text-[11px] text-neutral-500 leading-relaxed font-light">Receive signature greeting cards,
-            luxury ribbon wrapping, and boutique bag options.</p>
-        </div>
-      </div>
-    </section>
-
-
-
-
-
-  <!-- Footer (Swarovski-Exact Style) -->
-  <footer class="bg-black text-white py-16 lg:py-24 px-margin-mobile md:px-margin-desktop border-t border-[#222222]">
-    <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-10">
-      <div class="md:col-span-4 space-y-4">
-        <h4 class="font-sans text-[11px] font-bold uppercase tracking-widest text-[#cccccc]">Join the Chempaka Club</h4>
-        <p class="font-sans text-xs text-[#888888] leading-relaxed font-light">
-          Subscribe to receive updates on boutique events, exclusive collections, and priority booking options.
-        </p>
-        <div class="pt-2">
-          <a href="membership.html"
-            class="inline-flex items-center gap-1.5 bg-[#222222] text-white hover:bg-white hover:text-black py-3 px-6 text-xs font-bold uppercase tracking-widest transition-all duration-300">
-            <span>Register Now</span>
-            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="md:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8">
-        <div class="space-y-4">
-          <h4 class="font-sans text-[11px] font-bold uppercase tracking-widest text-[#cccccc]">Our Brand</h4>
-          <ul class="space-y-2 text-xs text-[#888888] font-light">
-            <li><a href="about.html#heritage" class="hover:text-white transition-colors duration-200 block py-0.5">Masters of Gold</a></li>
-            <li><a href="about.html#heritage" class="hover:text-white transition-colors duration-200 block py-0.5">Heritage Story</a></li>
-            <li><a href="about.html#heritage" class="hover:text-white transition-colors duration-200 block py-0.5">Sustainability</a></li>
-          </ul>
-        </div>
-
-        <div class="space-y-4">
-          <h4 class="font-sans text-[11px] font-bold uppercase tracking-widest text-[#cccccc]">Valuations</h4>
-          <ul class="space-y-2 text-xs text-[#888888] font-light">
-            <li><a href="index.html#our-services" class="hover:text-white transition-colors duration-200 block py-0.5">Gold Exchange</a></li>
-            <li><a href="index.html#our-services" class="hover:text-white transition-colors duration-200 block py-0.5">Bespoke Design</a></li>
-            <li><a href="index.html#our-services" class="hover:text-white transition-colors duration-200 block py-0.5">Private Lounge</a></li>
-          </ul>
-        </div>
-
-        <div class="col-span-2 sm:col-span-1 space-y-4">
-          <h4 class="font-sans text-[11px] font-bold uppercase tracking-widest text-[#cccccc]">Boutiques</h4>
-          <ul class="space-y-2 text-xs text-[#888888] font-light">
-            <li><a href="boutiques.html#store-locator" class="hover:text-white transition-colors duration-200 block py-0.5">Boutique Finder</a></li>
-            <li><a href="boutiques.html#appointment-booking" class="hover:text-white transition-colors duration-200 block py-0.5">Private Viewing</a></li>
-            <li><a href="boutiques.html#appointment-booking" class="hover:text-white transition-colors duration-200 block py-0.5">Contact Styling</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Divider -->
-    <div class="max-w-container-max mx-auto border-t border-[#222222] my-10"></div>
-
-    <div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-      <div class="space-y-2 text-center md:text-left">
-        <div class="flex items-center justify-center md:justify-start gap-1.5 text-xs text-[#888888]">
-          <span class="material-symbols-outlined text-[16px] text-white">globe</span>
-          <span class="select-none">English</span>
-        </div>
-        <div class="mt-1 text-[10px] leading-relaxed max-w-sm md:max-w-md text-[#666666]">
-          &copy; 2026 Chempaka Trading Sdn Bhd. Company registration number 200901004470 (847404-D). All rights reserved.
-          CHEMPAKA and the SWAN logo are registered and trademarks of Chempaka AG.
-        </div>
-      </div>
-
-      <div class="order-first md:order-none shrink-0 md:justify-self-center text-center">
-        <span class="font-serif text-3xl font-normal tracking-[0.02em] text-white uppercase select-none"
-          style="font-family: 'Cinzel', serif; letter-spacing: 0.02em;">CHEMPAKA</span>
-      </div>
-
-      <!-- Social Icons -->
-      <div class="flex space-x-4 shrink-0 md:justify-self-end">
-        <a href="https://www.instagram.com/chempakajewels/" target="_blank" rel="noopener noreferrer"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300"
-          aria-label="Instagram">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-          </svg>
-        </a>
-        <a href="https://www.tiktok.com/@chempakajewels" target="_blank" rel="noopener noreferrer"
-          class="w-8 h-8 rounded-full border border-[#333333] hover:border-white hover:bg-white hover:text-black flex items-center justify-center text-[#aaaaaa] transition-all duration-300"
-          aria-label="Tiktok">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.74-3.99-1.72-.08.65-.06 1.32-.06 1.98 0 2.01-.38 4.03-1.48 5.69-1.37 2.07-3.79 3.38-6.29 3.39-2.19.01-4.41-.84-5.83-2.53-1.63-1.93-2.21-4.7-1.43-7.14C4.16 7.4 6.3 5.48 8.89 5.09c.83-.12 1.68-.07 2.51-.08.01 1.43-.01 2.87-.01 4.3-.64-.09-1.3-.02-1.92.17-1.12.35-2.07 1.25-2.39 2.37-.46 1.57.17 3.42 1.54 4.25.92.56 2.04.66 3.06.33 1.09-.36 1.97-1.28 2.29-2.37.11-.38.16-.78.16-1.18V.02z" />
-          </svg>
-        </a>
-        </div>
-    </div>
-  </footer>
-  </main>
-  <script>
-    // ============================================
-    // Scroll Reveal: Intersection Observer
-    // Spring-like fade-in-up with stagger
-    // ============================================
-    document.addEventListener("DOMContentLoaded", () => {
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            obs.unobserve(entry.target);
-          }
-        });
-      }, {
-        root: null,
-        rootMargin: '0px 0px -40px 0px',
-        threshold: 0.08
-      });
-
-      document.querySelectorAll('.fade-in-up').forEach((el) => {
-        observer.observe(el);
-      });
-
-      // Trigger hero elements immediately (they start in viewport)
-      document.querySelectorAll('#hero-banner .fade-in-up').forEach((el) => {
-        // Small rAF delay so CSS transition has time to register
-        requestAnimationFrame(() => {
-          setTimeout(() => el.classList.add('visible'), 120);
-        });
-      });
-    });
-
-    // ============================================
-    // Chempaka Header scroll behavior
-    // ============================================
-    window.addEventListener('scroll', () => {
-      const header = document.getElementById('main-header');
-      if (window.scrollY > 40) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-
-
-    // Dismiss promotion banner
-    function dismissPromo() {
-      const banner = document.getElementById('promo-banner');
-      if (banner) {
-        banner.style.display = 'none';
-      }
-    }
-
-    // Toggle Search Overlay
-    function toggleSearch(open) {
-      const overlay = document.getElementById('search-overlay');
-      if (overlay) {
-        if (open) {
-          overlay.classList.remove('hidden');
-          overlay.querySelector('input').focus();
-        } else {
-          overlay.classList.add('hidden');
-        }
-      }
-    }
-
-    // Toggle Mobile Navigation Drawer
-    function toggleMobileDrawer(open) {
-      const drawer = document.getElementById('mobile-drawer');
-      const backdrop = document.getElementById('drawer-backdrop');
-      if (drawer && backdrop) {
-        if (open) {
-          drawer.classList.remove('-translate-x-full');
-          backdrop.classList.remove('hidden');
-          document.body.classList.add('overflow-hidden');
-        } else {
-          drawer.classList.add('-translate-x-full');
-          backdrop.classList.add('hidden');
-          document.body.classList.remove('overflow-hidden');
-        }
-      }
-    }
-
-
-
-    // --- Appointment Booking Form ---
-    function submitBookingForm(event) {
-      event.preventDefault();
-
-      // Get fields
-      const boutiqueEl = document.getElementById('booking-boutique');
-      const serviceEl = document.getElementById('booking-service');
-      const dateEl = document.getElementById('booking-date');
-      const timeEl = document.getElementById('booking-time');
-      const nameEl = document.getElementById('booking-name');
-      const phoneEl = document.getElementById('booking-phone');
-
-      // Get error tags
-      const errBoutique = document.getElementById('error-booking-boutique');
-      const errService = document.getElementById('error-booking-service');
-      const errDate = document.getElementById('error-booking-date');
-      const errTime = document.getElementById('error-booking-time');
-      const errName = document.getElementById('error-booking-name');
-      const errPhone = document.getElementById('error-booking-phone');
-
-      // Reset hidden state
-      errBoutique.classList.add('hidden');
-      errService.classList.add('hidden');
-      errDate.classList.add('hidden');
-      errTime.classList.add('hidden');
-      errName.classList.add('hidden');
-      errPhone.classList.add('hidden');
-
-      let isValid = true;
-
-      if (!boutiqueEl.value) {
-        errBoutique.classList.remove('hidden');
-        isValid = false;
-      }
-      if (!serviceEl.value) {
-        errService.classList.remove('hidden');
-        isValid = false;
-      }
-
-      // Date must be today or in the future
-      if (!dateEl.value) {
-        errDate.classList.remove('hidden');
-        isValid = false;
-      } else {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const selectedDate = new Date(dateEl.value);
-        selectedDate.setHours(0, 0, 0, 0);
-        if (selectedDate < today) {
-          errDate.classList.remove('hidden');
-          isValid = false;
-        }
-      }
-
-      if (!timeEl.value) {
-        errTime.classList.remove('hidden');
-        isValid = false;
-      }
-      if (!nameEl.value || nameEl.value.trim().length < 2) {
-        errName.classList.remove('hidden');
-        isValid = false;
-      }
-      const phoneRegex = /^\+?[0-9\s\-]{8,15}$/;
-      if (!phoneRegex.test(phoneEl.value)) {
-        errPhone.classList.remove('hidden');
-        isValid = false;
-      }
-
-      if (isValid) {
-        // Map select text
-        const boutiqueText = boutiqueEl.options[boutiqueEl.selectedIndex].text;
-        const serviceText = serviceEl.options[serviceEl.selectedIndex].text;
-
-        // Format Date nicely
-        const parts = dateEl.value.split('-');
-        const formattedDate = (parts[2] && parts[1] && parts[0]) ? `${parts[2]}/${parts[1]}/${parts[0]}` : dateEl.value;
-
-        // Update success display
-        document.getElementById('success-boutique-name').innerText = boutiqueText;
-        document.getElementById('success-booking-service').innerText = serviceText;
-        document.getElementById('success-booking-datetime').innerText = `${formattedDate} @ ${timeEl.value}`;
-        document.getElementById('success-booking-client').innerText = nameEl.value;
-
-        // Switch display
-        document.getElementById('booking-form-container').classList.add('hidden');
-        document.getElementById('booking-success-container').classList.remove('hidden');
-      }
-    }
-
-    function resetBookingForm() {
-      // Reset inputs
-      document.getElementById('booking-boutique').value = '';
-      document.getElementById('booking-service').value = '';
-      document.getElementById('booking-date').value = '';
-      document.getElementById('booking-time').value = '';
-      document.getElementById('booking-name').value = '';
-      document.getElementById('booking-phone').value = '';
-
-      // Hide errors
-      document.getElementById('error-booking-boutique').classList.add('hidden');
-      document.getElementById('error-booking-service').classList.add('hidden');
-      document.getElementById('error-booking-date').classList.add('hidden');
-      document.getElementById('error-booking-time').classList.add('hidden');
-      document.getElementById('error-booking-name').classList.add('hidden');
-      document.getElementById('error-booking-phone').classList.add('hidden');
-
-      // Toggle containers
-      document.getElementById('booking-form-container').classList.remove('hidden');
-      document.getElementById('booking-success-container').classList.add('hidden');
-    }
-
-    // Dynamic Supabase Settings Loader
-    document.addEventListener("DOMContentLoaded", async () => {
-      if (typeof supabase !== 'undefined' && typeof SUPABASE_URL !== 'undefined' && SUPABASE_URL !== "YOUR_SUPABASE_URL_HERE") {
-        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-        try {
-          const { data, error } = await supabaseClient.from('site_settings').select('*');
-          if (error) throw error;
-
-          data.forEach(item => {
-            const val = JSON.parse(item.value);
-            if (item.key === 'promo_banner_text') {
-              const promoTextContainer = document.getElementById('promo-banner-text');
-              if (promoTextContainer) {
-                // Preserve link to boutiques
-                promoTextContainer.innerHTML = val + ' | <a href="boutiques.html" class="underline underline-offset-2 hover:opacity-80 transition-opacity">Visit Our Boutiques</a>';
-              }
-            } else if (item.key === 'hero_title') {
-              const heroTitle = document.getElementById('hero-dynamic-title');
-              if (heroTitle) heroTitle.innerHTML = val;
-            } else if (item.key === 'hero_subtitle') {
-              const heroSubtitle = document.getElementById('hero-dynamic-subtitle');
-              if (heroSubtitle) heroSubtitle.innerText = val;
-            } else if (item.key === 'hero_bg_image_url') {
-              const heroImg = document.querySelector('#hero-bg-div img');
-              if (heroImg) heroImg.src = val;
-            } else if (item.key === 'store_announcements') {
-              const announceEl = document.getElementById('scroll-announcement-text');
-              if (announceEl && val.length > 0) announceEl.innerText = val[0];
-            }
-          });
-        } catch (err) {
-          console.warn("Supabase loading warning: " + err.message);
-        }
-      }
-    });
-  </script>
+  <div class="cj-footer__bottom"><span>&copy; 2026 Chempaka Trading Sdn Bhd (200901004470 / 847404-D). All rights reserved.</span><div class="cj-footer__social"><a href="https://www.instagram.com/chempakajewels/" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@chempakajewels" rel="noopener">TikTok</a></div></div>
+</div></footer>
+<div class="site-backdrop" id="menu-backdrop" hidden></div>
+<aside class="site-drawer" id="menu-drawer" aria-label="Menu" aria-hidden="true">
+  <div class="site-drawer__top"><span class="cj-wordmark cj-wordmark--sm">CHEMPAKA</span><button type="button" data-close-menu aria-label="Close menu"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#close"/></svg></button></div>
+  <nav aria-label="Site">
+    <div><h2>Collections</h2><ul><li><a href="showcase.html">New In</a></li><li><a href="showcase.html?q=rings">Rings</a></li><li><a href="showcase.html?q=necklaces">Necklaces</a></li><li><a href="showcase.html?q=bracelets">Bracelets</a></li><li><a href="showcase.html?q=bespoke">Bespoke</a></li><li><a href="showcase.html">Showcase</a></li></ul></div>
+    <div><h2>Chempaka</h2><ul><li><a href="membership.html">Chempaka Club</a></li><li><a href="about.html">Journal and heritage</a></li><li><a href="boutiques.html">Boutiques and appointments</a></li></ul></div>
+    <div><h2>Contact</h2><ul><li><a href="https://wa.me/60178113204">WhatsApp us</a></li></ul></div>
+  </nav>
+</aside>
+<div class="site-search" id="site-search" role="dialog" aria-label="Search" aria-modal="true" hidden>
+  <button type="button" class="site-search__close" data-close-search aria-label="Close search"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#close"/></svg></button>
+  <form action="showcase.html" method="get" role="search"><input type="search" name="q" placeholder="Search the showcase" aria-label="Search the showcase" autocomplete="off"><button type="submit" aria-label="Search"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#search"/></svg></button></form>
+  <ul><li><a href="showcase.html?q=rings">Rings</a></li><li><a href="showcase.html?q=necklaces">Necklaces</a></li><li><a href="showcase.html?q=bracelets">Bracelets</a></li><li><a href="showcase.html?q=bespoke">Bespoke</a></li></ul>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/home.js"></script>
 </body>
-
 </html>

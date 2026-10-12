@@ -1,552 +1,109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Chempaka - Admin Portal</title>
-  <!-- Keep the staff login portal out of search results entirely. -->
-  <meta name="robots" content="noindex, nofollow" />
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" rel="stylesheet" />
-  <!-- Supabase CDN Client -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="supabase-config.js"></script>
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #0b0f19;
-      color: #f3f4f6;
-    }
-    .brand-title {
-      font-family: 'Cinzel', serif;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chempaka - Admin Portal</title>
+<meta name="description" content="Chempaka staff portal.">
+<meta name="robots" content="noindex, nofollow">
+<script>document.documentElement.className += " js";</script>
+<link rel="preload" href="assets/fonts/Jost-normal-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/BodoniModa-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="cj site">
+<div class="site-admin-bar"><div class="cj-container">
+  <div class="site-kicker"><span class="cj-wordmark cj-wordmark--sm" style="color:var(--on-panel)">CHEMPAKA</span><span class="cj-rate__label" style="letter-spacing:.2em;color:var(--on-panel-muted)">Admin</span></div>
+  <div id="user-info" style="display:flex;align-items:center;gap:24px" hidden><span id="user-email" style="font-size:12px;color:var(--on-panel-muted)"></span><a href="index.html"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#open_in_new"/></svg> View site</a><button type="button" id="logout-btn"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#logout"/></svg> Log out</button></div>
+</div></div>
 
-  <!-- Header -->
-  <header class="border-b border-gray-800 bg-[#0f1422] px-6 py-4 flex justify-between items-center shadow-lg">
-    <div class="flex items-center gap-3">
-      <span class="brand-title text-xl md:text-2xl tracking-widest text-[#A48E7E] font-bold">CHEMPAKA</span>
-      <span class="text-xs uppercase tracking-wider bg-gray-800 text-gray-400 px-2.5 py-1 rounded">Admin Dashboard</span>
+<main>
+<section id="login-container" class="cj-section" style="padding:96px 0" hidden><div class="cj-container">
+  <div class="site-login">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <p class="cj-eyebrow" style="margin:0">Portal login</p>
+      <h1 class="cj-heading">Boutique admin</h1>
+      <p class="cj-muted" style="margin:0">Enter your administrator credentials to open the dashboard.</p>
     </div>
-    <div id="user-info" class="hidden flex items-center gap-4">
-      <span id="user-email" class="text-sm text-gray-400"></span>
-      <button onclick="handleLogout()" class="text-xs font-bold uppercase tracking-wider text-rose-400 border border-rose-900/50 hover:bg-rose-950/20 px-3.5 py-1.5 rounded transition-all">
-        Logout
-      </button>
-    </div>
-  </header>
+    <form class="cj-form" id="login-form">
+      <div class="cj-field"><label for="login-email">Email address</label><input id="login-email" type="email" class="cj-input" autocomplete="username" required></div>
+      <div class="cj-field"><label for="login-password">Password</label><input id="login-password" type="password" class="cj-input" autocomplete="current-password" required></div>
+      <p class="site-form-error" id="login-error" role="alert" hidden></p>
+      <button type="submit" class="cj-btn cj-btn--primary cj-btn--block">Authenticate</button>
+    </form>
+  </div>
+</div></section>
 
-  <!-- Login Overlay Container -->
-  <div id="login-container" class="flex-1 flex items-center justify-center p-6">
-    <div class="w-full max-w-md bg-[#0f1422] border border-gray-800 rounded-2xl p-8 shadow-2xl space-y-6">
-      <div class="text-center space-y-2">
-        <h2 class="brand-title text-2xl text-white font-normal uppercase tracking-widest">Portal Login</h2>
-        <p class="text-xs text-gray-400">Enter your administrator credentials to access dashboard</p>
+<section id="dashboard-container" class="cj-section" style="padding-top:64px" hidden><div class="cj-container">
+  <div class="cj-head" style="margin-bottom:32px"><h1 class="cj-heading">Dashboard</h1></div>
+
+  <div class="cj-choices" role="group" aria-label="Dashboard sections" style="margin-bottom:48px">
+    <button type="button" class="cj-choice" data-tab="counter" aria-pressed="true">Counter check</button>
+    <button type="button" class="cj-choice" data-tab="members" aria-pressed="false">Member monitor</button>
+    <button type="button" class="cj-choice" data-tab="content" aria-pressed="false">Content management</button>
+  </div>
+
+  <div id="tab-counter" data-panel>
+    <div class="site-split site-split--form" style="gap:64px">
+      <div class="site-stack" style="gap:16px">
+        <h2 class="cj-heading">Counter check</h2>
+        <p class="cj-muted" style="margin:0">Confirm a member before applying member prices. Look them up by member ID, phone number or name, at the counter or when a customer messages on WhatsApp.</p>
       </div>
-
-      <div id="login-error" class="hidden bg-rose-950/50 border border-rose-900/50 text-rose-200 text-xs p-3 rounded-lg text-center"></div>
-
-      <form id="login-form" onsubmit="handleLogin(event)" class="space-y-4">
-        <div>
-          <label class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">Email Address</label>
-          <input type="email" id="login-email" required class="w-full bg-gray-900/50 border border-gray-800 focus:border-[#A48E7E] focus:ring-0 rounded-lg text-sm text-white px-4 py-2.5" placeholder="admin@chempaka.com" />
-        </div>
-        <div>
-          <label class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">Password</label>
-          <input type="password" id="login-password" required class="w-full bg-gray-900/50 border border-gray-800 focus:border-[#A48E7E] focus:ring-0 rounded-lg text-sm text-white px-4 py-2.5" placeholder="••••••••" />
-        </div>
-        <button type="submit" class="w-full bg-[#A48E7E] hover:bg-[#8A6A56] text-white py-3 px-6 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-lg shadow-md mt-2">
-          Authenticate
-        </button>
-      </form>
+      <div class="site-stack" style="gap:24px;width:100%">
+        <form class="cj-form" style="width:100%" id="counter-form">
+          <div class="cj-field"><label for="counter-q">Member ID, phone or name</label><input id="counter-q" class="cj-input" placeholder="CC-123456 or +60 12-345 6789" autocomplete="off"></div>
+          <button type="submit" class="cj-btn cj-btn--primary">Check member</button>
+        </form>
+        <div id="counter-result" style="width:100%;display:grid;gap:16px"></div>
+      </div>
     </div>
   </div>
 
-  <!-- Dashboard Container (Authenticated only) -->
-  <div id="dashboard-container" class="hidden flex-1 max-w-7xl mx-auto w-full p-6 space-y-8">
-    
-    <!-- Tab Controls -->
-    <div class="flex border-b border-gray-800">
-      <button onclick="switchTab('members-tab')" id="btn-members-tab" class="px-6 py-3 text-sm font-bold uppercase tracking-wider border-b-2 border-[#A48E7E] text-white">
-        Member Monitor
-      </button>
-      <button onclick="switchTab('cms-tab')" id="btn-cms-tab" class="px-6 py-3 text-sm font-bold uppercase tracking-wider border-b-2 border-transparent text-gray-400 hover:text-white">
-        Content Management
-      </button>
+  <div id="tab-members" data-panel hidden>
+    <div class="site-stack" style="gap:64px;width:100%">
+      <div style="width:100%">
+        <div class="cj-head" style="margin-bottom:24px"><div><h2 class="cj-heading">Pending applications</h2><p class="cj-muted" style="margin:8px 0 0">Applications waiting for boutique review and membership code allocation.</p></div><span class="cj-badge cj-badge--member" id="pending-count">0 pending</span></div>
+        <div class="site-tablewrap"><table class="site-table">
+          <thead><tr><th scope="col">Full name</th><th scope="col">IC number</th><th scope="col">Phone</th><th scope="col">Email</th><th scope="col">Applied</th><th scope="col"><span class="site-sr">Actions</span></th></tr></thead>
+          <tbody id="pending-body"></tbody>
+        </table></div>
+        <div class="cj-notice" id="no-pending" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#check_circle"/></svg><div><b>All caught up</b>No pending membership applications.</div></div>
+      </div>
+      <div style="width:100%">
+        <div class="cj-head" style="margin-bottom:24px"><div><h2 class="cj-heading">Approved members</h2><p class="cj-muted" style="margin:8px 0 0">Enrolled Chempaka Club members with active membership codes.</p></div><span class="cj-badge" id="approved-count">0 members</span></div>
+        <div class="site-tablewrap"><table class="site-table">
+          <thead><tr><th scope="col">Member ID</th><th scope="col">Full name</th><th scope="col">IC number</th><th scope="col">Phone</th><th scope="col">Email</th><th scope="col">Joined</th><th scope="col"><span class="site-sr">Actions</span></th></tr></thead>
+          <tbody id="approved-body"></tbody>
+        </table></div>
+        <div class="cj-notice" id="no-approved" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#info"/></svg><div><b>No approved members yet</b>Approved members will appear here.</div></div>
+      </div>
     </div>
-
-    <!-- Section 1: Member Monitor -->
-    <div id="members-tab" class="space-y-8">
-      
-      <!-- Pending Applications section -->
-      <div class="space-y-4">
-        <div class="flex justify-between items-center">
-          <div>
-            <h2 class="text-xl font-normal tracking-wide text-white font-serif">Pending Applications</h2>
-            <p class="text-xs text-gray-400">Applications waiting for boutique review and membership code allocation</p>
-          </div>
-          <span id="pending-count-badge" class="text-xs font-bold bg-[#A48E7E] text-white px-2.5 py-1 rounded-full">0 Pending</span>
-        </div>
-
-        <div class="bg-[#0f1422] border border-gray-800 rounded-xl overflow-hidden shadow-xl">
-          <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-800 text-left text-sm text-gray-300">
-              <thead class="bg-gray-900/50 text-[10px] font-bold uppercase tracking-wider text-gray-400">
-                <tr>
-                  <th class="px-6 py-4">Full Name</th>
-                  <th class="px-6 py-4">IC Number</th>
-                  <th class="px-6 py-4">Phone</th>
-                  <th class="px-6 py-4">Email</th>
-                  <th class="px-6 py-4">Applied Date</th>
-                  <th class="px-6 py-4 text-center">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="pending-table-body" class="divide-y divide-gray-800">
-                <!-- Dynamically populated pending rows -->
-              </tbody>
-            </table>
-          </div>
-          <div id="no-pending-msg" class="hidden p-8 text-center text-gray-500 text-xs">No pending membership applications.</div>
-        </div>
-      </div>
-
-      <!-- Approved Members section -->
-      <div class="space-y-4 pt-4 border-t border-gray-800">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <div>
-            <h2 class="text-xl font-normal tracking-wide text-white font-serif">Approved Members</h2>
-            <p class="text-xs text-gray-400">Enrolled Chempaka Club members with active membership codes</p>
-          </div>
-          <input type="text" id="search-input" oninput="filterMembers()" placeholder="Search approved members..." class="bg-gray-900/50 border border-gray-800 focus:border-[#A48E7E] focus:ring-0 rounded-lg text-sm px-4 py-2 w-full sm:max-w-xs text-white" />
-        </div>
-
-        <div class="bg-[#0f1422] border border-gray-800 rounded-xl overflow-hidden shadow-xl">
-          <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-800 text-left text-sm text-gray-300">
-              <thead class="bg-gray-900/50 text-[10px] font-bold uppercase tracking-wider text-gray-400">
-                <tr>
-                  <th class="px-6 py-4">Member ID</th>
-                  <th class="px-6 py-4">Full Name</th>
-                  <th class="px-6 py-4">IC Number</th>
-                  <th class="px-6 py-4">Phone</th>
-                  <th class="px-6 py-4">Email</th>
-                  <th class="px-6 py-4">Joined Date</th>
-                  <th class="px-6 py-4 text-center">Action</th>
-                </tr>
-              </thead>
-              <tbody id="approved-table-body" class="divide-y divide-gray-800">
-                <!-- Dynamically populated approved rows -->
-              </tbody>
-            </table>
-          </div>
-          <div id="no-approved-msg" class="hidden p-8 text-center text-gray-500 text-xs">No approved club members found.</div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Section 2: Content Management System (CMS) -->
-    <div id="cms-tab" class="hidden space-y-6">
-      <div class="space-y-1">
-        <h2 class="text-xl font-normal tracking-wide text-white font-serif">Dynamic Site Settings</h2>
-        <p class="text-xs text-gray-400">Manage real-time content served on the landing page</p>
-      </div>
-
-      <div id="cms-success" class="hidden bg-emerald-950/50 border border-emerald-900/50 text-emerald-200 text-xs p-4 rounded-lg text-center font-semibold">
-        Settings updated successfully! Changes are live on the homepage.
-      </div>
-
-      <div id="cms-error" class="hidden bg-rose-950/50 border border-rose-900/50 text-rose-200 text-xs p-4 rounded-lg text-center"></div>
-
-      <form id="cms-form" onsubmit="handleCmsSave(event)" class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        
-        <!-- Left Side fields -->
-        <div class="space-y-6 bg-[#0f1422] border border-gray-800 p-6 rounded-xl">
-          <h3 class="text-sm font-semibold uppercase tracking-wider text-[#A48E7E] border-b border-gray-800 pb-3">Hero & Header Settings</h3>
-          
-          <div class="space-y-4">
-            <div>
-              <label class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">Top Promo Banner Text</label>
-              <textarea id="setting-promo-banner" required rows="2" class="w-full bg-gray-900/50 border border-gray-800 focus:border-[#A48E7E] focus:ring-0 rounded-lg text-sm text-white px-4 py-2.5"></textarea>
-            </div>
-            
-            <div>
-              <label class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">Hero Title (HTML supported)</label>
-              <textarea id="setting-hero-title" required rows="3" class="w-full bg-gray-900/50 border border-gray-800 focus:border-[#A48E7E] focus:ring-0 rounded-lg text-sm text-white px-4 py-2.5"></textarea>
-              <span class="text-[10px] text-gray-500">Example: The Inner Glow: &lt;br&gt;&lt;span class="italic text-[#A48E7E]"&gt;Chempaka Club&lt;/span&gt;</span>
-            </div>
-
-            <div>
-              <label class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">Hero Subtitle</label>
-              <textarea id="setting-hero-subtitle" required rows="3" class="w-full bg-gray-900/50 border border-gray-800 focus:border-[#A48E7E] focus:ring-0 rounded-lg text-sm text-white px-4 py-2.5"></textarea>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right Side fields -->
-        <div class="space-y-6 bg-[#0f1422] border border-gray-800 p-6 rounded-xl">
-          <h3 class="text-sm font-semibold uppercase tracking-wider text-[#A48E7E] border-b border-gray-800 pb-3">Branding & Announcements</h3>
-          
-          <div class="space-y-4">
-            <div>
-              <label class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">Hero Background Campaign Image URL</label>
-              <input type="text" id="setting-hero-bg" required class="w-full bg-gray-900/50 border border-gray-800 focus:border-[#A48E7E] focus:ring-0 rounded-lg text-sm text-white px-4 py-2.5" />
-              <span class="text-[10px] text-gray-500">Provide an image path or URL (e.g. hero_necklace.jpg)</span>
-            </div>
-
-            <div>
-              <label class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">Boutique Scrolling Announcement</label>
-              <textarea id="setting-scroll-announcement" required rows="2" class="w-full bg-gray-900/50 border border-gray-800 focus:border-[#A48E7E] focus:ring-0 rounded-lg text-sm text-white px-4 py-2.5"></textarea>
-              <span class="text-[10px] text-gray-500">This appears in the middle top utility bar.</span>
-            </div>
-
-            <div class="pt-4">
-              <button type="submit" class="w-full bg-[#A48E7E] hover:bg-[#8A6A56] text-white py-3 px-6 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-lg shadow-md">
-                Publish Changes Live
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </form>
-    </div>
-
   </div>
 
-  <!-- Footer -->
-  <footer class="border-t border-gray-900 bg-gray-950 py-6 text-center text-xs text-gray-600 mt-auto">
-    &copy; 2026 Chempaka Trading Sdn Bhd. Admin Panel Security Control.
-  </footer>
+  <div id="tab-content" data-panel hidden>
+    <div class="site-split site-split--form" style="gap:64px">
+      <div class="site-stack" style="gap:16px">
+        <h2 class="cj-heading">Site settings</h2>
+        <p class="cj-muted" style="margin:0">Manage the content served on the website in real time. Changes go live as soon as you publish.</p>
+      </div>
+      <form class="cj-form" id="settings-form">
+        <div class="cj-field"><label for="set-promo">Announcement bar text</label><input id="set-promo" class="cj-input" placeholder="Join the Chempaka Club and show your card at the counter for member prices."></div>
+        <div class="cj-field"><label for="set-title">Home hero title (HTML supported)</label><input id="set-title" class="cj-input" placeholder="Where gold makes memories."></div>
+        <div class="cj-field"><label for="set-sub">Home hero subtitle</label><input id="set-sub" class="cj-input" placeholder="Hand-finished gold jewellery."></div>
+        <div class="cj-field"><label for="set-ann">Header announcement</label><input id="set-ann" class="cj-input" placeholder="Gold exchange and valuation available at the Shah Alam boutique"><span class="cj-field__msg">Appears in the middle of the top row of the header.</span></div>
+        <p class="site-form-error" id="settings-error" role="alert" hidden></p>
+        <button type="submit" class="cj-btn cj-btn--primary">Publish changes live</button>
+        <div class="cj-notice" id="settings-ok" role="status" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#check_circle"/></svg><div><b>Settings updated</b>Changes are live on the website.</div></div>
+      </form>
+    </div>
+  </div>
+</div></section>
 
-  <!-- Script logics -->
-  <script>
-    let supabaseClient = null;
-    let allMembers = [];
-
-    // Initialize Supabase Connection
-    if (typeof SUPABASE_URL !== 'undefined' && typeof SUPABASE_ANON_KEY !== 'undefined') {
-      if (SUPABASE_URL !== "YOUR_SUPABASE_URL_HERE") {
-        supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      if (!supabaseClient) {
-        alert("Please set up your Supabase connection parameters in 'supabase-config.js' to make this operational.");
-        return;
-      }
-      
-      // Check active auth session
-      checkSession();
-    });
-
-    async function checkSession() {
-      const { data: { session }, error } = await supabaseClient.auth.getSession();
-      if (session) {
-        showDashboard(session.user);
-      } else {
-        showLogin();
-      }
-    }
-
-    function showLogin() {
-      document.getElementById("login-container").classList.remove("hidden");
-      document.getElementById("dashboard-container").classList.add("hidden");
-      document.getElementById("user-info").classList.add("hidden");
-    }
-
-    function showDashboard(user) {
-      document.getElementById("login-container").classList.add("hidden");
-      document.getElementById("dashboard-container").classList.remove("hidden");
-      document.getElementById("user-info").classList.remove("hidden");
-      document.getElementById("user-email").innerText = user.email;
-
-      // Load initial Dashboard data
-      loadMembers();
-      loadCmsSettings();
-    }
-
-    // Login Handler
-    async function handleLogin(e) {
-      e.preventDefault();
-      const email = document.getElementById("login-email").value.trim();
-      const password = document.getElementById("login-password").value;
-      const errorDiv = document.getElementById("login-error");
-      
-      errorDiv.classList.add("hidden");
-
-      try {
-        const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
-        if (error) throw error;
-        showDashboard(data.user);
-      } catch (err) {
-        errorDiv.innerText = "Authentication failed: " + err.message;
-        errorDiv.classList.remove("hidden");
-      }
-    }
-
-    // Logout Handler
-    async function handleLogout() {
-      await supabaseClient.auth.signOut();
-      showLogin();
-    }
-
-    // Switch Tabs
-    function switchTab(tabId) {
-      document.getElementById("members-tab").classList.add("hidden");
-      document.getElementById("cms-tab").classList.add("hidden");
-      document.getElementById("btn-members-tab").className = "px-6 py-3 text-sm font-bold uppercase tracking-wider border-b-2 border-transparent text-gray-400 hover:text-white";
-      document.getElementById("btn-cms-tab").className = "px-6 py-3 text-sm font-bold uppercase tracking-wider border-b-2 border-transparent text-gray-400 hover:text-white";
-
-      document.getElementById(tabId).classList.remove("hidden");
-      document.getElementById("btn-" + tabId).className = "px-6 py-3 text-sm font-bold uppercase tracking-wider border-b-2 border-[#A48E7E] text-white";
-    }
-
-    // Load Members
-    async function loadMembers() {
-      const pendingTbody = document.getElementById("pending-table-body");
-      const approvedTbody = document.getElementById("approved-table-body");
-      
-      pendingTbody.innerHTML = '<tr><td colspan="6" class="px-6 py-8 text-center text-gray-400">Loading pending applications...</td></tr>';
-      approvedTbody.innerHTML = '<tr><td colspan="7" class="px-6 py-8 text-center text-gray-400">Loading approved members...</td></tr>';
-      
-      try {
-        const { data, error } = await supabaseClient
-          .from('members')
-          .select('*')
-          .order('joined_at', { ascending: false });
-
-        if (error) throw error;
-
-        allMembers = data || [];
-        renderMembers(allMembers);
-      } catch (err) {
-        pendingTbody.innerHTML = `<tr><td colspan="6" class="px-6 py-8 text-center text-rose-400">Error: ${err.message}</td></tr>`;
-        approvedTbody.innerHTML = `<tr><td colspan="7" class="px-6 py-8 text-center text-rose-400">Error: ${err.message}</td></tr>`;
-      }
-    }
-
-    // Build a <td> with plain text content -- never innerHTML -- so member-
-    // supplied fields (full_name, ic_number, phone, email) can never be
-    // interpreted as markup, since these rows originate from public,
-    // unauthenticated registrations.
-    function memberCell(text, className) {
-      const td = document.createElement("td");
-      td.className = className;
-      td.textContent = text;
-      return td;
-    }
-
-    function actionButton(label, className, onClick) {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.textContent = label;
-      btn.className = className;
-      btn.addEventListener("click", onClick);
-      return btn;
-    }
-
-    function formatJoinedDate(value) {
-      return new Date(value).toLocaleDateString("en-US", {
-        year: 'numeric', month: 'short', day: 'numeric'
-      });
-    }
-
-    function renderMembers(list) {
-      const pendingTbody = document.getElementById("pending-table-body");
-      const approvedTbody = document.getElementById("approved-table-body");
-
-      const noPending = document.getElementById("no-pending-msg");
-      const noApproved = document.getElementById("no-approved-msg");
-
-      pendingTbody.innerHTML = "";
-      approvedTbody.innerHTML = "";
-
-      const pendingList = list.filter(m => m.status === 'pending');
-      const approvedList = list.filter(m => m.status === 'approved');
-
-      // Update badge
-      document.getElementById("pending-count-badge").innerText = `${pendingList.length} Pending`;
-
-      // 1. Render Pending
-      if (pendingList.length === 0) {
-        noPending.classList.remove("hidden");
-      } else {
-        noPending.classList.add("hidden");
-        pendingList.forEach(member => {
-          const tr = document.createElement("tr");
-          tr.className = "hover:bg-gray-900/30 transition-all";
-
-          tr.appendChild(memberCell(member.full_name, "px-6 py-4 font-medium text-white"));
-          tr.appendChild(memberCell(member.ic_number, "px-6 py-4"));
-          tr.appendChild(memberCell(member.phone, "px-6 py-4 text-xs"));
-          tr.appendChild(memberCell(member.email, "px-6 py-4 text-xs text-gray-400"));
-          tr.appendChild(memberCell(formatJoinedDate(member.joined_at), "px-6 py-4 text-xs text-gray-500"));
-
-          const actionsTd = document.createElement("td");
-          actionsTd.className = "px-6 py-4 text-center flex justify-center gap-4";
-          actionsTd.appendChild(actionButton("Approve", "text-emerald-500 hover:text-emerald-400 font-bold text-xs uppercase tracking-wider bg-transparent border-none cursor-pointer", () => approveMember(member.id, member.full_name)));
-          actionsTd.appendChild(actionButton("Reject", "text-rose-500 hover:text-rose-400 font-bold text-xs uppercase tracking-wider bg-transparent border-none cursor-pointer", () => deleteMember(member.id, member.full_name, 'Reject')));
-          tr.appendChild(actionsTd);
-
-          pendingTbody.appendChild(tr);
-        });
-      }
-
-      // 2. Render Approved
-      if (approvedList.length === 0) {
-        noApproved.classList.remove("hidden");
-      } else {
-        noApproved.classList.add("hidden");
-        approvedList.forEach(member => {
-          const tr = document.createElement("tr");
-          tr.className = "hover:bg-gray-900/30 transition-all";
-
-          tr.appendChild(memberCell(member.member_id, "px-6 py-4 font-mono text-xs text-[#A48E7E]"));
-          tr.appendChild(memberCell(member.full_name, "px-6 py-4 font-medium text-white"));
-          tr.appendChild(memberCell(member.ic_number, "px-6 py-4"));
-          tr.appendChild(memberCell(member.phone, "px-6 py-4 text-xs"));
-          tr.appendChild(memberCell(member.email, "px-6 py-4 text-xs text-gray-400"));
-          tr.appendChild(memberCell(formatJoinedDate(member.joined_at), "px-6 py-4 text-xs text-gray-500"));
-
-          const actionsTd = document.createElement("td");
-          actionsTd.className = "px-6 py-4 text-center";
-          actionsTd.appendChild(actionButton("Revoke", "text-rose-500 hover:text-rose-400 font-bold text-xs uppercase tracking-wider bg-transparent border-none cursor-pointer", () => deleteMember(member.id, member.full_name, 'Revoke')));
-          tr.appendChild(actionsTd);
-
-          approvedTbody.appendChild(tr);
-        });
-      }
-    }
-
-    // Filter Members
-    function filterMembers() {
-      const q = document.getElementById("search-input").value.toLowerCase().trim();
-      const filtered = allMembers.filter(m => 
-        (m.status === 'approved' && (
-          m.full_name.toLowerCase().includes(q) || 
-          m.email.toLowerCase().includes(q) || 
-          m.ic_number.includes(q) ||
-          (m.member_id && m.member_id.toLowerCase().includes(q))
-        )) || (m.status === 'pending') // Keep all pending in view or filter them together
-      );
-      renderMembers(filtered);
-    }
-
-    // Approve Member Workflow
-    async function approveMember(id, name) {
-      if (!confirm(`Are you sure you want to approve Chempaka Club membership for "${name}"?`)) return;
-
-      try {
-        // Generate a random 6-digit number to avoid collisions if members are deleted
-        const randomNum = Math.floor(100000 + Math.random() * 900000);
-        const generatedId = `CC-${randomNum}`;
-
-        // Update record to approved status and save the member ID
-        const { error } = await supabaseClient
-          .from('members')
-          .update({
-            status: 'approved',
-            member_id: generatedId
-          })
-          .eq('id', id);
-
-        if (error) throw error;
-        loadMembers();
-      } catch (err) {
-        alert("Failed to approve membership: " + err.message);
-      }
-    }
-
-    // Delete/Revoke/Reject Member
-    async function deleteMember(id, name, actionName) {
-      const confirmMsg = actionName === 'Reject' 
-        ? `Are you sure you want to reject the membership application for "${name}"?`
-        : `Are you sure you want to revoke membership privileges for "${name}"? This will delete their registration.`;
-      
-      if (!confirm(confirmMsg)) return;
-
-      try {
-        const { error } = await supabaseClient
-          .from('members')
-          .delete()
-          .eq('id', id);
-
-        if (error) throw error;
-        loadMembers();
-      } catch (err) {
-        alert("Failed to process delete request: " + err.message);
-      }
-    }
-
-    // Load CMS settings
-    async function loadCmsSettings() {
-      try {
-        const { data, error } = await supabaseClient
-          .from('site_settings')
-          .select('*');
-
-        if (error) throw error;
-
-        data.forEach(item => {
-          if (item.key === 'promo_banner_text') {
-            document.getElementById("setting-promo-banner").value = JSON.parse(item.value);
-          } else if (item.key === 'hero_title') {
-            document.getElementById("setting-hero-title").value = JSON.parse(item.value);
-          } else if (item.key === 'hero_subtitle') {
-            document.getElementById("setting-hero-subtitle").value = JSON.parse(item.value);
-          } else if (item.key === 'hero_bg_image_url') {
-            document.getElementById("setting-hero-bg").value = JSON.parse(item.value);
-          } else if (item.key === 'store_announcements') {
-            const arr = JSON.parse(item.value);
-            document.getElementById("setting-scroll-announcement").value = arr[0] || "";
-          }
-        });
-      } catch (err) {
-        console.warn("Failed to load CMS settings (tables may need configuration): " + err.message);
-      }
-    }
-
-    // Save CMS Settings
-    async function handleCmsSave(e) {
-      e.preventDefault();
-      const successDiv = document.getElementById("cms-success");
-      const errorDiv = document.getElementById("cms-error");
-
-      successDiv.classList.add("hidden");
-      errorDiv.classList.add("hidden");
-
-      const promoVal = document.getElementById("setting-promo-banner").value;
-      const heroTitleVal = document.getElementById("setting-hero-title").value;
-      const heroSubVal = document.getElementById("setting-hero-subtitle").value;
-      const heroBgVal = document.getElementById("setting-hero-bg").value;
-      const scrollAnnounceVal = document.getElementById("setting-scroll-announcement").value;
-
-      const payload = [
-        { key: 'promo_banner_text', value: JSON.stringify(promoVal) },
-        { key: 'hero_title', value: JSON.stringify(heroTitleVal) },
-        { key: 'hero_subtitle', value: JSON.stringify(heroSubVal) },
-        { key: 'hero_bg_image_url', value: JSON.stringify(heroBgVal) },
-        { key: 'store_announcements', value: JSON.stringify([scrollAnnounceVal]) }
-      ];
-
-      try {
-        const { error } = await supabaseClient
-          .from('site_settings')
-          .upsert(payload);
-
-        if (error) throw error;
-        
-        successDiv.classList.remove("hidden");
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } catch (err) {
-        errorDiv.innerText = "Failed to update configuration settings: " + err.message;
-        errorDiv.classList.remove("hidden");
-      }
-    }
-  </script>
+<div class="cj-container" style="padding-bottom:32px"><p class="cj-caption" style="margin:0">&copy; 2026 Chempaka Trading Sdn Bhd. Admin panel security control.</p></div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="assets/js/admin.js"></script>
 </body>
 </html>

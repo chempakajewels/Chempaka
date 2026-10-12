@@ -1,0 +1,83 @@
+<!--{"title":"Chempaka Club Membership","description":"Join the Chempaka Club for exclusive privileges - member prices at the counter, priority valuation services and your own digital membership card.","canonical":"/membership","ogDescription":"Member prices at the counter, priority valuation services and a digital membership card.","ogImage":"/assets/images/hero_ring.jpg","ogImageAlt":"Chempaka gold ring","scripts":["membership"]}-->
+<section class="cj-section cj-band"><div class="cj-container site-split">
+  <div class="site-stack">
+    <h1 class="cj-display-xl">Chempaka Club</h1>
+    <p class="cj-body-l cj-muted">Show your digital card at the counter to receive your member discount.</p>
+    <div class="cj-hero__actions"><a href="#apply" class="cj-btn cj-btn--primary">Join the Club</a><a href="#access" class="cj-btn cj-btn--outline">Show my card</a></div>
+  </div>
+  <div class="site-cardwrap"><div class="cj-card" role="img" aria-label="Chempaka Club digital member card">
+    <div class="cj-card__top"><span class="cj-wordmark">CHEMPAKA</span><span class="cj-card__tier">Club</span></div>
+    <div class="cj-card__chip"></div>
+    <div class="cj-card__row"><div><small>Cardholder</small><span>YOUR NAME</span></div><div style="text-align:right"><small>Member no.</small><span>CC-88470</span></div></div>
+  </div></div>
+</div></section>
+
+<section class="cj-section"><div class="cj-container site-split site-split--form">
+  <h2 class="cj-heading">How it works</h2>
+  <ol class="cj-steps">
+    <li><span><b>Apply online.</b> Your name, phone, email and IC number.</span></li>
+    <li><span><b>Get approved.</b> A boutique advisor reviews your application. Once approved, your digital card and welcome voucher are sent to your email.</span></li>
+    <li><span><b>Use it at the counter.</b> Show your card in the boutique, or send your member number on WhatsApp.</span></li>
+  </ol>
+</div></section>
+
+<section class="cj-section cj-band"><div class="cj-container">
+  <div class="cj-head"><h2 class="cj-display-l">Privileges</h2></div>
+  <div class="site-cols">
+    <div><h3>10% welcome reward</h3><p>A voucher on approval, for your next gold or jewellery purchase in any Chempaka boutique.</p></div>
+    <div><h3>VIP showroom</h3><p>Priority booking and access to our private boutique lounges, with refreshments.</p></div>
+    <div><h3>Birthday gift</h3><p>A styling consultation and a gift voucher in your birth month.</p></div>
+    <div><h3>Lifetime care</h3><p>Bring your Chempaka gold back anytime for complimentary cleaning and inspection.</p></div>
+    <div><h3>Gold valuation</h3><p>Members&rsquo; exchange rates, and priority service on gold trade-ins.</p></div>
+    <div><h3>Bespoke sizing</h3><p>Priority scheduling and design help with custom settings and resizing, directly with our master artisans.</p></div>
+  </div>
+</div></section>
+
+<section id="apply" class="cj-section"><div class="cj-container site-split site-split--form">
+  <div class="site-stack" style="gap:16px">
+    <h2 class="cj-heading">Apply</h2>
+    <p class="cj-muted" style="margin:0">Your application goes to the boutique for verification and approval.</p>
+  </div>
+  <div>
+    <form class="cj-form" id="apply-form" novalidate>
+      <div class="cj-form__row">
+        <div class="cj-field" data-field="name"><label for="m-name">Full name</label><input id="m-name" name="name" class="cj-input" placeholder="As on your IC" autocomplete="name"><span class="cj-field__msg" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#error"/></svg> Enter your full name.</span></div>
+        <div class="cj-field" data-field="phone"><label for="m-phone">Phone</label><input id="m-phone" name="phone" type="tel" class="cj-input" value="+60" placeholder="+60 12-345 6789" autocomplete="tel"><span class="cj-field__msg" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#error"/></svg> Enter a valid phone number.</span></div>
+      </div>
+      <div class="cj-form__row">
+        <div class="cj-field" data-field="email"><label for="m-email">Email</label><input id="m-email" name="email" type="email" class="cj-input" placeholder="you@example.com" autocomplete="email"><span class="cj-field__msg" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#error"/></svg> Enter a valid email address.</span></div>
+        <div class="cj-field" data-field="ic"><label for="m-ic">IC number</label><input id="m-ic" name="ic" class="cj-input" inputmode="numeric" placeholder="YYMMDD-XX-XXXX" autocomplete="off"><span class="cj-field__msg" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#error"/></svg> Enter your 12-digit IC number.</span></div>
+      </div>
+      <div class="cj-field" data-field="consent">
+        <label class="cj-check"><input type="checkbox" name="consent" id="m-consent"> I agree to the terms and privacy policy of Chempaka Trading Sdn Bhd, and consent to receive membership communications and boutique notifications.</label>
+        <span class="cj-field__msg" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#error"/></svg> Please tick to continue.</span>
+      </div>
+      <p class="site-form-error" id="apply-error" role="alert" hidden></p>
+      <button type="submit" class="cj-btn cj-btn--primary">Submit application</button>
+    </form>
+    <div class="cj-notice" id="apply-done" role="status" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#check_circle"/></svg><div><b>Application submitted</b><span id="apply-done-text"></span></div></div>
+  </div>
+</div></section>
+
+<section id="access" class="cj-section cj-band"><div class="cj-container site-split site-split--even" style="align-items:center">
+  <div class="site-stack" style="gap:20px">
+    <h2 class="cj-heading">Retrieve your card</h2>
+    <p class="cj-muted" style="margin:0">Enter the phone number and IC number you registered with.</p>
+    <form class="cj-form" id="login-form" style="width:100%" novalidate>
+      <div class="cj-form__row">
+        <div class="cj-field" data-field="phone"><label for="a-phone">Phone</label><input id="a-phone" name="phone" type="tel" class="cj-input" value="+60" placeholder="+60 12-345 6789" autocomplete="tel"><span class="cj-field__msg" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#error"/></svg> Enter your registered phone number.</span></div>
+        <div class="cj-field" data-field="ic"><label for="a-ic">IC number</label><input id="a-ic" name="ic" class="cj-input" inputmode="numeric" placeholder="YYMMDD-XX-XXXX" autocomplete="off"><span class="cj-field__msg" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#error"/></svg> Enter your 12-digit IC number.</span></div>
+      </div>
+      <p class="site-form-error" id="login-error" role="alert" hidden></p>
+      <div class="cj-hero__actions"><button type="submit" class="cj-btn cj-btn--primary">Show my card</button></div>
+    </form>
+  </div>
+  <div class="site-stack site-stack--center" style="gap:16px;align-items:center">
+    <div class="cj-card" id="member-card" data-state="empty" role="img" aria-label="Chempaka Club digital member card">
+      <div class="cj-card__top"><span class="cj-wordmark">CHEMPAKA</span><span class="cj-card__tier">Club</span></div>
+      <div class="cj-card__chip"></div>
+      <div class="cj-card__row"><div><small>Cardholder</small><span id="card-name">YOUR NAME</span></div><div style="text-align:right"><small id="card-id-label">Member no.</small><span id="card-id">CC-XXXXX</span></div></div>
+    </div>
+    <p class="cj-caption" id="card-note" style="margin:0;text-align:center;max-width:360px">Your card appears here once you have retrieved it. Show it at the counter to receive your member discount.</p>
+  </div>
+</div></section>
