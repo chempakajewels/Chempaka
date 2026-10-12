@@ -441,19 +441,51 @@
   });
 
   // ---------- counter check ----------
-  // searches the member list already loaded: member ID, the last 9 digits of the phone number, or part of the name
+  // Finds a member in the list already loaded, by any of: member ID, full name, IC number, phone number or email.
+  // Exact ID, IC, phone and email matches come first, then partial ones, then names.
+  function counterRank(m, q) {
+    var qd = digits(q);
+    var id = String(m.member_id || '').toLowerCase();
+    var email = String(m.email || '').toLowerCase();
+    var name = String(m.full_name || '').toLowerCase();
+    var ic = digits(m.ic_number);
+    var phone = digits(m.phone);
+    var idNumber = id.replace(/^cc-?/, '');
+
+    // member ID: CC-188470, cc188470, or just 188470
+    if (id && (id === q || id.replace(/-/g, '') === q.replace(/-/g, '') || (qd.length >= 5 && /^(cc-?)?\d+$/.test(q) && idNumber === qd))) return 1;
+    // email: the whole address, or a typed part of it
+    if (email && (email === q || (q.indexOf('@') !== -1 && email.indexOf(q) !== -1))) return 1;
+    // IC number: all 12 digits, with or without dashes
+    if (qd.length === 12 && ic === qd) return 1;
+    // phone number: compares the last 9 digits, so +60 12-345 6789, 0123456789 and 60123456789 all match
+    if (qd.length >= 7 && phone.length >= 7 && phone.slice(-9) === qd.slice(-9)) return 1;
+    // part of an IC number (6 to 11 digits) or part of an email
+    if (qd.length >= 6 && qd.length < 12 && /^[\d\s-]+$/.test(q) && ic.indexOf(qd) !== -1) return 2;
+    if (q.length >= 3 && !/^[\d\s+-]+$/.test(q) && email && email.indexOf(q) !== -1) return 2;
+    // name
+    if (q.length >= 2 && name.indexOf(q) !== -1) return 3;
+    return 0;
+  }
+
+  function details(m) {
+    var span = document.createElement('span');
+    span.className = 'site-counter-details';
+    span.textContent = [m.phone, m.email, 'IC ending ' + digits(m.ic_number).slice(-4)].filter(Boolean).join('  ·  ');
+    return span;
+  }
+
   $('counter-form').addEventListener('submit', function (e) {
     e.preventDefault();
     var q = $('counter-q').value.trim().toLowerCase();
     var out = $('counter-result');
     out.innerHTML = '';
     if (!q) return;
-    var qd = digits(q);
-    var hits = allMembers.filter(function (m) {
-      return (m.member_id && m.member_id.toLowerCase() === q) ||
-        (qd.length >= 7 && digits(m.phone).slice(-9) === qd.slice(-9)) ||
-        m.full_name.toLowerCase().indexOf(q) !== -1;
-    }).slice(0, 5);
+    var hits = allMembers.map(function (m) { return { m: m, rank: counterRank(m, q) }; })
+      .filter(function (x) { return x.rank > 0; })
+      .sort(function (a, b) { return a.rank - b.rank; })
+      .slice(0, 6)
+      .map(function (x) { return x.m; });
 
     function notice(icon, title, text, extra) {
       var box = document.createElement('div');
@@ -471,21 +503,21 @@
       b.textContent = title;
       d.appendChild(b);
       d.appendChild(document.createTextNode(text));
-      if (extra) { d.appendChild(document.createElement('br')); d.appendChild(extra); }
+      (extra || []).forEach(function (node) { d.appendChild(document.createElement('br')); d.appendChild(node); });
       box.appendChild(i);
       box.appendChild(d);
       out.appendChild(box);
     }
 
     if (!allMembers.length) { notice('info', 'Member list not loaded', 'Press Refresh, then check again.'); return; }
-    if (!hits.length) { notice('info', 'No member found', 'Check the spelling, or look in Member monitor.'); return; }
+    if (!hits.length) { notice('info', 'No member found', 'Try the member ID, full name, IC number, phone number or email. Or look in Member monitor.'); return; }
     hits.forEach(function (m) {
       if (m.status === 'approved') {
-        notice('check_circle', 'Active member: ' + m.full_name, m.member_id + ' · Joined ' + fmtDate(m.joined_at) + '. Member prices apply.');
+        notice('check_circle', 'Active member: ' + m.full_name, m.member_id + ' · Joined ' + fmtDate(m.joined_at) + '. Member prices apply.', [details(m)]);
       } else {
         var btn = action('Approve now', function () { approve(m); });
         btn.className = 'site-linkbtn';
-        notice('info', 'Pending: ' + m.full_name, 'Application received ' + fmtDate(m.joined_at) + ', not yet approved. Member prices do not apply.', btn);
+        notice('info', 'Pending: ' + m.full_name, 'Application received ' + fmtDate(m.joined_at) + ', not yet approved. Member prices do not apply.', [details(m), btn]);
       }
     });
   });

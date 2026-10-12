@@ -622,6 +622,9 @@ textarea.cj-input { height: auto; padding: var(--space-3) var(--space-4); min-he
 .img-ruby { background-image: url(../images/ruby_necklace.jpg); }
 .img-diamond { background-image: url(../images/diamond_necklaces.png); }
 .img-hero-blue { background-image: url(../images/hero_background_blue_2200.jpg); }
+/* second hero slide: the ring and flower sit right of centre on a wide screen, centred on a phone, clear of the headline */
+.img-hero-ring { background-image: url(../images/hero_blue_ring.jpg); background-position: 30% 55%; }
+@media (max-width: 900px) { .img-hero-ring { background-position: 50% 55%; } }
 /* studio photography, gold on black */
 .img-a-hero { background-image: url(../images/album/hero-layered-necklace.jpg); }
 .img-a-bead { background-image: url(../images/album/necklace-bead.jpg); }
@@ -924,3 +927,4 @@ html { scroll-padding-top: 140px; }
   .site-admin-bar .cj-container { height: auto; padding-top: var(--space-3); padding-bottom: var(--space-3); flex-wrap: wrap; }
   .site-admin-bar__email { display: none; }
 }
+.site-counter-details { display: inline-block; margin-top: var(--space-1); font-size: 13px; line-height: 20px; color: var(--ink-muted); overflow-wrap: anywhere; }
