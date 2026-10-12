@@ -9,6 +9,25 @@ const path = require('path');
 const root = path.join(__dirname, '..');
 const SITE = 'https://www.chempakajewel.com';
 const read = (p) => fs.readFileSync(path.join(root, p), 'utf8');
+// width, height and MIME type of a local JPEG or PNG, for the og:image tags (null for anything else)
+function imageInfo(rel) {
+  try {
+    const buf = fs.readFileSync(path.join(root, rel.replace(/^\//, '')));
+    if (buf[0] === 0x89 && buf[1] === 0x50) return { w: buf.readUInt32BE(16), h: buf.readUInt32BE(20), type: 'image/png' };
+    if (buf[0] === 0xff && buf[1] === 0xd8) {
+      let i = 2;
+      while (i + 9 < buf.length) {
+        if (buf[i] !== 0xff) { i++; continue; }
+        const marker = buf[i + 1];
+        if (marker >= 0xc0 && marker <= 0xcf && marker !== 0xc4 && marker !== 0xc8 && marker !== 0xcc) {
+          return { h: buf.readUInt16BE(i + 5), w: buf.readUInt16BE(i + 7), type: 'image/jpeg' };
+        }
+        i += 2 + buf.readUInt16BE(i + 2);
+      }
+    }
+  } catch (e) { /* no size tags if the file cannot be read */ }
+  return null;
+}
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
 const partials = {
@@ -34,7 +53,7 @@ function head(meta, file) {
     lines.push(
       `<link rel="canonical" href="${url}">`,
       '<meta property="og:type" content="website">',
-      '<meta property="og:site_name" content="Chempaka">',
+      '<meta property="og:site_name" content="Chempaka Jewels">',
       '<meta property="og:locale" content="en_MY">',
       `<meta property="og:title" content="${esc(meta.title)}">`,
       `<meta property="og:description" content="${esc(meta.ogDescription || meta.description)}">`,
@@ -44,8 +63,10 @@ function head(meta, file) {
       `<meta name="twitter:description" content="${esc(meta.ogDescription || meta.description)}">`
     );
     if (img) {
+      const info = imageInfo(meta.ogImage);
       lines.push(
         `<meta property="og:image" content="${img}">`,
+        ...(info ? [`<meta property="og:image:type" content="${info.type}">`, `<meta property="og:image:width" content="${info.w}">`, `<meta property="og:image:height" content="${info.h}">`] : []),
         `<meta property="og:image:alt" content="${esc(meta.ogImageAlt || meta.title)}">`,
         `<meta name="twitter:image" content="${img}">`
       );
