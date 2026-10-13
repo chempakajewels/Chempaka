@@ -52,7 +52,7 @@
       (value('note') ? '\nNote: ' + value('note') : '');
 
     document.getElementById('booking-summary').textContent = ' ' + summary;
-    document.getElementById('booking-wa').href = 'https://wa.me/60178113204?text=' + encodeURIComponent(text);
+    document.getElementById('booking-wa').href = 'https://wa.me/60136612379?text=' + encodeURIComponent(text);
     form.hidden = true;
     result.hidden = false;
     result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });

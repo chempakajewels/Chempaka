@@ -3,7 +3,7 @@
 (function () {
   'use strict';
 
-  var WA = 'https://wa.me/60178113204?text=';
+  var WA = 'https://wa.me/60136612379?text=';
 
   var CHAPTERS = [
     {

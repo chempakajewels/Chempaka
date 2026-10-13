@@ -98,6 +98,9 @@
     if (title && typeof map.hero_title === 'string' && map.hero_title) title.innerHTML = map.hero_title;
     var sub = $('#hero-subtitle');
     if (sub && typeof map.hero_subtitle === 'string' && map.hero_subtitle) sub.textContent = map.hero_subtitle;
+    // other scripts (gold.js) read the settings too
+    window.ChempakaSettings = map;
+    try { d.dispatchEvent(new CustomEvent('chempaka:settings', { detail: map })); } catch (e) {}
   }
 
   var KEY = 'chempaka-settings';

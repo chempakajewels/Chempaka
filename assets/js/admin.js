@@ -20,6 +20,11 @@
   var limit = { pending: PAGE_SIZE, approved: PAGE_SIZE };
   var flashText = '';
   var editing = null;
+  var loadedGold = '';
+  var loadedGoldUpdated = '';
+  var marketNow = null;
+  // the markup the site uses until one is published; keep in step with DEFAULT_MARKUP in assets/js/gold.js
+  var DEFAULT_MARKUP = 72.4;
 
   // ---------- small helpers ----------
   function show(el, on) { el.hidden = !on; }
@@ -537,8 +542,55 @@
         else if (row.key === 'hero_title') $('set-title').value = v || '';
         else if (row.key === 'hero_subtitle') $('set-sub').value = v || '';
         else if (row.key === 'store_announcements') $('set-ann').value = (Array.isArray(v) && v[0]) || '';
+        else if (row.key === 'gold_markup') $('set-markup').value = v ? String(v) : '';
+        else if (row.key === 'gold_rate_916') { loadedGold = v ? String(v) : ''; $('set-gold').value = loadedGold; }
+        else if (row.key === 'gold_rate_updated') loadedGoldUpdated = v ? String(v) : '';
       });
+      goldNote();
+      goldPreview();
     });
+    loadMarket();
+  }
+
+  // the live market price, only to show staff what the automatic price comes to
+  function loadMarket() {
+    if (!window.fetch) return;
+    fetch('/api/gold', { headers: { accept: 'application/json' } })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function (d) { marketNow = d && d.g916 > 0 ? d.g916 : null; goldPreview(); })
+      .catch(function () { marketNow = null; goldPreview(); });
+  }
+
+  function numberOf(id) {
+    var raw = $(id).value.replace(/RM|,|\s/gi, '');
+    return raw !== '' && /^[0-9]*\.?[0-9]+$/.test(raw) ? parseFloat(raw) : null;
+  }
+  function rm(n) { return 'RM ' + n.toLocaleString('en-MY', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+
+  // what the site will show, from the two boxes as they are now
+  function goldPreview() {
+    var el = $('gold-preview');
+    var fixed = numberOf('set-gold');
+    var typed = numberOf('set-markup');
+    var markup = typed === null ? DEFAULT_MARKUP : typed;
+    var markupPart = typed === null ? 'standard markup ' + rm(DEFAULT_MARKUP) : 'markup ' + rm(markup);
+    if (fixed > 0) { el.textContent = 'The site shows the fixed rate below: ' + rm(fixed) + '.'; return; }
+    if (marketNow === null) { el.textContent = 'The market price could not be read just now. The site uses the ' + markupPart + '.'; return; }
+    el.textContent = 'Automatic price now: ' + rm(Math.round(marketNow + markup)) + ' (market ' + rm(marketNow) + ' + ' + markupPart + '). It follows the market by itself.';
+  }
+  $('set-markup').addEventListener('input', goldPreview);
+  $('set-gold').addEventListener('input', goldPreview);
+
+  // under the rate box: when it was published, and a reminder once it is more than a day old
+  function goldNote() {
+    var n = $('gold-rate-note');
+    var base = 'Type a rate to show it instead of the automatic price, with the date you publish it. Leave empty to use the automatic price.';
+    if (loadedGold && loadedGoldUpdated && !isNaN(new Date(loadedGoldUpdated))) {
+      var age = Date.now() - new Date(loadedGoldUpdated).getTime();
+      n.textContent = 'Published ' + new Date(loadedGoldUpdated).toLocaleString('en-MY', { day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' }) + '.' + (age > 24 * 3600 * 1000 ? ' This rate is more than a day old. Publish again to update the date.' : '') + ' ' + base;
+    } else {
+      n.textContent = base;
+    }
   }
 
   $('settings-reset').addEventListener('click', function () {
@@ -556,12 +608,39 @@
     errEl.hidden = true;
     btn.disabled = true;
     btn.textContent = 'Publishing...';
+    // the rate: a number, or empty to show the live market price
+    var goldRaw = $('set-gold').value.replace(/RM|,|\s/gi, '');
+    var goldNum = goldRaw === '' ? 0 : parseFloat(goldRaw);
+    if (goldRaw !== '' && !(goldNum > 0 && goldNum < 100000 && /^[0-9]*\.?[0-9]+$/.test(goldRaw))) {
+      errEl.textContent = 'Enter the gold rate as a number, for example 574.00, or leave it empty.';
+      errEl.hidden = false;
+      btn.disabled = false;
+      btn.textContent = 'Publish changes live';
+      $('set-gold').focus();
+      return;
+    }
+    var goldStr = goldRaw === '' ? '' : goldNum.toFixed(2);
+    var markupRaw = $('set-markup').value.replace(/RM|,|\s/gi, '');
+    if (markupRaw !== '' && !/^[0-9]*\.?[0-9]+$/.test(markupRaw)) {
+      errEl.textContent = 'Enter the markup as a number of ringgit per gram, for example 72.40, or leave it empty.';
+      errEl.hidden = false;
+      btn.disabled = false;
+      btn.textContent = 'Publish changes live';
+      $('set-markup').focus();
+      return;
+    }
+    var markupStr = markupRaw === '' ? '' : parseFloat(markupRaw).toFixed(2);
+    // the date moves only when the rate itself changes
+    var goldWhen = goldStr === '' ? '' : (goldStr === loadedGold && loadedGoldUpdated ? loadedGoldUpdated : new Date().toISOString());
     // the hero image setting is not touched: the new home page chooses its photographs in code
     var payload = [
       { key: 'promo_banner_text', value: JSON.stringify($('set-promo').value) },
       { key: 'hero_title', value: JSON.stringify($('set-title').value) },
       { key: 'hero_subtitle', value: JSON.stringify($('set-sub').value) },
-      { key: 'store_announcements', value: JSON.stringify([$('set-ann').value]) }
+      { key: 'store_announcements', value: JSON.stringify([$('set-ann').value]) },
+      { key: 'gold_markup', value: JSON.stringify(markupStr) },
+      { key: 'gold_rate_916', value: JSON.stringify(goldStr) },
+      { key: 'gold_rate_updated', value: JSON.stringify(goldWhen) }
     ];
     sb.from('site_settings').upsert(payload).then(function (res) {
       btn.disabled = false;
@@ -573,6 +652,12 @@
         return;
       }
       try { sessionStorage.removeItem('chempaka-settings'); } catch (e2) {}
+      loadedGold = goldStr;
+      loadedGoldUpdated = goldWhen;
+      $('set-gold').value = goldStr;
+      $('set-markup').value = markupStr;
+      goldNote();
+      goldPreview();
       ok.hidden = false;
     });
   });
