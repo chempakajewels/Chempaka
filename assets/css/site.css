@@ -886,6 +886,9 @@ html { scroll-padding-top: 140px; }
 .site-toolbar .cj-field { margin: 0; }
 .site-toolbar__actions { display: flex; gap: var(--space-2); }
 .site-more { margin-top: var(--space-4); }
+/* gold price post: the picture beside its controls */
+.site-postprev { display: flex; justify-content: center; align-items: flex-start; }
+.site-postprev canvas { display: block; width: auto; height: auto; max-width: 100%; max-height: 72vh; border: 1px solid var(--hairline); background: var(--surface-raised); }
 .cj-choice .cj-badge { margin-left: var(--space-2); }
 .cj-notice .site-linkbtn { margin-left: var(--space-1); }
 

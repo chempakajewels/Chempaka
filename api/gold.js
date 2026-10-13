@@ -1,21 +1,23 @@
-// Gold price for the website: the international gold price (XAU in USD per troy ounce) converted to
-// Malaysian ringgit per gram, for 999 (24K) and 916 (22K) gold.
+// Gold price for the website: Bank Negara Malaysia's Kijang Emas price, converted to ringgit per gram.
 //
-// Sources, both free and without an API key:
-//   gold price      https://api.gold-api.com/price/XAU
-//   USD to MYR      https://api.frankfurter.dev (European Central Bank rates), with https://open.er-api.com as a second source
+// Source, free and without an API key:
+//   https://api.bnm.gov.my/public/kijang-emas   (Bank Negara open API, one price list per working day)
+// It gives the buying and selling price of a 1 oz Kijang Emas coin in ringgit. Chempaka Jewels works from the
+// selling price, so the figure returned here is that price divided by the grams in an ounce. The shop's own
+// adjustment (minus RM 15 a gram) is applied on the website, see assets/js/gold.js.
 //
-// On Vercel this file is a serverless function at /api/gold. The response is cached at the edge for 15 minutes,
-// so the sources are called a few times an hour whatever the traffic. scripts/dev-server.js serves it locally.
-// The figure is an indicative price from the international market, not the boutique's counter rate.
+// On Vercel this file is a serverless function at /api/gold. The response is cached at the edge for 30 minutes,
+// so Bank Negara is called a few times an hour whatever the traffic. scripts/dev-server.js serves it locally.
+// The figure is a reference price, not the boutique's counter rate.
 
 var OUNCE_GRAMS = 31.1034768;
+var BNM_URL = 'https://api.bnm.gov.my/public/kijang-emas';
 
-async function getJson(url) {
+async function getJson(url, headers) {
   var ctl = new AbortController();
   var timer = setTimeout(function () { ctl.abort(); }, 6000);
   try {
-    var r = await fetch(url, { signal: ctl.signal, headers: { accept: 'application/json' } });
+    var r = await fetch(url, { signal: ctl.signal, headers: headers });
     if (!r.ok) throw new Error('HTTP ' + r.status);
     return await r.json();
   } finally {
@@ -23,43 +25,35 @@ async function getJson(url) {
   }
 }
 
-function plausibleRate(v) { return v > 2 && v < 8; }
-
-async function usdToMyr() {
-  try {
-    var a = await getJson('https://api.frankfurter.dev/v1/latest?base=USD&symbols=MYR');
-    var va = Number(a && a.rates && a.rates.MYR);
-    if (plausibleRate(va)) return va;
-  } catch (e) { /* fall through to the second source */ }
-  var b = await getJson('https://open.er-api.com/v6/latest/USD');
-  var vb = Number(b && b.rates && b.rates.MYR);
-  if (plausibleRate(vb)) return vb;
-  throw new Error('no exchange rate');
-}
-
 function round2(n) { return Math.round(n * 100) / 100; }
+
+// Bank Negara writes "2026-10-13 02:00:05" in Malaysian time
+function updatedIso(text) {
+  var d = new Date(String(text || '').replace(' ', 'T') + '+08:00');
+  return isNaN(d) ? new Date().toISOString() : d.toISOString();
+}
 
 module.exports = async function handler(req, res) {
   try {
-    var results = await Promise.all([getJson('https://api.gold-api.com/price/XAU'), usdToMyr()]);
-    var gold = results[0];
-    var myr = results[1];
-    var usdPerOunce = Number(gold && gold.price);
-    if (!(usdPerOunce > 500 && usdPerOunce < 20000)) throw new Error('implausible gold price');
+    var body = await getJson(BNM_URL, { accept: 'application/vnd.BNM.API.v1+json' });
+    var day = body && body.data;
+    var coin = day && day.one_oz;
+    var selling = Number(coin && coin.selling);
+    var buying = Number(coin && coin.buying);
+    // a 1 oz coin is thousands of ringgit; anything far from that is a bad reading
+    if (!(selling > 1000 && selling < 200000) || !(buying > 1000 && buying < selling * 1.5)) throw new Error('implausible price');
 
-    var g999 = (usdPerOunce * myr) / OUNCE_GRAMS;
-    var updated = gold && gold.updatedAt && !isNaN(new Date(gold.updatedAt)) ? new Date(gold.updatedAt).toISOString() : new Date().toISOString();
-
-    res.setHeader('Cache-Control', 'public, s-maxage=900, stale-while-revalidate=3600');
+    res.setHeader('Cache-Control', 'public, s-maxage=1800, stale-while-revalidate=21600');
     res.status(200).json({
       currency: 'MYR',
       unit: 'gram',
-      g999: round2(g999),
-      g916: round2(g999 * 0.916),
-      usdPerOunce: round2(usdPerOunce),
-      usdMyr: Math.round(myr * 10000) / 10000,
-      updatedAt: updated,
-      source: 'gold-api.com and frankfurter.dev',
+      perGram: round2(selling / OUNCE_GRAMS),
+      perGramBuying: round2(buying / OUNCE_GRAMS),
+      oneOzSelling: selling,
+      oneOzBuying: buying,
+      effectiveDate: String(day.effective_date || ''),
+      updatedAt: updatedIso(body.meta && body.meta.last_updated),
+      source: 'Bank Negara Malaysia, Kijang Emas selling price',
     });
   } catch (e) {
     res.setHeader('Cache-Control', 'no-store');

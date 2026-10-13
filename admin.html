@@ -52,6 +52,7 @@
     <button type="button" class="cj-choice" data-tab="counter" aria-pressed="true">Counter check</button>
     <button type="button" class="cj-choice" data-tab="members" aria-pressed="false">Member monitor <span class="cj-badge cj-badge--member" id="tab-pending-badge" hidden>0</span></button>
     <button type="button" class="cj-choice" data-tab="content" aria-pressed="false">Content management</button>
+    <button type="button" class="cj-choice" data-tab="post" aria-pressed="false">Gold price post</button>
   </div>
 
   <div id="tab-counter" data-panel>
@@ -116,12 +117,31 @@
         <div class="cj-field"><label for="set-title">Home hero title (HTML supported)</label><input id="set-title" class="cj-input" placeholder="Where gold makes memories."></div>
         <div class="cj-field"><label for="set-sub">Home hero subtitle</label><input id="set-sub" class="cj-input" placeholder="Hand-finished gold jewellery."></div>
         <div class="cj-field"><label for="set-ann">Header announcement</label><input id="set-ann" class="cj-input" placeholder="Gold exchange and valuation available at the Shah Alam boutique"><span class="cj-field__msg">Appears in the middle of the top row of the header.</span></div>
-        <div class="cj-field"><label for="set-markup">Markup over the market gold price (RM per gram)</label><input id="set-markup" class="cj-input" inputmode="decimal" placeholder="72.40" autocomplete="off"><span class="cj-field__msg" id="gold-preview" aria-live="polite">Checking the market price...</span></div>
+        <div class="cj-field"><label for="set-adjust">Adjustment to the Bank Negara gold price (RM per gram)</label><input id="set-adjust" class="cj-input" inputmode="decimal" placeholder="-15.00" autocomplete="off"><span class="cj-field__msg" id="gold-preview" aria-live="polite">Checking Bank Negara’s price...</span></div>
         <div class="cj-field"><label for="set-gold">Fixed 916 rate (RM per gram), optional</label><input id="set-gold" class="cj-input" inputmode="decimal" placeholder="Leave empty to use the automatic price" autocomplete="off"><span class="cj-field__msg" id="gold-rate-note">Type a rate to show it instead of the automatic price, with the date you publish it. Leave empty to use the automatic price.</span></div>
         <p class="site-form-error" id="settings-error" role="alert" hidden></p>
         <div class="cj-hero__actions"><button type="submit" class="cj-btn cj-btn--primary" id="settings-save">Publish changes live</button><button type="button" class="cj-btn cj-btn--outline" id="settings-reset">Discard changes</button></div>
         <div class="cj-notice" id="settings-ok" role="status" hidden><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#check_circle"/></svg><div><b>Settings updated</b>Changes are live on the website.</div></div>
       </form>
+    </div>
+  </div>
+
+  <div id="tab-post" data-panel hidden>
+    <div class="site-split site-split--form" style="gap:64px">
+      <div class="site-stack" style="gap:24px">
+        <h2 class="cj-heading">Gold price post</h2>
+        <p class="cj-muted" style="margin:0">Today&rsquo;s gold rate as a picture, sized for Instagram or TikTok, ready to post from the boutique&rsquo;s account. It shows the same rate as the website.</p>
+        <div class="cj-choices" role="group" aria-label="Picture size" id="post-sizes">
+          <button type="button" class="cj-choice" data-size="instagram" aria-pressed="true">Instagram 4:5</button>
+          <button type="button" class="cj-choice" data-size="square" aria-pressed="false">Instagram 1:1</button>
+          <button type="button" class="cj-choice" data-size="tiktok" aria-pressed="false">TikTok 9:16</button>
+        </div>
+        <p class="cj-caption" id="post-info" style="margin:0"></p>
+        <div class="cj-hero__actions"><button type="button" class="cj-btn cj-btn--primary" id="post-download"><svg class="cj-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#download"/></svg> Download PNG</button><button type="button" class="cj-btn cj-btn--outline" id="post-share" hidden>Share</button></div>
+        <p class="site-form-error" id="post-error" role="alert" hidden></p>
+        <p class="cj-caption" id="post-rate" style="margin:0"></p>
+      </div>
+      <div class="site-postprev"><canvas id="post-canvas" role="img" aria-label="Preview of the gold price picture"></canvas></div>
     </div>
   </div>
 </div></section>
@@ -165,6 +185,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
 <script src="assets/js/db.js"></script>
+<script src="assets/js/gold-card.js"></script>
 <script src="assets/js/admin.js"></script>
 </body>
 </html>

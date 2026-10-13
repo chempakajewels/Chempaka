@@ -21,8 +21,9 @@
   var loadedGold = '';
   var loadedGoldUpdated = '';
   var marketNow = null;
-  // the markup the site uses until one is published; keep in step with DEFAULT_MARKUP in assets/js/gold.js
-  var DEFAULT_MARKUP = 72.4;
+  var marketDate = '';
+  // the adjustment to Bank Negara's price that the site uses until one is published; keep in step with DEFAULT_ADJUST in assets/js/gold.js
+  var DEFAULT_ADJUST = -15;
 
   // ---------- small helpers ----------
   function show(el, on) { el.hidden = !on; }
@@ -111,6 +112,7 @@
       Array.prototype.forEach.call(document.querySelectorAll('[data-panel]'), function (p) {
         p.hidden = p.id !== 'tab-' + btn.getAttribute('data-tab');
       });
+      if (btn.getAttribute('data-tab') === 'post') renderPost();
     });
   });
 
@@ -540,7 +542,7 @@
         else if (row.key === 'hero_title') $('set-title').value = v || '';
         else if (row.key === 'hero_subtitle') $('set-sub').value = v || '';
         else if (row.key === 'store_announcements') $('set-ann').value = (Array.isArray(v) && v[0]) || '';
-        else if (row.key === 'gold_markup') $('set-markup').value = v ? String(v) : '';
+        else if (row.key === 'gold_adjust') $('set-adjust').value = v ? String(v) : '';
         else if (row.key === 'gold_rate_916') { loadedGold = v ? String(v) : ''; $('set-gold').value = loadedGold; }
         else if (row.key === 'gold_rate_updated') loadedGoldUpdated = v ? String(v) : '';
       });
@@ -550,12 +552,12 @@
     loadMarket();
   }
 
-  // the live market price, only to show staff what the automatic price comes to
+  // Bank Negara's price, only to show staff what the automatic price comes to
   function loadMarket() {
     if (!window.fetch) return;
     fetch('/api/gold', { headers: { accept: 'application/json' } })
       .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-      .then(function (d) { marketNow = d && d.g916 > 0 ? d.g916 : null; goldPreview(); })
+      .then(function (d) { marketNow = d && d.perGram > 0 ? d.perGram : null; marketDate = (d && d.effectiveDate) || ''; goldPreview(); })
       .catch(function () { marketNow = null; goldPreview(); });
   }
 
@@ -563,21 +565,137 @@
     var raw = $(id).value.replace(/RM|,|\s/gi, '');
     return raw !== '' && /^[0-9]*\.?[0-9]+$/.test(raw) ? parseFloat(raw) : null;
   }
+  // the adjustment can be negative: "-15", "-15.00" or "+10"; empty or anything else is null
+  function signedOf(id) {
+    var raw = $(id).value.replace(/RM|,|\s/gi, '').replace(/\u2212/g, '-');
+    return /^[-+]?[0-9]*\.?[0-9]+$/.test(raw) ? parseFloat(raw) : null;
+  }
   function rm(n) { return 'RM ' + n.toLocaleString('en-MY', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function rmSigned(n) { return (n < 0 ? '-' : '+') + rm(Math.abs(n)); }
 
   // what the site will show, from the two boxes as they are now
   function goldPreview() {
     var el = $('gold-preview');
     var fixed = numberOf('set-gold');
-    var typed = numberOf('set-markup');
-    var markup = typed === null ? DEFAULT_MARKUP : typed;
-    var markupPart = typed === null ? 'standard markup ' + rm(DEFAULT_MARKUP) : 'markup ' + rm(markup);
+    var typed = signedOf('set-adjust');
+    var adjust = typed === null ? DEFAULT_ADJUST : typed;
+    var adjustPart = (typed === null ? 'standard adjustment ' : 'adjustment ') + rmSigned(adjust);
+    renderPost();
     if (fixed > 0) { el.textContent = 'The site shows the fixed rate below: ' + rm(fixed) + '.'; return; }
-    if (marketNow === null) { el.textContent = 'The market price could not be read just now. The site uses the ' + markupPart + '.'; return; }
-    el.textContent = 'Automatic price now: ' + rm(Math.round(marketNow + markup)) + ' (market ' + rm(marketNow) + ' + ' + markupPart + '). It follows the market by itself.';
+    if (marketNow === null) { el.textContent = 'Bank Negara\u2019s price could not be read just now. The site uses the ' + adjustPart + ' per gram.'; return; }
+    renderPost();
+    el.textContent = 'Automatic price now: ' + rm(Math.round(marketNow + adjust)) + ' (Bank Negara ' + rm(marketNow) + (marketDate ? ' on ' + marketDate : '') + ', ' + adjustPart + '). It follows Bank Negara\u2019s price by itself.';
   }
-  $('set-markup').addEventListener('input', goldPreview);
+  $('set-adjust').addEventListener('input', goldPreview);
   $('set-gold').addEventListener('input', goldPreview);
+
+  // ---------- gold price post ----------
+  // The rate as a picture for Instagram or TikTok, drawn by assets/js/gold-card.js. It shows the price the site shows,
+  // worked out from the boxes above in the same way as assets/js/gold.js.
+  var postSize = 'instagram';
+  var postToken = 0;
+  var postCanvas = $('post-canvas');
+  var FILE_SIZES = { instagram: 'instagram-4x5', square: 'instagram-1x1', tiktok: 'tiktok-9x16' };
+
+  function dayLabel(v) {
+    var d = v ? new Date(v) : new Date();
+    if (isNaN(d)) d = new Date();
+    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+  }
+  function todayStamp() {
+    var d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+
+  // { price, label, how }, or null when there is no price to show
+  function postRate() {
+    var fixed = numberOf('set-gold');
+    if (fixed > 0) {
+      var published = loadedGoldUpdated && fixed.toFixed(2) === loadedGold;
+      return { price: fixed, label: dayLabel(published ? loadedGoldUpdated : null), how: 'the fixed rate from Content management' };
+    }
+    if (marketNow === null) return null;
+    var typed = signedOf('set-adjust');
+    var adjust = typed === null ? DEFAULT_ADJUST : typed;
+    return { price: Math.round(marketNow + adjust), label: dayLabel(marketDate ? marketDate + 'T00:00:00' : null), how: 'Bank Negara\u2019s price ' + rmSigned(adjust) };
+  }
+
+  function setPostBusy(on) { $('post-download').disabled = on; $('post-share').disabled = on; }
+
+  function renderPost() {
+    var panel = $('tab-post');
+    if (!panel || panel.hidden || !window.ChempakaGoldCard) return;
+    var rate = postRate();
+    var err = $('post-error');
+    var f = ChempakaGoldCard.FORMATS[postSize];
+    $('post-info').textContent = f.w + ' \u00d7 ' + f.h + ' px, PNG. ' + f.note + '.';
+    if (!rate) {
+      postCanvas.width = f.w; postCanvas.height = f.h;
+      postCanvas.getContext('2d').clearRect(0, 0, f.w, f.h);
+      setPostBusy(true);
+      err.textContent = 'The gold price could not be read just now. Press Refresh, or type a fixed rate in Content management.';
+      err.hidden = false;
+      $('post-rate').textContent = '';
+      return;
+    }
+    err.hidden = true;
+    var token = ++postToken;
+    setPostBusy(true);
+    ChempakaGoldCard.render(postCanvas, postSize, rate).then(function () {
+      if (token !== postToken) return;
+      setPostBusy(false);
+      $('post-rate').textContent = 'On the picture: ' + rm(rate.price) + ' per gram (916), ' + rate.how + ', dated ' + rate.label + '. It matches the website once your settings are published.';
+    }, function () {
+      if (token !== postToken) return;
+      err.textContent = 'Could not draw the picture. Reload the page and try again.';
+      err.hidden = false;
+    });
+  }
+
+  // the picture as a file, drawn fresh so it is exactly what the preview shows
+  function postFile() {
+    var rate = postRate();
+    if (!rate) return Promise.reject(new Error('no price'));
+    return ChempakaGoldCard.render(postCanvas, postSize, rate).then(ChempakaGoldCard.toBlob).then(function (blob) {
+      return new File([blob], 'chempaka-gold-rate-' + todayStamp() + '-' + FILE_SIZES[postSize] + '.png', { type: 'image/png' });
+    });
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('#post-sizes [data-size]'), function (b) {
+    b.addEventListener('click', function () {
+      postSize = b.getAttribute('data-size');
+      Array.prototype.forEach.call(document.querySelectorAll('#post-sizes [data-size]'), function (o) { o.setAttribute('aria-pressed', String(o === b)); });
+      renderPost();
+    });
+  });
+
+  $('post-download').addEventListener('click', function () {
+    postFile().then(function (file) {
+      var url = URL.createObjectURL(file);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = file.name;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+    }, function () {
+      $('post-error').textContent = 'Could not make the picture. Press Refresh and try again.';
+      $('post-error').hidden = false;
+    });
+  });
+
+  // on a phone the picture can go straight to Instagram or TikTok through the share sheet
+  try {
+    if (navigator.canShare && navigator.share && navigator.canShare({ files: [new File([''], 'a.png', { type: 'image/png' })] })) {
+      $('post-share').hidden = false;
+      $('post-share').addEventListener('click', function () {
+        postFile().then(function (file) {
+          return navigator.share({ files: [file], title: 'Chempaka gold rate' });
+        }).catch(function (e) { if (e && e.name !== 'AbortError') { $('post-error').textContent = 'Sharing did not work here. Use Download PNG instead.'; $('post-error').hidden = false; } });
+      });
+    }
+  } catch (e) { /* no share sheet: the download button is enough */ }
 
   // under the rate box: when it was published, and a reminder once it is more than a day old
   function goldNote() {
@@ -618,16 +736,17 @@
       return;
     }
     var goldStr = goldRaw === '' ? '' : goldNum.toFixed(2);
-    var markupRaw = $('set-markup').value.replace(/RM|,|\s/gi, '');
-    if (markupRaw !== '' && !/^[0-9]*\.?[0-9]+$/.test(markupRaw)) {
-      errEl.textContent = 'Enter the markup as a number of ringgit per gram, for example 72.40, or leave it empty.';
+    var adjustRaw = $('set-adjust').value.replace(/RM|,|\s/gi, '').replace(/\u2212/g, '-');
+    var adjustNum = signedOf('set-adjust');
+    if (adjustRaw !== '' && (adjustNum === null || Math.abs(adjustNum) >= 10000)) {
+      errEl.textContent = 'Enter the adjustment as a number of ringgit per gram, for example -15.00 to take RM 15 off, or leave it empty.';
       errEl.hidden = false;
       btn.disabled = false;
       btn.textContent = 'Publish changes live';
-      $('set-markup').focus();
+      $('set-adjust').focus();
       return;
     }
-    var markupStr = markupRaw === '' ? '' : parseFloat(markupRaw).toFixed(2);
+    var adjustStr = adjustRaw === '' ? '' : adjustNum.toFixed(2);
     // the date moves only when the rate itself changes
     var goldWhen = goldStr === '' ? '' : (goldStr === loadedGold && loadedGoldUpdated ? loadedGoldUpdated : new Date().toISOString());
     // the hero image setting is not touched: the new home page chooses its photographs in code
@@ -636,7 +755,7 @@
       { key: 'hero_title', value: JSON.stringify($('set-title').value) },
       { key: 'hero_subtitle', value: JSON.stringify($('set-sub').value) },
       { key: 'store_announcements', value: JSON.stringify([$('set-ann').value]) },
-      { key: 'gold_markup', value: JSON.stringify(markupStr) },
+      { key: 'gold_adjust', value: JSON.stringify(adjustStr) },
       { key: 'gold_rate_916', value: JSON.stringify(goldStr) },
       { key: 'gold_rate_updated', value: JSON.stringify(goldWhen) }
     ];
@@ -653,7 +772,7 @@
       loadedGold = goldStr;
       loadedGoldUpdated = goldWhen;
       $('set-gold').value = goldStr;
-      $('set-markup').value = markupStr;
+      $('set-adjust').value = adjustStr;
       goldNote();
       goldPreview();
       ok.hidden = false;

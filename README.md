@@ -31,8 +31,14 @@ The membership form, the card lookup, the admin portal and the announcement text
 
 ## Gold price
 
-The 916 gold price on the home page and the showcase is automatic. `api/gold.js` is a Vercel serverless function (served locally by `scripts/dev-server.js` as `/api/gold`) that takes the international gold price (gold-api.com, USD per ounce) and the USD to MYR rate (frankfurter.dev, with open.er-api.com as a backup) and returns MYR per gram for 999 and 916 gold. Vercel caches the answer for 15 minutes, so the sources are called a few times an hour whatever the traffic. No API key is needed.
+The 916 gold price on the home page and the showcase is automatic and follows Bank Negara Malaysia. `api/gold.js` is a Vercel serverless function (served locally by `scripts/dev-server.js` as `/api/gold`) that reads Bank Negara’s Kijang Emas price list (`api.bnm.gov.my/public/kijang-emas`, one list per working day, no API key) and returns the selling price of a 1 oz coin divided by 31.1035 g, in ringgit per gram. Vercel caches the answer for 30 minutes, so Bank Negara is called a few times an hour whatever the traffic.
 
-`assets/js/gold.js` shows the price: the live 916 market price plus Chempaka Jewels' markup (RM per gram, rounded to the whole ringgit). The markup is set in the admin (Content management) and defaults to RM 72.40, which made today's rate RM 574. A fixed rate typed in the admin overrides the automatic price. The last good market price is kept in the browser, so a failed request falls back to it, or to "Ask us" if there is none.
+`assets/js/gold.js` shows the price: Bank Negara’s selling price per gram plus Chempaka Jewels’ adjustment (RM per gram, rounded to the whole ringgit). The adjustment is set in the admin (Content management, key `gold_adjust`) and defaults to -RM 15, so the rate is Bank Negara’s price minus RM 15. A fixed rate typed in the admin overrides the automatic price. The last good price is kept in the browser, so a failed request falls back to it, or to "Ask us" if there is none.
 
-The boutique's counter rate can differ, and the page says so.
+The boutique’s counter rate can differ, and the page says so.
+
+### Gold price post (Instagram and TikTok)
+
+Admin > Gold price post turns today's rate into a picture to post: Instagram 4:5 (1080 × 1350), Instagram 1:1 (1080 × 1080) or TikTok, Reels and Stories 9:16 (1080 × 1920), as a PNG. It shows the same rate as the website (the fixed rate if one is typed, otherwise Bank Negara's price plus the adjustment) and follows the boxes in Content management, so check the rate there first. On a phone a Share button opens the share sheet, which can go straight to Instagram or TikTok.
+
+`assets/js/gold-card.js` draws it in the browser from `assets/images/gold-card-bg.jpg`, the emblem and the site fonts; nothing is uploaded. The name in the footer is `SHOP` at the top of that file, the WhatsApp number and web address sit beside it. The 9:16 size keeps its text out of the strips that TikTok and Stories cover with their own buttons.
