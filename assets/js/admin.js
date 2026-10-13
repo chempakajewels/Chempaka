@@ -10,10 +10,8 @@
   var PHONE_RE = /^\+?[0-9\s\-]{8,15}$/;
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  var sb = null;
-  if (typeof supabase !== 'undefined' && typeof SUPABASE_URL !== 'undefined' && typeof SUPABASE_ANON_KEY !== 'undefined' && SUPABASE_URL !== 'YOUR_SUPABASE_URL_HERE') {
-    sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-  }
+  // the shared client (assets/js/db.js), which goes through this site's own domain first
+  var sb = window.ChempakaDB ? ChempakaDB.client() : null;
 
   var $ = function (id) { return document.getElementById(id); };
   var allMembers = [];

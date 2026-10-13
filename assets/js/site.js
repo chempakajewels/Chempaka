@@ -108,8 +108,8 @@
   try { cached = JSON.parse(sessionStorage.getItem(KEY) || 'null'); } catch (e) {}
   if (cached && Date.now() - cached.at < 5 * 60 * 1000) {
     apply(cached.map);
-  } else if (typeof supabase !== 'undefined' && typeof SUPABASE_URL !== 'undefined' && SUPABASE_URL !== 'YOUR_SUPABASE_URL_HERE' && $('#promo-text')) {
-    supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY).from('site_settings').select('*').then(function (res) {
+  } else if (window.ChempakaDB && ChempakaDB.client() && $('#promo-text')) {
+    ChempakaDB.client().from('site_settings').select('*').then(function (res) {
       if (res.error || !res.data) return;
       var map = {};
       res.data.forEach(function (row) { map[row.key] = parse(row.value); });

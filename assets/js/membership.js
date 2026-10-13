@@ -6,11 +6,9 @@
   var PHONE_RE = /^\+?[0-9\s\-]{8,15}$/;
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+  // the shared client (assets/js/db.js), which goes through this site's own domain first
   function client() {
-    if (typeof supabase !== 'undefined' && typeof SUPABASE_URL !== 'undefined' && SUPABASE_URL !== 'YOUR_SUPABASE_URL_HERE') {
-      return supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    }
-    return null;
+    return window.ChempakaDB ? ChempakaDB.client() : null;
   }
 
   function setError(form, name, bad) {
@@ -29,6 +27,13 @@
     if (digits.length > 6) out += '-' + digits.slice(6, 8);
     if (digits.length > 8) out += '-' + digits.slice(8, 12);
     input.value = out;
+  }
+
+  // a connection problem reads differently from a database error; the detail helps when someone reports it
+  function failText(err) {
+    var msg = err && err.message ? String(err.message) : '';
+    if (!msg || /fetch|network|load failed|failed to load|timeout|abort/i.test(msg)) return 'We could not reach the membership service. Check your connection and try again.';
+    return 'Something went wrong. Please try again. (' + msg.slice(0, 90) + ')';
   }
 
   function showFormError(el, text) {
@@ -84,7 +89,7 @@
         .then(function (res) {
           if (res.error) {
             var err = res.error;
-            var msg = 'Something went wrong. Please try again.';
+            var msg = failText(err);
             if (err.code === '23505') {
               if (/email/.test(err.message)) msg = 'This email address is already registered.';
               else if (/ic_number/.test(err.message)) msg = 'This IC number is already registered.';
@@ -99,8 +104,8 @@
           document.getElementById('apply-done-text').textContent =
             ' Thank you, ' + name.toUpperCase() + '. Our boutique team will verify your details. Come back to retrieve your card with your phone and IC number once you are approved.';
           done.hidden = false;
-        }, function () {
-          showFormError(applyError, 'Something went wrong. Please try again.');
+        }, function (e2) {
+          showFormError(applyError, failText(e2));
           btn.disabled = false;
           btn.textContent = 'Submit application';
         });
@@ -140,7 +145,7 @@
       // The members table is not publicly readable; this RPC returns only the card fields for the one matching row.
       sb.rpc('member_login', { p_phone: phone, p_ic: ic }).then(function (res) {
         restore();
-        if (res.error) { showFormError(loginError, 'Something went wrong. Please try again.'); return; }
+        if (res.error) { showFormError(loginError, failText(res.error)); return; }
         var row = res.data && res.data.length ? res.data[0] : null;
         if (!row) {
           showFormError(loginError, 'No record matches that phone number and IC number. Please check and try again.');
@@ -161,7 +166,7 @@
         var fsBtn = document.getElementById('card-fullscreen');
         if (fsBtn) fsBtn.hidden = false;
         document.getElementById('member-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, function () { restore(); showFormError(loginError, 'Something went wrong. Please try again.'); });
+      }, function (e2) { restore(); showFormError(loginError, failText(e2)); });
     });
   }
 

@@ -93,7 +93,8 @@ function scripts(meta, file) {
   if (meta.supabase !== false) {
     out.push(
       '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>',
-      '<script src="supabase-config.js"></script>'
+      '<script src="supabase-config.js"></script>',
+      '<script src="assets/js/db.js"></script>'
     );
   }
   if (!meta.noSiteJs) out.push('<script src="assets/js/site.js"></script>');

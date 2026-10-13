@@ -628,7 +628,9 @@ textarea.cj-input { height: auto; padding: var(--space-3) var(--space-4); min-he
 /* studio photography, gold on black */
 .img-a-hero { background-image: url(../images/album/hero-layered-necklace.jpg); }
 .img-a-bead { background-image: url(../images/album/necklace-bead.jpg); }
-.img-a-chains { background-image: url(../images/album/necklace-chains.jpg); }
+.img-a-chains { background-image: url(../images/album/layered-chains.jpg); }
+/* the bust sits right of centre in this shot; in the square product card the crop is moved over so it is centred */
+.cj-product__img.img-a-chains { background-position: 74% 50%; }
 .img-a-woven { background-image: url(../images/album/bracelet-woven.jpg); }
 .img-a-mesh { background-image: url(../images/album/bracelet-flower-mesh.jpg); }
 .img-a-tricolour { background-image: url(../images/album/bracelet-tricolour.jpg); }
