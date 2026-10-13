@@ -146,3 +146,52 @@
     });
   });
 })();
+
+// Photographs below the first screen. Every photograph is a CSS background, which a browser fetches the moment the page
+// is laid out, so a phone used to download all of them (over 2 MB on the home page) before the visitor had scrolled.
+// The page head adds "js-lazy" to <html>, and site.css then withholds the photograph from any element that is not
+// ".is-near"; this marks an element .is-near when it is within a screen or so of the viewport. Sideways rails
+// (products, journal, bento) are released as a whole, since their cards are clipped by the rail until swiped to.
+// Elements the scripts add later, or whose class changes (the showcase pieces), are picked up by a MutationObserver.
+(function () {
+  'use strict';
+  var root = document.documentElement;
+  if (!root.classList.contains('js-lazy') || !('IntersectionObserver' in window)) return;
+  var PHOTO = '[class*="img-"]';
+  var RAILS = '.cj-products, .cj-journal, .site-bento, .cj-bento';
+
+  function release(el) {
+    el.classList.add('is-near');
+    Array.prototype.forEach.call(el.querySelectorAll(PHOTO), function (e) { e.classList.add('is-near'); });
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      io.unobserve(entry.target);
+      release(entry.target);
+    });
+  }, { rootMargin: '700px 0px' });
+
+  function watch(el) {
+    if (el.classList.contains('is-near')) return;
+    io.observe(el.closest(RAILS) || el);
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll(PHOTO), watch);
+
+  if ('MutationObserver' in window) {
+    new MutationObserver(function (list) {
+      list.forEach(function (m) {
+        if (m.type === 'attributes') {
+          if (m.target.matches(PHOTO)) watch(m.target);
+          return;
+        }
+        Array.prototype.forEach.call(m.addedNodes, function (n) {
+          if (n.nodeType !== 1) return;
+          if (n.matches(PHOTO)) watch(n);
+          Array.prototype.forEach.call(n.querySelectorAll(PHOTO), watch);
+        });
+      });
+    }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+  }
+})();

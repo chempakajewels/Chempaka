@@ -24,6 +24,16 @@ After editing anything in `src/`, run `node scripts/build-site.js`. It writes th
 
 The membership form, the card lookup, the admin portal and the announcement text use Supabase (`supabase-config.js`, schema in `db-setup.sql`). Running the site locally talks to the same project, so do not submit test applications.
 
+## Phones
+
+The site is built for a phone first (Part 11 at the end of `assets/css/site.css`). Things to keep when adding to it:
+
+- **Touch targets are at least 44 px** (links get an invisible larger area with `::after`), and text in forms is 16 px, because iPhones zoom the page in on anything smaller.
+- **Hover effects go inside `@media (hover: hover)`.** On a phone a tap otherwise leaves the hover look stuck on.
+- **Photographs load as they come near the screen.** Every photograph is a CSS background (a class named `img-...`), which a browser fetches at once; the page head sets `js-lazy` on `<html>` and `assets/js/site.js` releases each photograph when it is within about a screen of the viewport (sideways rails are released as a whole). Name new photo classes `img-...` and they are covered. Hero photographs (`img-hero-blue`, `img-hero-ring`) are excluded so the first screen is not delayed. Without JavaScript the photographs simply load.
+- **Lighter photographs for phones** are in `assets/images/m/`, used up to 700 px wide. To add one, save a smaller copy there (about 800 to 1000 px wide, JPEG quality near 78) and add a rule for the same class in the `@media (max-width: 700px)` block at the end of `site.css`.
+- The home hero can be swiped (`assets/js/home.js`).
+
 ## Photos
 
 - The Duta Chempaka section on the home page uses `assets/images/hero_model_hijab.jpg`, the same photograph as "The Royal Malay Heritage" in the showcase. That photograph is Ayu Damit.

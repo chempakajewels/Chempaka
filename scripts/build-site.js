@@ -73,12 +73,17 @@ function head(meta, file) {
     }
   }
   lines.push(
+    // the browser's own bar on a phone takes the colour of the header it sits above
+    `<meta name="theme-color" content="${meta.header === 'overlay' ? '#12296b' : '#0a0a0a'}">`,
     '<link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">',
     '<link rel="icon" type="image/png" sizes="192x192" href="assets/images/brand/favicon-192.png">',
     '<link rel="apple-touch-icon" href="assets/images/brand/favicon-180.png">',
-    '<script>document.documentElement.className += " js";</script>',
+    // js-lazy holds the photographs back until they are near the screen (assets/js/site.js releases them); it is only
+    // set where that script runs and the browser can watch for it, so without either the photographs just load
+    '<script>document.documentElement.className += " js" + ("IntersectionObserver" in window && ' + (meta.noSiteJs ? 'false' : 'true') + ' ? " js-lazy" : "");</script>',
     '<link rel="preload" href="assets/fonts/Jost-normal-300.woff2" as="font" type="font/woff2" crossorigin>',
-    '<link rel="preload" href="assets/fonts/BodoniModa-normal-400.woff2" as="font" type="font/woff2" crossorigin>'
+    '<link rel="preload" href="assets/fonts/BodoniModa-normal-400.woff2" as="font" type="font/woff2" crossorigin>',
+    '<link rel="preload" href="assets/fonts/Cinzel-normal-400.woff2" as="font" type="font/woff2" crossorigin>'
   );
   (meta.preload || []).forEach((p) => lines.push('<link rel="preload" href="' + p + '" as="image">'));
   lines.push(
