@@ -6,8 +6,10 @@
 // selling price, so the figure returned here is that price divided by the grams in an ounce. The shop's own
 // adjustment (minus RM 15 a gram) is applied on the website, see assets/js/gold.js.
 //
-// On Vercel this file is a serverless function at /api/gold. The response is cached at the edge for 30 minutes,
-// so Bank Negara is called a few times an hour whatever the traffic. scripts/dev-server.js serves it locally.
+// On Vercel this file is a serverless function at /api/gold. Vercel's edge keeps the answer for 10 minutes, and for up
+// to 10 more while it fetches a fresh one, so a new Bank Negara price is on the site within about 20 minutes and Bank
+// Negara is called a few times an hour whatever the traffic. Browsers are told not to keep it at all (the page keeps
+// its own copy, see assets/js/gold.js). scripts/dev-server.js serves it locally.
 // The figure is a reference price, not the boutique's counter rate.
 
 var OUNCE_GRAMS = 31.1034768;
@@ -43,7 +45,9 @@ module.exports = async function handler(req, res) {
     // a 1 oz coin is thousands of ringgit; anything far from that is a bad reading
     if (!(selling > 1000 && selling < 200000) || !(buying > 1000 && buying < selling * 1.5)) throw new Error('implausible price');
 
-    res.setHeader('Cache-Control', 'public, s-maxage=1800, stale-while-revalidate=21600');
+    // A long stale window used to let the first visitor of the morning get yesterday's price; keep it short.
+    res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
+    res.setHeader('CDN-Cache-Control', 'public, s-maxage=600, stale-while-revalidate=600');
     res.status(200).json({
       currency: 'MYR',
       unit: 'gram',

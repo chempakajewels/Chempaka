@@ -9,8 +9,9 @@
 //      Leave that box empty to use the automatic price.
 //   3. "Ask us" when there is no price at all (Bank Negara's price could not be read and none is saved).
 //
-// Bank Negara's price is kept in localStorage, so a visit shows a figure straight away and a failed request falls
-// back to the last known price (up to a day old). The price is written into every [data-gold-916] element and a
+// Bank Negara's price is kept in localStorage, so a visit shows a figure straight away; every visit then asks for the
+// current price in the background and replaces it, and a failed request falls back to the last known price (up to a
+// day old). The price is written into every [data-gold-916] element and a
 // short "updated" line into every [data-gold-note]. Other scripts can read window.ChempakaGold.text() and listen
 // for the "chempaka:gold" event.
 (function () {
@@ -20,7 +21,6 @@
   var DEFAULT_ADJUST = -15;
 
   var KEY = 'chempaka-gold-bnm';
-  var FRESH = 30 * 60 * 1000;
   var STALE = 24 * 60 * 60 * 1000;
   var market = null;
 
@@ -94,9 +94,9 @@
   if (cached && cached.perGram > 0 && Date.now() - cached.fetchedAt < STALE) market = cached;
   publish();
 
-  var needsRefresh = !market || Date.now() - market.fetchedAt > FRESH;
-  if (!needsRefresh || !window.fetch) return;
-  fetch('/api/gold', { headers: { accept: 'application/json' } })
+  // always ask: the saved copy is only for showing something at once, and could be from before today's price
+  if (!window.fetch) return;
+  fetch('/api/gold', { headers: { accept: 'application/json' }, cache: 'no-store' })
     .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
     .then(function (d) {
       if (!d || !(d.perGram > 0)) throw new Error('bad data');
